@@ -1,0 +1,10 @@
+Version 0.1 (15 Mar 2007)
+	has actions:
+		show: currently used implementation
+		set: set a specific version to be symlinked from
+		/usr/bin/emacs
+		update: set the highest version automatically
+		list: list available implementations
+	automatically symlink all needed executables
+	automatically symlink man pages
+	automatically set correct INFOPATH

@@ -25,6 +25,7 @@ VERSION=$(svn_date_to_version "${SVN_DATE}" )
 
 MANPAGELIST="emacs emacsclient etags ctags"
 BINARYLIST="${MANPAGELIST} b2m ebrowse rcs-checkin grep-changelog"
+MANPAGELIST="${MANPAGELIST} gfdl"
 
 find_targets() {
 	# gives back the list of available Emacs versions
@@ -46,9 +47,10 @@ remove_symlinks() {
 	local extension=$(echo ${ROOT}/usr/share/man/man1/emacs.emacs-*.1* |
 		sed 's/.*\.1//')
 	local f
-	for f in ${BINARYLIST}
-	do
+	for f in ${BINARYLIST}; do
 		rm -f "${ROOT}"/usr/bin/${f}
+	done
+	for f in ${MANPAGELIST}; do
 		rm -f "${ROOT}"/usr/share/man/man1/${f}.1{${extension},,.gz,.bz2}
 	done
 }
@@ -84,8 +86,10 @@ set_symlinks() {
 		remove_symlinks
 		for i in ${BINARYLIST}
 		do
-			ln -s "${ROOT}/usr/bin/${i}.${target}" "${ROOT}/usr/bin/${i}" || \
-				die "Couldn't set ${i}.${target} /usr/bin/${i} symlink"
+			if [[ -f "${ROOT}/usr/bin/${i}.${target}" ]]; then
+				ln -s "${i}.${target}" "${ROOT}/usr/bin/${i}" ||
+					die "Couldn't set ${i}.${target} /usr/bin/${i} symlink"
+			fi
 		done
 
 		set_man_symlinks "${target}"

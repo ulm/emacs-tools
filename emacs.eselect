@@ -31,8 +31,8 @@ remove_symlinks() {
 	local f
 	for f in ${BINARYLIST}
 	do
-		rm -f "${ROOT}"/usr/bin/${f} &>/dev/null \
-		rm -f "${ROOT}"/usr/share/man/man1/${f}.1${extension} &>/dev/null
+		rm -f "${ROOT}"/usr/bin/${f} \
+		rm -f "${ROOT}"/usr/share/man/man1/${f}.1${extension}
 	done
 }
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: emacs.eselect,v 1.2 2007/03/15 11:47:15 opfer Exp $
+# $Id: $
 
 DESCRIPTION="Manage /usr/bin/emacs implementations"
 MAINTAINER="emacs@gentoo.org"
@@ -83,7 +83,7 @@ do_show() {
 	[[ -z "${@}" ]] || die -q "Too many parameters"
 
 	write_list_start "Current target of symlink:"
-	if [[ -L "${ROOT}/usr/bin/emacs" ]] ; then
+	if [[ -L "${ROOT}/usr/bin/emacs" && -e $(canonicalise "${ROOT}/usr/bin/emacs") ]] ; then
 		write_kv_list_entry "$(basename $(canonicalise ${ROOT}/usr/bin/emacs )|sed 's/^[^\.]*.//' )"  ""
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]] ; then
 		write_kv_list_entry "(not a symlink)" ""

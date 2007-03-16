@@ -117,11 +117,12 @@ describe_list() {
 do_list() {
 	[[ -z "${@}" ]] || die -q "Too many parameters"
 
-	local i targets
+	local i targets currentsetting
 	targets=( $(find_targets ) )
+
 	if [[ -n ${targets[@]} ]] ; then
 		for (( i = 0 ; i < ${#targets[@]} ; i = i + 1 )) ; do
-			[[ ${targets[${i}]} == $(basename $(canonicalise ${ROOT}/usr/bin/emacs ) ) ]] && \
+			[[ ${targets[${i}]} == $(basename $(canonicalise ${ROOT}/usr/bin/emacs )|sed 's/^[^\.]*.//' ) ]] && \
 				targets[${i}]="${targets[${i}]} $(highlight '*' )"
 		done
 		write_list_start "Available Emacs symlink targets:"

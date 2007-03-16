@@ -2,6 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id: $
 
+# DOCUMENTATION
+# Following actions possible
+# * show		do_show()
+# * list		do_list()
+# * set			do_set()
+# * update	do_update()
+#
+# Behaviour:
+# do_show():
+#  checks if /usr/bin/emacs is a link and if the target exists, if yes, it gives out the currently
+#  linked Emacs	 version.  If it is no symlink, the user is told so, the same if there is no
+#  /usr/bin/emacs or the target does not exist
+# do_list():
+# do_set():
+# do_update():
+
 DESCRIPTION="Manage /usr/bin/emacs implementations"
 MAINTAINER="emacs@gentoo.org"
 SVN_DATE='$Date: 2007/03/15 11:47:15 $'

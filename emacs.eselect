@@ -117,7 +117,7 @@ describe_list() {
 do_list() {
 	[[ -z "${@}" ]] || die -q "Too many parameters"
 
-	local i targets currentsetting
+	local i targets
 	targets=( $(find_targets ) )
 
 	if [[ -n ${targets[@]} ]] ; then

@@ -166,7 +166,7 @@ do_update() {
 		die -q "Usage error"
 
 	if [[ -L "${ROOT}/usr/bin/emacs" ]] ; then
-		[[ ${1} == "--if-unset" ]] && return
+		[[ ${1} == "--if-unset" ]] && [[ -e "$(canonicalise ${ROOT}/usr/bin/emacs)" ]] && return
 		remove_symlinks || die -q "Can't remove existing link"
 	fi
 	if [[ -e "${ROOT}/usr/bin/emacs" ]] ; then

@@ -9,4 +9,9 @@ Version 0.1 (15 Mar 2007)
 	automatically symlink all needed executables
 	automatically symlink man pages
 	automatically set correct INFOPATH
-	
+	16 Mar 2007
+	Remove man symlinks with all possible compress extensions.
+	Honour ${ROOT} in set_man_symlinks.
+	Don't test for -z ${extension} since the empty string
+	  is a legal value (meaning no compression).
+	We don't have "providers" but versions.

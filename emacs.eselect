@@ -86,7 +86,7 @@ do_show() {
 	if [[ -L "${ROOT}/usr/bin/emacs" && -e $(canonicalise "${ROOT}/usr/bin/emacs") ]] ; then
 		write_kv_list_entry "$(basename $(canonicalise ${ROOT}/usr/bin/emacs )|sed 's/^[^\.]*.//' )"  ""
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]] ; then
-		write_kv_list_entry "(not a symlink)" ""
+		write_kv_list_entry "(not a symlink or target of symlink does not exist)" ""
 	else
 		write_kv_list_entry "(unset)" ""
 	fi

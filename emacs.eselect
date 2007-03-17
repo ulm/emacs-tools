@@ -39,8 +39,12 @@ find_targets() {
 		done
 }
 
+remove_infopath() {
+	rm -f ${ROOT}/etc/env.d/50emacs
+}
+
 set_infopath() {
-	echo "INFOPATH=/usr/share/info/${1}" > /etc/env.d/50emacs
+	echo "INFOPATH=/usr/share/info/${1}" >${ROOT}/etc/env.d/50emacs
 }
 
 remove_symlinks() {
@@ -53,6 +57,7 @@ remove_symlinks() {
 	for f in ${MANPAGELIST}; do
 		rm -f "${ROOT}"/usr/share/man/man1/${f}.1{${extension},,.gz,.bz2}
 	done
+	remove_infopath
 }
 
 set_man_symlinks() {

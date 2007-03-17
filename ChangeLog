@@ -20,3 +20,4 @@ Version 0.1 (15 Mar 2007)
 	Use MANPAGELIST instead of BINARYLIST for manpage removal.
 	17 Mar 2007
 	do_update() now updates to the newest available version.
+	Cleanup env.d file in do_update().

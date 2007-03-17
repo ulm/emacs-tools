@@ -18,3 +18,5 @@ Version 0.1 (15 Mar 2007)
 	Create symlinks for existing binaries only.
 	Added gfdl to MANPAGELIST.
 	Use MANPAGELIST instead of BINARYLIST for manpage removal.
+	17 Mar 2007
+	do_update() now updates to the newest available version.

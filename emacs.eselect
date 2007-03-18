@@ -32,10 +32,8 @@ find_targets() {
 	# gives back the list of available Emacs versions
 	#
 	local j
-	for j in ${ROOT}/usr/bin/emacs.emacs-*; do
-		if [[ -f ${j} ]] ; then
-			echo $(basename ${j}|sed 's/^[^\.]*.//')
-		fi
+	for j in ${ROOT}/usr/bin/emacs-*; do
+		[[ -f ${j} ]] && basename ${j}
 	done
 }
 
@@ -60,6 +58,18 @@ remove_symlinks() {
 	remove_infopath
 }
 
+set_bin_symlinks() {
+	local i
+	local sep="."
+	[[ "${1}" = xemacs ]] && sep="-"		# ***** FIXME *****
+	for i in ${BINARYLIST}; do
+		if [[ -f "${ROOT}/usr/bin/${i}${sep}${1}" ]]; then
+			ln -s "${i}${sep}${1}" "${ROOT}/usr/bin/${i}" ||
+				die "Couldn't set ${i}${sep}${1} /usr/bin/${i} symlink"
+		fi
+	done
+}
+
 set_man_symlinks() {
 	local target="${1}" z
 	local extension=$(echo ${ROOT}/usr/share/man/man1/emacs.${target}.1* |
@@ -82,21 +92,14 @@ set_man_symlinks() {
 }
 
 set_symlinks() {
-	local target="${1}" targets i
+	local target="${1}" targets
 	if is_number "${target}" && [[ ${target} -ge 1 ]] ; then
 		targets=( $(find_targets) )
 		target=${targets[$(( ${target} - 1 ))]}
 	fi
 	if [[ -f "${ROOT}/usr/bin/${target}" ]] ; then
 		remove_symlinks
-		for i in ${BINARYLIST}
-		do
-			if [[ -f "${ROOT}/usr/bin/${i}.${target}" ]]; then
-				ln -s "${i}.${target}" "${ROOT}/usr/bin/${i}" ||
-					die "Couldn't set ${i}.${target} /usr/bin/${i} symlink"
-			fi
-		done
-
+		set_bin_symlinks "${target}"
 		set_man_symlinks "${target}"
 		set_infopath "${target}"
 	else
@@ -208,5 +211,8 @@ do_update() {
 	local targets=($(find_targets))
 	if [[ ${#targets[@]} -gt 0 ]]; then
 		set_symlinks ${#targets[@]} || die -q "Couldn't set a new symlink"
+	elif [[ -f "${ROOT}/usr/bin/xemacs" ]]; then
+		# no Emacs target found - link ctags, etags etc. to XEmacs
+		set_bin_symlinks xemacs
 	fi
 }

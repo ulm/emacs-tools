@@ -11,9 +11,10 @@
 #
 # Behaviour:
 # do_show():
-#  checks if /usr/bin/emacs is a link and if the target exists, if yes, it gives out the currently
-#  linked Emacs	 version.  If it is no symlink, the user is told so, the same if there is no
-#  /usr/bin/emacs or the target does not exist
+#  Checks if /usr/bin/emacs is a link and if the target exists,
+#  if yes, it outputs the currently linked Emacs version.
+#  If it is no symlink, the user is told so, the same if there is
+#  no /usr/bin/emacs or the target does not exist.
 # do_list():
 # do_set():
 # do_update():
@@ -31,12 +32,11 @@ find_targets() {
 	# gives back the list of available Emacs versions
 	#
 	local j
-	for j in ${ROOT}/usr/bin/emacs.emacs-*
-		do
+	for j in ${ROOT}/usr/bin/emacs.emacs-*; do
 		if [[ -f ${j} ]] ; then
 			echo $(basename ${j}|sed 's/^[^\.]*.//')
 		fi
-		done
+	done
 }
 
 remove_infopath() {

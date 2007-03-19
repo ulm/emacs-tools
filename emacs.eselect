@@ -24,18 +24,15 @@ MAINTAINER="emacs@gentoo.org"
 SVN_DATE='$Date: 2007/03/15 11:47:15 $'
 VERSION=$(svn_date_to_version "${SVN_DATE}" )
 
-MANPAGELIST="emacs emacsclient etags ctags"
-BINARYLIST="${MANPAGELIST} b2m ebrowse rcs-checkin grep-changelog"
-MANPAGELIST="${MANPAGELIST} gfdl"
+BINARYLIST="emacsclient etags ctags b2m ebrowse rcs-checkin grep-changelog"
+MANPAGELIST="emacs emacsclient etags ctags gfdl"
 
 find_targets() {
 	# gives back the list of available Emacs versions
 	#
 	local j
-	for j in ${ROOT}/usr/bin/emacs-emacs-*; do
-		if [[ -f ${j} ]]; then
-			basename ${j} | sed 's/^[^-.]*.//'
-		fi 
+	for j in ${ROOT}/usr/bin/emacs-[0-9]*; do
+		[[ -f ${j} ]] && basename ${j}
 	done
 }
 
@@ -49,6 +46,7 @@ set_infopath() {
 
 remove_symlinks() {
 	local f
+	rm -f "${ROOT}"/usr/bin/emacs
 	for f in ${BINARYLIST}; do
 		rm -f "${ROOT}"/usr/bin/${f}
 	done
@@ -95,8 +93,10 @@ set_symlinks() {
 		targets=( $(find_targets) )
 		target=${targets[$(( ${target} - 1 ))]}
 	fi
-	if [[ -f "${ROOT}/usr/bin/emacs-${target}" ]] ; then
+	if [[ -f "${ROOT}/usr/bin/${target}" ]]; then
 		remove_symlinks			# is this necessary here?
+		ln -s "${target}" "${ROOT}/usr/bin/emacs" ||
+			die "Couldn't set ${target} /usr/bin/emacs symlink"
 		set_bin_symlinks "${target}"
 		set_man_symlinks "${target}"
 		set_infopath "${target}"
@@ -115,10 +115,13 @@ do_show() {
 	[[ -z "${@}" ]] || die -q "Too many parameters"
 
 	write_list_start "Current target of symlink:"
-	if [[ -L "${ROOT}/usr/bin/emacs" && -e $(canonicalise "${ROOT}/usr/bin/emacs") ]] ; then
-		write_kv_list_entry "$(basename $(canonicalise ${ROOT}/usr/bin/emacs )|sed 's/^[^-.]*.//' )" ""
+	if [[ -L "${ROOT}/usr/bin/emacs" && \
+		  -e $(canonicalise "${ROOT}/usr/bin/emacs") ]]; then
+		write_kv_list_entry \
+			"$(basename $(canonicalise ${ROOT}/usr/bin/emacs) )" ""
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]] ; then
-		write_kv_list_entry "(not a symlink or target of symlink does not exist)" ""
+		write_kv_list_entry \
+			"(not a symlink or target of symlink does not exist)" ""
 	else
 		write_kv_list_entry "(unset)" ""
 	fi
@@ -138,8 +141,9 @@ do_list() {
 
 	if [[ -n ${targets[@]} ]] ; then
 		for (( i = 0 ; i < ${#targets[@]} ; i = i + 1 )) ; do
-			[[ ${targets[${i}]} == $(basename $(canonicalise ${ROOT}/usr/bin/emacs )|sed 's/^[^-.]*.//' ) ]] && \
-				targets[${i}]="${targets[${i}]} $(highlight '*' )"
+			[[ ${targets[${i}]} = \
+				$(basename $(canonicalise ${ROOT}/usr/bin/emacs) ) ]] &&
+				targets[${i}]="${targets[${i}]} $(highlight '*')"
 		done
 		write_list_start "Available Emacs symlink targets:"
 		write_numbered_list "${targets[@]}"
@@ -206,7 +210,7 @@ do_update() {
 	if [[ -e "${ROOT}/usr/bin/emacs" ]] ; then
 		die -q "Couldn't set a new symlink"
 	fi
-	local targets=($(find_targets))
+	local targets=( $(find_targets) )
 	if [[ ${#targets[@]} -gt 0 ]]; then
 		set_symlinks ${#targets[@]} || die -q "Couldn't set a new symlink"
 	elif [[ -f "${ROOT}/usr/bin/xemacs" ]]; then

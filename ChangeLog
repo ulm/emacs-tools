@@ -30,3 +30,4 @@ Version 0.2 (18 Mar 2007)
 	Use emacs-${SLOT} instead of emacs-emacs-${SLOT} as symlink target.
 	Test if Info directory exists.
 Version 0.3 (19 Mar 2007)
+	Make linking to XEmacs auxiliary programs really work.

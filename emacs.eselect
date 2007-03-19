@@ -41,6 +41,7 @@ remove_infopath() {
 }
 
 set_infopath() {
+	[[ -d ${ROOT}/usr/share/info/${1} ]] || return 1
 	echo "INFOPATH=/usr/share/info/${1}" >${ROOT}/etc/env.d/50emacs
 }
 

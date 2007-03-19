@@ -28,3 +28,4 @@ Version 0.2 (18 Mar 2007)
 	Removal of man page symlinks in remove_symlinks() simplified.
 	19 Mar 2007
 	Use emacs-${SLOT} instead of emacs-emacs-${SLOT} as symlink target.
+	Test if Info directory exists.

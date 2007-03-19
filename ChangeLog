@@ -23,3 +23,5 @@ Version 0.1 (15 Mar 2007)
 	Cleanup env.d file in do_update().
 	18 Mar 2007
 	If Emacs was not found, link {c,e}tags to XEmacs versions.
+	Suffix changed from ".emacs-${SLOT}" to "-emacs-${SLOT}".
+	Removal of man page symlinks in remove_symlinks() simplified.

@@ -7,7 +7,7 @@
 # * show		do_show()
 # * list		do_list()
 # * set			do_set()
-# * update	do_update()
+# * update		do_update()
 #
 # Behaviour:
 # do_show():
@@ -98,7 +98,7 @@ set_symlinks() {
 		set_infopath "${target}"
 		return 0
 	else
-		die -q	"Target \"${1}\" doesn't appear to be valid!"
+		die -q "Target \"${1}\" doesn't appear to be valid!"
 	fi
 }
 
@@ -211,7 +211,7 @@ do_update() {
 	if [[ ${#targets[@]} -gt 0 ]]; then
 		set_symlinks ${#targets[@]} || die -q "Couldn't set a new symlink"
 	elif [[ -f "${ROOT}/usr/bin/xemacs" ]]; then
-		# no Emacs target found - link ctags, etags etc. to XEmacs
+		# no Emacs target found - link ctags, etags etc. to XEmacs versions
 		set_symlinks xemacs
 	fi
 }

@@ -31,3 +31,5 @@ Version 0.2 (18 Mar 2007)
 	Test if Info directory exists.
 Version 0.3 (19 Mar 2007)
 	Make linking to XEmacs auxiliary programs really work.
+	21 Mar 2007
+	Some cleanup.

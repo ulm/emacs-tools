@@ -38,3 +38,5 @@ Version 0.3 (19 Mar 2007)
 	  emacs_48.png is from etc/images/icons of the Emacs sources,
 	  gnured_48.png is based on an image taken from
 	  http://www.ee.ryerson.ca/~elf/emacs/logo/ and scaled down.
+	22 Mar 2207
+	Handling of compression extensions made more robust.

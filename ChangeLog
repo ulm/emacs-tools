@@ -44,3 +44,4 @@ Version 0.4 (22 Mar 2007)
 	Added some comments to emacs.eselect.
 	23 Mar 2007
 	MimeType and TryExec keys added to emacs.desktop.
+	Desktop file for emacsclient.

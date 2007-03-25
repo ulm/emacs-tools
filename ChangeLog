@@ -46,3 +46,4 @@ Version 0.4 (22 Mar 2007)
 	MimeType and TryExec keys added to emacs.desktop.
 	Desktop file for emacsclient.
 Version 0.5 (24 Mar 2007)
+	Removed -n option in emacsclient.desktop.

@@ -109,8 +109,11 @@ set_symlinks() {
 	set_bin_symlinks "${target}"
 	set_man_symlinks "${target}"
 	set_infopath "${target}"
-	# call env.eselect to update the environment from env.d files
-	do_action env update >/dev/null
+
+	# update /etc/profile.env from /etc/env.d files
+	#do_action env update >/dev/null
+	env-update --no-ldconfig
+
 	return 0
 }
 
@@ -178,6 +181,7 @@ describe_set_parameters() {
 do_set() {
 	[[ -z "${1}" ]] && die -q "You didn't tell me what to set the symlink to"
 	[[ -n "${2}" ]] && die -q "Too many parameters"
+	[[ -w "${ROOT}/usr/bin" ]] || die -q "You need to be root!"
 
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
 		remove_symlinks || die -q "Couldn't remove existing symlink"
@@ -201,6 +205,7 @@ describe_update_options() {
 do_update() {
 	[[ -z "${1}" || ( -z "${2}" && "${1}" == "--if-unset" ) ]] ||
 		die -q "Usage error"
+	[[ -w "${ROOT}/usr/bin" ]] || die -q "You need to be root!"
 
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
 		[[ ${1} == "--if-unset" \

@@ -49,3 +49,4 @@ Version 0.5 (24 Mar 2007)
 	Removed -n option in emacsclient.desktop.
 	27 Mar 2007
 	Call env.eselect to update the environment from env.d files.
+	Brought do_set and do_update more in line.

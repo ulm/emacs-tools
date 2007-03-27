@@ -176,25 +176,16 @@ describe_set_parameters() {
 }
 
 do_set() {
-	if [[ -z "${1}" ]]; then
-		die -q "You didn't tell me what to set the symlink to"
+	[[ -z "${1}" ]] && die -q "You didn't tell me what to set the symlink to"
+	[[ -n "${2}" ]] && die -q "Too many parameters"
 
-	elif [[ -n "${2}" ]]; then
-		die -q "Too many parameters"
-
-	elif [[ -L "${ROOT}/usr/bin/emacs" ]]; then
-		if ! remove_symlinks; then
-			die -q "Couldn't remove existing symlink"
-		elif ! set_symlinks "${1}"; then
-			die -q "Couldn't set a new symlink"
-		fi
-
+	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
+		remove_symlinks || die -q "Couldn't remove existing symlink"
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
 		die -q "Sorry, ${ROOT}/usr/bin/emacs confuses me"
-
-	else
-		set_symlinks "${1}" || die -q "Couldn't set a new symlink"
 	fi
+
+	set_symlinks "${1}" || die -q "Couldn't set a new symlink"
 }
 
 ### update action ###
@@ -212,12 +203,11 @@ do_update() {
 		die -q "Usage error"
 
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
-		[[ ${1} == "--if-unset" &&
-			-e "$(canonicalise ${ROOT}/usr/bin/emacs)" ]] && return
-		remove_symlinks || die -q "Couldn't remove existing link"
-	fi
-	if [[ -e "${ROOT}/usr/bin/emacs" ]]; then
-		die -q "Couldn't set a new symlink"
+		[[ ${1} == "--if-unset" \
+			&& -e "$(canonicalise ${ROOT}/usr/bin/emacs)" ]] && return
+		remove_symlinks || die -q "Couldn't remove existing symlink"
+	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
+		die -q "Sorry, ${ROOT}/usr/bin/emacs confuses me"
 	fi
 
 	local targets=( $(find_targets) )

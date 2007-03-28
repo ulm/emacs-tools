@@ -184,7 +184,7 @@ do_set() {
 	[[ -w "${ROOT}/usr/bin" ]] || die -q "You need to be root!"
 
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
-		remove_symlinks || die -q "Couldn't remove existing symlink"
+		true
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
 		die -q "Sorry, ${ROOT}/usr/bin/emacs confuses me"
 	fi
@@ -210,7 +210,6 @@ do_update() {
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
 		[[ ${1} == "--if-unset" \
 			&& -e "$(canonicalise ${ROOT}/usr/bin/emacs)" ]] && return
-		remove_symlinks || die -q "Couldn't remove existing symlink"
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
 		die -q "Sorry, ${ROOT}/usr/bin/emacs confuses me"
 	fi

@@ -54,3 +54,5 @@ Version 0.5 (24 Mar 2007)
 	env.eselect seems to be buggy; use env-update instead.
 	Redundant remove_symlinks removed.
 Version 0.6 (28 Mar 2007)
+	28 Mar 2007
+	Undo previous change.

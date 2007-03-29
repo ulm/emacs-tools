@@ -99,6 +99,7 @@ set_symlinks() {
 	[[ -f "${ROOT}/usr/bin/${target}" ]] \
 		|| die -q "Target \"${1}\" doesn't appear to be valid!"
 
+	echo "Switching to ${target}..."
 	remove_symlinks
 	# the main /usr/bin/emacs symlink is only set for Emacs binaries
 	# (but not for other providers of auxiliary programs, e.g., XEmacs)

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: $
+# $Id$
 
 # DOCUMENTATION
 # Following actions possible
@@ -21,7 +21,7 @@
 
 DESCRIPTION="Manage /usr/bin/emacs implementations"
 MAINTAINER="emacs@gentoo.org"
-SVN_DATE='$Date: 2007/03/15 11:47:15 $'
+SVN_DATE='$Date$'
 VERSION=$(svn_date_to_version "${SVN_DATE}" )
 
 BINARYLIST="emacsclient etags ctags b2m ebrowse rcs-checkin grep-changelog"

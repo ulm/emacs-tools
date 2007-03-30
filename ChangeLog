@@ -61,3 +61,4 @@ Version 0.7 (29 Mar 2007)
 	Svn keywords activated.
 	Fixed typo and capitalised "Emacs" where appropriate.
 	Added copyright notice.
+	Desktop entries and icons moved to emacs-desktop.

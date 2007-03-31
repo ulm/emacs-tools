@@ -1,0 +1,19 @@
+PN = emacs-desktop
+PV = $(shell sed '/^Version/h;$$!d;g;s/[^0-9.]*\([0-9.]*\).*/\1/' ChangeLog)
+P = $(PN)-$(PV)
+
+DISTFILES = emacs.desktop emacsclient.desktop \
+	README.icons emacs.png \
+	emacs_16.png emacs_24.png emacs_32.png emacs_48.png gnured_48.png
+
+
+.PHONY: all dist clean
+
+all:
+
+dist: $(DISTFILES)
+	tar -czf $(P).tar.gz --transform='s%^%$(P)/%' $^
+	tar -tzvf $(P).tar.gz
+
+clean:
+	-rm -f *~ *.tmp *.gz *.bz2

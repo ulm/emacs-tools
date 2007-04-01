@@ -92,14 +92,15 @@ set_symlinks() {
 	if is_number "${target}" && [[ ${target} -ge 1 ]]; then
 		# numeric index, find the target's name
 		targets=( $(find_targets) )
-		target=${targets[$(( ${target} - 1 ))]}
+		[[ ${target} -le ${#targets[@]} ]] \
+			&& target=${targets[$(( ${target} - 1 ))]}
 	fi
 
 	# is the target valid, i.e. does an Emacs binary with this name exist?
 	[[ -f "${ROOT}/usr/bin/${target}" ]] \
 		|| die -q "Target \"${1}\" doesn't appear to be valid!"
 
-	echo "Switching to ${target}..."
+	echo "Switching to ${target} ..."
 	remove_symlinks
 	# the main /usr/bin/emacs symlink is only set for Emacs binaries
 	# (but not for other providers of auxiliary programs, e.g., XEmacs)

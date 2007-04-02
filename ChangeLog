@@ -64,3 +64,4 @@ Version 0.7 (29 Mar 2007)
 	Desktop entries and icons moved to emacs-desktop.
 	1 Apr 2007
 	Check for range of array in set_symlinks().
+	Error message added.

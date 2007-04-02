@@ -89,11 +89,12 @@ set_man_symlinks() {
 set_symlinks() {
 	local target="${1}" targets
 	# target may be specified by its name or its index
-	if is_number "${target}" && [[ ${target} -ge 1 ]]; then
+	if is_number "${target}"; then
 		# numeric index, find the target's name
 		targets=( $(find_targets) )
-		[[ ${target} -le ${#targets[@]} ]] \
-			&& target=${targets[$(( ${target} - 1 ))]}
+		[[ ${target} -ge 1 && ${target} -le ${#targets[@]} ]] \
+			|| die -q "Number out of range: ${1}"
+		target=${targets[$(( ${target} - 1 ))]}
 	fi
 
 	# is the target valid, i.e. does an Emacs binary with this name exist?
@@ -188,7 +189,7 @@ do_set() {
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
 		remove_symlinks || die -q "Couldn't remove existing symlink"
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
-		die -q "Sorry, ${ROOT}/usr/bin/emacs confuses me"
+		die -q "Sorry, ${ROOT}/usr/bin/emacs exists and is not a symlink"
 	fi
 
 	set_symlinks "${1}" || die -q "Couldn't set a new symlink"
@@ -214,7 +215,7 @@ do_update() {
 			&& -e "$(canonicalise ${ROOT}/usr/bin/emacs)" ]] && return
 		remove_symlinks || die -q "Couldn't remove existing symlink"
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
-		die -q "Sorry, ${ROOT}/usr/bin/emacs confuses me"
+		die -q "Sorry, ${ROOT}/usr/bin/emacs exists and is not a symlink"
 	fi
 
 	local targets=( $(find_targets) )

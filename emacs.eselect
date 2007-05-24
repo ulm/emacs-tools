@@ -139,7 +139,7 @@ describe_show() {
 do_show() {
 	[[ -z "${@}" ]] || die -q "Too many parameters"
 
-	write_list_start "Current target of symlink:"
+	write_list_start "Current target of GNU Emacs symlink:"
 	if [[ -L "${ROOT}/usr/bin/emacs" && \
 		  -e $(canonicalise "${ROOT}/usr/bin/emacs") ]]; then
 		write_kv_list_entry \
@@ -172,7 +172,7 @@ do_list() {
 				# Display a star to indicate the currently chosen version
 				targets[${i}]="${targets[${i}]} $(highlight '*')"
 		done
-		write_list_start "Available Emacs symlink targets:"
+		write_list_start "Available GNU Emacs symlink targets:"
 		write_numbered_list "${targets[@]}"
 	else
 		write_kv_list_entry "(none found)" ""

@@ -1,3 +1,13 @@
-Version 0.1 (30 Mar 2007)
-	Split off from eselect-emacs.
-Version 0.2 (15 Apr 2007)
+2007-05-24  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Makefile (PV): Extract PV from new ChangeLog format.
+
+2007-04-15  Ulrich Mueller  <ulm@gentoo.org>
+
+	* version 0.2
+
+2007-03-30  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Split off from eselect-emacs.
+	* version 0.1
+

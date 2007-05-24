@@ -121,6 +121,13 @@ set_symlinks() {
 	return 0
 }
 
+xemacs_info() {
+	# This is just informational to tell that XEmacs has been found, a wish from graaff
+	if [[ -e /usr/bin/xemacs ]]; then
+		write_kv_list_entry "XEmacs also available"
+	fi
+}
+
 ### show action ###
 
 describe_show() {
@@ -141,6 +148,7 @@ do_show() {
 	else
 		write_kv_list_entry "(unset)" ""
 	fi
+	xemacs_info
 }
 
 ### list action ###
@@ -164,13 +172,10 @@ do_list() {
 		done
 		write_list_start "Available Emacs symlink targets:"
 		write_numbered_list "${targets[@]}"
-		# This is just informational to tell that XEmacs has been found, a wish from graaff
-		if [[ -e /usr/bin/xemacs ]]; then
-			write_kv_list_entry "XEmacs also available"
-		fi
 	else
 		write_kv_list_entry "(none found)" ""
 	fi
+	xemacs_info
 }
 
 ### set action ###

@@ -1,4 +1,8 @@
-2007-05-24    Christian Faulhammer <opfer@gentoo.org>
+2007-05-24  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Makefile (PV): Extract version from new ChangeLog format.
+
+2007-05-24  Christian Faulhammer  <opfer@gentoo.org>
 
 	* XEmacs detection into own function, which is called by do_list
 	and do_show
@@ -14,20 +18,22 @@
 
 	* added a comment about the highlighted star, that indicates the
 	currently chosen version with do_list
-	
-2007-04-16    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+
+2007-04-16  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Updated e-mail address in man page.
+
+2007-04-04  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 0.8
-	
-	* Updated e-mail address in man page.
-	
-2007-04-01    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+
+2007-04-01  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Check for range of array in set_symlinks().
 
 	* Error message added.
 
-2007-03-29    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+2007-03-29  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 0.7
 
@@ -38,8 +44,8 @@
 	* Added copyright notice.
 
 	* Desktop entries and icons moved to emacs-desktop.
-	
-2007-03-28    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+
+2007-03-28  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 0.6
 
@@ -47,7 +53,7 @@
 
 	* Added man page
 
-2007-03-27    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+2007-03-27  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Call env.eselect to update the environment from env.d files.
 
@@ -56,32 +62,30 @@
 	* Check for root in do_set and do_update.
 
 	* env.eselect seems to be buggy; use env-update instead.
-	
+
 	* Redundant remove_symlinks removed.
 
-2007-03-24    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+2007-03-24  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 0.5
 
 	* Removed -n option in emacsclient.desktop.
 
-2007-03-23    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
-
-	* version 0.4
-
-	* Added some comments to emacs.eselect.
+2007-03-23  Ulrich Mueller  <ulm@gentoo.org>
 
 	* MimeType and TryExec keys added to emacs.desktop.
 
 	* Desktop file for emacsclient.
 
-2007-03-22    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+2007-03-22  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Handling of compression extensions made more robust.
 
-2007-03-21    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+	* version 0.4
 
-	* version 0.3
+	* Added some comments to emacs.eselect.
+
+2007-03-21  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Make linking to XEmacs auxiliary programs really work.
 
@@ -93,14 +97,20 @@
 		emacs_48.png is from etc/images/icons of the Emacs sources,
 		gnured_48.png is based on an image taken from
 		http://www.ee.ryerson.ca/~elf/emacs/logo/ and scaled down.
- 
-2007-03-19    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+
+2007-03-19  Christian Faulhammer  <opfer@gentoo.org>
+
+	* version 0.3
+
+2007-03-19  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Removal of man page symlinks in remove_symlinks() simplified.
 
 	* Use emacs-${SLOT} instead of emacs-emacs-${SLOT} as symlink target.
 
 	* Test if Info directory exists.
 
-2007-03-18    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+2007-03-18  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 0.2
 
@@ -108,15 +118,13 @@
 
 	* Suffix changed from ".emacs-${SLOT}" to "-emacs-${SLOT}".
 
-	* Removal of man page symlinks in remove_symlinks() simplified.
-
-2007-03-17    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+2007-03-17  Ulrich Mueller  <ulm@gentoo.org>
 
 	* do_update() now updates to the newest available version.
 
 	* Cleanup env.d file in do_update().
 
-2007-03-16    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
+2007-03-16  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Remove man symlinks with all possible compress extensions.
 
@@ -133,7 +141,7 @@
 
 	* Use MANPAGELIST instead of BINARYLIST for manpage removal.
 
-2007-03-15    <opfer@gentoo.org>, <ulm@gentoo.org>
+2007-03-15  Christian Faulhammer  <opfer@gentoo.org>
 
 	* version 0.1
 
@@ -151,4 +159,4 @@
 	* automatically symlink man pages
 
 	* automatically set correct INFOPATH
-	
+

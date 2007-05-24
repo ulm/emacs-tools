@@ -122,9 +122,11 @@ set_symlinks() {
 }
 
 xemacs_info() {
-	# This is just informational to tell that XEmacs has been found, a wish from graaff
-	if [[ -e /usr/bin/xemacs ]]; then
-		write_kv_list_entry "XEmacs also available"
+	# This is just informational to tell that XEmacs has been found,
+	# a wish from graaff
+	if [[ -e "${ROOT}/usr/bin/xemacs" ]]; then
+		echo
+		write_list_start "XEmacs is also available"
 	fi
 }
 

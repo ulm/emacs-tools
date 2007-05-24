@@ -1,7 +1,8 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-
+# Version: 0.9
+#
 # DOCUMENTATION
 # Following actions possible
 # * show		do_show()
@@ -158,10 +159,15 @@ do_list() {
 		for (( i = 0; i < ${#targets[@]}; i = i + 1 )); do
 			[[ ${targets[${i}]} = \
 				$(basename $(canonicalise ${ROOT}/usr/bin/emacs) ) ]] &&
+				# Display a star to indicate the currently chosen version
 				targets[${i}]="${targets[${i}]} $(highlight '*')"
 		done
 		write_list_start "Available Emacs symlink targets:"
 		write_numbered_list "${targets[@]}"
+		# This is just informational to tell that XEmacs has been found, a wish from graaff
+		if [[ -e /usr/bin/xemacs ]]; then
+			write_kv_list_entry "XEmacs also available"
+		fi
 	else
 		write_kv_list_entry "(none found)" ""
 	fi

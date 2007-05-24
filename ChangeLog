@@ -1,4 +1,7 @@
-2007-05-24    <opfer@gentoo.org>
+2007-05-24    Christian Faulhammer <opfer@gentoo.org>
+
+	* XEmacs detection into own function, which is called by do_list
+	and do_show
 
 	* version 0.9
 

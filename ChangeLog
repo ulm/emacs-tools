@@ -1,3 +1,17 @@
+2007-05-24    <opfer@gentoo.org>
+
+	* version 0.9
+
+	* Give a message for list command if XEmacs is found (request by
+	Hans de Graaff
+
+	* added a note about that behaviour in man page
+
+	* added version number in comment of eselect module
+
+	* added a comment about the highlighted star, that indicates the
+	currently chosen version with do_list
+	
 2007-04-16    Christian Faulhammer <opfer@gentoo.org>, Ulrich Müller <ulm@gentoo.org>
 
 	* version 0.8
@@ -73,7 +87,7 @@
 	* Set Type=Application only in desktop file.
 
 	* Added two alternative icons (not used yet):
-		 emacs_48.png is from etc/images/icons of the Emacs sources,
+		emacs_48.png is from etc/images/icons of the Emacs sources,
 		gnured_48.png is based on an image taken from
 		http://www.ee.ryerson.ca/~elf/emacs/logo/ and scaled down.
  

@@ -1,5 +1,7 @@
 2007-05-29  Christian Faulhammer  <opfer@gentoo.org>
 
+	* Changed description of do_update()
+
 	* Added a comment to Makefile
 
 	* Took a check for modification right from do_update() to own

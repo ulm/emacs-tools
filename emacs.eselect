@@ -18,7 +18,7 @@
 #  no /usr/bin/emacs or the target does not exist.
 # do_list(): List all available versions of GNU Emacs
 # do_set(): Set a version to be target of the symlink.
-# do_update(): Check if the target is still valid and reset it
+# do_update(): Set the target to the highest version available (optionally: only if not set)
 
 DESCRIPTION="Manage /usr/bin/emacs version"
 MAINTAINER="emacs@gentoo.org"

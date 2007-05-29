@@ -1,3 +1,24 @@
+2007-05-29  Christian Faulhammer  <opfer@gentoo.org>
+
+	* Added a comment to Makefile
+
+	* Took a check for modification right from do_update() to own
+	function and use them in do_set(), too
+
+	* Made a ndash out of a divis
+
+	* Added quotes around use of ROOT variable in remove_infopath(),
+	set_man_symlinks(), set_infopath(), find_targets(), do_list()
+
+	* Commented functions remove_infopath()
+
+	* Moved the comment for find_targets(), set_infopath(),
+	remove_symlinks(), set_bin_symlinks(), set_man_symlinks(),set_symlinks()
+
+	* Brief overview of functions completed in the header of the module
+
+	* Change wording: implementation -> version
+
 2007-05-24  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs.eselect (xemacs_info): Use write_list_start function.
@@ -13,7 +34,7 @@
 	* version 0.9
 
 	* Give a message for list command if XEmacs is found (request by
-	Hans de Graaff
+	Hans de Graaff)
 
 	* added a note about that behaviour in man page
 

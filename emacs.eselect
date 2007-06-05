@@ -12,13 +12,14 @@
 #
 # Behaviour:
 # do_show():
-#  Checks if /usr/bin/emacs is a link and if the target exists,
-#  if yes, it outputs the currently linked Emacs version.
-#  If it is no symlink, the user is told so, the same if there is
-#  no /usr/bin/emacs or the target does not exist.
+#	Checks if /usr/bin/emacs is a link and if the target exists,
+#	if yes, it outputs the currently linked Emacs version.
+#	If it is no symlink, the user is told so, the same if there is
+#	no /usr/bin/emacs or the target does not exist.
 # do_list(): List all available versions of GNU Emacs
 # do_set(): Set a version to be target of the symlink.
-# do_update(): Set the target to the highest version available (optionally: only if not set)
+# do_update(): Set the target to the highest version available
+#	(optionally: only if not set)
 
 DESCRIPTION="Manage /usr/bin/emacs version"
 MAINTAINER="emacs@gentoo.org"
@@ -48,7 +49,8 @@ set_infopath() {
 }
 
 remove_symlinks() {
-	# Remove existing symlinks to binaries, man pages, and the env file (own function)
+	# Remove existing symlinks to binaries, man pages,
+	# and the env file (own function)
 	local f
 	rm -f "${ROOT}"/usr/bin/emacs
 	for f in ${BINARYLIST}; do
@@ -173,10 +175,10 @@ do_list() {
 
 	if [[ -n ${targets[@]} ]]; then
 		for (( i = 0; i < ${#targets[@]}; i = i + 1 )); do
+			# Display a star to indicate the currently chosen version
 			[[ ${targets[${i}]} = \
-				$(basename $(canonicalise "${ROOT}/usr/bin/emacs") ) ]] &&
-				# Display a star to indicate the currently chosen version
-				targets[${i}]="${targets[${i}]} $(highlight '*')"
+				$(basename $(canonicalise "${ROOT}/usr/bin/emacs") ) ]] \
+				&& targets[${i}]="${targets[${i}]} $(highlight '*')"
 		done
 		write_list_start "Available GNU Emacs symlink targets:"
 		write_numbered_list "${targets[@]}"
@@ -205,7 +207,8 @@ do_set() {
 	[[ -n "${2}" ]] && die -q "Too many parameters"
 	test_for_root
 
-	if [[ -e "${ROOT}/usr/bin/emacs" ]] && ! [[ -L "${ROOT}/usr/bin/emacs" ]]; then
+	if [[ -e "${ROOT}/usr/bin/emacs" ]] \
+		&& ! [[ -L "${ROOT}/usr/bin/emacs" ]]; then
 		die -q "Sorry, ${ROOT}/usr/bin/emacs exists but is not a symlink"
 	fi
 
@@ -223,8 +226,8 @@ describe_update_options() {
 }
 
 do_update() {
-	[[ -z "${1}" || ( -z "${2}" && "${1}" == "--if-unset" ) ]] ||
-		die -q "Usage error"
+	[[ -z "${1}" || ( -z "${2}" && "${1}" == "--if-unset" ) ]] \
+		|| die -q "Usage error"
 	test_for_root
 
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then

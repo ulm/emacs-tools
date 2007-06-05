@@ -67,7 +67,7 @@ set_bin_symlinks() {
 		# set symlink only if target binary actually exists
 		if [[ -f "${ROOT}/usr/bin/${f}-${target}" ]]; then
 			ln -s "${f}-${target}" "${ROOT}/usr/bin/${f}" ||
-				die "Couldn't set ${f}-${target} /usr/bin/${f} symlink"
+				die "Couldn't set ${f}-${target} ${ROOT}/usr/bin/${f} symlink"
 		fi
 	done
 }
@@ -104,12 +104,12 @@ set_symlinks() {
 		|| die -q "Target \"${1}\" doesn't appear to be valid!"
 
 	echo "Switching to ${target} ..."
-	remove_symlinks
+	remove_symlinks || die -q "Couldn't remove existing symlink"
 	# the main /usr/bin/emacs symlink is only set for Emacs binaries
 	# (but not for other providers of auxiliary programs, e.g., XEmacs)
 	if [[ ${target} == emacs-* ]]; then
 		ln -s "${target}" "${ROOT}/usr/bin/emacs" \
-			|| die "Couldn't set ${target} /usr/bin/emacs symlink"
+			|| die "Couldn't set ${target} ${ROOT}/usr/bin/emacs symlink"
 	fi
 	set_bin_symlinks "${target}"
 	set_man_symlinks "${target}"
@@ -205,10 +205,8 @@ do_set() {
 	[[ -n "${2}" ]] && die -q "Too many parameters"
 	test_for_root
 
-	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
-		remove_symlinks || die -q "Couldn't remove existing symlink"
-	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
-		die -q "Sorry, ${ROOT}/usr/bin/emacs exists and is not a symlink"
+	if [[ -e "${ROOT}/usr/bin/emacs" ]] && ! [[ -L "${ROOT}/usr/bin/emacs" ]]; then
+		die -q "Sorry, ${ROOT}/usr/bin/emacs exists but is not a symlink"
 	fi
 
 	set_symlinks "${1}" || die -q "Couldn't set a new symlink"
@@ -234,7 +232,7 @@ do_update() {
 			&& -e "$(canonicalise ${ROOT}/usr/bin/emacs)" ]] && return
 		remove_symlinks || die -q "Couldn't remove existing symlink"
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
-		die -q "Sorry, ${ROOT}/usr/bin/emacs exists and is not a symlink"
+		die -q "Sorry, ${ROOT}/usr/bin/emacs exists but is not a symlink"
 	fi
 
 	local targets=( $(find_targets) )

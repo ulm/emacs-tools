@@ -1,3 +1,13 @@
+2007-06-05  Christian Faulhammer  <opfer@gentoo.org>
+
+	* added an additional die for remove_symlinks() in set_symlinks()
+
+	* rephrased output in do_set() and do_update()
+
+	* rewrote parts do_set() in such a way that an invalid target does
+	not cause an undefined state.  An invalid target was checked after
+	the symlinks were deleted and then not setting a new target
+
 2007-05-29  Christian Faulhammer  <opfer@gentoo.org>
 
 	* Changed description of do_update()

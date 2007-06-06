@@ -8,7 +8,7 @@
 # * show		do_show()
 # * list		do_list()
 # * set			do_set()
-# * update	do_update()
+# * update		do_update()
 #
 # Behaviour:
 # do_show():
@@ -233,6 +233,8 @@ do_update() {
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
 		[[ ${1} == "--if-unset" \
 			&& -e "$(canonicalise ${ROOT}/usr/bin/emacs)" ]] && return
+		# this is not redundant: "update" is called in pkg_postrm() of emacs
+		# and should clean up any dead symlinks if no valid target exists
 		remove_symlinks || die -q "Couldn't remove existing symlink"
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
 		die -q "Sorry, ${ROOT}/usr/bin/emacs exists but is not a symlink"

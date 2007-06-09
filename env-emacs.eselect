@@ -5,7 +5,8 @@
 inherit config multilib
 
 DESCRIPTION="Manage environment variables set in /etc/env.d/"
-MAINTAINER="kugelfang@gentoo.org"
+#MAINTAINER="kugelfang@gentoo.org"
+MAINTAINER="emacs@gentoo.org"
 SVN_DATE='$Date$'
 VERSION=$(svn_date_to_version "${SVN_DATE}" )
 
@@ -106,6 +107,7 @@ create_profile_env() {
 			-e '/^#/d' -e '/^\s*$/d' -e '/^.*=/s/^\([^=]*\)=.*/\1/' \
 			${envfile})
 		[[ -z ${vars} ]] && continue
+		local ${vars}			# workaround for bug #172472
 		for var in ${vars} ; do
 			# Colon separated?...
 			if has ${var} ${PATH_CLASS} ; then
@@ -261,6 +263,7 @@ describe_update_parameters() {
 
 describe_update_options() {
 	echo "makelinks : Specify \"makelinks\" to force updating of links"
+	echo "--no-ldconfig : Do not run ldconfig"
 }
 
 do_update() {
@@ -270,14 +273,27 @@ do_update() {
 	else
 		touch ${ROOT}/etc/profile.env
 	fi
-	
+
+	# handle --no-ldconfig option, bug #172475
+	local mlinks noldconfig
+	while [[ ${1} ]]; do
+		case ${1} in
+			makelinks) mlinks=1 ;;
+			--no-ldconfig) noldconfig=1 ;;
+			*) die -q "Unknown parameter ${1}" ;;
+		esac
+		shift
+	done
+
 	# Create configuration files
 	create_profile_env
-	create_ld_so_conf
-	[[ -e ${ROOT}/usr/sbin/prelink ]] && create_prelink_conf
-	makelinks=$( ( need_links || [[ ${1} == makelinks ]] ) && echo "-X" )
-	update_ldcache ${makelinks}
-		
+	if [[ -z "${noldconfig}" ]]; then
+		create_ld_so_conf
+		[[ -e ${ROOT}/usr/sbin/prelink ]] && create_prelink_conf
+		makelinks=$( ( need_links || [[ "${mlinks}" ]] ) && echo "-X" )
+		update_ldcache ${makelinks}
+	fi
+
 	# fix up ${ENVPROFILE}
 	cp ${ENVPROFILE} ${ENVPROFILE/.env/.csh}
 	sed -i \

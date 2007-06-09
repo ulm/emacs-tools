@@ -1,3 +1,10 @@
+2007-06-10  Ulrich Mueller  <ulm@gentoo.org>
+
+	* env-emacs.eselect: New file, taken from env.eselect of
+	eselect-1.0.9, extended to support the --no-ldconfig option.
+
+	* Makefile (DISTFILES): env-emacs.eselect added.
+
 2007-06-05  Christian Faulhammer  <opfer@gentoo.org>
 
 	* added an additional die for remove_symlinks() in set_symlinks()

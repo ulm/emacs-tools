@@ -118,7 +118,7 @@ set_symlinks() {
 	set_infopath "${target}"
 
 	# update /etc/profile.env from /etc/env.d files
-	#do_action env update >/dev/null
+	#do_action env-emacs update --no-ldconfig >/dev/null
 	env-update --no-ldconfig
 
 	return 0
@@ -129,7 +129,7 @@ xemacs_info() {
 	# a wish from graaff
 	if [[ -e "${ROOT}/usr/bin/xemacs" ]]; then
 		echo
-		write_list_start "XEmacs is also available"
+		write_list_start "XEmacs is also installed"
 	fi
 }
 

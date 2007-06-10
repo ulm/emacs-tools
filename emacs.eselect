@@ -118,7 +118,7 @@ set_symlinks() {
 	set_infopath "${target}"
 
 	# update /etc/profile.env from /etc/env.d files
-	#do_action env-emacs update --no-ldconfig >/dev/null
+	#do_action env-emacs update --no-ldconfig
 	env-update --no-ldconfig
 
 	return 0

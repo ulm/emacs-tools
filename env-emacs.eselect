@@ -40,6 +40,13 @@ LDMTIMEDB="${ROOT}/var/lib/eselect/env/ld-mtimedb"
 # Keep all stored LDPATHS
 ESELECT_LDPATH=( )
 
+# workaround for bug #172472
+load_config_ () {
+	[[ ${#@} -eq 2 ]] || die
+	local ${2}
+	load_config ${@}
+}
+
 # is_envd_file()
 # Return successfuly when file can be sourced.
 is_envfile() {
@@ -69,13 +76,13 @@ update_envvar_classes() {
 	for envfile in ${envfiles[@]} ; do
 		is_envfile ${envfile} || continue
 
-		value=$(load_config ${envfile} COLON_SEPARATED)
+		value=$(load_config_ ${envfile} COLON_SEPARATED)
 		for x in ${value} ; do
 			has ${x} ${PATH_CLASS} && continue
 			PATH_CLASS="${PATH_CLASS} ${x}"
 		done
 
-		value=$(load_config ${envfile} SPACE_SEPARATED)
+		value=$(load_config_ ${envfile} SPACE_SEPARATED)
 		for x in ${value} ; do
 			has ${x} ${SPACE_CLASS} && continue
 			SPACE_CLASS="${SPACE_CLASS} ${x}"
@@ -107,15 +114,14 @@ create_profile_env() {
 			-e '/^#/d' -e '/^\s*$/d' -e '/^.*=/s/^\([^=]*\)=.*/\1/' \
 			${envfile})
 		[[ -z ${vars} ]] && continue
-		local ${vars}			# workaround for bug #172472
 		for var in ${vars} ; do
 			# Colon separated?...
 			if has ${var} ${PATH_CLASS} ; then
-				store=$(load_config ${tmpprofile} ${var})
+				store=$(load_config_ ${tmpprofile} ${var})
 				if [[ -z ${store} ]] ; then
-					store=$(load_config ${envfile} ${var})
+					store=$(load_config_ ${envfile} ${var})
 				else
-					items="$(load_config ${envfile} ${var})"
+					items="$(load_config_ ${envfile} ${var})"
 					items=( ${items//:/ } )
 					for item in ${items[@]} ; do
 						has ${item} ${store//:/ } && continue
@@ -127,11 +133,11 @@ create_profile_env() {
 			fi
 			# Space separated!...
 			if has ${var} ${SPACE_CLASS} ; then
-				store=( $(load_config ${tmpprofile} ${var}) )
+				store=( $(load_config_ ${tmpprofile} ${var}) )
 				if [[ -z ${store[@]} ]] ; then
-					store=( $(load_config ${envfile} ${var}) )
+					store=( $(load_config_ ${envfile} ${var}) )
 				else
-					items=( $(load_config ${envfile} ${var}) )
+					items=( $(load_config_ ${envfile} ${var}) )
 					for item in ${items[@]} ; do
 						has ${item} ${store[@]} && continue
 						store=( ${store[@]} ${item} )
@@ -144,12 +150,12 @@ create_profile_env() {
 			store_config \
 				${tmpprofile} \
 				${var} \
-				"$(load_config ${envfile} ${var})"
+				"$(load_config_ ${envfile} ${var})"
 		done
 	
 		has LDPATH ${vars} || continue
 		# Store LDPATH for later processing
-		items=$(load_config ${envfile} LDPATH)
+		items=$(load_config_ ${envfile} LDPATH)
 		items=( ${items//:/ } )
 		for item in ${items[@]} ; do
 			has ${item} ${LDPATH[@]} && continue 
@@ -194,10 +200,10 @@ create_prelink_conf() {
 		[[ -e ${ROOT}/${x} ]] && str="${str}-l /${x}\n"
 		[[ -e ${ROOT}/usr/${x} ]] && str="${str}-l /usr/${x}\n"
 	done
-	prelink_mask=$(load_config ${ENVPROFILE} PRELINK_PATH_MASK)
+	prelink_mask=$(load_config_ ${ENVPROFILE} PRELINK_PATH_MASK)
 	prelink_mask=( ${prelink_mask//:/ } )
-	prelink="$(load_config ${ENVPROFILE} PATH)"
-	prelink="${prelink} $(load_config ${ENVPROFILE} PRELINK_PATH)"
+	prelink="$(load_config_ ${ENVPROFILE} PATH)"
+	prelink="${prelink} $(load_config_ ${ENVPROFILE} PRELINK_PATH)"
 	prelink=( ${prelink//:/ } ${ESELECT_LDPATH[@]} )
 	for x in ${prelink[@]} ; do
 		has ${x} ${prelink_mask} && continue
@@ -219,7 +225,7 @@ need_links() {
 		y=${y//-/_}
 		y=${y//./_}
 		y=${y//+/_}
-		oldmtime=$(load_config ${LDMTIMEDB} "mtime${y}")
+		oldmtime=$(load_config_ ${LDMTIMEDB} "mtime${y}")
 		newmtime=$(stat -c %Y ${x} 2> /dev/null)
 		if [[ ${oldmtime} != ${newmtime} ]] ; then
 			ret=0

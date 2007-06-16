@@ -1,3 +1,12 @@
+2007-06-17  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.eselect (set_symlinks): Call env.eselect module;
+	it supports the "noldconfig" option since eselect version 1.0.10.
+
+	* env-emacs.eselect: Remove file.
+
+	* Makefile (DISTFILES): Undo previous change.
+
 2007-06-10  Ulrich Mueller  <ulm@gentoo.org>
 
 	* env-emacs.eselect: New file, taken from env.eselect of

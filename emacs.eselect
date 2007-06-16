@@ -118,8 +118,8 @@ set_symlinks() {
 	set_infopath "${target}"
 
 	# update /etc/profile.env from /etc/env.d files
-	#do_action env-emacs update --no-ldconfig
-	env-update --no-ldconfig
+	# requires >=eselect-1.0.10 for "noldconfig" option
+	do_action env update noldconfig
 
 	return 0
 }

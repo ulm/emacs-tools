@@ -1,5 +1,7 @@
 2007-06-17  Ulrich Mueller  <ulm@gentoo.org>
 
+	* version 1.0
+
 	* emacs.eselect (set_symlinks): Call env.eselect module;
 	it supports the "noldconfig" option since eselect version 1.0.10.
 

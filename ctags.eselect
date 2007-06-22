@@ -164,8 +164,7 @@ do_set() {
 	[[ ${#@} -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
-	if [[ -e "${ROOT}/usr/bin/ctags" ]] \
-		&& ! [[ -L "${ROOT}/usr/bin/ctags" ]]; then
+	if [[ -e "${ROOT}/usr/bin/ctags" && ! -L "${ROOT}/usr/bin/ctags" ]]; then
 		die -q "Sorry, ${ROOT}/usr/bin/ctags exists but is not a symlink"
 	fi
 
@@ -185,7 +184,6 @@ do_update() {
 	local ctags=""
 	if [[ -L "${ROOT}/usr/bin/ctags" ]]; then
 		ctags=$(basename $(canonicalise "${ROOT}/usr/bin/ctags") )
-		[[ "${ctags}" == ctags-*emacs* ]] && ctags="ctags-*emacs*"
 		if [[ ! -e $(canonicalise "${ROOT}/usr/bin/ctags") ]]; then
 			# clean up dead symlinks
 			remove_symlinks || die -q "Couldn't remove existing symlink"
@@ -201,6 +199,7 @@ do_update() {
 	local i target targets=( $(find_targets) )
 	if [[ ${#targets[@]} -gt 0 ]]; then
 		target=${targets[0]}
+		[[ "${ctags}" == ctags-*emacs* ]] && ctags="ctags-*emacs*"
 		for i in ${targets[@]}; do
 			[[ "${i}" == "${ctags}" ]] && target="${i}"
 		done

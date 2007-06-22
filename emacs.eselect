@@ -207,8 +207,7 @@ do_set() {
 	[[ ${#@} -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
-	if [[ -e "${ROOT}/usr/bin/emacs" ]] \
-		&& ! [[ -L "${ROOT}/usr/bin/emacs" ]]; then
+	if [[ -e "${ROOT}/usr/bin/emacs" && ! -L "${ROOT}/usr/bin/emacs" ]]; then
 		die -q "Sorry, ${ROOT}/usr/bin/emacs exists but is not a symlink"
 	fi
 

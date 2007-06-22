@@ -1,5 +1,14 @@
 2007-06-22  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Makefile (DISTFILES): Add ctags.eselect and ctags.eselect.5.
+
+	* emacs.eselect (do_set, do_update): Call ctags module.
+	(BINARYLIST, MANPAGELIST): Remove ctags from lists.
+
+	* ctags.eselect.5: New file, man page.
+
+	* ctags.eselect: New file, eselect module for ctags, bug #29398.
+
 	* emacs.eselect (do_show, do_list, do_set, do_update): Test for
 	number of parameters. Quote variables correctly.
 

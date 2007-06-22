@@ -1,7 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-# Version: 1.0
 #
 # DOCUMENTATION
 # Following actions possible
@@ -26,8 +25,10 @@ MAINTAINER="emacs@gentoo.org"
 SVN_DATE='$Date$'
 VERSION=$(svn_date_to_version "${SVN_DATE}" )
 
-BINARYLIST="emacsclient etags ctags b2m ebrowse rcs-checkin grep-changelog"
-MANPAGELIST="emacs emacsclient etags ctags gfdl"
+#BINARYLIST="emacsclient etags ctags b2m ebrowse rcs-checkin grep-changelog"
+#MANPAGELIST="emacs emacsclient etags ctags gfdl"
+BINARYLIST="emacsclient etags b2m ebrowse rcs-checkin grep-changelog"
+MANPAGELIST="emacs emacsclient etags gfdl"
 
 find_targets() {
 	# Return the list of available Emacs binaries
@@ -212,6 +213,9 @@ do_set() {
 	fi
 
 	set_symlinks "${1}" || die -q "Couldn't set a new symlink"
+
+	# ctags symlinks are handled in an own module now
+	do_action ctags update
 }
 
 ### update action ###
@@ -246,4 +250,7 @@ do_update() {
 		# no Emacs target found -- link ctags, etags etc. to XEmacs versions
 		set_symlinks xemacs
 	fi
+
+	# ctags symlinks are handled in an own module now
+	do_action ctags update
 }

@@ -1,7 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-# Version: 1.0
 #
 # DOCUMENTATION
 # Following actions possible
@@ -177,10 +176,6 @@ do_set() {
 
 describe_update() {
 	echo "Automatically update the ctags symlink"
-}
-
-describe_update_options() {
-	echo "--if-unset : Do not override currently set version"
 }
 
 do_update() {

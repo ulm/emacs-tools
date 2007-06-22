@@ -1,3 +1,8 @@
+2007-06-22  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.eselect (do_show, do_list, do_set, do_update): Test for
+	number of parameters. Quote variables correctly.
+
 2007-06-17  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 1.0

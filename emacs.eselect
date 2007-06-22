@@ -145,13 +145,13 @@ describe_show() {
 }
 
 do_show() {
-	[[ -z "${@}" ]] || die -q "Too many parameters"
+	[[ ${#@} -gt 0 ]] && die -q "Too many parameters"
 
 	write_list_start "Current target of GNU Emacs symlink:"
 	if [[ -L "${ROOT}/usr/bin/emacs" && \
 		  -e $(canonicalise "${ROOT}/usr/bin/emacs") ]]; then
 		write_kv_list_entry \
-			"$(basename $(canonicalise ${ROOT}/usr/bin/emacs) )" ""
+			$(basename $(canonicalise "${ROOT}/usr/bin/emacs") ) ""
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
 		write_kv_list_entry \
 			"(not a symlink or target of symlink does not exist)" ""
@@ -168,7 +168,7 @@ describe_list() {
 }
 
 do_list() {
-	[[ -z "${@}" ]] || die -q "Too many parameters"
+	[[ ${#@} -gt 0 ]] && die -q "Too many parameters"
 
 	local i targets
 	targets=( $(find_targets) )
@@ -204,7 +204,7 @@ describe_set_parameters() {
 
 do_set() {
 	[[ -z "${1}" ]] && die -q "You didn't tell me what to set the symlink to"
-	[[ -n "${2}" ]] && die -q "Too many parameters"
+	[[ ${#@} -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
 	if [[ -e "${ROOT}/usr/bin/emacs" ]] \
@@ -226,13 +226,13 @@ describe_update_options() {
 }
 
 do_update() {
-	[[ -z "${1}" || ( -z "${2}" && "${1}" == "--if-unset" ) ]] \
-		|| die -q "Usage error"
+	[[ -z "${1}" || "${1}" == "--if-unset" ]] || die -q "Usage error"
+	[[ ${#@} -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
 		[[ ${1} == "--if-unset" \
-			&& -e "$(canonicalise ${ROOT}/usr/bin/emacs)" ]] && return
+			&& -e $(canonicalise "${ROOT}/usr/bin/emacs") ]] && return
 		# this is not redundant: "update" is called in pkg_postrm() of emacs
 		# and should clean up any dead symlinks if no valid target exists
 		remove_symlinks || die -q "Couldn't remove existing symlink"

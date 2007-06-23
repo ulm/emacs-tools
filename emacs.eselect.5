@@ -26,7 +26,7 @@ been found on your system.
 
 # eselect emacs list
 .br
-Available Emacs symlink targets:
+Available GNU Emacs symlink targets:
 .br
   [1]   emacs-18
   [2]   emacs-21 *
@@ -37,10 +37,13 @@ Available Emacs symlink targets:
 Activates the selected Emacs version. \fItarget\fR can be either an
 identification number given by \fBeselect emacs list\fR or the name of
 one installed version.
+.BR ctags.eselect ( 5 )
 
 # eselect emacs set 3
 .br
 Switching to emacs-22 ...
+.br
+Switching to ctags-emacs-22 ...
 .SH "ACTION: SHOW"
 \fBeselect emacs show\fR [\fItarget\fR]
 .br
@@ -48,7 +51,7 @@ Prints the currently activated Emacs version.
 
 # eselect emacs show
 .br
-Current target of symlink:
+Current target of GNU Emacs symlink:
 .br
   emacs-22
 .SH "ACTION: UPDATE"
@@ -61,6 +64,11 @@ overridden.
 # eselect emacs update
 .br
 Switching to emacs-22 ...
+.br
+Switching to ctags-emacs-22 ...
+.SH "SEE ALSO"
+.BR eselect (1),
+.BR ctags.eselect (5)
 .SH "AUTHORS"
 Christian Faulhammer <opfer@gentoo.org>
 .br

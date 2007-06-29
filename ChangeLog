@@ -1,3 +1,7 @@
+2007-06-29  Ulrich Mueller  <ulm@gentoo.org>
+
+	* version 1.1
+
 2007-06-22  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Makefile (DISTFILES): Add ctags.eselect and ctags.eselect.5.

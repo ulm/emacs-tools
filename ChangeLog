@@ -1,3 +1,9 @@
+2007-07-09  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.eselect.5: Canonical order, section "SEE ALSO" last.
+
+	* ctags.eselect.5: Ditto.
+
 2007-06-29  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 1.1
@@ -61,7 +67,8 @@
 	* Commented functions remove_infopath()
 
 	* Moved the comment for find_targets(), set_infopath(),
-	remove_symlinks(), set_bin_symlinks(), set_man_symlinks(),set_symlinks()
+	remove_symlinks(), set_bin_symlinks(), set_man_symlinks(),
+	set_symlinks()
 
 	* Brief overview of functions completed in the header of the module
 
@@ -157,15 +164,14 @@
 2007-03-21  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs_*.png, gnured_48.png: Added two alternative icons (not
-		used yet): emacs_48.png is from etc/images/icons of the
-		Emacs sources, gnured_48.png is based on an image taken
-		from http://www.ee.ryerson.ca/~elf/emacs/logo/ and scaled
-		down.
+	used yet): emacs_48.png is from etc/images/icons of the	Emacs
+	sources, gnured_48.png is based on an image taken from
+	http://www.ee.ryerson.ca/~elf/emacs/logo/ and scaled down.
 
 	* emacs.desktop (Type): Set Type=Application only
 
-	* emacs.eselect (set_symlinks, set_bin_symlinks,
-	set_man_symlinks): Make linking to XEmacs auxiliary programs
+	* emacs.eselect (set_symlinks, set_bin_symlinks)
+	(set_man_symlinks): Make linking to XEmacs auxiliary programs
 	really work. Some cleanup.
 
 2007-03-19  Christian Faulhammer  <opfer@gentoo.org>

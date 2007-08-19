@@ -2,7 +2,7 @@
 .\" Distributed under the terms of the GNU General Public License v2
 .\" $Id$
 .\"
-.TH "ESELECT" "5" "March 2007" "Gentoo Linux" "eselect"
+.TH "ESELECT" "5" "August 2007" "Gentoo Linux" "eselect"
 .SH "NAME"
 emacs.eselect \- The Emacs management module for Gentoo's eselect
 .SH "SYNOPSIS"
@@ -14,7 +14,7 @@ emacs.eselect \- The Emacs management module for Gentoo's eselect
 .br
 \fBeselect emacs show\fR
 .br
-\fBeselect emacs update\fR [\fI--if-unset\fR]
+\fBeselect emacs update\fR [\fIifunset\fR]
 .SH "DESCRIPTION"
 \fBeselect\fR is Gentoo's configuration and management tool. It features
 modules that care for the individual administrative tasks.
@@ -54,10 +54,10 @@ Current target of GNU Emacs symlink:
 .br
   emacs-22
 .SH "ACTION: UPDATE"
-\fBeselect emacs update\fR [\fI--if-unset\fR]
+\fBeselect emacs update\fR [\fIifunset\fR]
 .br
 Update the emacs symlink to the last available version. If option
-[\fI--if-unset\fR] is given, an existing implementation is not
+[\fIifunset\fR] is given, an existing implementation is not
 overridden.
 
 # eselect emacs update

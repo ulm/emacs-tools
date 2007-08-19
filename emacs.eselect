@@ -224,17 +224,18 @@ describe_update() {
 }
 
 describe_update_options() {
-	echo "--if-unset : Do not override currently set version"
+	echo "ifunset : Do not override currently set version"
 }
 
 do_update() {
-	[[ -z "${1}" || "${1}" == "--if-unset" ]] || die -q "Usage error"
+	[[ -z "${1}" || "${1}" == "ifunset" || "${1}" == "--if-unset" ]] \
+		|| die -q "Usage error"
 	[[ ${#@} -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
 	if [[ -L "${ROOT}/usr/bin/emacs" ]]; then
-		[[ ${1} == "--if-unset" \
-			&& -e $(canonicalise "${ROOT}/usr/bin/emacs") ]] && return
+		[[ ${1} == *if*unset && -e $(canonicalise "${ROOT}/usr/bin/emacs") ]] \
+			&& return
 		# this is not redundant: "update" is called in pkg_postrm() of emacs
 		# and should clean up any dead symlinks if no valid target exists
 		remove_symlinks || die -q "Couldn't remove existing symlink"

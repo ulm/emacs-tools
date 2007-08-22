@@ -2,7 +2,7 @@
 .\" Distributed under the terms of the GNU General Public License v2
 .\" $Id$
 .\"
-.TH "ESELECT" "5" "June 2007" "Gentoo Linux" "eselect"
+.TH "ESELECT" "5" "August 2007" "Gentoo Linux" "eselect"
 .SH "NAME"
 ctags.eselect \- The ctags management module for Gentoo's eselect
 .SH "SYNOPSIS"
@@ -59,6 +59,9 @@ but not the provider (i.e. Emacs vs Exuberant). At the moment only
 # eselect ctags update
 .br
 Switching to exuberant-ctags ...
+.SH "BUGS"
+Under FreeBSD, \fBeselect ctags\fR does not work since \fBctags\fR is
+a real binary (owned by package freebsd-ubin).
 .SH "AUTHOR"
 Ulrich Mueller <ulm@gentoo.org>
 .SH "SEE ALSO"

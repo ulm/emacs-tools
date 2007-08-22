@@ -1,5 +1,7 @@
 2007-08-22  Ulrich Mueller  <ulm@gentoo.org>
 
+	* version 1.2
+
 	* ctags.eselect.5: Update man page.
 
 	* ctags.eselect (do_set, do_update): Handle the FreeBSD case where

@@ -1,3 +1,8 @@
+2007-08-22  Ulrich Mueller  <ulm@gentoo.org>
+
+	* ctags.eselect (do_set, do_update): Handle the FreeBSD case where
+	/usr/bin/ctags is a real file.
+
 2007-08-19  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs.eselect.5: Update man page accordingly.

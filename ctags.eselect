@@ -165,6 +165,11 @@ do_set() {
 	test_for_root
 
 	if [[ -e "${ROOT}/usr/bin/ctags" && ! -L "${ROOT}/usr/bin/ctags" ]]; then
+		if [[ -f "${ROOT}/usr/bin/ctags" && $(uname) == FreeBSD ]]; then
+			# On FreeBSD ctags is a real file, installed by freebsd-ubin
+			echo "${ROOT}/usr/bin/ctags is a real file - no action"
+			return
+		fi
 		die -q "Sorry, ${ROOT}/usr/bin/ctags exists but is not a symlink"
 	fi
 
@@ -189,6 +194,11 @@ do_update() {
 			remove_symlinks || die -q "Couldn't remove existing symlink"
 		fi
 	elif [[ -e "${ROOT}/usr/bin/ctags" ]]; then
+		if [[ -f "${ROOT}/usr/bin/ctags" && $(uname) == FreeBSD ]]; then
+			# On FreeBSD ctags is a real file, installed by freebsd-ubin
+			echo "${ROOT}/usr/bin/ctags is a real file - no action"
+			return
+		fi
 		die -q "Sorry, ${ROOT}/usr/bin/ctags exists but is not a symlink"
 	fi
 

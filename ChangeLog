@@ -1,3 +1,9 @@
+2007-08-24  Ulrich Mueller  <ulm@gentoo.org>
+
+	* ctags.eselect.5: Ditto.
+
+	* emacs.eselect.5: Action "show" has no parameters.
+
 2007-08-22  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 1.2
@@ -18,9 +24,9 @@
 
 2007-07-09  Ulrich Mueller  <ulm@gentoo.org>
 
-	* emacs.eselect.5: Canonical order, section "SEE ALSO" last.
-
 	* ctags.eselect.5: Ditto.
+
+	* emacs.eselect.5: Canonical order, section "SEE ALSO" last.
 
 2007-06-29  Ulrich Mueller  <ulm@gentoo.org>
 

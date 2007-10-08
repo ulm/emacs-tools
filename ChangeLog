@@ -1,3 +1,7 @@
+2007-10-08  Christian Faulhammer  <opfer@gentoo.org>
+
+	* emacs.eselect: Warn people that their system is infected by Vi
+
 2007-08-24  Ulrich Mueller  <ulm@gentoo.org>
 
 	* ctags.eselect.5: Ditto.

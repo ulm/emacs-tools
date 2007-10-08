@@ -139,7 +139,6 @@ vim_info() {
 		echo
 		write_list_start "Vi found, your system is in real trouble now!"
 	fi
-
 }
 
 test_for_root() {
@@ -168,7 +167,7 @@ do_show() {
 		write_kv_list_entry "(unset)" ""
 	fi
 	xemacs_info
-	vim_info
+	#vim_info
 }
 
 ### list action ###
@@ -196,7 +195,7 @@ do_list() {
 		write_kv_list_entry "(none found)" ""
 	fi
 	xemacs_info
-	vim_info
+	#vim_info
 }
 
 ### set action ###

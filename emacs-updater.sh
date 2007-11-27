@@ -20,9 +20,16 @@ fi
 
 for sf in "${ROOT}/${SITELISP}"/[0-9][0-9]*-gentoo.el
 do
-    echo "Processing ${sf}"
+    echo "Processing ..."
     qfile -qC "${sf}" >> "${TMPFILE}"
 done
+
+
+if [[ $(cat ${TMPFILE}) == "" ]]; then
+    echo
+    echo "No packages to update, quitting."
+    exit 2
+fi
 
 echo
 echo "Packages with site files in the wrong location:"
@@ -42,3 +49,6 @@ case "${choice}" in
 esac
 
 emerge -av $(cat "${TMPFILE}")
+
+echo
+echo "If a package is being rebuilt over and over again, please report it on http://bugs.gentoo.org/"

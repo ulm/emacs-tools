@@ -1,5 +1,7 @@
 2007-11-27  Christian Faulhammer  <opfer@gentoo.org>
 
+	* Makefile (DISTFILES): add update script
+
 	* emacs-updater.sh: first version of Emacs updater
 
 2007-11-20  Ulrich Mueller  <ulm@gentoo.org>

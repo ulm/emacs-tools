@@ -8,7 +8,7 @@ PV = $(shell sed '/^[ \t]*\* .*[Vv]ersion/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' \
 P = $(PN)-$(PV)
 
 DISTFILES = emacs.eselect ctags.eselect \
-	emacs.eselect.5 ctags.eselect.5 ChangeLog
+	emacs.eselect.5 ctags.eselect.5 ChangeLog emacs-updater.sh
 
 
 .PHONY: all dist clean

@@ -10,6 +10,8 @@ TMPFILE=$(mktemp /tmp/emacs-cleaner.XXXXXX)
 echo "Emacs updater version ${VERSION}"
 echo "Find packages that are installed in the wrong location, file bugs on http://bugs.gentoo.org/"
 echo
+echo "Note, you must use the eclasses from the Emacs Overlay for proper operation! "
+echo
 
 if ! [ -x /usr/bin/qfile ]; then
     echo "Please emerge app-portage/portage-utils to use this tool"

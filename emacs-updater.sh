@@ -36,7 +36,7 @@ case "${choice}" in
      y*|Y*|"")
           ;;
      *)
-	message "Quitting."
+	echo "Quitting."
 	echo
 	exit 10 ;;
 esac

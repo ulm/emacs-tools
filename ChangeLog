@@ -2,6 +2,9 @@
 
 	* emacs-updater.sh (TMPFILE): Change TMPFILE name to updater
 	instead of cleaner
+	message(), warning(), failure(): Introduce new functions to
+	display text
+	define colors for console output and use them
 
 2007-11-27  Christian Faulhammer  <opfer@gentoo.org>
 

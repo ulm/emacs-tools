@@ -5,7 +5,7 @@
 
 SITELISP=/usr/share/emacs/site-lisp
 VERSION=0.1
-TMPFILE=$(mktemp /tmp/emacs-cleaner.XXXXXX)
+TMPFILE=$(mktemp /tmp/emacs-updater.XXXXXX)
 
 echo "Emacs updater version ${VERSION}"
 echo "Find packages that are installed in the wrong location, file bugs on http://bugs.gentoo.org/"

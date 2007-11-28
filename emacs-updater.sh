@@ -3,52 +3,74 @@
 # Licensed under GPL version 2
 # Author Christian Faulhammer <opfer@gentoo.org>
 
+BLUE=$'\033[34;01m'
+GREEN=$'\e[32;01m'
+OFF=$'\033[0m'
+RED=$'\033[31;01m'
+YELLOW=$'\033[33;01m'
+CYAN=$'\033[36;01m'
+BOLD=$'\e[0;01m'
+NORMAL=$'\033[0m'
+
 SITELISP=/usr/share/emacs/site-lisp
 VERSION=0.1
-TMPFILE=$(mktemp /tmp/emacs-updater.XXXXXX)
+TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 
-echo "Emacs updater version ${VERSION}"
-echo "Find packages that are installed in the wrong location, file bugs on http://bugs.gentoo.org/"
-echo
-echo "Note, you must use the eclasses from the Emacs Overlay for proper operation! "
-echo
+
+message() {
+    local OUTPUT=$@
+    echo
+    echo "${GREEN}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"
+}
+
+warning() {
+    local OUTPUT=$@
+    echo
+    echo "${YELLOW}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"
+}
+
+failure() {
+    local OUTPUT=$@
+    echo
+    echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}" 
+}
+
+message "Emacs updater version ${VERSION}"
+message "Find packages that are installed in the wrong location, file bugs on http://bugs.gentoo.org/"
+warning "Note, you must use the eclasses from the Emacs Overlay for proper operation! "
 
 if ! [ -x /usr/bin/qfile ]; then
-    echo "Please emerge app-portage/portage-utils to use this tool"
+    failure "Please emerge app-portage/portage-utils to use this tool"
     exit 1
 fi
 
 for sf in "${ROOT}/${SITELISP}"/[0-9][0-9]*-gentoo.el
 do
-    echo "Processing ..."
+    message "Processing ..."
     qfile -qC "${sf}" >> "${TMPFILE}"
 done
 
 
 if [[ $(cat ${TMPFILE}) == "" ]]; then
-    echo
-    echo "No packages to update, quitting."
+    warning "No packages to update, quitting."
     exit 2
 fi
 
-echo
-echo "Packages with site files in the wrong location:"
+message "Packages with site files in the wrong location:"
 cat "${TMPFILE}"
 
 echo
-echo -n "Remerge packages? [Yes/No] "
+echo -n "${BOLD}Remerge packages?${NORMAL} [${GREEN}Yes${NORMAL}/${RED}No${NORMAL}] "
 read choice
 echo
 case "${choice}" in
      y*|Y*|"")
           ;;
      *)
-	echo "Quitting."
-	echo
+	message "Quitting."
 	exit 10 ;;
 esac
 
 emerge -av $(cat "${TMPFILE}")
 
-echo
-echo "If a package is being rebuilt over and over again, please report it on http://bugs.gentoo.org/"
+warning "If a package is being rebuilt over and over again, please report it on http://bugs.gentoo.org/"

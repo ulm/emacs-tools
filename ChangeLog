@@ -1,3 +1,12 @@
+2007-11-30  Christian Faulhammer  <opfer@gentoo.org>
+
+	* emacs-updater.sh: Only set colours if output is not redirected,
+	proposed by ulm
+	Remove empty line display in message(), warning() and failure()
+	for optical reasons
+	Format output with some more empty lines
+	Add URL for Emacs Project homepage to header
+
 2007-11-29  Christian Faulhammer  <opfer@gentoo.org>
 
 	* emacs-updater.sh: Remove OFF "colour", because NORMAL does the

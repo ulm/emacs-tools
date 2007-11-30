@@ -3,13 +3,16 @@
 # Licensed under GPL version 2
 # Author Christian Faulhammer <opfer@gentoo.org>
 
-BLUE=$'\033[34;01m'
-GREEN=$'\e[32;01m'
-RED=$'\033[31;01m'
-YELLOW=$'\033[33;01m'
-CYAN=$'\033[36;01m'
-BOLD=$'\e[0;01m'
-NORMAL=$'\033[0m'
+# Only set colours if output is not redirected
+if tty -s <&1; then
+    BLUE=$'\033[34;01m'
+    GREEN=$'\e[32;01m'
+    RED=$'\033[31;01m'
+    YELLOW=$'\033[33;01m'
+    CYAN=$'\033[36;01m'
+    BOLD=$'\e[0;01m'
+    NORMAL=$'\033[0m'
+fi
 
 SITELISP=/usr/share/emacs/site-lisp
 VERSION=0.2
@@ -18,29 +21,29 @@ TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 
 message() {
     local OUTPUT=$@
-    echo
     echo "${GREEN}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"
 }
 
 warning() {
     local OUTPUT=$@
-    echo
     echo "${YELLOW}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"
 }
 
 failure() {
     local OUTPUT=$@
-    echo
     echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}" 
 }
 
 echo
 echo "Emacs updater version ${VERSION}"
-echo "Written by the Gentoo Emacs team"
+echo "Written by the Gentoo Emacs team http://www.gentoo.org/proj/en/lisp/emacs/"
 echo "Find packages that are installed in the wrong location, file bugs on http://bugs.gentoo.org/"
+echo
 warning "Note, you must use the eclasses from the Emacs Overlay for proper operation! "
+echo
 
 if ! [ -x /usr/bin/qfile ]; then
+    echo
     failure "Please emerge app-portage/portage-utils to use this tool"
     exit 1
 fi
@@ -50,7 +53,7 @@ do
     message "Processing ..."
     qfile -qC "${sf}" >> "${TMPFILE}"
 done
-
+echo
 
 if [[ $(cat ${TMPFILE}) == "" ]]; then
     warning "No packages to update, quitting."

@@ -55,7 +55,7 @@ do
 done
 echo
 
-if [[ $(cat ${TMPFILE}) == "" ]]; then
+if [ ! -s "${TMPFILE}" ]; then
     warning "No packages to update, quitting."
     exit 2
 fi

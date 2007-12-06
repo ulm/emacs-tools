@@ -1,7 +1,9 @@
 [Desktop Entry]
 Name=Emacsclient
 Comment=Tell a running Emacs to visit a file.
-Icon=emacs.png
+Comment[de]=In einer laufenden Emacs-Instanz eine Datei öffnen.
+Comment[es]=Abrir un archivo en en Emacs corriente.
+Icon=emacs
 NoDisplay=true
 TryExec=/usr/bin/emacsclient
 Exec=/usr/bin/emacsclient -a /usr/bin/emacs %F

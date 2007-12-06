@@ -1,5 +1,9 @@
 2007-12-06  Christian Faulhammer  <opfer@gentoo.org>
 
+	* emacsclient.desktop (Comment): German and Spanish translation
+	added, others welcome
+	(Icon): Extension removed
+
 	* emacs.desktop (Comment): German and Spanish translation added,
 	others welcome
 	(Icon): Extension removed

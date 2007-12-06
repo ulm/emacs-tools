@@ -1,5 +1,7 @@
 2007-12-06  Christian Faulhammer  <opfer@gentoo.org>
 
+	* version 0.3
+
 	* emacsclient.desktop (Comment): German and Spanish translation
 	added, others welcome
 	(Icon): Extension removed
@@ -20,5 +22,5 @@
 2007-03-30  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Split off from eselect-emacs.
-	* version 0.1
 
+	* version 0.1

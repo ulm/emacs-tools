@@ -1,3 +1,10 @@
+2007-12-06  Christian Faulhammer  <opfer@gentoo.org>
+
+	* emacs.desktop (Comment): German and Spanish translation added,
+	others welcome
+	(Icon): Extension removed
+	(Categories): Application removed as it is obsolete
+
 2007-05-24  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Makefile (PV): Extract PV from new ChangeLog format.

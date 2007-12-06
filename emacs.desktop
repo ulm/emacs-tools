@@ -2,10 +2,12 @@
 Name=GNU Emacs
 GenericName=Emacs
 Comment=Emacs is the extensible, customizable, self-documenting real-time display editor.
-Icon=emacs.png
+Comment[de]=Emacs ist der erweiterbare, anpassbare, selbst-dokumentierende Echtzeit-Editor
+Comment[es]=Emacs es un editor ampliable, adaptable, mismo documentado, de tiempo real
+Icon=emacs
 TryExec=/usr/bin/emacs
 Exec=/usr/bin/emacs %F
 Terminal=false
 Type=Application
-Categories=Application;Development;TextEditor;
+Categories=Development;TextEditor;
 MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;

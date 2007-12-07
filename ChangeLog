@@ -1,3 +1,11 @@
+2007-12-07  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacsclient.desktop: Remove -a option from Exec since it does
+	not work properly anyway. Remove trailing full stop from comments.
+	Add French translation.
+
+	* emacs.desktop: Add French translation.
+
 2007-12-06  Christian Faulhammer  <opfer@gentoo.org>
 
 	* version 0.3

@@ -1,3 +1,8 @@
+2007-12-10  Christian Faulhammer  <opfer@gentoo.org>
+
+	* emacsclient.desktop (Comment): Correct typo in Spanish
+	translation, pointed out by ulm
+
 2007-12-07  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacsclient.desktop: Remove -a option from Exec since it does

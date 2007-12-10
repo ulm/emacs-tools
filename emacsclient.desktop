@@ -2,7 +2,7 @@
 Name=Emacsclient
 Comment=Tell a running Emacs to visit a file
 Comment[de]=In einer laufenden Emacs-Instanz eine Datei öffnen
-Comment[es]=Abrir un archivo en en Emacs corriente
+Comment[es]=Abrir un archivo en un Emacs corriente
 Comment[fr]=Ouvre un fichier dans une instance d'Emacs qui est déjà lancée
 Icon=emacs
 NoDisplay=true

@@ -5,13 +5,13 @@
 
 # Only set colours if output is not redirected
 if tty -s <&1; then
-    BLUE=$'\033[34;01m'
+    BLUE=$'\e[34;01m'
     GREEN=$'\e[32;01m'
-    RED=$'\033[31;01m'
-    YELLOW=$'\033[33;01m'
-    CYAN=$'\033[36;01m'
+    RED=$'\e[31;01m'
+    YELLOW=$'\e[33;01m'
+    CYAN=$'\e[36;01m'
     BOLD=$'\e[0;01m'
-    NORMAL=$'\033[0m'
+    NORMAL=$'\e[0m'
 fi
 
 SITELISP=/usr/share/emacs/site-lisp

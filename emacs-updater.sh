@@ -54,6 +54,7 @@ fi
 
 for sf in "${ROOT}/${SITELISP}"/[0-9][0-9]*-gentoo.el
 do
+    [ "${sf##*/}" = 00site-gentoo.el ] && continue
     message "Processing ${sf##*/} ..."
     qfile -qC "${sf}" >> "${TMPFILE}"
 done

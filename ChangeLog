@@ -3,6 +3,7 @@
 	* emacs-updater.sh: Make "Processing" message more informative.
 	Don't ask users to report all rebuilt packages as bugs.
 	Break some long lines.
+	Ignore auxiliary file 00site-gentoo.el.
 
 2007-12-06  Ulrich Mueller  <ulm@gentoo.org>
 

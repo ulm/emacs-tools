@@ -34,12 +34,16 @@ failure() {
     echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}" 
 }
 
-echo
-echo "Emacs updater version ${VERSION}"
-echo "Written by the Gentoo Emacs team http://www.gentoo.org/proj/en/lisp/emacs/"
-echo "Find packages that are installed in the wrong location, file bugs on http://bugs.gentoo.org/"
-echo
-warning "Note, you must use the eclasses from the Emacs Overlay for proper operation! "
+cat <<-EOF
+
+Emacs updater version ${VERSION}
+Written by the Gentoo Emacs team http://www.gentoo.org/proj/en/lisp/emacs/
+Find packages that are installed in the wrong location
+
+EOF
+
+warning "Note, you must use the eclasses from the Emacs Overlay"
+warning "for proper operation!"
 echo
 
 if ! [ -x /usr/bin/qfile ]; then
@@ -50,7 +54,7 @@ fi
 
 for sf in "${ROOT}/${SITELISP}"/[0-9][0-9]*-gentoo.el
 do
-    message "Processing ..."
+    message "Processing ${sf##*/} ..."
     qfile -qC "${sf}" >> "${TMPFILE}"
 done
 echo
@@ -77,4 +81,5 @@ esac
 
 emerge -av $(cat "${TMPFILE}")
 
-warning "If a package is being rebuilt over and over again, please report it on http://bugs.gentoo.org/"
+warning "If a package is being rebuilt over and over again,"
+warning "please report it on http://bugs.gentoo.org/"

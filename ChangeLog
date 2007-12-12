@@ -1,3 +1,9 @@
+2007-12-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater.sh: Make "Processing" message more informative.
+	Don't ask users to report all rebuilt packages as bugs.
+	Break some long lines.
+
 2007-12-06  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater.sh: Test for existence of non-empty temp file;

@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Licensed under GPL version 2
-# Author Christian Faulhammer <opfer@gentoo.org>
+# Authors:
+# Christian Faulhammer <opfer@gentoo.org>
+# Ulrich Mueller <ulm@gentoo.org>
 
 # Only set colours if output is not redirected
 if tty -s <&1; then

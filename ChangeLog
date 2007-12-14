@@ -1,3 +1,7 @@
+2007-12-14  Christian Faulhammer  <opfer@gentoo.org>
+
+	* emacs-updater: rename file (remove .sh suffix)
+
 2007-12-12  Christian Faulhammer  <opfer@gentoo.org>
 
 	* emacs-updater.sh: Add ulm as author

@@ -1,3 +1,7 @@
+2007-12-17  Christian Faulhammer  <opfer@gentoo.org>
+
+	* emacs.eselect: add do_updpkg(), which calls emacs-updater
+
 2007-11-20  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 1.3

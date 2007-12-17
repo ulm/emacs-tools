@@ -8,7 +8,6 @@
 # * list	do_list()
 # * set		do_set()
 # * update	do_update()
-# * updpkg	do_updpkg()
 #
 # Behaviour:
 # do_show():
@@ -20,8 +19,6 @@
 # do_set(): Set a version to be target of the symlink.
 # do_update(): Set the target to the highest version available
 #	(optionally: only if not set)
-# do_updpkg(): Call emacs-updater (from app-admin/emacs-updater) to
-# 	find site initialisation files in a deprecated location
 
 DESCRIPTION="Manage /usr/bin/emacs version"
 MAINTAINER="emacs@gentoo.org"
@@ -266,15 +263,4 @@ do_update() {
 
 	# ctags symlinks are handled in an own module now
 	do_action ctags update
-}
-
-describe_updpkg() {
-	echo "Find site initialisation files that are stored in deprecated locations"
-}
-
-do_updpkg() {
-	if ! [[ -x "${ROOT}/usr/sbin/emacs-updater" ]]; then
-		die -q "Please install app-admin/emacs-updater to use this option"
-	fi
-	/usr/sbin/emacs-updater
 }

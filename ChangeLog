@@ -1,5 +1,7 @@
 2007-12-17  Christian Faulhammer  <opfer@gentoo.org>
 
+	* emacs.eselect.5: add documentation for do_updpkg() and correct a type
+
 	* emacs.eselect: add do_updpkg(), which calls emacs-updater
 
 2007-11-20  Ulrich Mueller  <ulm@gentoo.org>

@@ -4,11 +4,11 @@
 #
 # DOCUMENTATION
 # Following actions possible
-# * show				do_show()
-# * list				do_list()
-# * set					do_set()
-# * update				do_update()
-# * deprecated_pkg		do_updpkg()
+# * show	do_show()
+# * list	do_list()
+# * set		do_set()
+# * update	do_update()
+# * updpkg	do_updpkg()
 #
 # Behaviour:
 # do_show():

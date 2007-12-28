@@ -1,3 +1,14 @@
+2007-12-28  Ulrich Mueller  <ulm@gentoo.org>
+
+	* version 0.3
+
+	* Makefile (DESKTOPFILES): Validate with desktop-file-validate.
+
+	* emacsclient.desktop: Ditto.
+
+	* emacs.desktop: Canonical ordering for desktop entry keys.
+	(Version): Key added.
+
 2007-12-10  Christian Faulhammer  <opfer@gentoo.org>
 
 	* emacsclient.desktop (Comment): Correct typo in Spanish

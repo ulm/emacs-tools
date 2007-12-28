@@ -4,18 +4,22 @@ PV = $(shell sed '/^[ \t]*\* [Vv]ersion/!d;s/[^0-9.]*\([0-9.]*\).*/\1/;q' \
 	ChangeLog)
 P = $(PN)-$(PV)
 
-DISTFILES = emacs.desktop emacsclient.desktop \
+DESKTOPFILES = emacs.desktop emacsclient.desktop
+DISTFILES = $(DESKTOPFILES) \
 	README.icons emacs.png \
 	emacs_16.png emacs_24.png emacs_32.png emacs_48.png gnured_48.png
 
 
-.PHONY: all dist clean
+.PHONY: all dist clean $(DESKTOPFILES)
 
 all:
 
 dist: $(DISTFILES)
 	tar -czf $(P).tar.gz --transform='s%^%$(P)/%' $^
 	tar -tzvf $(P).tar.gz
+
+$(DESKTOPFILES):
+	desktop-file-validate $@
 
 clean:
 	-rm -f *~ *.tmp *.gz *.bz2

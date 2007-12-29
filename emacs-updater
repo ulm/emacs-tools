@@ -44,10 +44,6 @@ Find packages that are installed in the wrong location
 
 EOF
 
-warning "Note, you must use the eclasses from the Emacs Overlay"
-warning "for proper operation!"
-echo
-
 if ! [ -x /usr/bin/qfile ]; then
     echo
     failure "Please emerge app-portage/portage-utils to use this tool"

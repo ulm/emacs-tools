@@ -1,7 +1,5 @@
 2007-12-29  Ulrich Mueller  <ulm@gentoo.org>
 
-	* Makefile: New file.
-
 	* emacs-updater: Remove warning; the eclasses are official now.
 	Change version to 0.3.
 

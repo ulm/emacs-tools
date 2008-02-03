@@ -2,6 +2,8 @@
 
 	* emacs-updater: Move informational message to the top, so it is
 	always displayed
+	Add options: --help|-h, --pretend|-p and --no-colour|-n, which do
+	what their names suggest
 
 2007-12-29  Ulrich Mueller  <ulm@gentoo.org>
 

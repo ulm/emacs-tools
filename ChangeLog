@@ -1,3 +1,8 @@
+2008-02-03  Christian Faulhammer  <opfer@gentoo.org>
+
+	* emacs-updater: Move informational message to the top, so it is
+	always displayed
+
 2007-12-29  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater: Remove warning; the eclasses are official now.

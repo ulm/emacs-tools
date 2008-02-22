@@ -1,3 +1,8 @@
+2008-02-22  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater: Use tput instead of hardcoded escape sequences.
+	Add standard copyright notice. Change version to 0.5.
+
 2008-02-03  Christian Faulhammer  <opfer@gentoo.org>
 
 	* emacs-updater: Move informational message to the top, so it is

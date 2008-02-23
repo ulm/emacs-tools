@@ -39,14 +39,14 @@ done
 # Only set colours if output is not redirected or the --no-colour
 # option is not set
 if [ -t 1 ] && [ -z "${NOCOLOUR}" ] ; then
-    NORMAL="$(tput sgr0)"
-    BOLD="$(tput bold)"
-    RED="$(tput setaf 1)${BOLD}"
-    GREEN="$(tput setaf 2)${BOLD}"
-    YELLOW="$(tput setaf 3)${BOLD}"
-    BLUE="$(tput setaf 4)${BOLD}"
-    MAGENTA="$(tput setaf 5)${BOLD}"
-    CYAN="$(tput setaf 6)${BOLD}"
+    RED=$(tput -S <<<$'setaf 1\nbold')
+    GREEN=$(tput -S <<<$'setaf 2\nbold')
+    YELLOW=$(tput -S <<<$'setaf 3\nbold')
+    BLUE=$(tput -S <<<$'setaf 4\nbold')
+    MAGENTA=$(tput -S <<<$'setaf 5\nbold')
+    CYAN=$(tput -S <<<$'setaf 6\nbold')
+    BOLD=$(tput bold)
+    NORMAL=$(tput sgr0)
 fi
 
 message() {

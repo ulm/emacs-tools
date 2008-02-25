@@ -83,7 +83,7 @@ if [ ! -s "${TMPFILE}" ]; then
     exit 2
 fi
 
-NO_OF_PACKAGES=$(wc -l ${TMPFILE} | awk '{ print $1 }')
+NO_OF_PACKAGES=$(sed -n '$=' "${TMPFILE}")
 
 message "${NO_OF_PACKAGES} packages with site files in the wrong location:"
 cat "${TMPFILE}"

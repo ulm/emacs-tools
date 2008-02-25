@@ -8,7 +8,7 @@
 # Christian Faulhammer <opfer@gentoo.org>
 # Ulrich Mueller <ulm@gentoo.org>
 
-VERSION=0.5
+VERSION=0.5.1
 SITELISP=/usr/share/emacs/site-lisp
 TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 
@@ -83,7 +83,9 @@ if [ ! -s "${TMPFILE}" ]; then
     exit 2
 fi
 
-message "Packages with site files in the wrong location:"
+NO_OF_PACKAGES=$(wc -l ${TMPFILE} | awk '{ print $1 }')
+
+message "${NO_OF_PACKAGES} packages with site files in the wrong location:"
 cat "${TMPFILE}"
 
 if [ "${PRETEND}" ]; then

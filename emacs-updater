@@ -85,7 +85,8 @@ fi
 
 NO_OF_PACKAGES=$(sed -n '$=' "${TMPFILE}")
 
-message "${NO_OF_PACKAGES} packages with site files in the wrong location:"
+[ ${NO_OF_PACKAGES} -eq 1 ] && s= || s=s
+message "${NO_OF_PACKAGES} package${s} with site files in the wrong location:"
 cat "${TMPFILE}"
 
 if [ "${PRETEND}" ]; then

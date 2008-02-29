@@ -8,7 +8,7 @@
 # Christian Faulhammer <opfer@gentoo.org>
 # Ulrich Mueller <ulm@gentoo.org>
 
-VERSION=0.5.1
+VERSION=0.6
 SITELISP=/usr/share/emacs/site-lisp
 TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 
@@ -20,19 +20,30 @@ Find packages that are installed in the wrong location
 
 EOF
 
+usage() {
+    sed -e 's/^X//' <<-EOF
+	Usage: ${0##*/} [OPTION]...
+	X  -n, --nocolour   disable colour in output
+	X  -p, --pretend    don't actually emerge packages
+	X  -h, --help       display this help and exit
+	EOF
+    exit $1
+}
+
 # Read in all command-line options and force English output
 OPTIONS=$(LC_ALL=C getopt -o hpn --long help,pretend,nocolour \
      -n 'emacs-updater' -- "$@")
+[ $? -eq 0 ] || usage 1
 
 eval set -- "${OPTIONS}"
 
 while true
 do
     case "${1}" in
-	-h|--help) echo "You have the following options: --pretend|-p and/or --no-colour|-n" ; exit 0 ;;
-	-p|--pretend) PRETEND="true"; shift 1 ;;
-	-n|--nocolour) NOCOLOUR="true"; shift 1;;
-	--) shift ; break ;;
+	-h|--help)      usage 0 ;;
+	-p|--pretend)   PRETEND="true"; shift 1 ;;
+	-n|--nocolour)  NOCOLOUR="true"; shift 1 ;;
+	--)             shift; break ;;
     esac
 done
 

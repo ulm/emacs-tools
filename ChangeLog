@@ -1,3 +1,7 @@
+2008-02-29  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater: Check for getopt exit status. Add usage function.
+
 2008-02-25  Christian Faulhammer  <opfer@gentoo.org>
 
 	* emacs-updater: Number of packages that need a remerge is

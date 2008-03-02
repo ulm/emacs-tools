@@ -27,7 +27,7 @@ usage() {
 	X  -p, --pretend    don't actually emerge packages
 	X  -h, --help       display this help and exit
 	EOF
-    exit $1
+    exit ${1}
 }
 
 # Read in all command-line options and force English output

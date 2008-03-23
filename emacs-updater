@@ -60,6 +60,7 @@ if [ -t 1 ] && [ -z "${NOCOLOUR}" ] ; then
     NORMAL=$(tput sgr0)
 fi
 
+# Some type of output can be prettified and capsulated in functions
 message() {
     local OUTPUT=$@
     echo "${GREEN}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"

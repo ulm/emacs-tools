@@ -1,5 +1,7 @@
 # This Makefile creates the tarball to be uploaded to the Gentoo mirrors
 #
+# Copyright 2007-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 
 PN = eselect-emacs
 #PV = $(shell sed '/^Version/h;$$!d;g;s/[^0-9.]*\([0-9.]*\).*/\1/' ChangeLog)

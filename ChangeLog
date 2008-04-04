@@ -78,3 +78,6 @@
 2007-11-27  Christian Faulhammer  <opfer@gentoo.org>
 
 	* emacs-updater.sh: first version of Emacs updater
+
+Copyright 2007-2008 Gentoo Foundation
+Distributed under the terms of the GNU General Public License v2

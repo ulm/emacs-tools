@@ -1,2 +1,2 @@
 CTAGS=etags
-source ./ctags.eselect
+source "${BASH_SOURCE%/*}"/ctags.eselect

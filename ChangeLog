@@ -2,11 +2,8 @@
 
 	* ctags.eselect: Generalise for both ctags and etags,
 	suggestion by Hans de Graaff.
-	* etags.eselect: New file, sources ctags.eselect.
 	* emacs.eselect (do_set, do_update): Call etags module.
 	* ctags.eselect.5, emacs.eselect.5: Update man pages.
-	* etags.eselect.5: New file, sources ctags.eselect.5.
-	* Makefile (DISTFILES): Add new files.
 
 2007-11-20  Ulrich Mueller  <ulm@gentoo.org>
 

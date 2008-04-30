@@ -20,7 +20,7 @@
 # do_update(): Set the target to the "best" available version. See below.
 
 # This module is used for ctags and etags
-CTAGS=${CTAGS:-ctags}
+CTAGS=ctags
 
 DESCRIPTION="Manage /usr/bin/${CTAGS} implementations"
 MAINTAINER="emacs@gentoo.org"

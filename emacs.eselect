@@ -25,9 +25,10 @@ MAINTAINER="emacs@gentoo.org"
 SVN_DATE='$Date$'
 VERSION=$(svn_date_to_version "${SVN_DATE}" )
 
-# ctags is handled in an own module now
-BINARYLIST="emacsclient etags b2m ebrowse rcs-checkin grep-changelog"
-MANPAGELIST="emacs emacsclient etags gfdl"
+BINARYLIST="emacsclient b2m ebrowse rcs-checkin grep-changelog"
+MANPAGELIST="emacs emacsclient gfdl"
+# etags and ctags are handled in their own module
+EXTMODULELIST="etags ctags"
 
 find_targets() {
 	# Return the list of available Emacs binaries
@@ -105,7 +106,7 @@ set_symlinks() {
 	[[ -f "${ROOT}/usr/bin/${target}" ]] \
 		|| die -q "Target \"${1}\" doesn't appear to be valid!"
 
-	echo "Switching to ${target} ..."
+	echo "Switching emacs to ${target} ..."
 	remove_symlinks || die -q "Couldn't remove existing symlink"
 	# the main /usr/bin/emacs symlink is only set for Emacs binaries
 	# (but not for other providers of auxiliary programs, e.g., XEmacs)
@@ -224,7 +225,10 @@ do_set() {
 	set_symlinks "${1}" || die -q "Couldn't set a new symlink"
 
 	# ctags symlinks are handled in an own module now
-	do_action ctags update
+	local m
+	for m in ${EXTMODULELIST}; do
+		do_action ${m} update
+	done
 }
 
 ### update action ###
@@ -262,5 +266,8 @@ do_update() {
 	fi
 
 	# ctags symlinks are handled in an own module now
-	do_action ctags update
+	local m
+	for m in ${EXTMODULELIST}; do
+		do_action ${m} update
+	done
 }

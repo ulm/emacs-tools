@@ -1,0 +1,2 @@
+CTAGS=etags
+source ./ctags.eselect

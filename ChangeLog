@@ -1,3 +1,8 @@
+2008-05-01  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Makefile (etags.eselect, etags.eselect.5): New targets.
+	(DISTFILES): Add Makefile to list.
+
 2008-04-30  Ulrich Mueller  <ulm@gentoo.org>
 
 	* ctags.eselect: Generalise for both ctags and etags,

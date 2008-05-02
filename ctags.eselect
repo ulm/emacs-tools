@@ -41,6 +41,12 @@ find_targets() {
 		[[ -f "${ROOT}/usr/bin/${CTAGS}-${emacs}" ]] && echo ${CTAGS}-${emacs}
 	elif [[ -f "${ROOT}/usr/bin/xemacs" ]]; then
 		[[ -f "${ROOT}/usr/bin/${CTAGS}-xemacs" ]] && echo ${CTAGS}-xemacs
+	elif [[ ${CTAGS} == etags ]]; then
+		# We are called as etags module, but no (X)Emacs is installed.
+		# Return an empty list in this case, because we don't want
+		# exuberant-ctags as default for etags (for ctags it's fine).
+		# Also, vi purists wouldn't want an etags symlink.
+		return
 	fi
 
 	# Exuberant ctags
@@ -199,11 +205,11 @@ do_update() {
 			remove_symlinks || die -q "Couldn't remove existing symlink"
 		fi
 	elif [[ -e "${ROOT}/usr/bin/${CTAGS}" ]]; then
-		if [[ ${CTAGS} == ctags && $(uname) == FreeBSD ]]; then
-			# On FreeBSD ctags is a real file, installed by freebsd-ubin
-			return
+		if ! [[ ${CTAGS} == ctags && $(uname) == FreeBSD ]]; then
+			die -q "Sorry, ${ROOT}/usr/bin/${CTAGS} exists but is not a symlink"
 		fi
-		die -q "Sorry, ${ROOT}/usr/bin/${CTAGS} exists but is not a symlink"
+		# On FreeBSD ctags is a real file, installed by freebsd-ubin
+		ctags=nolink
 	fi
 
 	# For an "update" only the version should be changed, but not the
@@ -211,12 +217,17 @@ do_update() {
 	# offers several concurrent versions.
 
 	local i target targets=( $(find_targets) )
-	if [[ ${#targets[@]} -gt 0 ]]; then
+	if [[ ${#targets[@]} -gt 0 && ${ctags} != nolink ]]; then
 		target=${targets[0]}
 		[[ "${ctags}" == ${CTAGS}-*emacs* ]] && ctags="${CTAGS}-*emacs*"
 		for i in ${targets[@]}; do
 			[[ "${i}" == "${ctags}" ]] && target="${i}"
 		done
 		set_symlinks "${target}" || die -q "Couldn't set a new symlink"
+	fi
+
+	# Call "eselect etags update" from the ctags module
+	if [[ ${CTAGS} == ctags ]]; then
+		CTAGS=etags	do_update
 	fi
 }

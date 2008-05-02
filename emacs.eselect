@@ -25,10 +25,9 @@ MAINTAINER="emacs@gentoo.org"
 SVN_DATE='$Date$'
 VERSION=$(svn_date_to_version "${SVN_DATE}" )
 
+# ctags and etags are handled in their own module
 BINARYLIST="emacsclient b2m ebrowse rcs-checkin grep-changelog"
 MANPAGELIST="emacs emacsclient gfdl"
-# ctags and etags are handled in their own module
-EXTMODULELIST="ctags etags"
 
 find_targets() {
 	# Return the list of available Emacs binaries
@@ -225,10 +224,7 @@ do_set() {
 	set_symlinks "${1}" || die -q "Couldn't set a new symlink"
 
 	# ctags symlinks are handled in an own module now
-	local m
-	for m in ${EXTMODULELIST}; do
-		do_action ${m} update
-	done
+	do_action ctags update
 }
 
 ### update action ###
@@ -266,8 +262,5 @@ do_update() {
 	fi
 
 	# ctags symlinks are handled in an own module now
-	local m
-	for m in ${EXTMODULELIST}; do
-		do_action ${m} update
-	done
+	do_action ctags update
 }

@@ -1,5 +1,11 @@
 2008-05-02  Ulrich Mueller  <ulm@gentoo.org>
 
+	* ctags.eselect (find_targets): Don't return anything for etags
+	if there is no Emacs variant installed.
+	(do_update): Call etags module.
+	* emacs.eselect (do_set, do_update): Call only the ctags module,
+	since the etags module is called indirectly from it.
+
 	* ctags.eselect (do_set, do_update): Remove additional test for
 	real file under FreeBSD.
 

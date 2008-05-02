@@ -20,6 +20,7 @@
 # do_update(): Set the target to the "best" available version. See below.
 
 # This module is used for ctags and etags
+#CTAGS=$(basename ${BASH_SOURCE%.*})
 CTAGS=ctags
 
 DESCRIPTION="Manage /usr/bin/${CTAGS} implementations"
@@ -169,8 +170,7 @@ do_set() {
 
 	if [[ -e "${ROOT}/usr/bin/${CTAGS}" && ! -L "${ROOT}/usr/bin/${CTAGS}" ]]
 	then
-		if [[ ${CTAGS} == ctags && -f "${ROOT}/usr/bin/ctags" \
-			&& $(uname) == FreeBSD ]]; then
+		if [[ ${CTAGS} == ctags && $(uname) == FreeBSD ]]; then
 			# On FreeBSD ctags is a real file, installed by freebsd-ubin
 			echo "${ROOT}/usr/bin/ctags is a real file - no action"
 			return
@@ -199,8 +199,7 @@ do_update() {
 			remove_symlinks || die -q "Couldn't remove existing symlink"
 		fi
 	elif [[ -e "${ROOT}/usr/bin/${CTAGS}" ]]; then
-		if [[ ${CTAGS} == ctags \
-			&& -f "${ROOT}/usr/bin/ctags" && $(uname) == FreeBSD ]]; then
+		if [[ ${CTAGS} == ctags && $(uname) == FreeBSD ]]; then
 			# On FreeBSD ctags is a real file, installed by freebsd-ubin
 			return
 		fi

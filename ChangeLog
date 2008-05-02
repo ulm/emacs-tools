@@ -1,3 +1,8 @@
+2008-05-02  Ulrich Mueller  <ulm@gentoo.org>
+
+	* ctags.eselect (do_set, do_update): Remove additional test for
+	real file under FreeBSD.
+
 2008-05-01  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Makefile (etags.eselect, etags.eselect.5): New targets.

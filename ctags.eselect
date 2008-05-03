@@ -176,11 +176,6 @@ do_set() {
 
 	if [[ -e "${ROOT}/usr/bin/${CTAGS}" && ! -L "${ROOT}/usr/bin/${CTAGS}" ]]
 	then
-		if [[ ${CTAGS} == ctags && $(uname) == FreeBSD ]]; then
-			# On FreeBSD ctags is a real file, installed by freebsd-ubin
-			echo "${ROOT}/usr/bin/ctags is a real file - no action"
-			return
-		fi
 		die -q "Sorry, ${ROOT}/usr/bin/${CTAGS} exists but is not a symlink"
 	fi
 

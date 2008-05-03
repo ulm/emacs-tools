@@ -6,8 +6,8 @@
 	* emacs.eselect (do_set, do_update): Call only the ctags module,
 	since the etags module is called indirectly from it.
 
-	* ctags.eselect (do_set, do_update): Remove additional test for
-	real file under FreeBSD.
+	* ctags.eselect (do_set): Always die if ctags is not a symlink.
+	(do_update): Remove additional test for real file under FreeBSD.
 
 2008-05-01  Ulrich Mueller  <ulm@gentoo.org>
 

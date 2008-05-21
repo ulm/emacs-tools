@@ -189,7 +189,8 @@ describe_update() {
 }
 
 do_update() {
-	[[ ${#@} -gt 0 ]] && die -q "Too many parameters"
+	[[ -z "${1}" || "${1}" == norecursion ]] || die -q "Usage error"
+	[[ ${#@} -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
 	local current=""
@@ -221,8 +222,10 @@ do_update() {
 		set_symlinks "${target}" || die -q "Couldn't set a new symlink"
 	fi
 
-	# Call "eselect etags update" from the ctags module
-	if [[ ${CTAGS} == ctags ]]; then
-		CTAGS=etags do_update
-	fi
+	# Call "eselect etags update" from the ctags module and vice versa
+	[[ "${1}" == norecursion ]] && return
+	case ${CTAGS} in
+		ctags) CTAGS=etags do_update norecursion ;;
+		etags) CTAGS=ctags do_update norecursion ;;
+	esac
 }

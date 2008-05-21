@@ -1,3 +1,7 @@
+2008-05-21  Ulrich Mueller  <ulm@gentoo.org>
+
+	* ctags.eselect (do_update): Call etags from ctags and vice versa.
+
 2008-05-12  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 1.4

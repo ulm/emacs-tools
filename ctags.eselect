@@ -19,8 +19,9 @@
 # do_set(): Set a version to be target of the symlink.
 # do_update(): Set the target to the "best" available version. See below.
 
-# This module is used for ctags and etags
-#CTAGS=$(basename ${BASH_SOURCE%.*})
+# This module is used for ctags and etags.
+# Determine our name from ESELECT_MODULE_NAME, with BASH_SOURCE as fallback.
+#CTAGS=${ESELECT_MODULE_NAME:-$(basename "${BASH_SOURCE[0]%.*}")}
 CTAGS=ctags
 
 DESCRIPTION="Manage /usr/bin/${CTAGS} implementations"

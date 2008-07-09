@@ -43,7 +43,7 @@ do
 	-h|--help)      usage 0 ;;
 	-p|--pretend)   PRETEND="true"; shift 1 ;;
 	-n|--nocolour)  NOCOLOUR="true"; shift 1 ;;
-	-t|--action)
+	-a|--action)
 	    case "${2}" in
 		obsolete_location)
 		    ACTION=

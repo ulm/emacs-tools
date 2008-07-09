@@ -31,7 +31,7 @@ usage() {
 }
 
 # Read in all command-line options and force English output
-OPTIONS=$(LC_ALL=C getopt -o hpn --long help,pretend,nocolour \
+OPTIONS=$(LC_ALL=C getopt -o hpna: --long help,pretend,nocolour,action: \
      -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
 
@@ -43,6 +43,22 @@ do
 	-h|--help)      usage 0 ;;
 	-p|--pretend)   PRETEND="true"; shift 1 ;;
 	-n|--nocolour)  NOCOLOUR="true"; shift 1 ;;
+	-t|--action)
+	    case "${2}" in
+		obsolete_location)
+		    ACTION=
+		    ;;
+		rebuild)
+		    ACTION=rebuild
+		    ;;
+		*)
+		    failure "No valid action given!"
+		    exit 20
+		    ;;
+    	    esac
+	    shift 2
+	    ;;
+
 	--)             shift; break ;;
     esac
 done

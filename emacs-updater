@@ -52,7 +52,7 @@ do
 		    ACTION=rebuild
 		    ;;
 		*)
-		    failure "No valid action given!"
+		    echo "No valid action given!"
 		    exit 20
 		    ;;
     	    esac

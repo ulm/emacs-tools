@@ -122,8 +122,22 @@ obsolete_location() {
     message "${NO_OF_PACKAGES} package${s} with site files in the wrong location:"
 }
 
+rebuild() {
+    for elc in $(find ${SITELISP} -name *.elc)
+    do
+	message "Processing ${elc##*/} ..."
+	qfile -qCR "${elc}" >> "${TMPFILE}"
+    done
+  
+    NO_OF_PACKAGES=$(sed -n '$=' "${TMPFILE}")
+
+    [ ${NO_OF_PACKAGES} -eq 1 ] && s= || s=s
+    message "${NO_OF_PACKAGES} package${s} with site files in the wrong location:"
+}
+
 ${ACTION}
 
+echo
 cat "${TMPFILE}"
 
 if [ "${PRETEND}" ]; then

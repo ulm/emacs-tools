@@ -96,13 +96,13 @@ failure() {
     echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}" 
 }
 
-obsolete_location() {
-    if ! [ -x /usr/bin/qfile ]; then
-	echo
-	failure "Please emerge app-portage/portage-utils to use this tool"
-	exit 2
-    fi
+if ! [ -x /usr/bin/qfile ]; then
+    echo
+    failure "Please emerge app-portage/portage-utils to use this tool"
+    exit 2
+fi
 
+obsolete_location() {
     for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el
     do
 	[ "${sf##*/}" = 00site-gentoo.el ] && continue

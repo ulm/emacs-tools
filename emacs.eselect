@@ -223,6 +223,10 @@ do_set() {
 
 	set_symlinks "${1}" || die -q "Couldn't set a new symlink"
 
+	echo "An up- or downgrade can make your compiled Elisp files incompatible with the"
+	echo "newly selected version.  Run '/usr/sbin/emacs-update -a rebuild' to remerge"
+	echo "all packages with the new Emacs version."
+
 	# ctags symlinks are handled in an own module now
 	do_action ctags update
 }

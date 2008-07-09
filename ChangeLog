@@ -1,3 +1,8 @@
+2008-07-10  Christian Faulhammer  <opfer@gentoo.org>
+
+	* emacs.eselect.5, emacs-eselect: Add a note about emacs-updater's
+	rebuild functionality in connection with the set action.
+
 2008-05-25  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 1.5

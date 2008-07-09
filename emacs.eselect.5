@@ -36,7 +36,10 @@ Available GNU Emacs symlink targets:
 .br
 Activates the selected Emacs version. \fItarget\fR can be either an
 identification number given by \fBeselect emacs list\fR or the name of
-one installed version.
+one installed version.  To avoid runtime issues with incompatible
+byte-code from the previously select Emacs version,
+run '/usr/sbin/emacs-updater -a rebuild' to remerge all needed
+packages.
 
 # eselect emacs set 3
 .br

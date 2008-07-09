@@ -46,7 +46,7 @@ do
 	-a|--action)
 	    case "${2}" in
 		obsolete_location)
-		    ACTION=
+		    ACTION=obsolete_location
 		    ;;
 		rebuild)
 		    ACTION=rebuild
@@ -92,7 +92,7 @@ failure() {
     echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}" 
 }
 
-wrong_location() {
+obsolete_location() {
     if ! [ -x /usr/bin/qfile ]; then
 	echo
 	failure "Please emerge app-portage/portage-utils to use this tool"
@@ -118,7 +118,7 @@ wrong_location() {
     message "${NO_OF_PACKAGES} package${s} with site files in the wrong location:"
 }
 
-wrong_location
+obsolete_location
 
 cat "${TMPFILE}"
 

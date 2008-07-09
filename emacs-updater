@@ -11,6 +11,7 @@
 VERSION=0.6
 SITELISP=/usr/share/emacs/site-lisp
 TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
+ACTION=obsolete_location
 
 cat <<-EOF
 

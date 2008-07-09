@@ -11,6 +11,7 @@
 VERSION=0.6
 SITELISP=/usr/share/emacs/site-lisp
 TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
+SORTFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 ACTION=obsolete_location
 
 cat <<-EOF
@@ -96,6 +97,23 @@ failure() {
     echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}" 
 }
 
+common_handling() {
+    echo
+    if [ ! -s "${TMPFILE}" ]; then
+	warning "No packages to update, quitting."
+	exit 3
+    fi
+
+    uniq "${TMPFILE}" > "${SORTFILE}"
+    mv "${SORTFILE}" "${TMPFILE}"
+
+    NO_OF_PACKAGES=$(sed -n '$=' "${TMPFILE}")
+
+    [ ${NO_OF_PACKAGES} -eq 1 ] && s= || s=s
+    message "${NO_OF_PACKAGES} package${s} to remerge:"
+}
+
+
 if ! [ -x /usr/bin/qfile ]; then
     echo
     failure "Please emerge app-portage/portage-utils to use this tool"
@@ -109,17 +127,7 @@ obsolete_location() {
 	message "Processing ${sf##*/} ..."
 	qfile -qCR "${sf}" >> "${TMPFILE}"
     done
-    echo
-
-    if [ ! -s "${TMPFILE}" ]; then
-	warning "No packages to update, quitting."
-	exit 3
-    fi
-
-    NO_OF_PACKAGES=$(sed -n '$=' "${TMPFILE}")
-
-    [ ${NO_OF_PACKAGES} -eq 1 ] && s= || s=s
-    message "${NO_OF_PACKAGES} package${s} with site files in the wrong location:"
+    common_handling
 }
 
 rebuild() {
@@ -128,11 +136,7 @@ rebuild() {
 	message "Processing ${elc##*/} ..."
 	qfile -qCR "${elc}" >> "${TMPFILE}"
     done
-  
-    NO_OF_PACKAGES=$(sed -n '$=' "${TMPFILE}")
-
-    [ ${NO_OF_PACKAGES} -eq 1 ] && s= || s=s
-    message "${NO_OF_PACKAGES} package${s} with site files in the wrong location:"
+    common_handling
 }
 
 ${ACTION}

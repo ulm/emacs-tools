@@ -8,7 +8,7 @@
 # Christian Faulhammer <opfer@gentoo.org>
 # Ulrich Mueller <ulm@gentoo.org>
 
-VERSION=0.6
+VERSION=0.7
 SITELISP=/usr/share/emacs/site-lisp
 TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 SORTFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"

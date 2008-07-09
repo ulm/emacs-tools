@@ -1,3 +1,12 @@
+2008-07-10  Christian Faulhammer  <opfer@gentoo.org>
+
+	* emacs-updater: Add --action|-a option which let's you choose
+	between finding packages in an obsolete location or rebuilding all
+	packages with .elc files in the ${SITELISP} directory
+	raise version to 0.7
+
+	* emacs-updated: canonify exit codes amd remove some ambiguities
+
 2008-02-29  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater: Check for getopt exit status. Add usage function.

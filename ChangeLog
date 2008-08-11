@@ -5,7 +5,7 @@
 	packages with .elc files in the ${SITELISP} directory
 	raise version to 0.7
 
-	* emacs-updated: canonify exit codes amd remove some ambiguities
+	* emacs-updater: canonify exit codes amd remove some ambiguities
 
 2008-02-29  Ulrich Mueller  <ulm@gentoo.org>
 

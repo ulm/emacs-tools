@@ -1,6 +1,11 @@
+2008-08-11  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.eselect (do_set): Move the note (from previous change) to
+	the end of the function. Fix a typo and slightly change wording.
+
 2008-07-10  Christian Faulhammer  <opfer@gentoo.org>
 
-	* emacs.eselect.5, emacs-eselect: Add a note about emacs-updater's
+	* emacs.eselect.5, emacs.eselect: Add a note about emacs-updater's
 	rebuild functionality in connection with the set action.
 
 2008-05-25  Ulrich Mueller  <ulm@gentoo.org>

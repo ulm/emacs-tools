@@ -18,7 +18,8 @@ cat <<-EOF
 
 Emacs updater version ${VERSION}
 Written by the Gentoo Emacs team http://www.gentoo.org/proj/en/lisp/emacs/
-Find packages that are installed in the wrong location or rebuild all GNU Emacs packages
+Find packages that are installed in the wrong location or rebuild all
+GNU Emacs packages
 
 EOF
 
@@ -29,8 +30,10 @@ usage() {
 	X  -p, --pretend          don't actually emerge packages
 	X  -h, --help             display this help and exit
 	X  -a, --action <arg>     arg is one out of
-	X                         'obsolete_location': find site-files not in the new-style location
-	X                         'rebuild': rebuild all packages that have byte-compiled Elisp files
+	X                         'obsolete_location': find site-files not
+	X                           in the new-style location
+	X                         'rebuild': rebuild all packages that have
+	X                           byte-compiled Elisp files
 	EOF
     exit ${1}
 }

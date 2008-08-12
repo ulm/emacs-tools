@@ -5,6 +5,7 @@
 	(rebuild_all): New function, just a wrapper.
 	(usage): Change help text accordingly.
 	(emacs-version): New function.
+	(ACTIONS): New variable. Allow to specify more than one action.
 
 2008-07-10  Christian Faulhammer  <opfer@gentoo.org>
 

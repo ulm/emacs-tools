@@ -12,7 +12,7 @@ VERSION=0.7
 SITELISP=/usr/share/emacs/site-lisp
 TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 SORTFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
-ACTION=obsolete_location
+ACTIONS=
 
 cat <<-EOF
 
@@ -55,17 +55,11 @@ do
 	-n|--nocolour)  NOCOLOUR="true"; shift 1 ;;
 	-a|--action)
 	    case "${2}" in
-		obsolete_location)
-		    ACTION=obsolete_location
-		    ;;
-		rebuild)
-		    ACTION=rebuild
-		    ;;
-		rebuild_all)
-		    ACTION=rebuild_all
+		obsolete_location | rebuild | rebuild_all)
+		    ACTIONS="${ACTIONS} ${2}"
 		    ;;
 		*)
-		    echo "No valid action given!"
+		    echo "Invalid action given!"
 		    exit 20
 		    ;;
     	    esac
@@ -75,6 +69,9 @@ do
 	--) shift; break ;;
     esac
 done
+
+# Default action if the user did not specify it
+ACTIONS=${ACTIONS:-obsolete_location}
 
 # Only set colours if output is not redirected or the --no-colour
 # option is not set
@@ -159,7 +156,9 @@ rebuild_all() {
     rebuild all
 }
 
-${ACTION}
+for action in ${ACTIONS}; do
+    ${action}
+done
 
 echo
 if [ ! -s "${TMPFILE}" ]; then
@@ -167,7 +166,7 @@ if [ ! -s "${TMPFILE}" ]; then
     exit 3
 fi
 
-uniq "${TMPFILE}" > "${SORTFILE}"
+sort -u "${TMPFILE}" > "${SORTFILE}"
 mv "${SORTFILE}" "${TMPFILE}"
 
 NO_OF_PACKAGES=$(sed -n '$=' "${TMPFILE}")

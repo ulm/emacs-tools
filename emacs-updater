@@ -156,6 +156,12 @@ rebuild_all() {
     rebuild all
 }
 
+cleanup() {
+    rm -f "${TMPFILE}" "${SORTFILE}"
+}
+
+trap cleanup EXIT
+
 for action in ${ACTIONS}; do
     ${action}
 done

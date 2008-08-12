@@ -193,8 +193,6 @@
 
 2007-03-29  Ulrich Mueller  <ulm@gentoo.org>
 
-	* Desktop entries and icons moved to emacs-desktop.
-
 	* emacs.eselect.5: Fixed typo and capitalised "Emacs" where
 	appropriate. Added copyright notice.
 
@@ -222,15 +220,7 @@
 
 2007-03-24  Ulrich Mueller  <ulm@gentoo.org>
 
-	* emacsclient.desktop (Exec): Removed -n option.
-
 	* version 0.5
-
-2007-03-23  Ulrich Mueller  <ulm@gentoo.org>
-
-	* emacsclient.desktop: New file.
-
-	* emacs.desktop (MimeType, TryExec): Add keys.
 
 2007-03-22  Ulrich Mueller  <ulm@gentoo.org>
 
@@ -242,13 +232,6 @@
 	extensions made more robust.
 
 2007-03-21  Ulrich Mueller  <ulm@gentoo.org>
-
-	* emacs_*.png, gnured_48.png: Added two alternative icons (not
-	used yet): emacs_48.png is from etc/images/icons of the	Emacs
-	sources, gnured_48.png is based on an image taken from
-	http://www.ee.ryerson.ca/~elf/emacs/logo/ and scaled down.
-
-	* emacs.desktop (Type): Set Type=Application only
 
 	* emacs.eselect (set_symlinks, set_bin_symlinks)
 	(set_man_symlinks): Make linking to XEmacs auxiliary programs

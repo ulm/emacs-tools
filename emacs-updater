@@ -123,6 +123,7 @@ emacs-version() {
 }
 
 obsolete_location() {
+    local sf
     for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el
     do
 	[ "${sf##*/}" = 00site-gentoo.el ] && continue
@@ -132,6 +133,7 @@ obsolete_location() {
 }
 
 rebuild() {
+    local active version elc
     active=$(emacs-version)
     [ -n "${active}" ] || { failure "Cannot determine Emacs version"; exit 6; }
     message "Currently selected GNU Emacs version: ${active}"

@@ -62,7 +62,7 @@ do
 		    ACTION=rebuild
 		    ;;
 		rebuild_all)
-		    ACTION="rebuild all"
+		    ACTION=rebuild_all
 		    ;;
 		*)
 		    echo "No valid action given!"
@@ -153,6 +153,10 @@ rebuild() {
 		"(compiled by Emacs version ${version})"
 	fi
     done
+}
+
+rebuild_all() {
+    rebuild all
 }
 
 ${ACTION}

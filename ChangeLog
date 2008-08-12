@@ -2,6 +2,7 @@
 
 	* emacs-updater (rebuild): Skip files if they were byte-compiled
 	by the active Emacs version, unless option "all" is specified.
+	(rebuild_all): New function, just a wrapper.
 	(usage): Change help text accordingly.
 	(emacs-version): New function.
 

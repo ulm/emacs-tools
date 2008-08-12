@@ -43,9 +43,22 @@
 
 2007-03-30  Ulrich Mueller  <ulm@gentoo.org>
 
-	* Split off from eselect-emacs.
-
 	* version 0.1
+
+2007-03-23  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacsclient.desktop: New file.
+
+	* emacs.desktop (MimeType, TryExec): Add keys.
+
+2007-03-21  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs_*.png, gnured_48.png: Added two alternative icons (not
+	used yet): emacs_48.png is from etc/images/icons of the	Emacs
+	sources, gnured_48.png is based on an image taken from
+	http://www.ee.ryerson.ca/~elf/emacs/logo/ and scaled down.
+
+	* emacs.desktop (Type): Set Type=Application only
 
 Copyright 2007-2008 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2

@@ -121,12 +121,19 @@ emacs-version() {
 
 obsolete_location() {
     local sf
+
+    # Set nullglob option since there may be no matching files
+    local old_shopts=$(shopt -p nullglob)
+    shopt -s nullglob
+
     for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el
     do
 	[ "${sf##*/}" = 00site-gentoo.el ] && continue
 	message "Processing ${sf##*/} ..."
 	qfile -qCR "${sf}" >> "${TMPFILE}"
     done
+
+    eval "${old_shopts}"
 }
 
 rebuild() {

@@ -142,7 +142,7 @@ rebuild() {
     [ -n "${active}" ] || { failure "Cannot determine Emacs version"; exit 6; }
     message "Currently selected GNU Emacs version: ${active}"
 
-    for elc in $(find ${SITELISP} -name *.elc)
+    for elc in $(find ${SITELISP} -name "*.elc")
     do
 	version=$(sed -n \
 	    '/^[^;]/q;s/\.$//;s/.*emacs version \([0-9].*\)/\1/Ip' ${elc})

@@ -142,8 +142,7 @@ rebuild() {
 	    '/^[^;]/q;s/\.$//;s/.*emacs version \([0-9].*\)/\1/Ip' ${elc})
 	version=${version:-undefined}
 
-	# compare major version components only
-	if [ "${version%%.*}" != "${active%%.*}" ] || [ "${1}" = all ]; then
+	if [ "${version}" != "${active}" ] || [ "${1}" = all ]; then
 	    message "Processing ${elc##*/}" \
 		"(compiled by Emacs version ${version}) ..."
 	    qfile -qCR "${elc}" >> "${TMPFILE}"

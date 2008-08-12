@@ -32,7 +32,9 @@ usage() {
 	X  -a, --action <arg>     arg is one out of
 	X                         'obsolete_location': find site-files not
 	X                           in the new-style location
-	X                         'rebuild': rebuild all packages that have
+	X                         'rebuild': rebuild packages with Elisp files
+	X                           byte-compiled by a different Emacs version
+	X                         'rebuild_all': rebuild all packages that have
 	X                           byte-compiled Elisp files
 	EOF
     exit ${1}
@@ -58,6 +60,9 @@ do
 		    ;;
 		rebuild)
 		    ACTION=rebuild
+		    ;;
+		rebuild_all)
+		    ACTION="rebuild all"
 		    ;;
 		*)
 		    echo "No valid action given!"
@@ -100,11 +105,22 @@ failure() {
     echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}" 
 }
 
+if ! [ -x /usr/bin/emacs ]; then
+    echo
+    failure "Please emerge virtual/emacs to use this tool"
+    exit 2
+fi
+
 if ! [ -x /usr/bin/qfile ]; then
     echo
     failure "Please emerge app-portage/portage-utils to use this tool"
     exit 2
 fi
+
+emacs-version() {
+    /usr/bin/emacs -batch -q --no-site-file --eval "(princ emacs-version)" \
+	|| { failure "Cannot run Emacs"; exit 5; }
+}
 
 obsolete_location() {
     for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el
@@ -116,10 +132,25 @@ obsolete_location() {
 }
 
 rebuild() {
+    active=$(emacs-version)
+    [ -n "${active}" ] || { failure "Cannot determine Emacs version"; exit 6; }
+    message "Currently selected GNU Emacs version: ${active}"
+
     for elc in $(find ${SITELISP} -name *.elc)
     do
-	message "Processing ${elc##*/} ..."
-	qfile -qCR "${elc}" >> "${TMPFILE}"
+	version=$(sed -n \
+	    '/^[^;]/q;s/\.$//;s/.*emacs version \([0-9].*\)/\1/Ip' ${elc})
+	version=${version:-undefined}
+
+	# compare major version components only
+	if [ "${version%%.*}" != "${active%%.*}" ] || [ "${1}" = all ]; then
+	    message "Processing ${elc##*/}" \
+		"(compiled by Emacs version ${version}) ..."
+	    qfile -qCR "${elc}" >> "${TMPFILE}"
+	else
+	    message "Skipping ${elc##*/}" \
+		"(compiled by Emacs version ${version})"
+	fi
     done
 }
 

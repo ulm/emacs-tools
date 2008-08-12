@@ -1,3 +1,10 @@
+2008-08-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater (rebuild): Skip files if they were byte-compiled
+	by the active Emacs version, unless option "all" is specified.
+	(usage): Change help text accordingly.
+	(emacs-version): New function.
+
 2008-07-10  Christian Faulhammer  <opfer@gentoo.org>
 
 	* emacs-updater: Add --action|-a option which let's you choose

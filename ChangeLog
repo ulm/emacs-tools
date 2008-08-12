@@ -8,6 +8,7 @@
 	(cleanup): New function, trap on exit.
 	(ACTIONS): New variable. Allow to specify more than one action.
 	(obsolete_location): Set nullglob shell option.
+	Call qfile only once to improve performance.
 
 2008-07-10  Christian Faulhammer  <opfer@gentoo.org>
 

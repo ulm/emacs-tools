@@ -67,7 +67,7 @@ do
 		    echo "Invalid action given!"
 		    exit 20
 		    ;;
-    	    esac
+	    esac
 	    shift 2
 	    ;;
 	-P|--package-manager)

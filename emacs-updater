@@ -243,7 +243,7 @@ case "${choice}" in
 	exit 10 ;;
 esac
 
-${PM_COMMAND} $(cat "${PKGFILE}")
+${PM_COMMAND} $(<"${PKGFILE}")
 
 warning "If a package is being rebuilt over and over again,"
 warning "please report it on http://bugs.gentoo.org/"

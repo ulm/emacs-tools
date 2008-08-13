@@ -1,3 +1,11 @@
+2008-08-13  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater: Support alternative package managers.
+	(OPTIONS): Add --package-manager|-P option.
+	(PM_COMMAND): New variable.
+	(pm_portage, pm_pkgcore, pm_paludis): New wrapper functions.
+	(usage): Update help text. Order options alphabetically.
+
 2008-08-12  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater (rebuild): Skip files if they were byte-compiled

@@ -13,6 +13,7 @@ SITELISP=/usr/share/emacs/site-lisp
 TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 PKGFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 ACTIONS=
+PM_COMMAND=pm_portage
 
 cat <<-EOF
 
@@ -26,9 +27,6 @@ EOF
 usage() {
     sed -e 's/^X//' <<-EOF
 	Usage: ${0##*/} [OPTION]...
-	X  -n, --nocolour         disable colour in output
-	X  -p, --pretend          don't actually emerge packages
-	X  -h, --help             display this help and exit
 	X  -a, --action <arg>     arg is one out of
 	X                         'obsolete_location': find site-files not
 	X                           in the new-style location
@@ -36,13 +34,20 @@ usage() {
 	X                           byte-compiled by a different Emacs version
 	X                         'rebuild_all': rebuild all packages that have
 	X                           byte-compiled Elisp files
+	X  -n, --nocolour         disable colour in output
+	X  -p, --pretend          don't actually emerge packages
+	X  -P, --package-manager <arg>
+	X                         Select a package manager. arg is one out of
+	X                         'portage' (default), 'pkgcore', or 'paludis'
+	X  -h, --help             display this help and exit
 	EOF
     exit ${1}
 }
 
 # Read in all command-line options and force English output
-OPTIONS=$(LC_ALL=C getopt -o hpna: --long help,pretend,nocolour,action: \
-     -n 'emacs-updater' -- "$@")
+OPTIONS=$(LC_ALL=C getopt -o a:hnpP: \
+    --long action:,help:,nocolour,pretend,package-manager \
+    -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
 
 eval set -- "${OPTIONS}"
@@ -63,6 +68,18 @@ do
 		    exit 20
 		    ;;
     	    esac
+	    shift 2
+	    ;;
+	-P|--package-manager)
+	    case "${2}" in
+		portage|pkgcore|paludis)
+		    PM_COMMAND=pm_${2}
+		    ;;
+		*)
+		    echo "Package manager ${2} not known!"
+		    exit 21
+		    ;;
+	    esac
 	    shift 2
 	    ;;
 
@@ -99,7 +116,7 @@ warning() {
 
 failure() {
     local OUTPUT=$@
-    echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}" 
+    echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"
 }
 
 if ! [ -x /usr/bin/emacs ]; then
@@ -167,6 +184,19 @@ rebuild_all() {
     rebuild all
 }
 
+# Wrapper for package manager commands
+pm_portage() {
+    emerge --oneshot --ask --verbose "$@"
+}
+
+pm_pkgcore() {
+    pmerge --oneshot --ask "$@"
+}
+
+pm_paludis() {
+    paludis --install --preserve-world "$@"
+}
+
 cleanup() {
     rm -f "${TMPFILE}" "${PKGFILE}"
 }
@@ -213,7 +243,7 @@ case "${choice}" in
 	exit 10 ;;
 esac
 
-emerge --oneshot --ask --verbose $(cat "${PKGFILE}")
+${PM_COMMAND} $(cat "${PKGFILE}")
 
 warning "If a package is being rebuilt over and over again,"
 warning "please report it on http://bugs.gentoo.org/"

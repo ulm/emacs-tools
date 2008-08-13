@@ -151,7 +151,7 @@ rebuild() {
     do
 	version=$(sed -n \
 	    '/^[^;]/q;s/\.$//;s/.*emacs version \([0-9].*\)/\1/Ip' ${elc})
-	version=${version:-undefined}
+	version=${version:-unknown}
 
 	if [ "${version}" != "${active}" ] || [ "${1}" = all ]; then
 	    echo "Found ${elc##*/} (compiled by Emacs version ${version})"

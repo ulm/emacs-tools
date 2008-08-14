@@ -212,7 +212,10 @@ if [ ! -s "${TMPFILE}" ]; then
     exit 3
 fi
 
-message "Assigning files to packages ..."
+NO_OF_FILES=$(sed -n '$=' "${TMPFILE}")
+[ ${NO_OF_FILES} -eq 1 ] && s= || s=s
+message "Assigning ${NO_OF_FILES} file${s} to packages ..."
+
 qfile -qCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
 
 if [ ! -s "${PKGFILE}" ]; then
@@ -221,7 +224,6 @@ if [ ! -s "${PKGFILE}" ]; then
 fi
 
 NO_OF_PACKAGES=$(sed -n '$=' "${PKGFILE}")
-
 [ ${NO_OF_PACKAGES} -eq 1 ] && s= || s=s
 message "${NO_OF_PACKAGES} package${s} to remerge:"
 

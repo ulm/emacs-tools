@@ -13,6 +13,8 @@ SITELISP=/usr/share/emacs/site-lisp
 TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 PKGFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 ACTIONS=
+
+# Default package manager
 PM_COMMAND=pm_portage
 
 cat <<-EOF
@@ -37,7 +39,7 @@ usage() {
 	X  -n, --nocolour         disable colour in output
 	X  -p, --pretend          don't actually emerge packages
 	X  -P, --package-manager <arg>
-	X                         Select a package manager. arg is one out of
+	X                         select a package manager. arg is one out of
 	X                         'portage' (default), 'pkgcore', or 'paludis'
 	X  -h, --help             display this help and exit
 	EOF
@@ -46,7 +48,7 @@ usage() {
 
 # Read in all command-line options and force English output
 OPTIONS=$(LC_ALL=C getopt -o a:hnpP: \
-    --long action:,help:,nocolour,pretend,package-manager \
+    --long action:,help,nocolour,pretend,package-manager: \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
 

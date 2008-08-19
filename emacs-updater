@@ -12,7 +12,9 @@ VERSION=0.7
 SITELISP=/usr/share/emacs/site-lisp
 TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 PKGFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
-ACTIONS=
+
+# Default actions
+ACTIONS="obsolete_location rebuild"
 
 # Default package manager
 PM_COMMAND=pm_portage
@@ -29,13 +31,15 @@ EOF
 usage() {
     sed -e 's/^X//' <<-EOF
 	Usage: ${0##*/} [OPTION]...
-	X  -a, --action <arg>     arg is one out of
+	X  -a, --action <arg>[,<arg>]...
+	X                         specify actions, comma-separated list of:
 	X                         'obsolete_location': find site-files not
 	X                           in the new-style location
 	X                         'rebuild': rebuild packages with Elisp files
 	X                           byte-compiled by a different Emacs version
 	X                         'rebuild_all': rebuild all packages that have
 	X                           byte-compiled Elisp files
+	X                         (default: ${ACTIONS/ /,})
 	X  -n, --nocolour         disable colour in output
 	X  -p, --pretend          don't actually emerge packages
 	X  -P, --package-manager <arg>
@@ -61,15 +65,18 @@ do
 	-p|--pretend)   PRETEND="true"; shift 1 ;;
 	-n|--nocolour)  NOCOLOUR="true"; shift 1 ;;
 	-a|--action)
-	    case "${2}" in
-		obsolete_location | rebuild | rebuild_all)
-		    ACTIONS="${ACTIONS} ${2}"
-		    ;;
-		*)
-		    echo "Invalid action given!"
-		    exit 20
-		    ;;
-	    esac
+	    ACTIONS=
+	    for action in ${2/,/ }; do
+		case "${action}" in
+		    obsolete_location|rebuild|rebuild_all)
+			ACTIONS="${ACTIONS}${ACTIONS:+ }${action}"
+			;;
+		    *)
+			echo "Invalid action '$action' given!"
+			exit 20
+			;;
+		esac
+	    done
 	    shift 2
 	    ;;
 	-P|--package-manager)
@@ -88,9 +95,6 @@ do
 	--) shift; break ;;
     esac
 done
-
-# Default action if the user did not specify it
-ACTIONS=${ACTIONS:-obsolete_location}
 
 # Only set colours if output is not redirected or the --no-colour
 # option is not set

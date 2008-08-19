@@ -85,7 +85,7 @@ do
 		    PM_COMMAND=pm_${2}
 		    ;;
 		*)
-		    echo "Package manager ${2} not known!"
+		    echo "Package manager '${2}' not known!"
 		    exit 21
 		    ;;
 	    esac

@@ -14,7 +14,7 @@ TMPFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 PKGFILE="$(mktemp /tmp/emacs-updater.XXXXXX)"
 
 # Default actions
-ACTIONS="obsolete_location rebuild"
+ACTIONS="sitedir rebuild"
 
 # Default package manager
 PM_COMMAND=pm_portage
@@ -33,13 +33,13 @@ usage() {
 	Usage: ${0##*/} [OPTION]...
 	X  -a, --action <arg>[,<arg>]...
 	X                         specify actions, comma-separated list of:
-	X                         'obsolete_location': find site-files not
-	X                           in the new-style location
+	X                         'sitedir': find site-init files not in the
+	X                           new-style location
 	X                         'rebuild': rebuild packages with Elisp files
 	X                           byte-compiled by a different Emacs version
-	X                         'rebuild_all': rebuild all packages that have
+	X                         'all': rebuild all packages that have
 	X                           byte-compiled Elisp files
-	X                         (default: ${ACTIONS/ /,})
+	X                         (default: sitedir,rebuild)
 	X  -n, --nocolour         disable colour in output
 	X  -p, --pretend          don't actually emerge packages
 	X  -P, --package-manager <arg>
@@ -68,7 +68,7 @@ do
 	    ACTIONS=
 	    for action in ${2/,/ }; do
 		case "${action}" in
-		    obsolete_location|rebuild|rebuild_all)
+		    sitedir|rebuild|all)
 			ACTIONS="${ACTIONS}${ACTIONS:+ }${action}"
 			;;
 		    *)
@@ -142,7 +142,7 @@ emacs-version() {
 	|| { failure "Cannot run Emacs"; exit 5; }
 }
 
-obsolete_location() {
+action_sitedir() {
     local sf
 
     message "Searching for site-init files in obsolete location ..."
@@ -162,7 +162,7 @@ obsolete_location() {
     echo
 }
 
-rebuild() {
+action_rebuild() {
     local active version elc
 
     message "Searching for byte-compiled elisp files ..."
@@ -186,8 +186,8 @@ rebuild() {
     echo
 }
 
-rebuild_all() {
-    rebuild all
+action_all() {
+    action_rebuild all
 }
 
 # Wrapper for package manager commands
@@ -210,7 +210,7 @@ cleanup() {
 trap cleanup EXIT
 
 for action in ${ACTIONS}; do
-    ${action}
+    action_${action}
 done
 
 if [ ! -s "${TMPFILE}" ]; then

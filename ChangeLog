@@ -1,3 +1,11 @@
+2008-08-21  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater (action_sitedir, action_rebuild, action_all):
+	Functions renamed from "obsolete_location", "rebuild", and
+	"rebuild_all", respectively. Likewise for -a arguments.
+	(action_rebuild): Add ROOT and quote properly.
+	(usage): Update.
+
 2008-08-19  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater: Change syntax of -a option, use comma-separated

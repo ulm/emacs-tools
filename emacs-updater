@@ -111,17 +111,17 @@ fi
 
 # Some type of output can be prettified and capsulated in functions
 message() {
-    local OUTPUT=$@
+    local OUTPUT="$@"
     echo "${GREEN}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"
 }
 
 warning() {
-    local OUTPUT=$@
+    local OUTPUT="$@"
     echo "${YELLOW}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"
 }
 
 failure() {
-    local OUTPUT=$@
+    local OUTPUT="$@"
     echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"
 }
 

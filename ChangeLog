@@ -1,3 +1,7 @@
+2008-09-02  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater (VERSION): Increase to 1.0_rc2.
+
 2008-08-30  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater (TMPFILE, PKGFILE): Create after the cleanup trap,

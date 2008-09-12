@@ -17,6 +17,10 @@ ACTIONS="sitedir rebuild"
 # Default package manager
 PM_COMMAND=pm_portage
 
+# Other default variable settings
+NOCOLOUR=
+PRETEND=
+
 cat <<-EOF
 
 Emacs updater version ${VERSION}
@@ -105,6 +109,8 @@ if [ -t 1 ] && [ -z "${NOCOLOUR}" ] ; then
     CYAN=$(tput -S <<<$'setaf 6\nbold')
     BOLD=$(tput bold)
     NORMAL=$(tput sgr0)
+else
+    RED=; GREEN=; YELLOW=; BLUE=; MAGENTA=; CYAN=; BOLD=; NORMAL=
 fi
 
 # Some type of output can be prettified and capsulated in functions

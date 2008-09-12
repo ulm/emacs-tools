@@ -2,6 +2,8 @@
 
 	* emacs-updater (NOCOLOUR, PRETEND): Assign empty default values.
 	Likewise for colours.
+	(OPTIONS, EXACT): Add new --exact|-e option and variable.
+	(usage): Update.
 
 2008-09-04  Ulrich Mueller  <ulm@gentoo.org>
 

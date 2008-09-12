@@ -8,7 +8,7 @@
 # Christian Faulhammer <opfer@gentoo.org>
 # Ulrich Mueller <ulm@gentoo.org>
 
-VERSION=1.0
+VERSION=1.1_pre
 SITELISP=/usr/share/emacs/site-lisp
 
 # Default actions
@@ -18,6 +18,7 @@ ACTIONS="sitedir rebuild"
 PM_COMMAND=pm_portage
 
 # Other default variable settings
+EXACT=
 NOCOLOUR=
 PRETEND=
 
@@ -42,6 +43,7 @@ usage() {
 	X                         'all': rebuild all packages that have
 	X                           byte-compiled Elisp files
 	X                         (default: sitedir,rebuild)
+	X  -e, --exact            match exact versions when remerging packages
 	X  -n, --nocolour         disable colour in output
 	X  -p, --pretend          don't actually emerge packages
 	X  -P, --package-manager <arg>
@@ -53,8 +55,8 @@ usage() {
 }
 
 # Read in all command-line options and force English output
-OPTIONS=$(LC_ALL=C getopt -o a:hnpP: \
-    --long action:,help,nocolour,pretend,package-manager: \
+OPTIONS=$(LC_ALL=C getopt -o a:ehnpP: \
+    --long action:,exact,help,nocolour,pretend,package-manager: \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
 
@@ -64,6 +66,7 @@ while true
 do
     case "${1}" in
 	-h|--help)      usage 0 ;;
+	-e|--exact)     EXACT="true"; shift 1 ;;
 	-p|--pretend)   PRETEND="true"; shift 1 ;;
 	-n|--nocolour)  NOCOLOUR="true"; shift 1 ;;
 	-a|--action)
@@ -217,7 +220,11 @@ NO_OF_FILES=$(sed -n '$=' "${TMPFILE}")
 [ ${NO_OF_FILES} -eq 1 ] && s= || s=s
 message "Assigning ${NO_OF_FILES} file${s} to packages ..."
 
-qfile -qCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
+if [ "${EXACT}" ]; then
+    qfile -eqCR -f "${TMPFILE}" | sort -u | sed 's/^/=/' > "${PKGFILE}"
+else
+    qfile -qCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
+fi
 
 if [ ! -s "${PKGFILE}" ]; then
     warning "No packages to update, quitting."

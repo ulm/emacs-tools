@@ -1,3 +1,8 @@
+2008-09-14  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.eselect (do_set): Be less verbose: emacs-updater is
+	mentioned in the man page, no need to repeat it here.
+
 2008-08-11  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs.eselect (do_set): Move the note (from previous change) to

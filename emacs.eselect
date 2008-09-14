@@ -225,12 +225,6 @@ do_set() {
 
 	# ctags symlinks are handled in an own module now
 	do_action ctags update
-
-	echo
-	echo "An up- or downgrade of Emacs can make some compiled Elisp files"
-	echo "incompatible with the newly selected version. In case of problems,"
-	echo "you may consider running '/usr/sbin/emacs-updater -a rebuild' to"
-	echo "remerge all needed packages with the new Emacs version."
 }
 
 ### update action ###

@@ -204,8 +204,8 @@ cleanup() {
 
 trap cleanup EXIT
 
-TMPFILE="$(mktemp /tmp/emacs-updater.files.XXXXXX)"
-PKGFILE="$(mktemp /tmp/emacs-updater.pkgs.XXXXXX)"
+TMPFILE="$(mktemp ${TMPDIR:-/tmp}/emacs-updater.files.XXXXXX)"
+PKGFILE="$(mktemp ${TMPDIR:-/tmp}/emacs-updater.pkgs.XXXXXX)"
 
 for action in ${ACTIONS}; do
     action_${action}

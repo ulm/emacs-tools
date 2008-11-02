@@ -4,8 +4,7 @@
 (and
  (fboundp 'daemonp)
  (daemonp)
- (let ((file (concat "/var/run/emacs-daemon/"
-		     (user-login-name) "/emacs.pid")))
+ (let ((file (concat "/var/run/emacs/" (user-login-name) "/emacs.pid")))
    (if (file-writable-p file)
        ;; write process id to file
        (with-temp-file file

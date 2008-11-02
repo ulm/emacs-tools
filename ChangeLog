@@ -1,8 +1,8 @@
 2008-11-02  Ulrich Mueller  <ulm@gentoo.org>
 
-	* Version 0.3 released.
+	* Version 0.4 released.
 
-	* emacs-daemon.rc, 10emacs-daemon-gentoo.el, Makefile: New files.
+	* emacs.rc, 10emacs-daemon-gentoo.el, Makefile: New files.
 
 Copyright 2008 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2

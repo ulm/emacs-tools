@@ -30,7 +30,7 @@ checkconfig() {
     fi
 
     if [ ! -d "${PIDFILE_DIR}" ]; then
-	ewarn "${PIDFILE_DIR} does not exist - creating it"
+	ewarn "Directory ${PIDFILE_DIR} does not exist - creating it"
 	mkdir -p "${PIDFILE_DIR}"
 	chown "${USER}" "${PIDFILE_DIR}"
     fi

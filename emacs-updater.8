@@ -2,7 +2,7 @@
 .\" Distributed under the terms of the GNU General Public License v2
 .\" $Id: $
 .\"
-.TH "emacs-updater" 8 "September 2008" "Gentoo Linux"
+.TH "emacs-updater" 8 "November 2008" "Gentoo Linux"
 .SH NAME
 emacs-updater \- rebuild Emacs packages
 .SH SYNOPSIS
@@ -25,6 +25,9 @@ Rebuild packages with Elisp files byte-compiled by a different Emacs version
 Rebuild all packages that have byte-compiled Elisp files
 
 .RI "(default: " sitedir ", " rebuild ")"
+.TP
+.B "-e, --exact"
+Match exact versions when remerging packages
 .TP
 .B "-n, --nocolour"
 Disable colour in output

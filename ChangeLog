@@ -1,3 +1,11 @@
+2008-11-04  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Version 1.1 released.
+
+	* Makefile (DISTFILES): Add man page.
+
+	* emacs-updater.8: Describe --exact option.
+
 2008-10-31  Christian Faulhammer  <opfer@gentoo.org>
 
 	* emacs-updater (TMPFILE, PKGFILE): Respect TMPDIR variable from

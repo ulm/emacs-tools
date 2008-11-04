@@ -5,7 +5,7 @@ PN = emacs-updater
 PV = $(shell sed '/^VERSION/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' emacs-updater)
 P = $(PN)-$(PV)
 
-DISTFILES = emacs-updater ChangeLog
+DISTFILES = emacs-updater emacs-updater.8 ChangeLog
 
 
 .PHONY: all dist clean

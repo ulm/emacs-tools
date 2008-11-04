@@ -8,6 +8,8 @@ USER="${RC_SVCNAME#*.}"
 PIDFILE_DIR="/var/run/emacs/${USER}"
 PIDFILE="${PIDFILE_DIR}/emacs.pid"
 
+description="Start an Emacs server running in the background"
+
 checkconfig() {
     if [ "${USER}" = "${RC_SVCNAME}" ]; then
 	eerror "You have to create an init script for each user:"

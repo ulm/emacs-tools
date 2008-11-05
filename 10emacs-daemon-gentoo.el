@@ -19,7 +19,7 @@
 	  (/= pid (emacs-pid)))
      ;; If another Emacs daemon is already running for this user,
      ;; then we would steal its server socket. So we better die.
-     (message "Another Emacs daemon is already running at process id %d\n" pid)
+     (message "Another Emacs daemon is already running at process id %d" pid)
      (kill-emacs))
     ((file-writable-p file)
      ;; Write process id to file

@@ -3,7 +3,7 @@
 	* emacs.rc (description): Add description.
 
 	* 10emacs-daemon-gentoo.el (special-event-map): Restart the server
-	on reception of SIGUSR1.
+	on reception of SIGUSR1. Output a message before terminating.
 
 2008-11-03  Ulrich Mueller  <ulm@gentoo.org>
 

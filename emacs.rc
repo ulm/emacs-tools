@@ -3,10 +3,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EMACS="/usr/bin/emacs"
-USER="${RC_SVCNAME#*.}"
-PIDFILE_DIR="/var/run/emacs/${USER}"
-PIDFILE="${PIDFILE_DIR}/emacs.pid"
+EMACS=${EMACS:-/usr/bin/emacs}
+USER=${RC_SVCNAME#*.}
+PIDFILE_DIR=/var/run/emacs/${USER}
+PIDFILE=${PIDFILE_DIR}/emacs.pid
 
 description="Start an Emacs server running in the background"
 
@@ -46,8 +46,8 @@ start() {
 
     ebegin "Starting Emacs daemon for ${USER}"
     eval home="~${USER}"
-    start-stop-daemon --start --user "${USER}" --chdir "${home}" \
-	--quiet --pidfile "${PIDFILE}" --exec "${EMACS}" -- --daemon
+    start-stop-daemon --start --user "${USER}" --chdir "${home}" --quiet \
+	--pidfile "${PIDFILE}" --exec "${EMACS}" -- --daemon ${EMACS_OPTS}
     eend $?
 }
 

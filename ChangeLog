@@ -1,5 +1,7 @@
 2008-11-10  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 0.5 released.
+
 	* emacs.conf: New file.
 	* emacs.rc (EMACS): Allow to override from config file.
 	* Makefile (DISTFILES): Add emacs.conf.

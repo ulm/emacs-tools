@@ -8,7 +8,7 @@
 # Christian Faulhammer <opfer@gentoo.org>
 # Ulrich Mueller <ulm@gentoo.org>
 
-VERSION=1.1
+VERSION=1.2_pre
 SITELISP=/usr/share/emacs/site-lisp
 
 # Default actions
@@ -137,6 +137,11 @@ emacs-version() {
 	|| { failure "Cannot run Emacs"; exit 5; }
 }
 
+# Get Emacs version from byte-compiled file
+bytecomp-version() {
+    sed -n '/^[^;]/q;s/\.$//;s/.*emacs version \([0-9].*\)/\1/Ip' "${1}"
+}
+
 action_sitedir() {
     local sf
 
@@ -167,8 +172,7 @@ action_rebuild() {
 
     for elc in $(find "${ROOT}${SITELISP}" -name "*.elc")
     do
-	version=$(sed -n \
-	    '/^[^;]/q;s/\.$//;s/.*emacs version \([0-9].*\)/\1/Ip' ${elc})
+	version=$(bytecomp-version "${elc}")
 	version=${version:-unknown}
 
 	if [ "${version}" != "${active}" ] || [ "${1}" = all ]; then
@@ -224,6 +228,8 @@ if [ "${EXACT}" ]; then
     qfile -eqCR -f "${TMPFILE}" | sort -u | sed 's/^/=/' > "${PKGFILE}"
 else
     qfile -qCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
+    # Get package and slot number
+    # qfile -eqCR -f "${TMPFILE}" | sort -u | xargs qlist -eqCILS
 fi
 
 if [ ! -s "${PKGFILE}" ]; then

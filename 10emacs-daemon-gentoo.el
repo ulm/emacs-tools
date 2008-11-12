@@ -27,6 +27,6 @@
        (insert (number-to-string (emacs-pid)) "\n"))
      ;; Remove file on exit
      (add-hook 'kill-emacs-hook
-	       `(lambda () (delete-file ,file)))))
+	       `(lambda () (ignore-errors (delete-file ,file))))))
    ;; Restart the server if signal SIGUSR1 is received.
    (define-key special-event-map [sigusr1] 'server-start)))

@@ -1,3 +1,13 @@
+2008-11-13  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.rc (start): Allow for a wrapper script specified by
+	variable EMACS_START. Thanks to Tassilo Horn, bug 246460.
+	* emacs.conf (EMACS_START): Document as a variable.
+	* emacs-wrapper.sh: New file.
+	* Makefile (DISTFILES): Add emacs-wrapper.sh.
+
+	* emacs.conf: Add a comment about multiplexed configuration files.
+
 2008-11-10  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 0.5 released.

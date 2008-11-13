@@ -46,8 +46,9 @@ start() {
 
     ebegin "Starting Emacs daemon for ${USER}"
     eval home="~${USER}"
-    start-stop-daemon --start --user "${USER}" --chdir "${home}" --quiet \
-	--pidfile "${PIDFILE}" --exec "${EMACS}" -- --daemon ${EMACS_OPTS}
+    start-stop-daemon --start --user "${USER}" --chdir "${home}" \
+	--quiet --pidfile "${PIDFILE}" --env EMACS="${EMACS}" \
+	--exec "${EMACS_START:-${EMACS}}" -- --daemon ${EMACS_OPTS}
     eend $?
 }
 

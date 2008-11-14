@@ -1,5 +1,7 @@
 2008-11-13  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 0.6 released.
+
 	* emacs.rc (start): Allow for a wrapper script specified by
 	variable EMACS_START. Thanks to Tassilo Horn, bug 246460.
 	* emacs.conf (EMACS_START): Document as a variable.

@@ -31,13 +31,8 @@ checkconfig() {
 	return 1
     fi
 
-    if [ ! -d "${PIDFILE_DIR}" ]; then
-	ewarn "Directory ${PIDFILE_DIR} does not exist - creating it"
-	mkdir -p "${PIDFILE_DIR}"
-	chown "${USER}" "${PIDFILE_DIR}"
-    fi
-
-    return 0
+    checkpath -d --owner root:root --mode 0755 "${PIDFILE_DIR%/*}"
+    checkpath -d --owner "${USER}" --mode 0755 "${PIDFILE_DIR}"
 }
 
 start() {

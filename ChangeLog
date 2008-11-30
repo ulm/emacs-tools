@@ -1,3 +1,7 @@
+2008-11-30  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Version 0.7 released.
+
 2008-11-16  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs.rc (checkconfig): Use "checkpath" builtin function.

@@ -31,7 +31,7 @@ checkconfig() {
 	return 1
     fi
 
-    checkpath -d --owner root:root --mode 0755 "${PIDFILE_DIR%/*}"
+    checkpath -d --owner 0 --mode 0755 "${PIDFILE_DIR%/*}"
     checkpath -d --owner "${USER}" --mode 0755 "${PIDFILE_DIR}"
 }
 

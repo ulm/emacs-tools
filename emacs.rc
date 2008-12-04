@@ -41,8 +41,12 @@ start() {
 
     ebegin "Starting Emacs daemon for ${USER}"
     eval home="~${USER}"
-    start-stop-daemon --start --user "${USER}" --chdir "${home}" \
-	--quiet --pidfile "${PIDFILE}" --env EMACS="${EMACS}" \
+
+    # Emacs detaches and exits the parent process only after loading the
+    # user's .emacs (initialisation). Anything may happen there, so we
+    # use --background to ensure that start-stop-daemon doesn't hang.
+    start-stop-daemon --start --user "${USER}" --chdir "${home}" --quiet \
+	--background --pidfile "${PIDFILE}" --env EMACS="${EMACS}" \
 	--exec "${EMACS_START:-${EMACS}}" -- --daemon ${EMACS_OPTS}
     eend $?
 }

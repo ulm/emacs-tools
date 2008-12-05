@@ -4,6 +4,8 @@
 # $Id$
 
 EMACS=${EMACS:-/usr/bin/emacs}
+EMACS_START=${EMACS_START:-/usr/libexec/emacs/emacs-wrapper.sh}
+EMACS_TIMEOUT=${EMACS_TIMEOUT:-15}
 USER=${RC_SVCNAME#*.}
 PIDFILE_DIR=/var/run/emacs/${USER}
 PIDFILE=${PIDFILE_DIR}/emacs.pid
@@ -42,12 +44,10 @@ start() {
     ebegin "Starting Emacs daemon for ${USER}"
     eval home="~${USER}"
 
-    # Emacs detaches and exits the parent process only after loading the
-    # user's .emacs (initialisation). Anything may happen there, so we
-    # use --background to ensure that start-stop-daemon doesn't hang.
-    start-stop-daemon --start --user "${USER}" --chdir "${home}" --quiet \
-	--background --pidfile "${PIDFILE}" --env EMACS="${EMACS}" \
-	--exec "${EMACS_START:-${EMACS}}" -- --daemon ${EMACS_OPTS}
+    start-stop-daemon --start \
+	--user "${USER}" --chdir "${home}" --pidfile "${PIDFILE}" \
+	--env EMACS="${EMACS}" --env EMACS_TIMEOUT="${EMACS_TIMEOUT}" \
+	--exec "${EMACS_START}" -- --daemon ${EMACS_OPTS}
     eend $?
 }
 

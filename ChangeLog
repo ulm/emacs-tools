@@ -1,7 +1,14 @@
+2008-12-05  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-wrapper.sh: Add a timeout and kill Emacs if the daemon
+	doesn't detach properly.
+	* emacs.rc (start): Always call Emacs via the wrapper script.
+	* emacs.conf (EMACS_START): Update documentation.
+	(EMACS_TIMEOUT): New variable.
+
 2008-12-03  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs.rc (checkconfig): Use numerical user id for root.
-	(start): Call start-stop-daemon with --background option.
 
 2008-11-30  Ulrich Mueller  <ulm@gentoo.org>
 

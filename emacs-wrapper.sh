@@ -13,7 +13,7 @@ while [ ${timeout} -gt 0 ]; do
     timeout=$((${timeout} - 1))
 done
 
-echo "Timeout while waiting for \"${EMACS} $@\" to detach" 1>&2
+echo "${0##*/}: timeout waiting for \"${EMACS} $@\" to detach" 1>&2
 pkill -P ${pid}
 kill ${pid} 2>/dev/null
 exit 1

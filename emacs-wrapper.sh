@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Start Emacs with a login shell wrapper to read the user's profile.
-# (Sorry tcsh users, this is hardcoded to bash. Patches are welcome.)
-/bin/bash -l -c "${EMACS} $@" </dev/null &>/dev/null &
+export SHELL=${SHELL:-/bin/bash}
+exec -l "${SHELL}" -c "exec \"${EMACS}\" $@" </dev/null &>/dev/null &
 pid=$!
 
 # Wait for Emacs daemon to detach
@@ -14,5 +14,6 @@ while [ ${timeout} -gt 0 ]; do
 done
 
 echo "Timeout while waiting for \"${EMACS} $@\" to detach" 1>&2
-kill ${pid}
+pkill -P ${pid}
+kill ${pid} 2>/dev/null
 exit 1

@@ -1,3 +1,7 @@
+2008-12-07  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.rc (start): Determine SHELL from password file if unset.
+
 2008-12-05  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-wrapper.sh: Add a timeout and kill Emacs if the daemon

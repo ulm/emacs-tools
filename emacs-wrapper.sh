@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Start Emacs with a login shell wrapper to read the user's profile.
+# Start Emacs with a login shell wrapper to read the user's profile
 export SHELL=${SHELL:-/bin/bash}
 exec -l "${SHELL}" -c "exec \"${EMACS}\" $*" </dev/null &>/dev/null &
 pid=$!

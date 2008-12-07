@@ -2,6 +2,7 @@
 
 	* emacs.rc (start): If unset, determine SHELL from passwd file.
 	* emacs.conf (SHELL): Document variable.
+	(EMACS_TIMEOUT): Increase default to 30 seconds on user's request.
 
 	* emacs-wrapper.sh: Add copyright header.
 

@@ -5,7 +5,7 @@
 
 EMACS=${EMACS:-/usr/bin/emacs}
 EMACS_START=${EMACS_START:-/usr/libexec/emacs/emacs-wrapper.sh}
-EMACS_TIMEOUT=${EMACS_TIMEOUT:-15}
+EMACS_TIMEOUT=${EMACS_TIMEOUT:-30}
 USER=${RC_SVCNAME#*.}
 PIDFILE_DIR=/var/run/emacs/${USER}
 PIDFILE=${PIDFILE_DIR}/emacs.pid

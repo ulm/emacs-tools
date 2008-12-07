@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: $
+# $Id$
 
 # Start Emacs with a login shell wrapper to read the user's profile
 export SHELL=${SHELL:-/bin/bash}

@@ -1,3 +1,7 @@
+2008-12-08  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Version 0.8 released.
+
 2008-12-07  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs.rc (start): If unset, determine SHELL from passwd file.

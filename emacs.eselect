@@ -27,7 +27,7 @@ VERSION=$(svn_date_to_version "${SVN_DATE}" )
 
 # ctags and etags are handled in their own module
 BINARYLIST="emacsclient b2m ebrowse rcs-checkin grep-changelog"
-MANPAGELIST="emacs emacsclient gfdl"
+MANPAGELIST="emacs emacsclient ebrowse gfdl"
 
 find_targets() {
 	# Return the list of available Emacs binaries

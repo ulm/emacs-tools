@@ -1,3 +1,7 @@
+2008-12-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* 10emacs-daemon-gentoo.el: Use string-match for the command name.
+
 2008-12-08  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 0.8 released.

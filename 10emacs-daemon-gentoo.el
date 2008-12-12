@@ -17,7 +17,8 @@
 			 (string-to-number (match-string 0))))))))
    (cond
     ((and (integerp pid)
-	  (equal (cdr (assq 'comm (system-process-attributes pid))) "emacs")
+	  (string-match
+	   "emacs" (or (cdr (assq 'comm (system-process-attributes pid))) ""))
 	  (/= pid (emacs-pid)))
      ;; If another Emacs daemon is already running for this user,
      ;; then we would steal its server socket. So we better die.

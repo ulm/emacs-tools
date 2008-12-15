@@ -9,7 +9,9 @@ exec -l "${SHELL}" -c "exec \"${EMACS}\" $*" </dev/null &>/dev/null &
 pid=$!
 
 # Wait for Emacs daemon to detach
-timeout=${EMACS_TIMEOUT:-15}
+[ "${EMACS_TIMEOUT}" ] || exit 0
+
+timeout=${EMACS_TIMEOUT}
 while [ ${timeout} -gt 0 ]; do
     sleep 1
     kill -0 ${pid} 2>/dev/null || exit 0

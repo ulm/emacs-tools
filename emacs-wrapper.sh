@@ -8,9 +8,8 @@ export SHELL=${SHELL:-/bin/bash}
 exec -l "${SHELL}" -c "exec \"${EMACS}\" $*" </dev/null &>/dev/null &
 pid=$!
 
-# Wait for Emacs daemon to detach
 [ "${EMACS_TIMEOUT}" ] || exit 0
-
+# Wait for Emacs daemon to detach
 timeout=${EMACS_TIMEOUT}
 while [ ${timeout} -gt 0 ]; do
     sleep 1

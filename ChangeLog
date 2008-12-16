@@ -1,3 +1,10 @@
+2008-12-16  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.eselect (set_symlinks): Add an option to control the main
+	Emacs symlink, instead of pattern matching the target name.
+	(do_update): Call set_symlinks with the new option, if no explicit
+	target was found.
+
 2008-12-12  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 1.6

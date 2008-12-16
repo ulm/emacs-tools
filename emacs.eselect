@@ -91,7 +91,7 @@ set_man_symlinks() {
 
 set_symlinks() {
 	# Set symlinks to binaries and man pages, update info path
-	local target="${1}" targets
+	local target="${1}" nomain="${2}" targets
 	# target may be specified by its name or its index
 	if is_number "${target}"; then
 		# numeric index, find the target's name
@@ -109,7 +109,7 @@ set_symlinks() {
 	remove_symlinks || die -q "Couldn't remove existing symlink"
 	# the main /usr/bin/emacs symlink is only set for Emacs binaries
 	# (but not for other providers of auxiliary programs, e.g., XEmacs)
-	if [[ ${target} == emacs-* ]]; then
+	if [[ -z ${nomain} ]]; then
 		ln -s "${target}" "${ROOT}/usr/bin/emacs" \
 			|| die "Couldn't set ${target} ${ROOT}/usr/bin/emacs symlink"
 	fi
@@ -155,7 +155,7 @@ describe_show() {
 do_show() {
 	[[ ${#@} -gt 0 ]] && die -q "Too many parameters"
 
-	write_list_start "Current target of GNU Emacs symlink:"
+	write_list_start "Current target of Emacs symlink:"
 	if [[ -L "${ROOT}/usr/bin/emacs" && \
 		  -e $(canonicalise "${ROOT}/usr/bin/emacs") ]]; then
 		write_kv_list_entry \
@@ -189,7 +189,7 @@ do_list() {
 				$(basename $(canonicalise "${ROOT}/usr/bin/emacs") ) ]] \
 				&& targets[${i}]="${targets[${i}]} $(highlight '*')"
 		done
-		write_list_start "Available GNU Emacs symlink targets:"
+		write_list_start "Available Emacs symlink targets:"
 		write_numbered_list "${targets[@]}"
 	else
 		write_kv_list_entry "(none found)" ""
@@ -258,7 +258,7 @@ do_update() {
 		set_symlinks ${#targets[@]} || die -q "Couldn't set a new symlink"
 	elif [[ -f "${ROOT}/usr/bin/xemacs" ]]; then
 		# no Emacs target found -- link ctags, etags etc. to XEmacs versions
-		set_symlinks xemacs
+		set_symlinks xemacs nomain
 	fi
 
 	# ctags symlinks are handled in an own module now

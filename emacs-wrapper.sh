@@ -8,16 +8,17 @@ export SHELL=${SHELL:-/bin/bash}
 exec -l "${SHELL}" -c "exec \"${EMACS}\" $*" </dev/null &>/dev/null &
 pid=$!
 
-[ "${EMACS_TIMEOUT}" ] || exit 0
 # Wait for Emacs daemon to detach
-timeout=${EMACS_TIMEOUT}
+timeout=${EMACS_TIMEOUT:-30}
 while [ ${timeout} -gt 0 ]; do
     sleep 1
-    kill -0 ${pid} 2>/dev/null || exit 0
+    if ! kill -0 ${pid} 2>/dev/null; then
+        wait ${pid}		# get exit status
+        exit $?
+    fi
     timeout=$((${timeout} - 1))
 done
 
 echo "${0##*/}: timeout waiting for ${EMACS} to detach" >&2
-pkill -P ${pid}
-kill ${pid} 2>/dev/null
+kill ${pid} $(pgrep -P ${pid}) 2>/dev/null
 exit 1

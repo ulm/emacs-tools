@@ -159,7 +159,7 @@ do_show() {
 	if [[ -L "${ROOT}/usr/bin/emacs" && \
 		  -e $(canonicalise "${ROOT}/usr/bin/emacs") ]]; then
 		write_kv_list_entry \
-			$(basename $(canonicalise "${ROOT}/usr/bin/emacs") ) ""
+			$(basename $(readlink "${ROOT}/usr/bin/emacs") ) ""
 	elif [[ -e "${ROOT}/usr/bin/emacs" ]]; then
 		write_kv_list_entry \
 			"(not a symlink or target of symlink does not exist)" ""
@@ -186,7 +186,7 @@ do_list() {
 		for (( i = 0; i < ${#targets[@]}; i = i + 1 )); do
 			# Display a star to indicate the currently chosen version
 			[[ ${targets[${i}]} = \
-				$(basename $(canonicalise "${ROOT}/usr/bin/emacs") ) ]] \
+				$(basename $(readlink "${ROOT}/usr/bin/emacs") ) ]] \
 				&& targets[${i}]="${targets[${i}]} $(highlight '*')"
 		done
 		write_list_start "Available Emacs symlink targets:"

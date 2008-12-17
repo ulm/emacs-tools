@@ -1,5 +1,9 @@
 2008-12-16  Ulrich Mueller  <ulm@gentoo.org>
 
+	* ctags.eselect (find_targets, do_show, do_list, do_update):
+	* emacs.eselect (do_show, do_list): Use readlink instead of
+	canonicalise where appropriate.
+
 	* emacs.eselect (set_symlinks): Add an option to control the main
 	Emacs symlink, instead of pattern matching the target name.
 	(do_update): Call set_symlinks with the new option, if no explicit

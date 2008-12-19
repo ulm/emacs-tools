@@ -2,11 +2,12 @@
 .\" Distributed under the terms of the GNU General Public License v2
 .\" $Id$
 .\"
-.TH "emacs-updater" 8 "November 2008" "Gentoo Linux"
+.TH emacs-updater 8 "December 2008" "Gentoo Linux"
 .SH NAME
 emacs-updater \- rebuild Emacs packages
 .SH SYNOPSIS
-.BI "emacs-updater" " [OPTION]..."
+.B emacs-updater
+.I [OPTION]...
 .SH DESCRIPTION
 Find packages that are installed in the wrong location or rebuild all
 GNU Emacs packages.
@@ -15,36 +16,45 @@ GNU Emacs packages.
 .BI "-a, --action" " ACTION[,ACTION]..."
 Specify actions, comma-separated list of:
 
-.IR sitedir :
+.BR sitedir :
 Find site-init files not in the new-style location
 
-.IR rebuild :
-Rebuild packages with Elisp files byte-compiled by a different Emacs version
+.BR rebuild :
+Rebuild packages with Elisp files byte-compiled by a different Emacs
+version
 
-.IR all :
+.BR all :
 Rebuild all packages that have byte-compiled Elisp files
 
-.RI "(default: " sitedir ", " rebuild ")"
+(default:
+.BR sitedir ,
+.BR rebuild )
 .TP
-.B "-e, --exact"
+.B -e, --exact
 Match exact versions when remerging packages
 .TP
-.B "-n, --nocolour"
+.B -n, --nocolour
 Disable colour in output
 .TP
-.B "-p, --pretend"
+.B -p, --pretend
 Don't actually emerge packages
 .TP
 .BI "-P, --package-manager" " PM"
 Select a package manager.
-.IR PM " is one out of " portage " (default), " pkgcore ", or " paludis
+.I PM
+is one out of
+.B portage
+(default),
+.BR pkgcore ,
+or
+.B paludis
 .TP
-.B "-h, --help"
+.B -h, --help
 Display help and exit
 .SH AUTHORS
 Christian Faulhammer <fauli@gentoo.org>
 .br
 Ulrich Mueller <ulm@gentoo.org>
-.SH "SEE ALSO"
+.SH SEE ALSO
 .BR emacs (1),
 .BR qfile (1)

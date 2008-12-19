@@ -16,7 +16,7 @@ while [ ${timeout} -gt 0 ]; do
         wait ${pid}		# get exit status
         exit $?
     fi
-    timeout=$((${timeout} - 1))
+    let timeout--
 done
 
 echo "${0##*/}: timeout waiting for ${EMACS} to detach" >&2

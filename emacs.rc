@@ -41,13 +41,13 @@ start() {
     local home
     checkconfig || return 1
 
-    ebegin "Starting Emacs daemon for ${USER}"
     eval home="~${USER}"
 
     if [ -z "${SHELL}" ]; then
 	SHELL=$(awk -F: "\$1 == \"${USER}\" { print \$7 }" /etc/passwd)
     fi
 
+    ebegin "Starting Emacs daemon for ${USER}"
     start-stop-daemon --start \
 	--user "${USER}" --chdir "${home}" --pidfile "${PIDFILE}" \
 	--env EMACS="${EMACS}" --env EMACS_TIMEOUT="${EMACS_TIMEOUT}" \

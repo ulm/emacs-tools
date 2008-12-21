@@ -1,3 +1,7 @@
+2008-12-21  Ulrich Mueller  <ulm@gentoo.org>
+
+	* version 1.8
+
 2008-12-21  Christian Faulhammer  <fauli@gentoo.org>
 
 	* ctags.eselect (test_for_root):

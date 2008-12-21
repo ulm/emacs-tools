@@ -1,3 +1,9 @@
+2008-12-21  Christian Faulhammer  <fauli@gentoo.org>
+
+	* ctags.eselect (test_for_root):
+	* emacs.eselect (test_for_root): Clarify message a bit, as being
+	root is not needed but root access rights.
+
 2008-12-21  Ulrich Mueller  <ulm@gentoo.org>
 
 	* ctags.eselect (bindir, man1dir):

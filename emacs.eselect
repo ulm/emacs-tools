@@ -148,7 +148,7 @@ vim_info() {
 
 test_for_root() {
 	# checks if the user has rights to modify /usr/bin/
-	[[ -w "${ROOT}${bindir}" ]] || die -q "You need to be root!"
+	[[ -w "${ROOT}${bindir}" ]] || die -q "You need root privileges!"
 }
 
 ### show action ###

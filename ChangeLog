@@ -1,3 +1,10 @@
+2008-12-21  Ulrich Mueller  <ulm@gentoo.org>
+
+	* ctags.eselect (bindir, man1dir):
+	* emacs.eselect (bindir, man1dir, infodir, envdir): New variables
+	for directory names. This will facilitate using this package on
+	Gentoo Prefix, bug 251847.
+
 2008-12-19  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 1.7

@@ -3,6 +3,7 @@
 	* ctags.eselect (test_for_root):
 	* emacs.eselect (test_for_root): Clarify message a bit, as being
 	root is not needed but root access rights.
+	(vim_info): Add a smiley to make clear that it is a joke.
 
 2008-12-21  Ulrich Mueller  <ulm@gentoo.org>
 

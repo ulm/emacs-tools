@@ -142,7 +142,7 @@ vim_info() {
 	# Don't take this too serious
 	if [[ -e "${ROOT}${bindir}/vi" ]]; then
 		echo
-		write_list_start "Vi found, your system is in real trouble now!"
+		write_list_start "Vi found, your system is in real trouble now! ;)"
 	fi
 }
 

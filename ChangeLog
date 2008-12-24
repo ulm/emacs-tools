@@ -1,5 +1,8 @@
 2008-12-24  Ulrich Mueller  <ulm@gentoo.org>
 
+	* emacs-wrapper.sh: Use a "for" loop to time out. Remove redundant
+	argument of "exit".
+
 	* emacs.rc (start): Move ebegin message.
 
 2008-12-19  Ulrich Mueller  <ulm@gentoo.org>

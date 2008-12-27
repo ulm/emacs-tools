@@ -1,3 +1,7 @@
+2008-12-27  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Version 0.10 released.
+
 2008-12-24  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-wrapper.sh: Use a "for" loop to time out. Remove redundant

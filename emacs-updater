@@ -8,7 +8,7 @@
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Mueller <ulm@gentoo.org>
 
-VERSION=1.2_pre
+VERSION=1.2
 SITELISP=/usr/share/emacs/site-lisp
 
 # Default actions

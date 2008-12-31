@@ -6,8 +6,8 @@ PV = $(shell sed '/^[ \t]*\* .*[Vv]ersion/!d;s/[^0-9.]*\([0-9.]*\).*/\1/;q' \
 	ChangeLog)
 P = $(PN)-$(PV)
 
-DISTFILES = ChangeLog emacs.rc emacs.conf emacs-wrapper.sh \
-	10emacs-daemon-gentoo.el README
+DISTFILES = README ChangeLog emacs.rc emacs.conf emacs-wrapper.sh \
+	10emacs-daemon-gentoo.el
 
 
 .PHONY: all dist clean

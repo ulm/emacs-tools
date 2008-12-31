@@ -1,3 +1,9 @@
+2008-12-31  Christian Faulhammer  <fauli@gentoo.org>
+
+	* README: Add little user guide how to use the emacs-daemon script
+
+	* Makefile (DISTFILES): Put it into the tarball
+
 2008-12-27  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 0.10 released.

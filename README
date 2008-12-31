@@ -1,0 +1,32 @@
+User Guide for Emacs Daemon init script
+=======================================
+
+GNU Emacs 23 supports running as a daemon in the background, to which
+a user can connect through the emacsclient program.  No matter if from
+a terminal session (emacsclient -t) or from a X window (emacsclient
+-c), so this gives maximum flexibility in connection with the
+multi-tty extension also added to Emacs 23.
+
+Every user who wants to connect to an Emacs server must have an own
+instance of the daemonized GNU Emacs.  The init script automatically
+determines the user by its name, so you create a symbolic link (do
+not copy the script!) in your /etc/init.d directory:
+
+	ln -s emacs emacs.<username>
+
+Which should then be added to the boot sequence (and will run under
+the user's privileges)
+
+	rc-update add emacs.<username>
+
+File associations in your desktop system should call $(emacsclient
+-c), to get the greatest benefits of the daemon setup.  When closing a
+session or frame, no contents is lost, just reconnect to your server.
+
+Further customizations can be done through the /etc/conf.d/emacs file,
+which is extensively commented.  Global or per user configuration is
+possible, by naming the configuration file.
+
+Please contact the Gentoo GNU Emacs team directly through
+http://bugs.gentoo.org/ (preferred) or by email (emacs@gentoo.org) if
+you have problems, feature requests or found bugs.

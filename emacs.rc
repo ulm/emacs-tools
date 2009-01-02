@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# Copyright 2008 Gentoo Foundation
+# Copyright 2008-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -48,6 +48,8 @@ start() {
     fi
 
     ebegin "Starting Emacs daemon for ${USER}"
+    # This was tested with start-stop-daemon from OpenRC; don't expect
+    # it to work with other implementations.
     start-stop-daemon --start \
 	--user "${USER}" --chdir "${home}" --pidfile "${PIDFILE}" \
 	--env EMACS="${EMACS}" --env EMACS_TIMEOUT="${EMACS_TIMEOUT}" \
@@ -56,6 +58,11 @@ start() {
 }
 
 stop() {
+    # Optionally, call a custom script before stopping.
+    if [ "${EMACS_STOP}" ] && [ -x "${EMACS_STOP}" ]; then
+        "${EMACS_STOP}" || return
+    fi
+
     ebegin "Stopping Emacs daemon for ${USER}"
     start-stop-daemon --stop --user "${USER}" \
 	--pidfile "${PIDFILE}" --exec "${EMACS}"

@@ -63,7 +63,7 @@ stop() {
         "${EMACS_STOP}" || return
     fi
 
-    ebegin "Stopping Emacs daemon for ${USER}"
+    ebegin "Stopping Emacs daemon for user ${USER}"
     start-stop-daemon --stop --user "${USER}" \
 	--pidfile "${PIDFILE}" --exec "${EMACS}"
     eend $?

@@ -47,7 +47,7 @@ start() {
 	SHELL=$(awk -F: "\$1 == \"${USER}\" { print \$7 }" /etc/passwd)
     fi
 
-    ebegin "Starting Emacs daemon for ${USER}"
+    ebegin "Starting Emacs daemon for user ${USER}"
     # This was tested with start-stop-daemon from OpenRC; don't expect
     # it to work with other implementations.
     start-stop-daemon --start \

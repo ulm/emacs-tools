@@ -1,3 +1,8 @@
+2009-01-09  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater (EMACS): New variable, path of Emacs executable.
+	(emacs-version): Use it.
+
 2008-12-30  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 1.2 released.
@@ -175,5 +180,5 @@
 
 	* emacs-updater.sh: first version of Emacs updater
 
-Copyright 2007-2008 Gentoo Foundation
+Copyright 2007-2009 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2

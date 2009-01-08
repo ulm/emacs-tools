@@ -1,6 +1,5 @@
 #!/bin/bash
-
-# Copyright 2007-2008 Gentoo Foundation
+# Copyright 2007-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,6 +8,7 @@
 # Ulrich Mueller <ulm@gentoo.org>
 
 VERSION=1.2
+EMACS=/usr/bin/emacs
 SITELISP=/usr/share/emacs/site-lisp
 
 # Default actions
@@ -133,7 +133,7 @@ failure() {
 }
 
 emacs-version() {
-    /usr/bin/emacs -batch -q --no-site-file --eval "(princ emacs-version)" \
+    "${EMACS}" -batch -q --no-site-file --eval "(princ emacs-version)" \
 	|| { failure "Cannot run Emacs"; exit 5; }
 }
 

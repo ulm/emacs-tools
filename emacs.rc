@@ -3,9 +3,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EMACS=${EMACS:-/usr/bin/emacs}
-EMACS_START=${EMACS_START:-/usr/libexec/emacs/emacs-wrapper.sh}
-EMACS_TIMEOUT=${EMACS_TIMEOUT:-30}
+: ${EMACS:=/usr/bin/emacs}
+: ${EMACS_OPTS:=--daemon}
+: ${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}
+: ${EMACS_TIMEOUT:=30}
 USER=${RC_SVCNAME#*.}
 PIDFILE_DIR=/var/run/emacs/${USER}
 PIDFILE=${PIDFILE_DIR}/emacs.pid
@@ -53,7 +54,7 @@ start() {
     start-stop-daemon --start \
 	--user "${USER}" --chdir "${home}" --pidfile "${PIDFILE}" \
 	--env EMACS="${EMACS}" --env EMACS_TIMEOUT="${EMACS_TIMEOUT}" \
-	--exec "${EMACS_START}" -- --daemon ${EMACS_OPTS}
+	--exec "${EMACS_START}" -- ${EMACS_OPTS}
     eend $?
 }
 

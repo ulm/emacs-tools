@@ -10,7 +10,8 @@ the multi-tty extension also available in Emacs 23.
 Every user who wants to connect to an Emacs server must have an own
 instance of the daemonized GNU Emacs.  The init script automatically
 determines the user by its name, so you create a symbolic link (do
-not copy the script!) in your /etc/init.d directory:
+not copy the script, or you will miss eventual updates!) in your
+/etc/init.d directory:
 
 	ln -s emacs /etc/init.d/emacs.<username>
 

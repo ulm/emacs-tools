@@ -1,9 +1,12 @@
+2009-02-01  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Version 0.12 released.
+
 2009-01-28  Ulrich Mueller  <ulm@gentoo.org>
 
-	* emacs.rc (depend): Add dependencies and start after dbus daemon.
-	Emacs must register with D-Bus at load time, otherwise notify.el
-	doesn't work. Thanks to Tassilo Horn <tassilo@member.fsf.org> for
-	pointing this out. Depend on localmount and bootmisc, too.
+	* emacs.rc (depend): Add dependencies, in order to start after the
+	D-Bus daemon. Thanks to Tassilo Horn <tassilo@member.fsf.org> for
+	pointing this out. Also depend on localmount and bootmisc.
 
 2009-01-21  Ulrich Mueller  <ulm@gentoo.org>
 

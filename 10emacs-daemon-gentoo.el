@@ -1,7 +1,13 @@
 
 ;;; emacs-daemon site-lisp configuration
-;; Copyright 2008 Gentoo Foundation
+;; Copyright 2008-2009 Gentoo Foundation
 ;; Distributed under the terms of the GNU General Public License v2 or later
+
+;; Backwards compatibility code, can be removed some time after the
+;; Emacs 23.0.91 snapshot
+(and (not (fboundp 'process-attributes))
+     (fboundp 'system-process-attributes)
+     (defalias 'process-attributes 'system-process-attributes))
 
 (and
  (fboundp 'daemonp)
@@ -18,7 +24,7 @@
    (cond
     ((and (integerp pid)
 	  (string-match
-	   "emacs" (or (cdr (assq 'comm (system-process-attributes pid))) ""))
+	   "emacs" (or (cdr (assq 'comm (process-attributes pid))) ""))
 	  (/= pid (emacs-pid)))
      ;; If another Emacs daemon is already running for this user,
      ;; then we would steal its server socket. So we better die.

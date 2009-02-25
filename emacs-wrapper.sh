@@ -1,10 +1,9 @@
 #!/bin/bash
-# Copyright 2008 Gentoo Foundation
+# Copyright 2008-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # Start Emacs with a login shell wrapper to read the user's profile
-export SHELL=${SHELL:-/bin/bash}
 exec -l "${SHELL}" -c "exec \"${EMACS}\" $*" </dev/null &>/dev/null &
 pid=$!
 

@@ -52,6 +52,7 @@ start() {
     if [ -z "${SHELL}" ]; then
 	SHELL=$(awk -F: "\$1 == \"${USER}\" { print \$7 }" /etc/passwd)
     fi
+    export SHELL
 
     ebegin "Starting Emacs daemon for user ${USER}"
     # This was tested with start-stop-daemon from OpenRC; don't expect

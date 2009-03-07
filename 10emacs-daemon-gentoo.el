@@ -3,12 +3,6 @@
 ;; Copyright 2008-2009 Gentoo Foundation
 ;; Distributed under the terms of the GNU General Public License v2 or later
 
-;; Backwards compatibility code, can be removed some time after the
-;; Emacs 23.0.91 snapshot
-(and (not (fboundp 'process-attributes))
-     (fboundp 'system-process-attributes)
-     (defalias 'process-attributes 'system-process-attributes))
-
 (and
  (fboundp 'daemonp)
  (daemonp)

@@ -1,13 +1,22 @@
+2009-03-07  Ulrich Mueller  <ulm@gentoo.org>
+
+	* version 1.0
+
+	* Makefile (PN): Package renamed from emacs-desktop to
+	emacs-common-gentoo since it is more general now.
+
+	* subdirs.el: New file.
+	* Makefile (DISTFILES): Add it.
+
 2007-12-28  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 0.3
 
 	* Makefile (DESKTOPFILES): Validate with desktop-file-validate.
 
-	* emacsclient.desktop: Ditto.
-
 	* emacs.desktop: Canonical ordering for desktop entry keys.
 	(Version): Key added.
+	* emacsclient.desktop: Ditto.
 
 2007-12-10  Christian Faulhammer  <opfer@gentoo.org>
 
@@ -60,5 +69,5 @@
 
 	* emacs.desktop (Type): Set Type=Application only
 
-Copyright 2007-2008 Gentoo Foundation
+Copyright 2007-2009 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2

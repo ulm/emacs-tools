@@ -1,15 +1,13 @@
-# Copyright 2007-2008 Gentoo Foundation
+# Copyright 2007-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-PN = emacs-desktop
-#PV = $(shell sed '/^Version/h;$$!d;g;s/[^0-9.]*\([0-9.]*\).*/\1/' ChangeLog)
-PV = $(shell sed '/^[ \t]*\* [Vv]ersion/!d;s/[^0-9.]*\([0-9.]*\).*/\1/;q' \
+PN = emacs-common-gentoo
+PV = $(shell sed '/^[ \t]*\* [Vv]ersion/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' \
 	ChangeLog)
 P = $(PN)-$(PV)
 
 DESKTOPFILES = emacs.desktop emacsclient.desktop
-DISTFILES = $(DESKTOPFILES) \
-	README.icons emacs.png \
+DISTFILES = subdirs.el $(DESKTOPFILES) README.icons emacs.png \
 	emacs_16.png emacs_24.png emacs_32.png emacs_48.png gnured_48.png
 
 

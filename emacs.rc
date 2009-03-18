@@ -5,6 +5,7 @@
 
 : ${EMACS:=/usr/bin/emacs}
 : ${EMACS_OPTS:=--daemon}
+: ${EMACS_SHELL=/bin/bash}
 : ${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}
 : ${EMACS_TIMEOUT:=30}
 USER=${RC_SVCNAME#*.}
@@ -30,8 +31,6 @@ checkconfig() {
 	return 1
     fi
 
-    # Executing Emacs here also ensures a warm cache, which later helps
-    # to create the pid file in a timely manner (within 0.5 seconds).
     local has_daemon=$(${EMACS} -batch -q --no-site-file \
 	--eval "(princ (fboundp 'daemonp))")
     if [ "${has_daemon}" != t ]; then
@@ -49,9 +48,8 @@ start() {
 
     eval home="~${USER}"
 
-    if [ -z "${SHELL}" ]; then
-	SHELL=$(awk -F: "\$1 == \"${USER}\" { print \$7 }" /etc/passwd)
-    fi
+    SHELL=${EMACS_SHELL:-$(awk -F: "\$1 == \"${USER}\" { print \$7 }" \
+	/etc/passwd)}
     export SHELL
 
     ebegin "Starting Emacs daemon for user ${USER}"

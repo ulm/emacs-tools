@@ -1,5 +1,7 @@
 2009-03-18  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 0.14 released.
+
 	* emacs.rc (start): Initialise SHELL variable from EMACS_SHELL;
 	use information from the passwd file as fallback.
 	(EMACS_SHELL): Default to bash.

@@ -153,7 +153,6 @@ action_sitedir() {
 
     for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el
     do
-	[ "${sf##*/}" = 00site-gentoo.el ] && continue
 	echo "Found ${sf##*/}"
 	echo "${sf}" >> "${TMPFILE}"
     done

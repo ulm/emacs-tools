@@ -1,5 +1,5 @@
 # Copyright 2007-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
+# Distributed under the terms of the GNU General Public License v2 or later
 
 PN = emacs-common-gentoo
 PV = $(shell sed '/^[ \t]*\* [Vv]ersion/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' \
@@ -7,8 +7,12 @@ PV = $(shell sed '/^[ \t]*\* [Vv]ersion/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' \
 P = $(PN)-$(PV)
 
 DESKTOPFILES = emacs.desktop emacsclient.desktop
-DISTFILES = subdirs.el $(DESKTOPFILES) README.icons emacs.png \
-	emacs_16.png emacs_24.png emacs_32.png emacs_48.png gnured_48.png
+ICONFILES = emacs.png sink.png \
+	emacs_16.png emacs_24.png emacs_32.png emacs_48.png \
+	emacs23_16.png emacs23_24.png emacs23_32.png emacs23_48.png \
+	emacs23_128.png
+DISTFILES = subdirs.el $(DESKTOPFILES) \
+	$(addprefix icons/,COPYRIGHT.icons $(ICONFILES))
 
 
 .PHONY: all dist clean $(DESKTOPFILES)

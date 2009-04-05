@@ -1,3 +1,19 @@
+2009-04-05  Ulrich Mueller  <ulm@gentoo.org>
+
+	* icons/emacs.png, icons/emacs_16.png, icons/emacs_24.png:
+	* icons/emacs_32.png, icons/emacs_48.png: Moved to subdirectory.
+	* icons/emacs23_16.png, icons/emacs23_24.png:
+	* icons/emacs23_32.png, icons/emacs23_48.png:
+	* icons/emacs23_128.png: New files, taken from Emacs 23.0.92,
+	optimised with OptiPNG.
+	* icons/sink.png: New file, converted from sink.h of Emacs 18.41.
+	* gnured_48.png: File removed.
+	* icons/COPYRIGHT.icons: Renamed from README.icons and updated.
+
+	* Makefile: Change licence from GPL v2 only to GPL v2 or later.
+	(ICONFILES): New variable.
+	(DISTFILES): Update.
+
 2009-03-07  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 1.0 released.
@@ -78,4 +94,4 @@
 	* emacs.desktop, emacs.png: New files.
 
 Copyright 2007-2009 Gentoo Foundation
-Distributed under the terms of the GNU General Public License v2
+Distributed under the terms of the GNU General Public License v2 or later

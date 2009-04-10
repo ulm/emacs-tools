@@ -1,3 +1,7 @@
+2009-04-10  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.desktop (StartupWMClass): Key added.
+
 2009-04-05  Ulrich Mueller  <ulm@gentoo.org>
 
 	* icons/emacs.png, icons/emacs_16.png, icons/emacs_24.png:

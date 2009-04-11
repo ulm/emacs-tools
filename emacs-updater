@@ -111,7 +111,7 @@ do
 	    case "${2}" in
 		auto|automatic) PM_COMMAND=pm_auto ;;
 		portage|pkgcore|paludis)
-		    if ! "have_${2}"; then
+		    if ! have_${2}; then
 			echo "Package manager '${2}' not found!"
 			exit 22
 		    fi

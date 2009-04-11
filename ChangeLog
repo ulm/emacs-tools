@@ -1,3 +1,11 @@
+2009-04-11  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater (have_portage, have_pkgcore, have_paludis):
+	New functions, return true if respective package manager exists.
+	(pm_auto, have_auto): New function, find a package manager.
+	(PM_COMMAND): Default to pm_auto.
+	Test if package manager selected by -P option actually exists.
+
 2009-03-22  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater (action_sitedir): 00site-gentoo.el should not

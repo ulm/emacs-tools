@@ -1,3 +1,9 @@
+2009-04-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* icons/emacs23.svg: New file, SVG icon from Emacs CVS trunk.
+	* icons/COPYRIGHT.icons: Update.
+	* Makefile (ICONFILES): Update.
+
 2009-04-10  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs.desktop (StartupWMClass): Key added.

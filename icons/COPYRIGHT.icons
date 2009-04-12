@@ -24,3 +24,10 @@ Files: emacs23_16.png emacs23_24.png emacs23_32.png emacs23_48.png
   Author: Kentaro Ohkouchi <nanasess@fsm.ne.jp>
   Copyright (C) 2007, 2008, 2009  Free Software Foundation, Inc.
   License: GNU General Public License version 3 or later
+
+File: emacs23.svg
+  Taken from Emacs CVS trunk at 2009-04-12
+  Authors: Kentaro Ohkouchi <nanasess@fsm.ne.jp>
+           Chong Yidong <cyd@stupidchicken.com>
+  Copyright (C) 2008, 2009  Free Software Foundation, Inc.
+  License: GNU General Public License version 3 or later

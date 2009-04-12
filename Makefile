@@ -10,7 +10,7 @@ DESKTOPFILES = emacs.desktop emacsclient.desktop
 ICONFILES = emacs.png sink.png \
 	emacs_16.png emacs_24.png emacs_32.png emacs_48.png \
 	emacs23_16.png emacs23_24.png emacs23_32.png emacs23_48.png \
-	emacs23_128.png
+	emacs23_128.png emacs23.svg
 DISTFILES = subdirs.el $(DESKTOPFILES) \
 	$(addprefix icons/,COPYRIGHT.icons $(ICONFILES))
 

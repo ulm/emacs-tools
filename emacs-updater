@@ -69,7 +69,8 @@ pm_auto() {
     local pm
     for pm in portage pkgcore paludis; do
 	if have_${pm}; then
-	    pm_${pm} "$@"
+	    PM_COMMAND=pm_${pm}
+	    ${PM_COMMAND} "$@"
 	    return
 	fi
     done

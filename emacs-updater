@@ -130,7 +130,7 @@ do
     esac
 done
 
-# Only set colours if output is not redirected or the --no-colour
+# Only set colours if output is not redirected or the --nocolour
 # option is not set
 if [ -t 1 ] && [ -z "${NOCOLOUR}" ] ; then
     BOLD=$(tput bold)

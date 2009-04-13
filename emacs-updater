@@ -80,7 +80,7 @@ pm_auto() {
 
 # Read in all command-line options and force English output
 OPTIONS=$(LC_ALL=C getopt -o a:ehnpP: \
-    --long action:,exact,help,nocolour,pretend,package-manager: \
+    --long action:,exact,help,nocolour,nocolor,pretend,package-manager: \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
 
@@ -92,7 +92,7 @@ do
 	-h|--help)      usage 0 ;;
 	-e|--exact)     EXACT="true"; shift 1 ;;
 	-p|--pretend)   PRETEND="true"; shift 1 ;;
-	-n|--nocolour)  NOCOLOUR="true"; shift 1 ;;
+	-n|--nocolour|--nocolor) NOCOLOUR="true"; shift 1 ;;
 	-a|--action)
 	    ACTIONS=
 	    for action in ${2/,/ }; do
@@ -133,16 +133,16 @@ done
 # Only set colours if output is not redirected or the --no-colour
 # option is not set
 if [ -t 1 ] && [ -z "${NOCOLOUR}" ] ; then
-    RED=$(tput -S <<<$'setaf 1\nbold')
-    GREEN=$(tput -S <<<$'setaf 2\nbold')
-    YELLOW=$(tput -S <<<$'setaf 3\nbold')
-    BLUE=$(tput -S <<<$'setaf 4\nbold')
-    MAGENTA=$(tput -S <<<$'setaf 5\nbold')
-    CYAN=$(tput -S <<<$'setaf 6\nbold')
     BOLD=$(tput bold)
     NORMAL=$(tput sgr0)
+    RED=$(tput setaf 1)${BOLD}
+    GREEN=$(tput setaf 2)${BOLD}
+    YELLOW=$(tput setaf 3)${BOLD}
+    BLUE=$(tput setaf 4)${BOLD}
+    MAGENTA=$(tput setaf 5)${BOLD}
+    CYAN=$(tput setaf 6)${BOLD}
 else
-    RED=; GREEN=; YELLOW=; BLUE=; MAGENTA=; CYAN=; BOLD=; NORMAL=
+    BOLD=; NORMAL=; RED=; GREEN=; YELLOW=; BLUE=; MAGENTA=; CYAN=
 fi
 
 # Some type of output can be prettified and capsulated in functions

@@ -1,3 +1,8 @@
+2009-04-13  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater (RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN):
+	Change initialisation, since POSIX tput has no -S option.
+
 2009-04-11  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater (have_portage, have_pkgcore, have_paludis):

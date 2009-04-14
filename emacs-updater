@@ -7,7 +7,7 @@
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Mueller <ulm@gentoo.org>
 
-VERSION=1.4_pre
+VERSION=1.4
 EMACS=/usr/bin/emacs
 SITELISP=/usr/share/emacs/site-lisp
 
@@ -44,7 +44,8 @@ usage() {
 	X                           byte-compiled Elisp files
 	X                         (default: sitedir,rebuild)
 	X  -e, --exact            match exact versions when remerging packages
-	X  -n, --nocolour         disable colour in output
+	X  -n, --nocolour, --nocolor
+	X                         disable colour in output
 	X  -p, --pretend          don't actually emerge packages
 	X  -P, --package-manager <arg>
 	X                         select a package manager. arg is one out of

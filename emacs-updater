@@ -168,7 +168,7 @@ emacs-version() {
 
 # Get Emacs version from byte-compiled file
 bytecomp-version() {
-    sed -n '/^[^;]/q;s/\.$//;s/.*emacs version \([0-9].*\)/\1/Ip' "${1}"
+    sed -n '/^[^;]/q;s/\.$//;s/.*[Ee]macs version \([0-9].*\)/\1/p' "${1}"
 }
 
 action_sitedir() {

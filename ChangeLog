@@ -1,3 +1,9 @@
+2009-04-18  Ulrich Mueller  <ulm@gentoo.org>
+
+	* ctags.eselect (do_list):
+	* emacs.eselect (do_list): Always output a list header, even if
+	the list of targets is empty.
+
 2008-12-21  Ulrich Mueller  <ulm@gentoo.org>
 
 	* version 1.8

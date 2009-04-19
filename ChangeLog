@@ -1,8 +1,13 @@
 2009-04-18  Ulrich Mueller  <ulm@gentoo.org>
 
-	* ctags.eselect (do_list):
+	* ctags.eselect	(do_list): Always output a list header, even if
+	the list of targets is empty.
+	(set_symlinks, do_list): Simplify syntax used for array index.
+
 	* emacs.eselect (do_list): Always output a list header, even if
 	the list of targets is empty.
+	(do_update): Pass target name instead of number to set_symlinks.
+	(set_symlinks, do_list): Simplify syntax used for array index.
 
 2008-12-21  Ulrich Mueller  <ulm@gentoo.org>
 

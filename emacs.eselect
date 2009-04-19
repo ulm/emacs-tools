@@ -103,7 +103,7 @@ set_symlinks() {
 		targets=( $(find_targets) )
 		[[ ${target} -ge 1 && ${target} -le ${#targets[@]} ]] \
 			|| die -q "Number out of range: ${1}"
-		target=${targets[$(( ${target} - 1 ))]}
+		target=${targets[target-1]}
 	fi
 
 	# is the target valid, i.e. does an Emacs binary with this name exist?
@@ -191,9 +191,9 @@ do_list() {
 	if [[ -n ${targets[@]} ]]; then
 		for (( i = 0; i < ${#targets[@]}; i = i + 1 )); do
 			# Display a star to indicate the currently chosen version
-			[[ ${targets[${i}]} = \
+			[[ ${targets[i]} = \
 				$(basename $(readlink "${ROOT}${bindir}/emacs") ) ]] \
-				&& targets[${i}]="${targets[${i}]} $(highlight '*')"
+				&& targets[i]="${targets[i]} $(highlight '*')"
 		done
 		write_numbered_list "${targets[@]}"
 	else
@@ -261,7 +261,8 @@ do_update() {
 
 	local targets=( $(find_targets) )
 	if [[ ${#targets[@]} -gt 0 ]]; then
-		set_symlinks ${#targets[@]} || die -q "Couldn't set a new symlink"
+		set_symlinks "${targets[${#targets[@]}-1]}" \
+			|| die -q "Couldn't set a new symlink"
 	elif [[ -f "${ROOT}${bindir}/xemacs" ]]; then
 		# no Emacs target found -- link ctags, etags etc. to XEmacs versions
 		set_symlinks xemacs nomain

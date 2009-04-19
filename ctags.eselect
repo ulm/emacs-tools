@@ -92,7 +92,7 @@ set_symlinks() {
 		targets=( $(find_targets) )
 		[[ ${target} -ge 1 && ${target} -le ${#targets[@]} ]] \
 			|| die -q "Number out of range: ${1}"
-		target=${targets[$(( ${target} - 1 ))]}
+		target=${targets[target-1]}
 	fi
 
 	# is the target valid, i.e. does a ctags binary with this name exist?
@@ -149,9 +149,9 @@ do_list() {
 	if [[ -n ${targets[@]} ]]; then
 		for (( i = 0; i < ${#targets[@]}; i = i + 1 )); do
 			# Display a star to indicate the currently chosen version
-			[[ ${targets[${i}]} = \
+			[[ ${targets[i]} = \
 				$(basename $(readlink "${ROOT}${bindir}/${CTAGS}") ) ]] \
-				&& targets[${i}]="${targets[${i}]} $(highlight '*')"
+				&& targets[i]="${targets[i]} $(highlight '*')"
 		done
 		write_numbered_list "${targets[@]}"
 	else

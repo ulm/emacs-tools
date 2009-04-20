@@ -221,7 +221,7 @@ do_update() {
 		target=${targets[0]}
 		[[ ${current} == ${CTAGS}-*emacs* ]] && current="${CTAGS}-*emacs*"
 		for i in ${targets[@]}; do
-			[[ ${i} == "${current}" ]] && target=${i}
+			[[ ${i} == ${current} ]] && target=${i}
 		done
 		set_symlinks "${target}" || die -q "Couldn't set a new symlink"
 	fi

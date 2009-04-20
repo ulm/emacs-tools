@@ -1,3 +1,8 @@
+2009-04-20  Ulrich Mueller  <ulm@gentoo.org>
+
+	* ctags.eselect:
+	* emacs.eselect: Remove unnecessary quotes and other small fixes.
+
 2009-04-18  Ulrich Mueller  <ulm@gentoo.org>
 
 	* ctags.eselect	(do_list): Always output a list header, even if

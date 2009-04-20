@@ -219,7 +219,7 @@ do_update() {
 	local i target targets=( $(find_targets) )
 	if [[ ${#targets[@]} -gt 0 && ${current} != nolink ]]; then
 		target=${targets[0]}
-		[[ ${current} == ${CTAGS}-*emacs* ]] && current="${CTAGS}-*emacs*"
+		[[ ${current} == ${CTAGS}-*emacs* ]] && current=${CTAGS}-*emacs*
 		for i in ${targets[@]}; do
 			[[ ${i} == ${current} ]] && target=${i}
 		done

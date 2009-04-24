@@ -189,7 +189,7 @@ do_list() {
 
 	write_list_start "Available Emacs symlink targets:"
 	if [[ -n ${targets[@]} ]]; then
-		for (( i = 0; i < ${#targets[@]}; i = i + 1 )); do
+		for (( i = 0; i < ${#targets[@]}; i++ )); do
 			# Display a star to indicate the currently chosen version
 			[[ ${targets[i]} = \
 				$(basename "$(readlink "${ROOT}${bindir}/emacs")") ]] \

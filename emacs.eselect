@@ -243,7 +243,7 @@ describe_update_options() {
 }
 
 do_update() {
-	[[ -z $1 || $1 == ifunset || $1 == --if-unset ]] || die -q "Usage error"
+	[[ -z $1 || $1 = ifunset || $1 = --if-unset ]] || die -q "Usage error"
 	[[ $# -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 

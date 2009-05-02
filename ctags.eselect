@@ -45,7 +45,7 @@ find_targets() {
 		[[ -f ${ROOT}${bindir}/${CTAGS}-${emacs} ]] && echo "${CTAGS}-${emacs}"
 	elif [[ -f ${ROOT}${bindir}/xemacs ]]; then
 		[[ -f ${ROOT}${bindir}/${CTAGS}-xemacs ]] && echo "${CTAGS}-xemacs"
-	elif [[ ${CTAGS} == etags ]]; then
+	elif [[ ${CTAGS} = etags ]]; then
 		# We are called as etags module, but no (X)Emacs is installed.
 		# Return an empty list in this case, because we don't want
 		# exuberant-ctags as default for etags (for ctags it's fine).
@@ -193,7 +193,7 @@ describe_update() {
 }
 
 do_update() {
-	[[ -z $1 || $1 == norecursion ]] || die -q "Usage error"
+	[[ -z $1 || $1 = norecursion ]] || die -q "Usage error"
 	[[ $# -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
@@ -205,7 +205,7 @@ do_update() {
 			remove_symlinks || die -q "Couldn't remove existing symlink"
 		fi
 	elif [[ -e ${ROOT}${bindir}/${CTAGS} ]]; then
-		if ! [[ ${CTAGS} == ctags && $(uname) == FreeBSD ]]; then
+		if ! [[ ${CTAGS} = ctags && $(uname) = FreeBSD ]]; then
 			die -q "${ROOT}${bindir}/${CTAGS} exists but is not a symlink"
 		fi
 		# On FreeBSD ctags is a real file, installed by freebsd-ubin
@@ -227,7 +227,7 @@ do_update() {
 	fi
 
 	# Call "eselect etags update" from the ctags module and vice versa
-	[[ $1 == norecursion ]] && return
+	[[ $1 = norecursion ]] && return
 	case ${CTAGS} in
 		ctags) CTAGS=etags do_update norecursion ;;
 		etags) CTAGS=ctags do_update norecursion ;;

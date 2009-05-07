@@ -1,5 +1,7 @@
 2009-05-07  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 1.10 released.
+
 	* ctags.eselect (do_update, describe_update_options): Support new
 	option "ifunset" with the same meaning as for the emacs module.
 	* emacs.eselect (do_update): Call the ctags module also in the

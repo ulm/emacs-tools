@@ -191,44 +191,53 @@ describe_update() {
 	echo "Automatically update the ${CTAGS} symlink"
 }
 
+describe_update_options() {
+	echo "ifunset : Do not override currently set version"
+}
+
 do_update() {
-	[[ -z $1 || $1 = norecursion ]] || die -q "Usage error"
-	[[ $# -gt 1 ]] && die -q "Too many parameters"
+	[[ -z $1 || $1 = ifunset || $1 = --if-unset ]] || die -q "Usage error"
+	[[ -z $2 || $2 = norecursion ]] || die -q "Usage error"
+	[[ $# -gt 2 ]] && die -q "Too many parameters"
 	test_for_root
 
-	local current=""
-	if [[ -L ${ROOT}${bindir}/${CTAGS} ]]; then
-		current=$(basename "$(readlink "${ROOT}${bindir}/${CTAGS}")")
-		if [[ ! -e ${ROOT}${bindir}/${CTAGS} ]]; then
-			# clean up dead symlinks
-			remove_symlinks || die -q "Couldn't remove existing symlink"
+	if ! [[ $1 == *if*unset \
+		&& -L ${ROOT}${bindir}/${CTAGS} && -e ${ROOT}${bindir}/${CTAGS} ]]
+	then
+		local current=""
+		if [[ -L ${ROOT}${bindir}/${CTAGS} ]]; then
+			current=$(basename "$(readlink "${ROOT}${bindir}/${CTAGS}")")
+			if [[ ! -e ${ROOT}${bindir}/${CTAGS} ]]; then
+				# clean up dead symlinks
+				remove_symlinks || die -q "Couldn't remove existing symlink"
+			fi
+		elif [[ -e ${ROOT}${bindir}/${CTAGS} ]]; then
+			if ! [[ ${CTAGS} = ctags && $(uname) = FreeBSD ]]; then
+				die -q "${ROOT}${bindir}/${CTAGS} exists but is not a symlink"
+			fi
+			# On FreeBSD ctags is a real file, installed by freebsd-ubin
+			current=nolink
 		fi
-	elif [[ -e ${ROOT}${bindir}/${CTAGS} ]]; then
-		if ! [[ ${CTAGS} = ctags && $(uname) = FreeBSD ]]; then
-			die -q "${ROOT}${bindir}/${CTAGS} exists but is not a symlink"
+
+		# For an "update" only the version should be changed, but not the
+		# provider (i.e. Emacs vs Exuberant). At the moment only (X)Emacs
+		# offers several concurrent versions.
+
+		local i target targets=( $(find_targets) )
+		if [[ ${#targets[@]} -gt 0 && ${current} != nolink ]]; then
+			target=${targets[0]}
+			[[ ${current} == ${CTAGS}-*emacs* ]] && current=${CTAGS}-*emacs*
+			for i in ${targets[@]}; do
+				[[ ${i} == ${current} ]] && target=${i}
+			done
+			set_symlinks "${target}" || die -q "Couldn't set a new symlink"
 		fi
-		# On FreeBSD ctags is a real file, installed by freebsd-ubin
-		current=nolink
-	fi
-
-	# For an "update" only the version should be changed, but not the
-	# provider (i.e. Emacs vs Exuberant). At the moment only (X)Emacs
-	# offers several concurrent versions.
-
-	local i target targets=( $(find_targets) )
-	if [[ ${#targets[@]} -gt 0 && ${current} != nolink ]]; then
-		target=${targets[0]}
-		[[ ${current} == ${CTAGS}-*emacs* ]] && current=${CTAGS}-*emacs*
-		for i in ${targets[@]}; do
-			[[ ${i} == ${current} ]] && target=${i}
-		done
-		set_symlinks "${target}" || die -q "Couldn't set a new symlink"
 	fi
 
 	# Call "eselect etags update" from the ctags module and vice versa
-	[[ $1 = norecursion ]] && return
+	[[ $2 = norecursion ]] && return
 	case ${CTAGS} in
-		ctags) CTAGS=etags do_update norecursion ;;
-		etags) CTAGS=ctags do_update norecursion ;;
+		ctags) CTAGS=etags do_update "$1" norecursion ;;
+		etags) CTAGS=ctags do_update "$1" norecursion ;;
 	esac
 }

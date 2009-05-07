@@ -246,24 +246,28 @@ do_update() {
 	[[ $# -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
-	if [[ -L ${ROOT}${bindir}/emacs ]]; then
-		[[ $1 == *if*unset && -e ${ROOT}${bindir}/emacs ]] && return
-		# this is not redundant: "update" is called in pkg_postrm() of emacs
-		# and should clean up any dead symlinks if no valid target exists
-		remove_symlinks || die -q "Couldn't remove existing symlink"
-	elif [[ -e ${ROOT}${bindir}/emacs ]]; then
-		die -q "${ROOT}${bindir}/emacs exists but is not a symlink"
-	fi
+	if ! [[ $1 == *if*unset \
+		&& -L ${ROOT}${bindir}/emacs && -e ${ROOT}${bindir}/emacs ]]
+	then
+		if [[ -L ${ROOT}${bindir}/emacs ]]; then
+			# this is not redundant: "update" is called in pkg_postrm()
+			# of emacs and should clean up any dead symlinks if no
+			# valid target exists
+			remove_symlinks || die -q "Couldn't remove existing symlink"
+		elif [[ -e ${ROOT}${bindir}/emacs ]]; then
+			die -q "${ROOT}${bindir}/emacs exists but is not a symlink"
+		fi
 
-	local targets=( $(find_targets) )
-	if [[ ${#targets[@]} -gt 0 ]]; then
-		set_symlinks "${targets[${#targets[@]}-1]}" \
-			|| die -q "Couldn't set a new symlink"
-	elif [[ -f ${ROOT}${bindir}/xemacs ]]; then
+		local targets=( $(find_targets) )
+		if [[ ${#targets[@]} -gt 0 ]]; then
+			set_symlinks "${targets[${#targets[@]}-1]}" \
+				|| die -q "Couldn't set a new symlink"
+		elif [[ -f ${ROOT}${bindir}/xemacs ]]; then
 		# no Emacs target found - link to XEmacs versions
-		set_symlinks xemacs nomain
+			set_symlinks xemacs nomain
+		fi
 	fi
 
-	# ctags symlinks are handled in an own module now
-	do_action ctags update
+	# ctags and etags symlinks are handled in an own module
+	do_action ctags update "$@"
 }

@@ -4,6 +4,7 @@
 	option "ifunset" with the same meaning as for the emacs module.
 	* emacs.eselect (do_update): Call the ctags module also in the
 	case when option "ifunset" was specified, bug 268064.
+	* ctags.eselect.5: Document the new option.
 
 	* ctags.eselect (find_targets, do_show, do_update):
 	* emacs.eselect (do_show, do_update): "canonicalise" is not

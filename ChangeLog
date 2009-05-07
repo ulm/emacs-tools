@@ -1,3 +1,8 @@
+2009-05-07  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.eselect (do_show, do_update): "canonicalise" is not
+	necessary since "test -e" resolves symbolic links.
+
 2009-05-02  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 1.9 released.
@@ -12,7 +17,7 @@
 
 2009-04-18  Ulrich Mueller  <ulm@gentoo.org>
 
-	* ctags.eselect	(do_list): Always output a list header, even if
+	* ctags.eselect (do_list): Always output a list header, even if
 	the list of targets is empty.
 	(set_symlinks, do_list): Simplify syntax used for array index.
 

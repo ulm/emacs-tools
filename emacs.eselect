@@ -161,8 +161,7 @@ do_show() {
 	[[ $# -gt 0 ]] && die -q "Too many parameters"
 
 	write_list_start "Current target of Emacs symlink:"
-	if [[ -L ${ROOT}${bindir}/emacs && \
-		  -e $(canonicalise "${ROOT}${bindir}/emacs") ]]; then
+	if [[ -L ${ROOT}${bindir}/emacs && -e ${ROOT}${bindir}/emacs ]]; then
 		write_kv_list_entry \
 			"$(basename "$(readlink "${ROOT}${bindir}/emacs")")" ""
 	elif [[ -e ${ROOT}${bindir}/emacs ]]; then
@@ -248,8 +247,7 @@ do_update() {
 	test_for_root
 
 	if [[ -L ${ROOT}${bindir}/emacs ]]; then
-		[[ $1 == *if*unset && -e $(canonicalise "${ROOT}${bindir}/emacs") ]] \
-			&& return
+		[[ $1 == *if*unset && -e ${ROOT}${bindir}/emacs ]] && return
 		# this is not redundant: "update" is called in pkg_postrm() of emacs
 		# and should clean up any dead symlinks if no valid target exists
 		remove_symlinks || die -q "Couldn't remove existing symlink"
@@ -262,7 +260,7 @@ do_update() {
 		set_symlinks "${targets[${#targets[@]}-1]}" \
 			|| die -q "Couldn't set a new symlink"
 	elif [[ -f ${ROOT}${bindir}/xemacs ]]; then
-		# no Emacs target found -- link ctags, etags etc. to XEmacs versions
+		# no Emacs target found - link to XEmacs versions
 		set_symlinks xemacs nomain
 	fi
 

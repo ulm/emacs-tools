@@ -39,8 +39,7 @@ find_targets() {
 	# currently active Emacs version (selected by emacs.eselect)
 	# The logic here is the same as in emacs.eselect, don't change it!
 	local emacs
-	if [[ -L ${ROOT}${bindir}/emacs && \
-		  -e $(canonicalise "${ROOT}${bindir}/emacs") ]]; then
+	if [[ -L ${ROOT}${bindir}/emacs && -e ${ROOT}${bindir}/emacs ]]; then
 		emacs=$(basename "$(readlink "${ROOT}${bindir}/emacs")")
 		[[ -f ${ROOT}${bindir}/${CTAGS}-${emacs} ]] && echo "${CTAGS}-${emacs}"
 	elif [[ -f ${ROOT}${bindir}/xemacs ]]; then
@@ -121,8 +120,8 @@ do_show() {
 	[[ $# -gt 0 ]] && die -q "Too many parameters"
 
 	write_list_start "Current target of ${CTAGS} symlink:"
-	if [[ -L ${ROOT}${bindir}/${CTAGS} && \
-		  -e $(canonicalise "${ROOT}${bindir}/${CTAGS}") ]]; then
+	if [[ -L ${ROOT}${bindir}/${CTAGS} && -e ${ROOT}${bindir}/${CTAGS} ]]
+	then
 		write_kv_list_entry \
 			"$(basename "$(readlink "${ROOT}${bindir}/${CTAGS}")")" ""
 	elif [[ -e ${ROOT}${bindir}/${CTAGS} ]]; then
@@ -200,7 +199,7 @@ do_update() {
 	local current=""
 	if [[ -L ${ROOT}${bindir}/${CTAGS} ]]; then
 		current=$(basename "$(readlink "${ROOT}${bindir}/${CTAGS}")")
-		if [[ ! -e $(canonicalise "${ROOT}${bindir}/${CTAGS}") ]]; then
+		if [[ ! -e ${ROOT}${bindir}/${CTAGS} ]]; then
 			# clean up dead symlinks
 			remove_symlinks || die -q "Couldn't remove existing symlink"
 		fi

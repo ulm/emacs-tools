@@ -1,5 +1,6 @@
 2009-05-07  Ulrich Mueller  <ulm@gentoo.org>
 
+	* ctags.eselect (find_targets, do_show, do_update):
 	* emacs.eselect (do_show, do_update): "canonicalise" is not
 	necessary since "test -e" resolves symbolic links.
 

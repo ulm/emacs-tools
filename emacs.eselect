@@ -28,7 +28,7 @@ envdir=/etc/env.d
 DESCRIPTION="Manage ${bindir}/emacs version"
 MAINTAINER="emacs@gentoo.org"
 SVN_DATE='$Date$'
-VERSION=$(svn_date_to_version "${SVN_DATE}" )
+VERSION=$(svn_date_to_version "${SVN_DATE}")
 
 # ctags and etags are handled in their own module
 BINARYLIST="emacsclient b2m ebrowse rcs-checkin grep-changelog"

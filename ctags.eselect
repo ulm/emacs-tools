@@ -30,7 +30,7 @@ man1dir=/usr/share/man/man1
 DESCRIPTION="Manage ${bindir}/${CTAGS} implementations"
 MAINTAINER="emacs@gentoo.org"
 SVN_DATE='$Date$'
-VERSION=$(svn_date_to_version "${SVN_DATE}" )
+VERSION=$(svn_date_to_version "${SVN_DATE}")
 
 find_targets() {
 	# Return the list of available ctags implementations

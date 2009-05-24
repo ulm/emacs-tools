@@ -162,13 +162,13 @@ failure() {
     echo "${RED}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"
 }
 
-emacs-version() {
+emacs_version() {
     "${EMACS}" -batch -q --no-site-file --eval "(princ emacs-version)" \
 	|| { failure "Cannot run Emacs"; exit 5; }
 }
 
 # Get Emacs version from byte-compiled file
-bytecomp-version() {
+bytecomp_version() {
     sed -n '/^[^;]/q;s/\.$//;s/.*[Ee]macs version \([0-9].*\)/\1/p' "${1}"
 }
 
@@ -195,13 +195,13 @@ action_rebuild() {
     local active version elc
 
     message "Searching for byte-compiled elisp files ..."
-    active=$(emacs-version)
+    active=$(emacs_version)
     [ -n "${active}" ] || { failure "Cannot determine Emacs version"; exit 6; }
     message "Currently selected GNU Emacs version: ${active}"
 
     for elc in $(find "${ROOT}${SITELISP}" -name "*.elc")
     do
-	version=$(bytecomp-version "${elc}")
+	version=$(bytecomp_version "${elc}")
 	version=${version:-unknown}
 
 	if [ "${version}" != "${active}" ] || [ "${1}" = all ]; then

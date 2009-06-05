@@ -1,5 +1,7 @@
 2009-06-04  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 1.5 released.
+
 	* emacs-updater (pm_auto): Try to determine the package manager
 	from the PACKAGE_MANAGER environment variable first.
 	* emacs-updater.8: Document it.

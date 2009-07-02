@@ -374,16 +374,13 @@ $ echo "(global-set-key [(f2)] 'hippie-expand)" >> ~/.emacs.d/init.el
       <body>
 	<p>
 	  One common thing for Gentoo users is to strip comments from
-	  configuration files.  This is conveniently done in Emacs
-	  with a simple command:
+	  configuration files.  This is convenient in Emacs with flush-lines
 	</p>
 	<pre caption="Code Sample">
-M-;
+M-x flush-lines
+^#
+That will match lines beginning with a # which is a comment in most /etc configuration files.
 	</pre>
-	<p>
-	  This either toggles the current line between comment and
-	  non-comment or the marked region if there is any.
-	</p>
       </body>
     </section>
   </chapter>

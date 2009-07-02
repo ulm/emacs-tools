@@ -460,20 +460,24 @@
   
   <chapter>
     <title>Sample .emacs</title>
-    <pre caption="Code Sample">
-      $ cat ~/.emacs.d/init.el
-      (prefer-coding-system 'utf-8)
-      (setq transient-mark-mode t)
-      (show-paren-mode t)
-      (setq column-number-mode t)
-      (global-set-key [(f5)] (lambda() (interactive) (woman (current-word))))
-      (global-set-key [(f6)] 'hippie-expand)
-      (global-set-key [(f7)] 'replace-regexp)
-      (global-set-key [(f8)] 'flush-lines)
-      (global-set-key [(f9)] 'dired-do-delete)
-      
-      # cat /root/.emacs.d/init.el
-      (load "/home/username/.emacs.d/init.el")
-    </pre>
+    <section>
+      <body>
+	<pre caption="Code Sample">
+	  $ cat ~/.emacs.d/init.el
+	  (prefer-coding-system 'utf-8)
+	  (setq transient-mark-mode t)
+	  (show-paren-mode t)
+	  (setq column-number-mode t)
+	  (global-set-key [(f5)] (lambda() (interactive) (woman (current-word))))
+	  (global-set-key [(f6)] 'hippie-expand)
+	  (global-set-key [(f7)] 'replace-regexp)
+	  (global-set-key [(f8)] 'flush-lines)
+	  (global-set-key [(f9)] 'dired-do-delete)
+	  
+	  # cat /root/.emacs.d/init.el
+	  (load "/home/username/.emacs.d/init.el")
+	</pre>
+      </body>
+    </section>
   </chapter>
 </guide>

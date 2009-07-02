@@ -272,15 +272,15 @@
 
     <p>Now you may wish to do replacements in many files.</p>
     <pre caption="Code Sample">
-      <p>M-x dired&lt;TAB&gt;&lt;TAB&gt;</p>
-      <p>M-x command-apropos <comment>This can show any dired command.</comment></p>
+      M-x dired&lt;TAB&gt;&lt;TAB&gt;
+      M-x command-apropos <comment>This can show any dired command.</comment>
     </pre>
     
     <p>Now you see what is available.  Here is one strategy.</p>
     <pre caption="Code Sample">
-      <p>M-x find-grep-dired</p>
-      <p>%-m c$ <comment>This will mark C sources or filenames ending in c.</comment></p>
-      <p>M-x dired-do-query-replace-regexp</p>
+      M-x find-grep-dired
+      %-m c$ <comment>This will mark C sources or filenames ending in c.</comment>
+      M-x dired-do-query-replace-regexp
     </pre>
     
     <p>That will split your screen and show the buffers that are open.  When you want to split the screen, use control-x followed by a number.</p>
@@ -319,12 +319,10 @@
 	  like <c>ediff</c> for file foo and ._cfg0000_foo.
 	</p>
 	<pre caption="Code Sample">
-	  <p>
-	    You could run M-x find-dired with an argument like this: -name
-	    \._cfg*
-	  </p>
-	  <p>Control-x, control-f, control-a, control-k, /etc, enter.</p>
-	  <p>M-x ediff</p>
+	  You could run M-x find-dired with an argument like this: -name
+	  \._cfg*
+	  Control-x, control-f, control-a, control-k, /etc, enter.
+	  M-x ediff
 	</pre>
       </body>
     </section>
@@ -335,11 +333,11 @@
     <body>
     <p>Emacs can start subprocesses, like a shell or a debugger or even find and grep.</p>
     <pre caption="Code Sample">
-      <p>M-x shell</p>
-      <p>M-x gdb</p>
-      <p>M-x find-grep</p>
-      <figure link="emacs.jpg" short="Find and Grep" caption="Search in Emacs"/>
+      M-x shell
+      M-x gdb
+      M-x find-grep
     </pre>
+    <figure link="emacs.jpg" short="Find and Grep" caption="Search in Emacs"/>
     
     <note>Emacs can be used on compressed text in the gzip and bzip2 formats by invoking decompressors.</note>
     </body>
@@ -396,10 +394,10 @@
       bottom of the screen.
     </p>
     <pre caption="Code Sample">
-      <p>(list 'a 'b 'c)</p>
-      <p>(+ 1 2 3)</p>
-      <p>(* (* 2 2) (/ 22 7))</p>
-      <p>(message "%s" "This is an introduction to using Emacs in Gentoo.")</p>
+      (list 'a 'b 'c)
+      (+ 1 2 3)
+      (* (* 2 2) (/ 22 7))
+      (message "%s" "This is an introduction to using Emacs in Gentoo.")
     </pre>
     <p>
       Understanding how to navigate the cursor over lists is quite
@@ -438,9 +436,9 @@
       configuration files.  This is convenient in Emacs with flush-lines
     </p>
     <pre caption="Code Sample">
-      <p>M-x flush-lines</p>
-      <p>^#</p>
-      <p> That will match lines beginning with a # which is a comment in most /etc configuration files.</p>
+      M-x flush-lines
+      ^#
+      That will match lines beginning with a # which is a comment in most /etc configuration files.
     </pre>
   </chapter>
   
@@ -465,20 +463,19 @@
   <chapter>
     <title>Sample .emacs</title>
     <pre caption="Code Sample">
-      <p>$ cat ~/.emacs.d/init.el</p>
-      <p>(prefer-coding-system 'utf-8)</p>
-      <p>(setq transient-mark-mode t)</p>
-      <p>(show-paren-mode t)</p>
-      <p>(setq column-number-mode t)</p>
-      <p>(global-set-key [(f5)] (lambda() (interactive) (woman (current-word))))</p>
-      <p>(global-set-key [(f6)] 'hippie-expand)</p>
-      <p>(global-set-key [(f7)] 'replace-regexp)</p>
-      <p>(global-set-key [(f8)] 'flush-lines)</p>
-      <p>(global-set-key [(f9)] 'dired-do-delete)</p>
-      <p></p>
-      <p># cat /root/.emacs.d/init.el</p>
-      <p>(load "/home/username/.emacs.d/init.el")</p>
+      $ cat ~/.emacs.d/init.el
+      (prefer-coding-system 'utf-8)
+      (setq transient-mark-mode t)
+      (show-paren-mode t)
+      (setq column-number-mode t)
+      (global-set-key [(f5)] (lambda() (interactive) (woman (current-word))))
+      (global-set-key [(f6)] 'hippie-expand)
+      (global-set-key [(f7)] 'replace-regexp)
+      (global-set-key [(f8)] 'flush-lines)
+      (global-set-key [(f9)] 'dired-do-delete)
+      
+      # cat /root/.emacs.d/init.el
+      (load "/home/username/.emacs.d/init.el")
     </pre>
   </chapter>
-
 </guide>

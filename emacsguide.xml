@@ -251,6 +251,104 @@
   </chapter>
 
   <chapter>
+    <title>Basics</title>
+    <section>
+      <title>Emacs Lisp</title>
+      <p>
+	You could use the lisp interpreter to make lists or do some
+	simple math.  Type these in and then type control-x, control-e
+	with the cursor at the end of them.  Watch the minibuffer at the
+	bottom of the screen.
+      </p>
+      <pre caption="Code Sample">
+	(list 'a 'b 'c)
+	(+ 1 2 3)
+	(* (* 2 2) (/ 22 7))
+	(message "%s" "This is an introduction to using Emacs in Gentoo.")
+      </pre>
+      <p>
+	Understanding how to navigate the cursor over lists is quite
+	useful.  With the cursor pointed on a [, (, or {, use M-C-f to
+	go to the end.  Use M-C-b to go to the beginning of the list.
+	That is escape, control-f and escape, control-b
+	respectively.
+      </p>
+      <p>You could load your elisp.</p>
+      <pre caption="Code Sample">
+	M-x load-file
+      </pre>
+      <p>
+	Now, you may want to clean up your code or make replacements in a
+	function.  Click and drag or use control-space to set a mark.
+      </p>
+      <pre caption="Code Sample">
+	M-x transient-mark-mode
+      </pre>
+      <p>
+	That will toggle the highlighting of selected text.  Now, M-% will
+	prompt you to search and replace or query-replace.  Also,
+	global-font-lock-mode will toggle the syntax highlighting;
+	indent-region will nicely indent nested code blocks or HTML.  A quick
+	comment comes from M-; or escape-semicolon.
+      </p>
+    </section>
+    <section>
+      <title>Invoking Processes</title>
+      <body>
+	<p>Emacs can start subprocesses, like a shell or a debugger or even find and grep.</p>
+	<pre caption="Code Sample">
+	  M-x shell
+	  M-x gdb
+	  M-x find-grep
+	</pre>
+	<figure link="emacs.jpg" short="Find and Grep" caption="Search in Emacs"/>
+	
+	<note>Emacs can be used on compressed text in the gzip and bzip2 formats by invoking decompressors.</note>
+      </body>
+    </section>
+    <section>
+      <title>Emacs and Bash Equivalents</title>
+      <body>
+	<p>Bash has some keystrokes in common with Emacs.  You can search
+	  your shell history with control-r but not control-s.  If you try
+	  control-s in bash, it will hide your typing.  You can type
+	  control-q to see input to bash again.  To cancel a search, type
+	  control-g.  Just like Emacs, you can kill text several times with
+	  control-k and get it back with control-y. You can then use
+	  escape-y repetitions.  You can suspend Emacs with control-z.  Try
+	  the jobs command to see what is suspended.  Then type fg or fg 1
+	  to get back to Emacs.</p>
+      </body>
+    </section>
+    <section>
+      <title>Complete Text</title>
+      <body>
+	<p>Now is where some completion becomes useful.  There is M-/ to complete a string and also some elisp that does much more.</p>
+	<pre caption="Code Sample">
+	  M-x hippie-expand
+	</pre>
+	
+	<p>
+	  This has try-expand-list, try-expand-line,
+	  try-complete-file-name and many other things.  It will cycle
+	  through trying to match what is immediately on the left of the
+	  cursor.  It is much nicer to bind this to a key.
+	</p>
+	<pre caption="Code Sample">
+	  M-x global-set-key
+	</pre>
+	
+	<p>This could be persistent in a .emacs file.</p>
+	<pre caption="Code Sample">
+	  $ echo "(global-set-key [(f2)] 'hippie-expand)" >> ~/.emacs.d/init.el
+	</pre>
+	
+	<note><c>man man</c> has this tip: (global-set-key  [(f1)]  (lambda  () (interactive) (manual-entry (current-word))))</note>
+      </body>
+    </section>
+  </chapter>
+
+  <chapter>
     <title>Useful functions in GNU Emacs</title>
     <section>
     <title>Dired</title>
@@ -326,107 +424,6 @@
 	</pre>
       </body>
     </section>
-  </chapter>
-  
-  <chapter>
-    <title>Invoking Processes</title>
-    <body>
-    <p>Emacs can start subprocesses, like a shell or a debugger or even find and grep.</p>
-    <pre caption="Code Sample">
-      M-x shell
-      M-x gdb
-      M-x find-grep
-    </pre>
-    <figure link="emacs.jpg" short="Find and Grep" caption="Search in Emacs"/>
-    
-    <note>Emacs can be used on compressed text in the gzip and bzip2 formats by invoking decompressors.</note>
-    </body>
-  </chapter>
-  
-  <chapter>
-    <title>Emacs and Bash Equivalents</title>
-    <body>
-    <p>Bash has some keystrokes in common with Emacs.  You can search
-    your shell history with control-r but not control-s.  If you try
-    control-s in bash, it will hide your typing.  You can type
-    control-q to see input to bash again.  To cancel a search, type
-    control-g.  Just like Emacs, you can kill text several times with
-    control-k and get it back with control-y. You can then use
-    escape-y repetitions.  You can suspend Emacs with control-z.  Try
-    the jobs command to see what is suspended.  Then type fg or fg 1
-    to get back to Emacs.</p>
-    </body>
- </chapter>
-
-  <chapter>
-    <title>Complete Text</title>
-    <body>
-    <p>Now is where some completion becomes useful.  There is M-/ to complete a string and also some elisp that does much more.</p>
-    <pre caption="Code Sample">
-      M-x hippie-expand
-    </pre>
-    
-    <p>
-      This has try-expand-list, try-expand-line,
-      try-complete-file-name and many other things.  It will cycle
-      through trying to match what is immediately on the left of the
-      cursor.  It is much nicer to bind this to a key.
-    </p>
-    <pre caption="Code Sample">
-      M-x global-set-key
-    </pre>
-    
-    <p>This could be persistent in a .emacs file.</p>
-    <pre caption="Code Sample">
-      $ echo "(global-set-key [(f2)] 'hippie-expand)" >> ~/.emacs.d/init.el
-    </pre>
-    
-    <note><c>man man</c> has this tip: (global-set-key  [(f1)]  (lambda  () (interactive) (manual-entry (current-word))))</note>
-    </body>
-  </chapter>
-  
-  <chapter>
-    <title>Emacs Lisp</title>
-    <p>
-      You could use the lisp interpreter to make lists or do some
-      simple math.  Type these in and then type control-x, control-e
-      with the cursor at the end of them.  Watch the minibuffer at the
-      bottom of the screen.
-    </p>
-    <pre caption="Code Sample">
-      (list 'a 'b 'c)
-      (+ 1 2 3)
-      (* (* 2 2) (/ 22 7))
-      (message "%s" "This is an introduction to using Emacs in Gentoo.")
-    </pre>
-    <p>
-      Understanding how to navigate the cursor over lists is quite
-      useful.  With the cursor pointed on a [, (, or {, use M-C-f to
-      go to the end.  Use M-C-b to go to the beginning of the list.
-      That is escape, control-f and escape, control-b
-      respectively.
-    </p>
-
-    <p>You could load your elisp.</p>
-    <pre caption="Code Sample">
-      M-x load-file
-    </pre>
-    
-    <p>
-      Now, you may want to clean up your code or make replacements in a
-      function.  Click and drag or use control-space to set a mark.
-    </p>
-    <pre caption="Code Sample">
-      M-x transient-mark-mode
-    </pre>
-    
-    <p>
-      That will toggle the highlighting of selected text.  Now, M-% will
-      prompt you to search and replace or query-replace.  Also,
-      global-font-lock-mode will toggle the syntax highlighting;
-      indent-region will nicely indent nested code blocks or HTML.  A quick
-      comment comes from M-; or escape-semicolon.
-    </p>
   </chapter>
   
   <chapter>

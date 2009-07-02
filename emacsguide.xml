@@ -327,15 +327,20 @@
     <section>
       <title>Emacs and Bash Equivalents</title>
       <body>
-	<p>Bash has some keystrokes in common with Emacs.  You can search
-	  your shell history with control-r but not control-s.  If you try
-	  control-s in bash, it will hide your typing.  You can type
-	  control-q to see input to bash again.  To cancel a search, type
-	  control-g.  Just like Emacs, you can kill text several times with
-	  control-k and get it back with control-y. You can then use
-	  escape-y repetitions.  You can suspend Emacs with control-z.  Try
-	  the jobs command to see what is suspended.  Then type fg or fg 1
-	  to get back to Emacs.</p>
+	<p>
+	  Bash has some keystrokes in common with Emacs.  You can
+	  search your shell history with control-r but not control-s.
+	  If you try control-s in bash, it will hide your typing.  You
+	  can type control-q to see input to bash again.  To cancel a
+	  search, type control-g.  Just like Emacs, you can kill text
+	  several times with control-k and get it back with
+	  control-y. You can then use escape-y repetitions.  You can
+	  suspend Emacs with control-z.  Try the jobs command to see
+	  what is suspended.  Then type fg or fg 1 to get back to
+	  Emacs.  Delete a whole word with escape-backspace or
+	  escape-d.  Undo with control-/ and transpose two mistyped
+	  characters with control-t.
+	</p>
       </body>
     </section>
     <section>

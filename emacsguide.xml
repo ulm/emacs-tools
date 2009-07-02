@@ -192,16 +192,16 @@
 	  # emerge app-admin/eselect
 	  # eselect emacs list
 	  Available Emacs symlink targets:
-	  [1]   emacs-22
-	  [2]   emacs-23 *
-    	  # eselect emacs set 1
+	  [1]   emacs-21 *
+	  [2]   emacs-22
+    	  # eselect emacs set 2
 	  Switching emacs to emacs-22 ...
 	  Switching ctags to exuberant-ctags ...
 	  Switching etags to etags-emacs-22 ...
 	  # eselect emacs list
 	  Available Emacs symlink targets:
-	  [1]   emacs-22 *
-	  [2]   emacs-23
+	  [1]   emacs-21
+	  [2]   emacs-22 *
 	</pre>
       </body>
     </section>

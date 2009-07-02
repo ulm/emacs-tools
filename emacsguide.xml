@@ -32,7 +32,7 @@
 	<p>First, you must install Emacs.</p>
 	
 	<pre caption="Code Sample">
-	  # emerge --pretend --verbose app-editors/emacs
+# emerge --pretend --verbose app-editors/emacs
 	</pre>
 	<!-- find /usr/portage/profiles/use.local* -type f -print0 | xargs -0 -e grep -nH -e emacs -->
 	<table>
@@ -189,19 +189,19 @@
       <title>Eselect</title>
       <body>
 	<pre caption="Eselect">
-	  # emerge app-admin/eselect
-	  # eselect emacs list
-	  Available Emacs symlink targets:
-	  [1]   emacs-21 *
-	  [2]   emacs-22
-    	  # eselect emacs set 2
-	  Switching emacs to emacs-22 ...
-	  Switching ctags to exuberant-ctags ...
-	  Switching etags to etags-emacs-22 ...
-	  # eselect emacs list
-	  Available Emacs symlink targets:
-	  [1]   emacs-21
-	  [2]   emacs-22 *
+# emerge app-admin/eselect
+# eselect emacs list
+Available Emacs symlink targets:
+[1]   emacs-21 *
+[2]   emacs-22
+# eselect emacs set 2
+Switching emacs to emacs-22 ...
+Switching ctags to exuberant-ctags ...
+Switching etags to etags-emacs-22 ...
+# eselect emacs list
+Available Emacs symlink targets:
+[1]   emacs-21
+[2]   emacs-22 *
 	</pre>
       </body>
     </section>
@@ -226,12 +226,12 @@
 	  root.  Note the # prompt.
 	</p>
 	<pre caption="Code Sample">
-	  # emerge --pretend --verbose app-emacs/python-mode
-	  # emerge --pretend --verbose app-emacs/php-mode
-	  Cscope can work with Emacs very conveniently.
-	  # echo "dev-util/cscope emacs" >> /etc/portage/package.use
-	  That will append the quoted text to the file "/etc/portage/package.use".
-	  # emerge dev-util/cscope
+# emerge --pretend --verbose app-emacs/python-mode
+# emerge --pretend --verbose app-emacs/php-mode
+Cscope can work with Emacs very conveniently.
+# echo "dev-util/cscope emacs" >> /etc/portage/package.use
+That will append the quoted text to the file "/etc/portage/package.use".
+# emerge dev-util/cscope
 	</pre>
       </body>
     </section>
@@ -240,7 +240,7 @@
       <body>
 	<p>There is a tutorial for Emacs available.</p>
 	<pre caption="Code Sample">
-	  M-x help-with-tutorial
+M-x help-with-tutorial
 	</pre>
 	<p>
 	  That is Meta then x.  The Meta key is escape or possibly Alt.  Next
@@ -278,10 +278,10 @@
 	  bottom of the screen.
 	</p>
 	<pre caption="Code Sample">
-	  (list 'a 'b 'c)
-	  (+ 1 2 3)
-	  (* (* 2 2) (/ 22 7))
-	  (message "%s" "This is an introduction to using Emacs in Gentoo.")
+(list 'a 'b 'c)
+(+ 1 2 3)
+(* (* 2 2) (/ 22 7))
+(message "%s" "This is an introduction to using Emacs in Gentoo.")
 	</pre>
 	<p>
 	  Understanding how to navigate the cursor over lists is quite
@@ -292,14 +292,14 @@
 	</p>
 	<p>You could load your elisp.</p>
 	<pre caption="Code Sample">
-	  M-x load-file
+M-x load-file
 	</pre>
 	<p>
 	  Now, you may want to clean up your code or make replacements in a
 	  function.  Click and drag or use control-space to set a mark.
 	</p>
 	<pre caption="Code Sample">
-	  M-x transient-mark-mode
+M-x transient-mark-mode
 	</pre>
 	<p>
 	  That will toggle the highlighting of selected text.  Now, M-% will
@@ -315,9 +315,9 @@
       <body>
 	<p>Emacs can start subprocesses, like a shell or a debugger or even find and grep.</p>
 	<pre caption="Code Sample">
-	  M-x shell
-	  M-x gdb
-	  M-x find-grep
+M-x shell
+M-x gdb
+M-x find-grep
 	</pre>
 	<figure link="emacs.jpg" short="Find and Grep" caption="Search in Emacs"/>
 	
@@ -348,7 +348,7 @@
       <body>
 	<p>Now is where some completion becomes useful.  There is M-/ to complete a string and also some elisp that does much more.</p>
 	<pre caption="Code Sample">
-	  M-x hippie-expand
+M-x hippie-expand
 	</pre>
 	
 	<p>
@@ -358,12 +358,12 @@
 	  cursor.  It is much nicer to bind this to a key.
 	</p>
 	<pre caption="Code Sample">
-	  M-x global-set-key
+M-x global-set-key
 	</pre>
 	
 	<p>This could be persistent in a .emacs file.</p>
 	<pre caption="Code Sample">
-	  $ echo "(global-set-key [(f2)] 'hippie-expand)" >> ~/.emacs.d/init.el
+$ echo "(global-set-key [(f2)] 'hippie-expand)" >> ~/.emacs.d/init.el
 	</pre>
 	
 	<note><c>man man</c> has this tip: (global-set-key  [(f1)]  (lambda  () (interactive) (manual-entry (current-word))))</note>
@@ -377,9 +377,9 @@
 	  configuration files.  This is convenient in Emacs with flush-lines
 	</p>
 	<pre caption="Code Sample">
-	  M-x flush-lines
-	  ^#
-	  That will match lines beginning with a # which is a comment in most /etc configuration files.
+M-x flush-lines
+^#
+That will match lines beginning with a # which is a comment in most /etc configuration files.
 	</pre>
       </body>
     </section>
@@ -392,7 +392,7 @@
     <body>
     <p>Lets start by looking at some files.</p>
     <pre caption="Code Sample">
-      Control-x, control-f, enter
+Control-x, control-f, enter
     </pre>
     
     <p>
@@ -402,28 +402,28 @@
       you may open many files.
     </p>
     <pre caption="Code Sample">
-      Control-x, control-b
+Control-x, control-b
     </pre>
 
     <p>Now you may wish to do replacements in many files.</p>
     <pre caption="Code Sample">
-      M-x dired&lt;TAB&gt;&lt;TAB&gt;
-      M-x command-apropos <comment>This can show any dired command.</comment>
+M-x dired&lt;TAB&gt;&lt;TAB&gt;
+M-x command-apropos <comment>This can show any dired command.</comment>
     </pre>
     
     <p>Now you see what is available.  Here is one strategy.</p>
     <pre caption="Code Sample">
-      M-x find-grep-dired
-      %-m c$ <comment>This will mark C sources or filenames ending in c.</comment>
-      M-x dired-do-query-replace-regexp
+M-x find-grep-dired
+%-m c$ <comment>This will mark C sources or filenames ending in c.</comment>
+M-x dired-do-query-replace-regexp
     </pre>
     
     <p>That will split your screen and show the buffers that are open.  When you want to split the screen, use control-x followed by a number.</p>
     <pre caption="Code Sample">
-      C-x 0 <comment>This makes the current buffer go away.</comment>
-      C-x 1 <comment>This makes the current buffer take full screen.</comment>
-      C-x 2 <comment>This will initiate the split and you can browse two different parts of a file.</comment>
-      C-x 3 <comment>This is useful if you have a wide screen.</comment>
+C-x 0 <comment>This makes the current buffer go away.</comment>
+C-x 1 <comment>This makes the current buffer take full screen.</comment>
+C-x 2 <comment>This will initiate the split and you can browse two different parts of a file.</comment>
+C-x 3 <comment>This is useful if you have a wide screen.</comment>
     </pre>
     </body>
     </section>
@@ -436,7 +436,7 @@
 	  of source code.  If you use Emacs with X try speedbar.
 	</p>
 	<pre caption="Code Sample">
-	  M-x speedbar
+M-x speedbar
 	</pre>
 	
 	<p>
@@ -454,10 +454,9 @@
 	  like <c>ediff</c> for file foo and ._cfg0000_foo.
 	</p>
 	<pre caption="Code Sample">
-	  You could run M-x find-dired with an argument like this: -name
-	  \._cfg*
-	  Control-x, control-f, control-a, control-k, /etc, enter.
-	  M-x ediff
+You could run M-x find-dired with an argument like this: -name \._cfg*
+Control-x, control-f, control-a, control-k, /etc, enter.
+M-x ediff
 	</pre>
       </body>
     </section>
@@ -468,19 +467,19 @@
     <section>
       <body>
 	<pre caption="Code Sample">
-	  $ cat ~/.emacs.d/init.el
-	  (prefer-coding-system 'utf-8)
-	  (setq transient-mark-mode t)
-	  (show-paren-mode t)
-	  (setq column-number-mode t)
-	  (global-set-key [(f5)] (lambda() (interactive) (woman (current-word))))
-	  (global-set-key [(f6)] 'hippie-expand)
-	  (global-set-key [(f7)] 'replace-regexp)
-	  (global-set-key [(f8)] 'flush-lines)
-	  (global-set-key [(f9)] 'dired-do-delete)
-	  
-	  # cat /root/.emacs.d/init.el
-	  (load "/home/username/.emacs.d/init.el")
+$ cat ~/.emacs.d/init.el
+(prefer-coding-system 'utf-8)
+(setq transient-mark-mode t)
+(show-paren-mode t)
+(setq column-number-mode t)
+(global-set-key [(f5)] (lambda() (interactive) (woman (current-word))))
+(global-set-key [(f6)] 'hippie-expand)
+(global-set-key [(f7)] 'replace-regexp)
+(global-set-key [(f8)] 'flush-lines)
+(global-set-key [(f9)] 'dired-do-delete)
+
+# cat /root/.emacs.d/init.el
+(load "/home/username/.emacs.d/init.el")
 	</pre>
       </body>
     </section>

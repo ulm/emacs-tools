@@ -251,6 +251,8 @@
   </chapter>
 
   <chapter>
+    <title>Useful functions in GNU Emacs</title>
+    <section>
     <title>Dired</title>
     <body>
     <p>Lets start by looking at some files.</p>
@@ -267,6 +269,19 @@
     <pre caption="Code Sample">
       Control-x, control-b
     </pre>
+
+    <p>Now you may wish to do replacements in many files.</p>
+    <pre caption="Code Sample">
+      <p>M-x dired&lt;TAB&gt;&lt;TAB&gt;</p>
+      <p>M-x command-apropos <comment>This can show any dired command.</comment></p>
+    </pre>
+    
+    <p>Now you see what is available.  Here is one strategy.</p>
+    <pre caption="Code Sample">
+      <p>M-x find-grep-dired</p>
+      <p>%-m c$ <comment>This will mark C sources or filenames ending in c.</comment></p>
+      <p>M-x dired-do-query-replace-regexp</p>
+    </pre>
     
     <p>That will split your screen and show the buffers that are open.  When you want to split the screen, use control-x followed by a number.</p>
     <pre caption="Code Sample">
@@ -276,6 +291,43 @@
       C-x 3 <comment>This is useful if you have a wide screen.</comment>
     </pre>
     </body>
+    </section>
+    <section>
+      <title>Speedbar for Debugging and Navigation</title>
+      <body> 
+	<p>
+	  If you're coding C, and you use <c>gcc -g</c> for debugging
+	  symbols, Emacs can split your screen and follow the current line
+	  of source code.  If you use Emacs with X try speedbar.
+	</p>
+	<pre caption="Code Sample">
+	  M-x speedbar
+	</pre>
+	
+	<p>
+	  Now watch variables change just like any other development
+	  environment.  You could also browse directories in speedbar or do
+	  other things by right-clicking.
+	</p>
+      </body>
+    </section>
+    <section>
+      <title>Ediff</title>
+      <body>
+	<p>
+	  Since Gentoo respects your /etc/ configuration files, you may
+	  like <c>ediff</c> for file foo and ._cfg0000_foo.
+	</p>
+	<pre caption="Code Sample">
+	  <p>
+	    You could run M-x find-dired with an argument like this: -name
+	    \._cfg*
+	  </p>
+	  <p>Control-x, control-f, control-a, control-k, /etc, enter.</p>
+	  <p>M-x ediff</p>
+	</pre>
+      </body>
+    </section>
   </chapter>
   
   <chapter>
@@ -308,26 +360,6 @@
     </body>
  </chapter>
 
-  <chapter>
-    <title>Speedbar for Debugging and Navigation</title>
-    <body> 
-   <p>
-      If you're coding C, and you use <c>gcc -g</c> for debugging
-      symbols, Emacs can split your screen and follow the current line
-      of source code.  If you use Emacs with X try speedbar.
-    </p>
-    <pre caption="Code Sample">
-      M-x speedbar
-    </pre>
-    
-    <p>
-      Now watch variables change just like any other development
-      environment.  You could also browse directories in speedbar or do
-      other things by right-clicking.
-    </p>
-    </body>
-  </chapter>
-  
   <chapter>
     <title>Complete Text</title>
     <body>
@@ -400,22 +432,6 @@
   </chapter>
   
   <chapter>
-    <title>More Dired</title>
-    <p>Now you may wish to do replacements in many files.</p>
-    <pre caption="Code Sample">
-      <p>M-x dired&lt;TAB&gt;&lt;TAB&gt;</p>
-      <p>M-x command-apropos <comment>This can show any dired command.</comment></p>
-    </pre>
-    
-    <p>Now you see what is available.  Here is one strategy.</p>
-    <pre caption="Code Sample">
-      <p>M-x find-grep-dired</p>
-      <p>%-m c$ <comment>This will mark C sources or filenames ending in c.</comment></p>
-      <p>M-x dired-do-query-replace-regexp</p>
-    </pre>
-  </chapter>
-  
-  <chapter>
     <title>Remove Comments</title>
     <p>
       One common thing for Gentoo users is to strip comments from
@@ -429,21 +445,7 @@
   </chapter>
   
   <chapter>
-    <title>Ediff</title>
-    <p>
-      Since Gentoo respects your /etc/ configuration files, you may
-      like <c>ediff</c> for file foo and ._cfg0000_foo.
-    </p>
-    <pre caption="Code Sample">
-      <p>
-	You could run M-x find-dired with an argument like this: -name
-	\._cfg*
-      </p>
-      <p>Control-x, control-f, control-a, control-k, /etc, enter.</p>
-      <p>M-x ediff</p>
-    </pre>
   </chapter>
-  
   
   <chapter>
     <title>Macros</title>

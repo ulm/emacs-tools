@@ -254,43 +254,45 @@
     <title>Basics</title>
     <section>
       <title>Emacs Lisp</title>
-      <p>
-	You could use the lisp interpreter to make lists or do some
-	simple math.  Type these in and then type control-x, control-e
-	with the cursor at the end of them.  Watch the minibuffer at the
-	bottom of the screen.
-      </p>
-      <pre caption="Code Sample">
-	(list 'a 'b 'c)
-	(+ 1 2 3)
-	(* (* 2 2) (/ 22 7))
-	(message "%s" "This is an introduction to using Emacs in Gentoo.")
-      </pre>
-      <p>
-	Understanding how to navigate the cursor over lists is quite
-	useful.  With the cursor pointed on a [, (, or {, use M-C-f to
-	go to the end.  Use M-C-b to go to the beginning of the list.
-	That is escape, control-f and escape, control-b
-	respectively.
-      </p>
-      <p>You could load your elisp.</p>
-      <pre caption="Code Sample">
-	M-x load-file
-      </pre>
-      <p>
-	Now, you may want to clean up your code or make replacements in a
-	function.  Click and drag or use control-space to set a mark.
-      </p>
-      <pre caption="Code Sample">
-	M-x transient-mark-mode
-      </pre>
-      <p>
-	That will toggle the highlighting of selected text.  Now, M-% will
-	prompt you to search and replace or query-replace.  Also,
-	global-font-lock-mode will toggle the syntax highlighting;
-	indent-region will nicely indent nested code blocks or HTML.  A quick
-	comment comes from M-; or escape-semicolon.
-      </p>
+      <body>
+	<p>
+	  You could use the lisp interpreter to make lists or do some
+	  simple math.  Type these in and then type control-x, control-e
+	  with the cursor at the end of them.  Watch the minibuffer at the
+	  bottom of the screen.
+	</p>
+	<pre caption="Code Sample">
+	  (list 'a 'b 'c)
+	  (+ 1 2 3)
+	  (* (* 2 2) (/ 22 7))
+	  (message "%s" "This is an introduction to using Emacs in Gentoo.")
+	</pre>
+	<p>
+	  Understanding how to navigate the cursor over lists is quite
+	  useful.  With the cursor pointed on a [, (, or {, use M-C-f to
+	  go to the end.  Use M-C-b to go to the beginning of the list.
+	  That is escape, control-f and escape, control-b
+	  respectively.
+	</p>
+	<p>You could load your elisp.</p>
+	<pre caption="Code Sample">
+	  M-x load-file
+	</pre>
+	<p>
+	  Now, you may want to clean up your code or make replacements in a
+	  function.  Click and drag or use control-space to set a mark.
+	</p>
+	<pre caption="Code Sample">
+	  M-x transient-mark-mode
+	</pre>
+	<p>
+	  That will toggle the highlighting of selected text.  Now, M-% will
+	  prompt you to search and replace or query-replace.  Also,
+	  global-font-lock-mode will toggle the syntax highlighting;
+	  indent-region will nicely indent nested code blocks or HTML.  A quick
+	  comment comes from M-; or escape-semicolon.
+	</p>
+      </body>
     </section>
     <section>
       <title>Invoking Processes</title>

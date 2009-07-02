@@ -48,21 +48,21 @@
 	      the flag is not set.  This is for cases where ALSA is installed but
 	      the user does not wish support for it in Emacs.</ti>
 	  </tr>
-	  <tr>
+<!--	  <tr>
 	    <ti>dbus</ti>
 	    <ti>Make Emacs D-Bus aware (Emacs 23 only).</ti>
 	    <ti></ti>
-	  </tr>
+	  </tr> -->
 	  <tr>
 	    <ti>gif</ti>
 	    <ti>Support for GIF images.</ti>
 	    <ti></ti>
 	  </tr>
-	  <tr>
+<!--	  <tr>
 	    <ti>gpm</ti>
 	    <ti>Support for console-based mouse driver (Emacs 23 only).</ti>
 	    <ti></ti>
-	  </tr>
+	  </tr> -->
 	  <tr>
 	    <ti>gtk</ti>
 	    <ti>Use the GIMP Toolkit (GTK+) as windowing toolkit (menu bar
@@ -99,12 +99,12 @@
 	    <ti>Extended methods for input encodings (Emacs 21 only).</ti>
 	    <ti></ti>
 	  </tr>
-	  <tr>
+<!--	  <tr>
 	    <ti>m17n-lib</ti>
 	    <ti>Use the m17n-lib multilingual library for complex text layout,
 	      e.g. for Indic scripts (Emacs 23 only).</ti>
 	    <ti>Only available if "xft" is enabled too.</ti>
-	  </tr>
+	  </tr> -->
 	  <tr>
 	    <ti>motif</ti>
 	    <ti>A windowing toolkit.</ti>
@@ -137,11 +137,11 @@
 	      internal documentation system of GNU Emacs.</ti>
 	    <ti></ti>
 	  </tr>
-	  <tr>
+<!--	  <tr>
 	    <ti>svg</ti>
 	    <ti>Support for SVG images (Emacs 23 only).</ti>
 	    <ti></ti>
-	  </tr>
+	  </tr> -->
 	  <tr>
 	    <ti>tiff</ti>
 	    <ti>Support for TIFF images.</ti>
@@ -165,11 +165,11 @@
 	    <ti>A windowing toolkit.</ti>
 	    <ti></ti>
 	  </tr>
-	  <tr>
+<!--	  <tr>
 	    <ti>xft</ti>
 	    <ti>Choose an alternative font renderer (Emacs 23 only).</ti>
 	    <ti></ti>
-	  </tr>
+	  </tr> -->
 	  <tr>
 	    <ti>xpm</ti>
 	    <ti>Support for XPM images.</ti>

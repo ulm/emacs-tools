@@ -484,4 +484,62 @@ $ cat ~/.emacs.d/init.el
       </body>
     </section>
   </chapter>
+  <chapter>
+    <title>Further reading</title>
+    <section>
+      <body>
+	<table>
+	  <tr>
+	    <th>Resource</th>
+	    <th>Comment</th>
+	  </tr>
+	  <tr>
+	    <ti>
+	      <e>Richard M. Stallman</e>;
+	      <uri link="http://www.gnu.org/software/emacs/manual/emacs.html">
+		GNU Emacs Manual</uri>; 16th edition (for version 22);
+	      ISBN 1-882114-86-8; GNU Press
+	    </ti>
+	    <ti>
+	      The official handbook of Emacs, also shipped with the editor.
+	      This covers the usage of Emacs, not the programming or deep internals.
+	    </ti>
+	  </tr>
+	  <tr>
+	    <ti>
+	      <e> Robert J. Chassell</e>;
+	      <uri link="http://www.gnu.org/software/emacs/emacs-lisp-intro/">
+		An Introduction to Programming in Emacs Lisp</uri>;
+	      ISBN 1-882114-56-6; GNU Press
+	    </ti>
+	    <ti>
+	      A primer on Elisp programming (very basic, but very good).
+	    </ti>
+	  </tr>
+	  <tr>
+	    <ti>
+	      <e>Various authors</e>;
+	      <uri link="http://www.gnu.org/software/emacs/manual/elisp.html">
+		GNU Emacs Lisp Reference Manual</uri>
+	    </ti>
+	    <ti>
+	      All information needed for Elisp programming, dense and extensive,
+	      but not for beginners.
+	    </ti>
+	  </tr>
+	  <tr>
+	    <ti>
+	      <e>Craig A. Finseth</e>;
+	      <uri link="http://www.finseth.com/craft/">The Craft of Text Editing:
+		Emacs for the Modern World</uri>; ISBN 0-387-97616-7; Springer-Verlag
+	    </ti>
+	    <ti>
+	      Background information about user interfaces and the ergonomics of
+	      text editing.
+	    </ti>
+	  </tr>
+	</table>
+      </body>
+    </section>
+  </chapter>
 </guide>

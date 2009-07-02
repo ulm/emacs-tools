@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE guide SYSTEM "/dtd/guide.dtd">
+<!-- $Header$ -->
+
+<guide link="/doc/en/emacsguide.xml" lang="en">
+  <title>GNU Emacs Introduction</title>
+
+  <author title="Author">
+    <mail link="clock_cycles@yahoo.com">Marc Murphy</mail>
+  </author>
+  <author title="Contributor">
+    <mail link="fauli@gentoo.org">Christian Faulhammer</mail>
+  </author>
+
+  <abstract>
+    This guide is meant to be a nice introduction to GNU Emacs in Gentoo.
+  </abstract>
+
+  <!-- The content of this document is licensed under the CC-BY-SA
+  license -->
+  <!-- See http://creativecommons.org/licenses/by-sa/2.5 -->
+  <license/>
+
+  <version>0.44</version>
+  <date>2009-07-02</date>
+
+  <chapter>
+    <title>Installation and setup</title>
+    <section>
+      <title>Installing</title>
+      <body>
+	<p>First, you must install Emacs.</p>
+	
+	<pre caption="Code Sample">
+	  # emerge --pretend --verbose app-editors/emacs
+	</pre>
+	<!-- find /usr/portage/profiles/use.local* -type f -print0 | xargs -0 -e grep -nH -e emacs -->
+	<table>
+	  <tr>
+	    <th>Flag</th>
+	    <th>Description</th>
+	    <th>Notes</th>
+	  </tr>
+	  <tr>
+	    <ti>alsa</ti>
+	    <ti>Determine if ALSA should be used</ti>
+	    <ti>Emacs autodetects ALSA.  That test is removed by the ebuild if
+	      the flag is not set.  This is for cases where ALSA is installed but
+	      the user does not wish support for it in Emacs.</ti>
+	  </tr>
+	  <tr>
+	    <ti>dbus</ti>
+	    <ti>Make Emacs D-Bus aware (Emacs 23 only).</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>gif</ti>
+	    <ti>Support for GIF images.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>gpm</ti>
+	    <ti>Support for console-based mouse driver (Emacs 23 only).</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>gtk</ti>
+	    <ti>Use the GIMP Toolkit (GTK+) as windowing toolkit (menu bar
+	      etc.)</ti>
+	    <ti>When this toolkit is activated along with alternative ones (see
+	      other USE flags), GTK+ is chosen. This is in sync with upstream's
+	      wishes.</ti>
+	  </tr>
+	  <tr>
+	    <ti>gzip-el</ti>
+	    <ti>Zip up all el files.</ti>
+	    <ti>The zip binary is autodetected.  So even when this USE flag is
+	      disabled but the binary is found, all el files will be compressed.
+	      The ebuild takes of that care by confusing the configure
+	      script.</ti>
+	  </tr>
+	  <tr>
+	    <ti>hesiod</ti>
+	    <ti>Use the Hesiod name service system.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>jpeg</ti>
+	    <ti>Support for JPEG images.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>kerberos</ti>
+	    <ti>Support for the Kerberos network authentication protocol.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>leim</ti>
+	    <ti>Extended methods for input encodings (Emacs 21 only).</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>m17n-lib</ti>
+	    <ti>Use the m17n-lib multilingual library for complex text layout,
+	      e.g. for Indic scripts (Emacs 23 only).</ti>
+	    <ti>Only available if "xft" is enabled too.</ti>
+	  </tr>
+	  <tr>
+	    <ti>motif</ti>
+	    <ti>A windowing toolkit.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>nls</ti>
+	    <ti>This makes use of gettext, an easy way to provide translations
+	      of strings (Emacs 21 only).</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>png</ti>
+	    <ti>Support for PNG images.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>sendmail</ti>
+	    <ti>Build with support for mail transfer agent (Emacs 21 only).</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>sound</ti>
+	    <ti>Control the availability of sound support.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>source</ti>
+	    <ti>Install the C source files and make them available in the
+	      internal documentation system of GNU Emacs.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>svg</ti>
+	    <ti>Support for SVG images (Emacs 23 only).</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>tiff</ti>
+	    <ti>Support for TIFF images.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>toolkit-scroll-bars</ti>
+	    <ti>Instead of the internal scroll bars, the ones from the windowing
+	      toolkit are used.</ti>
+	    <ti>You will lose some functionality (split windows by clicking on
+	      the scroll bar for example).</ti>
+	  </tr>
+	  <tr>
+	    <ti>X</ti>
+	    <ti>Let Emacs use an X session if available.  Text mode can always
+	      be forced.</ti>
+	<ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>Xaw3d</ti>
+	    <ti>A windowing toolkit.</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>xft</ti>
+	    <ti>Choose an alternative font renderer (Emacs 23 only).</ti>
+	    <ti></ti>
+	  </tr>
+	  <tr>
+	    <ti>xpm</ti>
+	    <ti>Support for XPM images.</ti>
+	    <ti>If disabled, all logos, icons etc. in Emacs are displayed in
+	      grayscale.  This flag is forced through EAPI 1 features.</ti>
+	  </tr>
+	</table>
+	<p>
+	  You could unpack the Emacs sources and run <c>./configure
+	    --help</c> to see the optional support.  If you don't use the X
+	  or gtk flags, you will rely on the keyboard to use Emacs.
+	  Otherwise, <c>emacs -nw</c> is the terminal mode.
+	</p>
+      </body>
+    </section>
+    <section>
+      <title>Eselect</title>
+      <body>
+	<pre caption="Eselect">
+	  # emerge app-admin/eselect
+	  # eselect emacs list
+	  Available Emacs symlink targets:
+	  [1]   emacs-22
+	  [2]   emacs-23 *
+    	  # eselect emacs set 1
+	  Switching emacs to emacs-22 ...
+	  Switching ctags to exuberant-ctags ...
+	  Switching etags to etags-emacs-22 ...
+	  # eselect emacs list
+	  Available Emacs symlink targets:
+	  [1]   emacs-22 *
+	  [2]   emacs-23
+	</pre>
+      </body>
+    </section>
+    <section>
+      <title>Client/Server</title>
+      <body>
+	<p>
+	  Emacs can work as a server for emacsclient.  To use this type M-x
+	  server-start in a running Emacs session.  Then it's <c>emacsclient
+	    file1 file2 file3</c> to edit your files or mail.
+	</p>
+      </body>
+    </section>
+    <section>
+      <title>Modes</title>
+      <body>
+	<p>
+	  Some types of files have modes created for them.  If you edit
+	  Python or PHP code, this piece of information is for you.  This
+	  is a convenient way to install elisp files (.el and
+	  byte-compiled .elc) thanks to the Emacs team!  This is done as
+	  root.  Note the # prompt.
+	</p>
+	<pre caption="Code Sample">
+	  # emerge --pretend --verbose app-emacs/python-mode
+	  # emerge --pretend --verbose app-emacs/php-mode
+	  Cscope can work with Emacs very conveniently.
+	  # echo "dev-util/cscope emacs" >> /etc/portage/package.use
+	  That will append the quoted text to the file "/etc/portage/package.use".
+	  # emerge dev-util/cscope
+	</pre>
+      </body>
+    </section>
+    <section>
+      <title>Built-in tutorial</title>
+      <body>
+	<p>There is a tutorial for Emacs available.</p>
+	<pre caption="Code Sample">
+	  M-x help-with-tutorial
+	</pre>
+	<p>
+	  That is Meta then x.  The Meta key is escape or possibly Alt.  Next
+	  you need to type help and use tab twice to see the completions.
+	</p>
+      </body>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Dired</title>
+    <body>
+    <p>Lets start by looking at some files.</p>
+    <pre caption="Code Sample">
+      Control-x, control-f, enter
+    </pre>
+    
+    <p>
+      Now you have dired, the directory editor.  When you press enter on
+      directories, you traverse the file structure.  It is possible to
+      quickly back up the tree with ^, shift-6.  Over the course of editing,
+      you may open many files.
+    </p>
+    <pre caption="Code Sample">
+      Control-x, control-b
+    </pre>
+    
+    <p>That will split your screen and show the buffers that are open.  When you want to split the screen, use control-x followed by a number.</p>
+    <pre caption="Code Sample">
+      C-x 0 <comment>This makes the current buffer go away.</comment>
+      C-x 1 <comment>This makes the current buffer take full screen.</comment>
+      C-x 2 <comment>This will initiate the split and you can browse two different parts of a file.</comment>
+      C-x 3 <comment>This is useful if you have a wide screen.</comment>
+    </pre>
+    </body>
+  </chapter>
+  
+  <chapter>
+    <title>Invoking Processes</title>
+    <body>
+    <p>Emacs can start subprocesses, like a shell or a debugger or even find and grep.</p>
+    <pre caption="Code Sample">
+      <p>M-x shell</p>
+      <p>M-x gdb</p>
+      <p>M-x find-grep</p>
+      <figure link="emacs.jpg" short="Find and Grep" caption="Search in Emacs"/>
+    </pre>
+    
+    <note>Emacs can be used on compressed text in the gzip and bzip2 formats by invoking decompressors.</note>
+    </body>
+  </chapter>
+  
+  <chapter>
+    <title>Emacs and Bash Equivalents</title>
+    <body>
+    <p>Bash has some keystrokes in common with Emacs.  You can search
+    your shell history with control-r but not control-s.  If you try
+    control-s in bash, it will hide your typing.  You can type
+    control-q to see input to bash again.  To cancel a search, type
+    control-g.  Just like Emacs, you can kill text several times with
+    control-k and get it back with control-y. You can then use
+    escape-y repetitions.  You can suspend Emacs with control-z.  Try
+    the jobs command to see what is suspended.  Then type fg or fg 1
+    to get back to Emacs.</p>
+    </body>
+ </chapter>
+
+  <chapter>
+    <title>Speedbar for Debugging and Navigation</title>
+    <body> 
+   <p>
+      If you're coding C, and you use <c>gcc -g</c> for debugging
+      symbols, Emacs can split your screen and follow the current line
+      of source code.  If you use Emacs with X try speedbar.
+    </p>
+    <pre caption="Code Sample">
+      M-x speedbar
+    </pre>
+    
+    <p>
+      Now watch variables change just like any other development
+      environment.  You could also browse directories in speedbar or do
+      other things by right-clicking.
+    </p>
+    </body>
+  </chapter>
+  
+  <chapter>
+    <title>Complete Text</title>
+    <body>
+    <p>Now is where some completion becomes useful.  There is M-/ to complete a string and also some elisp that does much more.</p>
+    <pre caption="Code Sample">
+      M-x hippie-expand
+    </pre>
+    
+    <p>
+      This has try-expand-list, try-expand-line,
+      try-complete-file-name and many other things.  It will cycle
+      through trying to match what is immediately on the left of the
+      cursor.  It is much nicer to bind this to a key.
+    </p>
+    <pre caption="Code Sample">
+      M-x global-set-key
+    </pre>
+    
+    <p>This could be persistent in a .emacs file.</p>
+    <pre caption="Code Sample">
+      $ echo "(global-set-key [(f2)] 'hippie-expand)" >> ~/.emacs.d/init.el
+    </pre>
+    
+    <note><c>man man</c> has this tip: (global-set-key  [(f1)]  (lambda  () (interactive) (manual-entry (current-word))))</note>
+    </body>
+  </chapter>
+  
+  <chapter>
+    <title>Emacs Lisp</title>
+    <p>
+      You could use the lisp interpreter to make lists or do some
+      simple math.  Type these in and then type control-x, control-e
+      with the cursor at the end of them.  Watch the minibuffer at the
+      bottom of the screen.
+    </p>
+    <pre caption="Code Sample">
+      <p>(list 'a 'b 'c)</p>
+      <p>(+ 1 2 3)</p>
+      <p>(* (* 2 2) (/ 22 7))</p>
+      <p>(message "%s" "This is an introduction to using Emacs in Gentoo.")</p>
+    </pre>
+    <p>
+      Understanding how to navigate the cursor over lists is quite
+      useful.  With the cursor pointed on a [, (, or {, use M-C-f to
+      go to the end.  Use M-C-b to go to the beginning of the list.
+      That is escape, control-f and escape, control-b
+      respectively.
+    </p>
+
+    <p>You could load your elisp.</p>
+    <pre caption="Code Sample">
+      M-x load-file
+    </pre>
+    
+    <p>
+      Now, you may want to clean up your code or make replacements in a
+      function.  Click and drag or use control-space to set a mark.
+    </p>
+    <pre caption="Code Sample">
+      M-x transient-mark-mode
+    </pre>
+    
+    <p>
+      That will toggle the highlighting of selected text.  Now, M-% will
+      prompt you to search and replace or query-replace.  Also,
+      global-font-lock-mode will toggle the syntax highlighting;
+      indent-region will nicely indent nested code blocks or HTML.  A quick
+      comment comes from M-; or escape-semicolon.
+    </p>
+  </chapter>
+  
+  <chapter>
+    <title>More Dired</title>
+    <p>Now you may wish to do replacements in many files.</p>
+    <pre caption="Code Sample">
+      <p>M-x dired&lt;TAB&gt;&lt;TAB&gt;</p>
+      <p>M-x command-apropos <comment>This can show any dired command.</comment></p>
+    </pre>
+    
+    <p>Now you see what is available.  Here is one strategy.</p>
+    <pre caption="Code Sample">
+      <p>M-x find-grep-dired</p>
+      <p>%-m c$ <comment>This will mark C sources or filenames ending in c.</comment></p>
+      <p>M-x dired-do-query-replace-regexp</p>
+    </pre>
+  </chapter>
+  
+  <chapter>
+    <title>Remove Comments</title>
+    <p>
+      One common thing for Gentoo users is to strip comments from
+      configuration files.  This is convenient in Emacs with flush-lines
+    </p>
+    <pre caption="Code Sample">
+      <p>M-x flush-lines</p>
+      <p>^#</p>
+      <p> That will match lines beginning with a # which is a comment in most /etc configuration files.</p>
+    </pre>
+  </chapter>
+  
+  <chapter>
+    <title>Ediff</title>
+    <p>
+      Since Gentoo respects your /etc/ configuration files, you may
+      like <c>ediff</c> for file foo and ._cfg0000_foo.
+    </p>
+    <pre caption="Code Sample">
+      <p>
+	You could run M-x find-dired with an argument like this: -name
+	\._cfg*
+      </p>
+      <p>Control-x, control-f, control-a, control-k, /etc, enter.</p>
+      <p>M-x ediff</p>
+    </pre>
+  </chapter>
+  
+  
+  <chapter>
+    <title>Macros</title>
+    <p>
+      An introduction to Emacs would not be complete without a section
+      on macros.  This is "Editor MACroS".  In a buffer, type
+      control-x, ( to begin.  Then type what you want in the macro.
+      You are recording keystrokes.  Now type control-x, ) to finish
+      the macro.  Naming the macro is next with M-x
+      name-last-kbd-macro.  You could insert-kbd-macro into a .emacs
+      file if you find it very useful.  Perhaps you want to use that
+      macro 10 times in a row.  This is awkward, but control-u, 10,
+      M-x mymacro.
+    </p>
+  </chapter>
+  
+  <chapter>
+    <title>Sample .emacs</title>
+    <pre caption="Code Sample">
+      <p>$ cat ~/.emacs.d/init.el</p>
+      <p>(prefer-coding-system 'utf-8)</p>
+      <p>(setq transient-mark-mode t)</p>
+      <p>(show-paren-mode t)</p>
+      <p>(setq column-number-mode t)</p>
+      <p>(global-set-key [(f5)] (lambda() (interactive) (woman (current-word))))</p>
+      <p>(global-set-key [(f6)] 'hippie-expand)</p>
+      <p>(global-set-key [(f7)] 'replace-regexp)</p>
+      <p>(global-set-key [(f8)] 'flush-lines)</p>
+      <p>(global-set-key [(f9)] 'dired-do-delete)</p>
+      <p></p>
+      <p># cat /root/.emacs.d/init.el</p>
+      <p>(load "/home/username/.emacs.d/init.el")</p>
+    </pre>
+  </chapter>
+
+</guide>

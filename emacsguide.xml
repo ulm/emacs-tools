@@ -253,6 +253,22 @@
   <chapter>
     <title>Basics</title>
     <section>
+      <title>Macros</title>
+      <body>
+	<p>
+	  An introduction to Emacs would not be complete without a section
+	  on macros.  This is "Editor MACroS".  In a buffer, type
+	  control-x, ( to begin.  Then type what you want in the macro.
+	  You are recording keystrokes.  Now type control-x, ) to finish
+	  the macro.  Naming the macro is next with M-x
+	  name-last-kbd-macro.  You could insert-kbd-macro into a .emacs
+	  file if you find it very useful.  Perhaps you want to use that
+	  macro 10 times in a row.  This is awkward, but control-u, 10,
+	  M-x mymacro.
+	</p>
+      </body>
+    </section>
+    <section>
       <title>Emacs Lisp</title>
       <body>
 	<p>
@@ -348,6 +364,20 @@
 	<note><c>man man</c> has this tip: (global-set-key  [(f1)]  (lambda  () (interactive) (manual-entry (current-word))))</note>
       </body>
     </section>
+    <section>
+      <title>Remove Comments</title>
+      <body>
+	<p>
+	  One common thing for Gentoo users is to strip comments from
+	  configuration files.  This is convenient in Emacs with flush-lines
+	</p>
+	<pre caption="Code Sample">
+	  M-x flush-lines
+	  ^#
+	  That will match lines beginning with a # which is a comment in most /etc configuration files.
+	</pre>
+      </body>
+    </section>
   </chapter>
 
   <chapter>
@@ -426,37 +456,6 @@
 	</pre>
       </body>
     </section>
-  </chapter>
-  
-  <chapter>
-    <title>Remove Comments</title>
-    <p>
-      One common thing for Gentoo users is to strip comments from
-      configuration files.  This is convenient in Emacs with flush-lines
-    </p>
-    <pre caption="Code Sample">
-      M-x flush-lines
-      ^#
-      That will match lines beginning with a # which is a comment in most /etc configuration files.
-    </pre>
-  </chapter>
-  
-  <chapter>
-  </chapter>
-  
-  <chapter>
-    <title>Macros</title>
-    <p>
-      An introduction to Emacs would not be complete without a section
-      on macros.  This is "Editor MACroS".  In a buffer, type
-      control-x, ( to begin.  Then type what you want in the macro.
-      You are recording keystrokes.  Now type control-x, ) to finish
-      the macro.  Naming the macro is next with M-x
-      name-last-kbd-macro.  You could insert-kbd-macro into a .emacs
-      file if you find it very useful.  Perhaps you want to use that
-      macro 10 times in a row.  This is awkward, but control-u, 10,
-      M-x mymacro.
-    </p>
   </chapter>
   
   <chapter>

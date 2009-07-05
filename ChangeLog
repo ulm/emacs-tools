@@ -36,7 +36,7 @@
 2009-03-22  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater (action_sitedir): 00site-gentoo.el should not
-	exist anymore. Treat it like a normal file.
+	exist any more. Treat it like a normal file.
 
 2009-01-18  Ulrich Mueller  <ulm@gentoo.org>
 

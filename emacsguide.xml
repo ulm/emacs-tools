@@ -22,7 +22,7 @@
   <license/>
 
   <version>0.44</version>
-  <date>2009-07-02</date>
+  <date>2009-07-07</date>
 
   <chapter>
     <title>Installation and setup</title>
@@ -54,9 +54,10 @@
 	    <ti></ti>
 	  </tr> -->
 	  <tr>
-	    <ti>gif</ti>
-	    <ti>Support for GIF images.</ti>
-	    <ti></ti>
+	    <ti>gif, png, jpeg, xpm</ti>
+	    <ti>Add support for every individual image format</ti>
+	    <ti>If xpm support is disabled, all logos, icons etc. in
+	      Emacs are displayed in grayscale.</ti>
 	  </tr>
 <!--	  <tr>
 	    <ti>gpm</ti>
@@ -85,11 +86,6 @@
 	    <ti></ti>
 	  </tr>
 	  <tr>
-	    <ti>jpeg</ti>
-	    <ti>Support for JPEG images.</ti>
-	    <ti></ti>
-	  </tr>
-	  <tr>
 	    <ti>kerberos</ti>
 	    <ti>Support for the Kerberos network authentication protocol.</ti>
 	    <ti></ti>
@@ -114,11 +110,6 @@
 	    <ti>nls</ti>
 	    <ti>This makes use of gettext, an easy way to provide translations
 	      of strings (Emacs 21 only).</ti>
-	    <ti></ti>
-	  </tr>
-	  <tr>
-	    <ti>png</ti>
-	    <ti>Support for PNG images.</ti>
 	    <ti></ti>
 	  </tr>
 	  <tr>
@@ -170,12 +161,6 @@
 	    <ti>Choose an alternative font renderer (Emacs 23 only).</ti>
 	    <ti></ti>
 	  </tr> -->
-	  <tr>
-	    <ti>xpm</ti>
-	    <ti>Support for XPM images.</ti>
-	    <ti>If disabled, all logos, icons etc. in Emacs are displayed in
-	      grayscale.  This flag is forced through EAPI 1 features.</ti>
-	  </tr>
 	</table>
 	<p>
 	  You could unpack the Emacs sources and run <c>./configure

@@ -207,27 +207,6 @@ Available Emacs symlink targets:
       </body>
     </section>
     <section>
-      <title>Basic editing commands</title>
-      <body>
-	<p>
-	  After installing Emacs itself we will describe some basics
-	  in editing which is quite different from anything you might
-	  know.
-	</p>
-      </body>
-    </section>
-    <section>
-      <title>Client/Server</title>
-      <body>
-	<p>
-	  TODO: Describe emacs-daemon
-	  Emacs can work as a server for emacsclient.  To use this type M-x
-	  server-start in a running Emacs session.  Then it's <c>emacsclient
-	    file1 file2 file3</c> to edit your files or mail.
-	</p>
-      </body>
-    </section>
-    <section>
       <title>Modes</title>
       <body>
 	<p>
@@ -246,6 +225,27 @@ Cscope can work with Emacs very conveniently.
 That will append the quoted text to the file "/etc/portage/package.use".
 # emerge dev-util/cscope
 	</pre>
+      </body>
+    </section>
+    <section>
+      <title>Basic editing commands</title>
+      <body>
+	<p>
+	  After installing Emacs itself we will describe some basics
+	  in editing which is quite different from anything you might
+	  know.
+	</p>
+      </body>
+    </section>
+    <section>
+      <title>Client/Server</title>
+      <body>
+	<p>
+	  TODO: Describe emacs-daemon
+	  Emacs can work as a server for emacsclient.  To use this type M-x
+	  server-start in a running Emacs session.  Then it's <c>emacsclient
+	    file1 file2 file3</c> to edit your files or mail.
+	</p>
       </body>
     </section>
     <section>

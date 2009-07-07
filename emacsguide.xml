@@ -190,6 +190,23 @@ Available Emacs symlink targets:
       </body>
     </section>
     <section>
+      <title>app-admin/emacs-updater</title>
+      <body>
+	<p>
+	  Initially this tool was intended as a short-term migration
+	  tool for some internal changes, but is now a mean to handle
+	  up- and downgrades of Emacs cleanly.  First you need to
+	  install it.
+	</p>
+	<pre>
+# emerge app-admin/emacs-updater
+	</pre>
+	<p>
+	  TODO: Add description of calls
+	</p>
+      </body>
+    </section>
+    <section>
       <title>Client/Server</title>
       <body>
 	<p>

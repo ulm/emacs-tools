@@ -478,6 +478,9 @@ M-x ediff
     <title>Sample .emacs</title>
     <section>
       <body>
+	<p>
+	  TODO: Describe the settings and add the canonical loading
+	</p>
 	<pre caption="Code Sample">
 $ cat ~/.emacs.d/init.el
 (prefer-coding-system 'utf-8)

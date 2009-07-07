@@ -212,7 +212,7 @@ Available Emacs symlink targets:
 	<p>
 	  After installing Emacs itself we will describe some basics
 	  in editing which is quite different from anything you might
-	  know.
+	  know.	  TODO: What's a mode?  Describe some concepts
 	</p>
       </body>
     </section>
@@ -231,7 +231,6 @@ Available Emacs symlink targets:
       <title>Additional packages</title>
       <body>
 	<p>
-	  TODO: What's a mode?
 	  Some types of files have modes created for them.  If you edit
 	  Python or PHP code, this piece of information is for you.  This
 	  is a convenient way to install elisp files (.el and

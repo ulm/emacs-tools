@@ -157,6 +157,14 @@
     <section>
       <title>Eselect</title>
       <body>
+      <p>
+	All Emacs versions can be installed
+	alongside each other on the same system without collisions.
+	Calling <c>/usr/bin/emacs</c> redirects (by a symbolic link) to
+	the Emacs version you chose to be started.  Switching the
+	default Emacs is done through the emacs eselect module, which is
+	presented in the following example.
+	</p>
 	<pre caption="Eselect">
 # emerge app-admin/eselect
 # eselect emacs list
@@ -172,6 +180,13 @@ Available Emacs symlink targets:
 [1]   emacs-21
 [2]   emacs-22 *
 	</pre>
+	<note>
+	 All installed precompiled Emacs support files may be
+	 incompatible with the version you switched to.  If you
+	 experience problems, please
+	 use <c>app-admin/emacs-updater</c> (described in the next
+	 section).
+	</note>
       </body>
     </section>
     <section>

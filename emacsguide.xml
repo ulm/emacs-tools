@@ -207,27 +207,6 @@ Available Emacs symlink targets:
       </body>
     </section>
     <section>
-      <title>Modes</title>
-      <body>
-	<p>
-	  TODO: What's a mode?
-	  Some types of files have modes created for them.  If you edit
-	  Python or PHP code, this piece of information is for you.  This
-	  is a convenient way to install elisp files (.el and
-	  byte-compiled .elc) thanks to the Emacs team!  This is done as
-	  root.  Note the # prompt.
-	</p>
-	<pre caption="Code Sample">
-# emerge --pretend --verbose app-emacs/python-mode
-# emerge --pretend --verbose app-emacs/php-mode
-Cscope can work with Emacs very conveniently.
-# echo "dev-util/cscope emacs" >> /etc/portage/package.use
-That will append the quoted text to the file "/etc/portage/package.use".
-# emerge dev-util/cscope
-	</pre>
-      </body>
-    </section>
-    <section>
       <title>Basic editing commands</title>
       <body>
 	<p>
@@ -246,6 +225,27 @@ That will append the quoted text to the file "/etc/portage/package.use".
 	  server-start in a running Emacs session.  Then it's <c>emacsclient
 	    file1 file2 file3</c> to edit your files or mail.
 	</p>
+      </body>
+    </section>
+    <section>
+      <title>Additional packages</title>
+      <body>
+	<p>
+	  TODO: What's a mode?
+	  Some types of files have modes created for them.  If you edit
+	  Python or PHP code, this piece of information is for you.  This
+	  is a convenient way to install elisp files (.el and
+	  byte-compiled .elc) thanks to the Emacs team!  This is done as
+	  root.  Note the # prompt.
+	</p>
+	<pre caption="Code Sample">
+# emerge --pretend --verbose app-emacs/python-mode
+# emerge --pretend --verbose app-emacs/php-mode
+Cscope can work with Emacs very conveniently.
+# echo "dev-util/cscope emacs" >> /etc/portage/package.use
+That will append the quoted text to the file "/etc/portage/package.use".
+# emerge dev-util/cscope
+	</pre>
       </body>
     </section>
     <section>

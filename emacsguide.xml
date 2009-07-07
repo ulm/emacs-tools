@@ -235,7 +235,8 @@ Available Emacs symlink targets:
 	  Python or PHP code, this piece of information is for you.  This
 	  is a convenient way to install elisp files (.el and
 	  byte-compiled .elc) thanks to the Emacs team!  This is done as
-	  root.  Note the # prompt.
+	  root.  Note the # prompt.  TODO: Describe canonical
+	  site-init loading
 	</p>
 	<pre caption="Code Sample">
 # emerge --pretend --verbose app-emacs/python-mode

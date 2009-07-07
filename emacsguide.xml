@@ -138,7 +138,7 @@
 	    <ti>X</ti>
 	    <ti>Let Emacs use an X session if available.  Text mode can always
 	      be forced.</ti>
-	<ti></ti>
+	    <ti></ti>
 	  </tr>
 <!--	  <tr>
 	    <ti>xft</ti>

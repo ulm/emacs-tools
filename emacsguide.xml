@@ -207,6 +207,16 @@ Available Emacs symlink targets:
       </body>
     </section>
     <section>
+      <title>Basic editing commands</title>
+      <body>
+	<p>
+	  After installing Emacs itself we will describe some basics
+	  in editing which is quite different from anything you might
+	  know.
+	</p>
+      </body>
+    </section>
+    <section>
       <title>Client/Server</title>
       <body>
 	<p>

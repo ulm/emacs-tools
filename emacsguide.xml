@@ -65,12 +65,11 @@
 	    <ti></ti>
 	  </tr> -->
 	  <tr>
-	    <ti>gtk</ti>
-	    <ti>Use the GIMP Toolkit (GTK+) as windowing toolkit (menu bar
-	      etc.)</ti>
-	    <ti>When this toolkit is activated along with alternative ones (see
-	      other USE flags), GTK+ is chosen. This is in sync with upstream's
-	      wishes.</ti>
+	    <ti>gtk, motif, Xaw3d</ti>
+	    <ti>Different windowing toolkits (menu bar etc.)</ti>
+	    <ti>When The Gimp Toolkit+ (gtk) toolkit is activated
+	      along with alternative ones, GTK+ is chosen. This is in
+	      sync with upstream's wishes.</ti>
 	  </tr>
 	  <tr>
 	    <ti>gzip-el</ti>
@@ -101,11 +100,6 @@
 	      e.g. for Indic scripts (Emacs 23 only).</ti>
 	    <ti>Only available if "xft" is enabled too.</ti>
 	  </tr> -->
-	  <tr>
-	    <ti>motif</ti>
-	    <ti>A windowing toolkit.</ti>
-	    <ti></ti>
-	  </tr>
 	  <tr>
 	    <ti>nls</ti>
 	    <ti>This makes use of gettext, an easy way to provide translations
@@ -145,11 +139,6 @@
 	    <ti>Let Emacs use an X session if available.  Text mode can always
 	      be forced.</ti>
 	<ti></ti>
-	  </tr>
-	  <tr>
-	    <ti>Xaw3d</ti>
-	    <ti>A windowing toolkit.</ti>
-	    <ti></ti>
 	  </tr>
 <!--	  <tr>
 	    <ti>xft</ti>

@@ -21,8 +21,30 @@
   <!-- See http://creativecommons.org/licenses/by-sa/2.5 -->
   <license/>
 
-  <version>0.44</version>
-  <date>2009-07-07</date>
+  <version>0.45</version>
+  <date>2009-07-06</date>
+  <chapter>
+    <title>Introduction</title>
+    <section>
+      <title>What is GNU Emacs?</title>
+      <body>
+	<p>
+	  In short Emacs is an extensible, customizable,
+	  self-documenting real-time display editor, which says
+	  everything and nothing.  At its core it is an interpreter
+	  for Emacs Lisp, an expression-oriented language.  All
+	  functions are written in this language and a user can dive
+	  into that or not, just as he wishes.  If he does he will
+	  find a well-documented structure of functions he can
+	  customise and extend, which makes Emacs a flexible tool for
+	  all editing tasks.  But it is not limited to that: Reading
+	  news or mail, chatting over IRC, organising tasks and
+	  projects or using it as development environment with support
+	  for external debuggers and compilers.
+	</p>
+      </body>
+    </section>
+  </chapter>
 
   <chapter>
     <title>Installation and setup</title>

@@ -42,6 +42,15 @@
 	  projects or using it as development environment with support
 	  for external debuggers and compilers.
 	</p>
+	<p>
+	  The original version of Emacs is nowadays called GNU Emacs
+	  as it is maintained by the GNU project, unlike some forks
+	  that appeared in the long history and some are still
+	  existant today.  The most prominent is XEmacs, which is not
+	  the X version but a totally independent project.  GNU Emacs
+	  has support for X and text mode itself to clarify a popular
+	  misunderstanding
+	</p>
       </body>
     </section>
   </chapter>

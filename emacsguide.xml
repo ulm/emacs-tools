@@ -248,7 +248,7 @@ Available Emacs symlink targets:
 	  up- and downgrades of Emacs cleanly.  First you need to
 	  install it.
 	</p>
-	<pre caption="Instaling app-admin/emacs-updater">
+	<pre caption="Installing app-admin/emacs-updater">
 # emerge app-admin/emacs-updater
 	</pre>
 	<p>

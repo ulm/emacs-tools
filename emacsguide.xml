@@ -126,10 +126,8 @@
 	  <tr>
 	    <ti>gzip-el</ti>
 	    <ti>Zip up all el files.</ti>
-	    <ti>The zip binary is autodetected.  So even when this USE flag is
-	      disabled but the binary is found, all el files will be compressed.
-	      The ebuild takes of that care by confusing the configure
-	      script.</ti>
+	    <ti>This is normally not relevant for the end user if he
+	    has no disk space problems.</ti>
 	  </tr>
 	  <tr>
 	    <ti>hesiod</ti>

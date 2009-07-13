@@ -86,6 +86,31 @@
   <chapter>
     <title>Installation and setup</title>
     <section>
+      <title>Pre-installation considerations</title>
+      <body>
+	<p>
+	  So you decided to install GNU Emacs on your system.  There
+	  are several choices you can make, depending on your needs:
+	  All versions of <c>app-editors/emacs</c> can be installed in
+	  parallel, switching is achieved by the user through the
+	  emacs Eselect module. All are officially supported, although
+	  only version 21 and above are able to handle external
+	  extionsion packages or optional Emacs support activated with
+	  USE=emacs for some packages.  Please note that some packages
+	  need version 22 or higher but those cases are rare and you
+	  will note on emerge (the process will stop very early with a
+	  meaningful message).
+	</p>
+	<p>
+	  As a new major version of GNU Emacs brings a lot of changes,
+	  an upgrade should not be done automatically by the package
+	  manager just because there is a new version.  Emacs 23 for
+	  example can be emerged but the active version stays 22 until
+	  the user chooses otherwise.
+	</p>
+      </body>
+    </section>
+    <section>
       <title>Installing</title>
       <body>
 	<p>First, you must install Emacs. TODO: Be more verbose </p>

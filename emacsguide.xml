@@ -156,22 +156,22 @@
 	      the flag is not set.  This is for cases where ALSA is installed but
 	      the user does not wish support for it in Emacs.</ti>
 	  </tr>
-<!--	  <tr>
+	  <tr>
 	    <ti>dbus</ti>
 	    <ti>Make Emacs D-Bus aware (Emacs 23 only).</ti>
 	    <ti></ti>
-	  </tr> -->
+	  </tr>
 	  <tr>
 	    <ti>gif, png, jpeg, tiff, xpm</ti>
 	    <ti>Add support for every individual image format</ti>
 	    <ti>If xpm support is disabled, all logos, icons etc. in
 	      Emacs are displayed in grayscale.</ti>
 	  </tr>
-<!--	  <tr>
+	  <tr>
 	    <ti>gpm</ti>
 	    <ti>Support for console-based mouse driver (Emacs 23 only).</ti>
 	    <ti></ti>
-	  </tr> -->
+	  </tr>
 	  <tr>
 	    <ti>gtk, motif, Xaw3d</ti>
 	    <ti>Different windowing toolkits (menu bar etc.)</ti>
@@ -200,12 +200,12 @@
 	    <ti>Extended methods for input encodings (Emacs 21 only).</ti>
 	    <ti></ti>
 	  </tr>
-<!--	  <tr>
+	  <tr>
 	    <ti>m17n-lib</ti>
 	    <ti>Use the m17n-lib multilingual library for complex text layout,
 	      e.g. for Indic scripts (Emacs 23 only).</ti>
 	    <ti>Only available if "xft" is enabled too.</ti>
-	  </tr> -->
+	  </tr>
 	  <tr>
 	    <ti>nls</ti>
 	    <ti>This makes use of gettext, an easy way to provide translations
@@ -228,11 +228,11 @@
 	      internal documentation system of GNU Emacs.</ti>
 	    <ti></ti>
 	  </tr>
-<!--	  <tr>
+	  <tr>
 	    <ti>svg</ti>
 	    <ti>Support for SVG images (Emacs 23 only).</ti>
 	    <ti></ti>
-	  </tr> -->
+	  </tr>
 	  <tr>
 	    <ti>toolkit-scroll-bars</ti>
 	    <ti>Instead of the internal scroll bars, the ones from the windowing
@@ -246,11 +246,11 @@
 	      be forced.</ti>
 	    <ti></ti>
 	  </tr>
-<!--	  <tr>
+	  <tr>
 	    <ti>xft</ti>
 	    <ti>Choose an alternative font renderer (Emacs 23 only).</ti>
 	    <ti></ti>
-	  </tr> -->
+	  </tr>
 	</table>
 	<p>
 	  You could unpack the Emacs sources and run <c>./configure

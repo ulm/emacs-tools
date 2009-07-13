@@ -83,7 +83,7 @@
       <body>
 	<p>First, you must install Emacs. TODO: Be more verbose </p>
 	
-	<pre caption="Code Sample">
+	<pre caption="Installation command, just have a peek">
 # emerge --pretend --verbose app-editors/emacs
 	</pre>
 	<!-- find /usr/portage/profiles/use.local* -type f -print0 | xargs -0 -e grep -nH -e emacs -->
@@ -288,7 +288,7 @@ Available Emacs symlink targets:
 	  root.  Note the # prompt.  TODO: Describe canonical
 	  site-init loading
 	</p>
-	<pre caption="Code Sample">
+	<pre caption="Installation of extension packages">
 # emerge --pretend --verbose app-emacs/python-mode
 # emerge --pretend --verbose app-emacs/php-mode
 Cscope can work with Emacs very conveniently.
@@ -302,7 +302,7 @@ That will append the quoted text to the file "/etc/portage/package.use".
       <title>Built-in tutorial</title>
       <body>
 	<p>There is a tutorial for Emacs available.</p>
-	<pre caption="Code Sample">
+	<pre caption="Start of tutorial">
 M-x help-with-tutorial
 	</pre>
 	<p>
@@ -340,7 +340,7 @@ M-x help-with-tutorial
 	  with the cursor at the end of them.  Watch the minibuffer at the
 	  bottom of the screen.
 	</p>
-	<pre caption="Code Sample">
+	<pre caption="Emacs Lisp code example">
 (list 'a 'b 'c)
 (+ 1 2 3)
 (* (* 2 2) (/ 22 7))
@@ -354,14 +354,14 @@ M-x help-with-tutorial
 	  respectively.
 	</p>
 	<p>You could load your elisp.</p>
-	<pre caption="Code Sample">
+	<pre caption="Load an elisp file">
 M-x load-file
 	</pre>
 	<p>
 	  Now, you may want to clean up your code or make replacements in a
 	  function.  Click and drag or use control-space to set a mark.
 	</p>
-	<pre caption="Code Sample">
+	<pre caption="Activate visual mark indicator">
 M-x transient-mark-mode
 	</pre>
 	<p>
@@ -377,7 +377,7 @@ M-x transient-mark-mode
       <title>Invoking Processes</title>
       <body>
 	<p>Emacs can start subprocesses, like a shell or a debugger or even find and grep.</p>
-	<pre caption="Code Sample">
+	<pre caption="Start some connectors">
 M-x shell
 M-x gdb
 M-x find-grep
@@ -410,7 +410,7 @@ M-x find-grep
       <title>Complete Text</title>
       <body>
 	<p>Now is where some completion becomes useful.  There is M-/ to complete a string and also some elisp that does much more.</p>
-	<pre caption="Code Sample">
+	<pre caption="Start-up of hippie-expand">
 M-x hippie-expand
 	</pre>
 	
@@ -420,12 +420,12 @@ M-x hippie-expand
 	  through trying to match what is immediately on the left of the
 	  cursor.  It is much nicer to bind this to a key.
 	</p>
-	<pre caption="Code Sample">
+	<pre caption="Start the global-set-key macro">
 M-x global-set-key
 	</pre>
 	
 	<p>This could be persistent in a .emacs file.</p>
-	<pre caption="Code Sample">
+	<pre caption="Example fort the contents of the .emacs file">
 $ echo "(global-set-key [(f2)] 'hippie-expand)" >> ~/.emacs.d/init.el
 	</pre>
 	
@@ -439,7 +439,7 @@ $ echo "(global-set-key [(f2)] 'hippie-expand)" >> ~/.emacs.d/init.el
 	  One common thing for Gentoo users is to strip comments from
 	  configuration files.  This is convenient in Emacs with flush-lines
 	</p>
-	<pre caption="Code Sample">
+	<pre caption="Start the flush-lines macro">
 M-x flush-lines
 ^#
 That will match lines beginning with a # which is a comment in most /etc configuration files.
@@ -454,7 +454,7 @@ That will match lines beginning with a # which is a comment in most /etc configu
     <title>Dired</title>
     <body>
     <p>Lets start by looking at some files.</p>
-    <pre caption="Code Sample">
+    <pre caption="Open a file with Emacs">
 Control-x, control-f, enter
     </pre>
     
@@ -464,12 +464,12 @@ Control-x, control-f, enter
       quickly back up the tree with ^, shift-6.  Over the course of editing,
       you may open many files.
     </p>
-    <pre caption="Code Sample">
+    <pre caption="Switch buffers">
 Control-x, control-b
     </pre>
 
     <p>Now you may wish to do replacements in many files.</p>
-    <pre caption="Code Sample">
+    <pre caption="Command completion in action">
 M-x dired&lt;TAB&gt;&lt;TAB&gt;
 M-x command-apropos <comment>This can show any dired command.</comment>
     </pre>

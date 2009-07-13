@@ -252,7 +252,16 @@ Available Emacs symlink targets:
 # emerge app-admin/emacs-updater
 	</pre>
 	<p>
-	  TODO: Add description of calls
+	  Without any arguments <c>/usr/sbin/emacs-updater</c> will
+	  look for site-files (we will come of that to the exact
+	  definition later) in a obsolete location and recompile all
+	  Emacs support files of additional packages that were not
+	  built with the current active Emacs version.  That way a up-
+	  or downgrade of Emacs is easily possible if the format of
+	  the compiled files is differing (which is the case between
+	  21 and anything up).  After switching the active version
+	  with the Eselect module you can run emacs-updater afterwards
+	  and will not experience strange run-time errors.
 	</p>
       </body>
     </section>

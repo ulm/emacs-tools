@@ -72,6 +72,13 @@
 	  Emacs as a search term in your favourite search engine to
 	  find a solution in this powerful beast.
 	</p>
+	<p>
+	  Most intrinsic properties described here are also valid for
+	  XEmacs (to be found as <c>app-editors/xemacs</c> in the
+	  repository), but in-Gentoo managment differs in some
+	  details, so do not wonder if the described behaviour does
+	  not occur with XEmacs.
+	</p>
       </body>
     </section>
   </chapter>
@@ -263,6 +270,13 @@ Available Emacs symlink targets:
 	  with the Eselect module you can run emacs-updater afterwards
 	  and will not experience strange run-time errors.
 	</p>
+	<p>
+	  An unconditional rebuild of all Emacs support files is also
+	  possible with
+	</p>
+	<pre caption="Installing app-admin/emacs-updater">
+# /usr/sbin/emacs-updater --action all
+	</pre>
       </body>
     </section>
     <section>

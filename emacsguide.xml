@@ -25,7 +25,7 @@
   <date>2009-07-13</date>
   <chapter>
     <title>Introduction</title>
-    <section>
+    <section id="definition">
       <title>What is GNU Emacs?</title>
       <body>
 	<p>
@@ -58,7 +58,7 @@
 	</p>
       </body>
     </section>
-    <section>
+    <section id="scope">
       <title>Scope of this document</title>
       <body>
 	<p>
@@ -85,7 +85,7 @@
 
   <chapter>
     <title>Installation and setup</title>
-    <section>
+    <section id="preinst">
       <title>Pre-installation considerations</title>
       <body>
 	<p>
@@ -119,7 +119,7 @@
 	</p>
       </body>
     </section>
-    <section>
+    <section id="install">
       <title>Installing</title>
       <body>
 	<p>First, you must install Emacs. TODO: Be more verbose </p>
@@ -245,7 +245,7 @@
 	</p>
       </body>
     </section>
-    <section>
+    <section id="eselect">
       <title>Eselect</title>
       <body>
       <p>
@@ -280,7 +280,7 @@ Available Emacs symlink targets:
 	</note>
       </body>
     </section>
-    <section>
+    <section id="emacs-updater">
       <title>app-admin/emacs-updater</title>
       <body>
 	<p>
@@ -313,7 +313,7 @@ Available Emacs symlink targets:
 	</pre>
       </body>
     </section>
-    <section>
+    <section id="ed-basics">
       <title>Basic editing commands</title>
       <body>
 	<p>
@@ -323,7 +323,7 @@ Available Emacs symlink targets:
 	</p>
       </body>
     </section>
-    <section>
+    <section id="client-server">
       <title>Client/Server</title>
       <body>
 	<p>
@@ -334,7 +334,7 @@ Available Emacs symlink targets:
 	</p>
       </body>
     </section>
-    <section>
+    <section id="tutorial">
       <title>Built-in tutorial</title>
       <body>
 	<p>There is a tutorial for Emacs available.</p>
@@ -351,14 +351,14 @@ M-x help-with-tutorial
 
   <chapter>
     <title>Additional packages</title>
-    <section>
+    <section id="sep-use">
       <title>Separate package or USE=emacs?</title>
       <body>
 	<p>
 	</p>
       </body>
     </section>
-    <section>
+    <section id="pack-inst">
       <title>Installation</title>
       <body>
 	<p>
@@ -379,7 +379,7 @@ That will append the quoted text to the file "/etc/portage/package.use".
 	</pre>
       </body>
     </section>
-    <section>
+    <section id="site-init">
       <title>Loading on start-up</title>
       <body>
 	<p>
@@ -390,7 +390,7 @@ That will append the quoted text to the file "/etc/portage/package.use".
 
   <chapter>
     <title>Basics</title>
-    <section>
+    <section id="macros">
       <title>Macros</title>
       <body>
 	<p>
@@ -406,7 +406,7 @@ That will append the quoted text to the file "/etc/portage/package.use".
 	</p>
       </body>
     </section>
-    <section>
+    <section id="elisp">
       <title>Emacs Lisp</title>
       <body>
 	<p>
@@ -448,7 +448,7 @@ M-x transient-mark-mode
 	</p>
       </body>
     </section>
-    <section>
+    <section id="start-proc">
       <title>Invoking Processes</title>
       <body>
 	<p>Emacs can start subprocesses, like a shell or a debugger or even find and grep.</p>
@@ -462,7 +462,7 @@ M-x find-grep
 	<note>Emacs can be used on compressed text in the gzip and bzip2 formats by invoking decompressors.</note>
       </body>
     </section>
-    <section>
+    <section id="bash-emacs">
       <title>Emacs and Bash Equivalents</title>
       <body>
 	<p>
@@ -481,7 +481,7 @@ M-x find-grep
 	</p>
       </body>
     </section>
-    <section>
+    <section id="textcomp">
       <title>Complete Text</title>
       <body>
 	<p>Now is where some completion becomes useful.  There is M-/ to complete a string and also some elisp that does much more.</p>
@@ -507,7 +507,7 @@ $ echo "(global-set-key [(f2)] 'hippie-expand)" >> ~/.emacs.d/init.el
 	<note><c>man man</c> has this tip: (global-set-key  [(f1)]  (lambda  () (interactive) (manual-entry (current-word))))</note>
       </body>
     </section>
-    <section>
+    <section id="commentrem">
       <title>Remove Comments</title>
       <body>
 	<p>
@@ -525,7 +525,7 @@ That will match lines beginning with a # which is a comment in most /etc configu
 
   <chapter>
     <title>Useful functions in GNU Emacs</title>
-    <section>
+    <section id="dired">
     <title>Dired</title>
     <body>
     <p>Lets start by looking at some files.</p>
@@ -565,7 +565,7 @@ C-x 3 <comment>This is useful if you have a wide screen.</comment>
     </pre>
     </body>
     </section>
-    <section>
+    <section id="speedbar">
       <title>Speedbar for Debugging and Navigation</title>
       <body> 
 	<p>
@@ -584,7 +584,7 @@ M-x speedbar
 	</p>
       </body>
     </section>
-    <section>
+    <section id="ediff">
       <title>Ediff</title>
       <body>
 	<p>
@@ -602,7 +602,7 @@ M-x ediff
   
   <chapter>
     <title>Sample .emacs</title>
-    <section>
+    <section id="dotsample">
       <body>
 	<p>
 	  TODO: Describe the settings and add the canonical loading

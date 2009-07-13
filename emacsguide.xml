@@ -123,6 +123,15 @@
 	  <uri link="../../proj/en/lisp/emacs/editors.xml">list</uri>
 	  is provided by the Emacs team.
 	</p>
+	<p>
+	  Some readers might have noticed already
+	  the <c>app-editors/emacs-cvs</c> package which is a live
+	  version of GNU Emacs.  This means you get the tip of the
+	  current development, freshly served to your computer.  We
+	  spare you the glory details as you should use it only if you
+	  are curious and willing to deal with the typical breakage
+	  that appears during development.
+	</p>
       </body>
     </section>
     <section id="install">

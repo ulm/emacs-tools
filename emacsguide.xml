@@ -116,10 +116,10 @@
 	</p>
 	<p>
 	  Apart from that it comes in handy to have a small and lean
-	  Emacs (18 for example) for quick editing sessions over a
-	  remote connection at hand.  There are several editors which
-	  support Emacs key bindings (so called micro-Emacsen) but
-	  don't have the full power, a
+	  Emacs (version 18 for example) for quick editing sessions
+	  over a remote connection at hand.  There are several editors
+	  which support Emacs key bindings (so called micro-Emacsen)
+	  but don't have the full power, a
 	  <uri link="../../proj/en/lisp/emacs/editors.xml">list</uri>
 	  is provided by the Emacs team.
 	</p>

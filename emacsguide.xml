@@ -278,7 +278,31 @@ Available Emacs symlink targets:
       </body>
     </section>
     <section>
-      <title>Additional packages</title>
+      <title>Built-in tutorial</title>
+      <body>
+	<p>There is a tutorial for Emacs available.</p>
+	<pre caption="Start of tutorial">
+M-x help-with-tutorial
+	</pre>
+	<p>
+	  That is Meta then x.  The Meta key is escape or possibly Alt.  Next
+	  you need to type help and use tab twice to see the completions.
+	</p>
+      </body>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Additional packages</title>
+    <section>
+      <title>Separate package or USE=emacs?</title>
+      <body>
+	<p>
+	</p>
+      </body>
+    </section>
+    <section>
+      <title>Installation</title>
       <body>
 	<p>
 	  Some types of files have modes created for them.  If you edit
@@ -299,15 +323,9 @@ That will append the quoted text to the file "/etc/portage/package.use".
       </body>
     </section>
     <section>
-      <title>Built-in tutorial</title>
+      <title>Loading on start-up</title>
       <body>
-	<p>There is a tutorial for Emacs available.</p>
-	<pre caption="Start of tutorial">
-M-x help-with-tutorial
-	</pre>
 	<p>
-	  That is Meta then x.  The Meta key is escape or possibly Alt.  Next
-	  you need to type help and use tab twice to see the completions.
 	</p>
       </body>
     </section>

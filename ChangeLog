@@ -1,3 +1,10 @@
+2009-07-17  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs.rc (USER): Initialise from SVCNAME instead of RC_SVCNAME,
+	in order to be compatible with baselayout-1. OpenRC defines both.
+	(start): Test for OpenRC. Compatibility code for start-stop-daemon
+	of baselayout-1.
+
 2009-03-18  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 0.14 released.

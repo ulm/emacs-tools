@@ -8,7 +8,7 @@
 : ${EMACS_SHELL=/bin/bash}
 : ${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}
 : ${EMACS_TIMEOUT:=30}
-USER=${RC_SVCNAME#*.}
+USER=${SVCNAME#*.}
 PIDFILE_DIR=/var/run/emacs/${USER}
 PIDFILE=${PIDFILE_DIR}/emacs.pid
 
@@ -20,7 +20,7 @@ depend() {
 }
 
 checkconfig() {
-    if [ "${USER}" = "${RC_SVCNAME}" ]; then
+    if [ "${USER}" = "${SVCNAME}" ]; then
 	eerror "You have to create an init script for each user:"
 	eerror "ln -s emacs /etc/init.d/emacs.<user>"
 	return 1
@@ -50,15 +50,21 @@ start() {
 
     SHELL=${EMACS_SHELL:-$(awk -F: "\$1 == \"${USER}\" { print \$7 }" \
 	/etc/passwd)}
-    export SHELL
+    export SHELL EMACS EMACS_TIMEOUT
 
     ebegin "Starting Emacs daemon for user ${USER}"
-    # This was tested with start-stop-daemon from OpenRC; don't expect
-    # it to work with other implementations.
-    start-stop-daemon --start \
-	--user "${USER}" --chdir "${home}" --pidfile "${PIDFILE}" \
-	--env EMACS="${EMACS}" --env EMACS_TIMEOUT="${EMACS_TIMEOUT}" \
-	--exec "${EMACS_START}" -- ${EMACS_OPTS}
+    if [ -z "${RC_SVCNAME}" ]; then
+	# baselayout-1
+	start-stop-daemon --start \
+	    --user "${USER}" --exec "${EMACS}" --pidfile "${PIDFILE}" \
+	    --chuid "${USER}" --chdir "${home}" --env HOME="${home}" \
+	    --startas "${EMACS_START}" -- ${EMACS_OPTS}
+    else
+	# OpenRC
+	start-stop-daemon --start \
+	    --user "${USER}" --pidfile "${PIDFILE}" --chdir "${home}" \
+	    --exec "${EMACS_START}" -- ${EMACS_OPTS}
+    fi
     eend $?
 }
 

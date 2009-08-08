@@ -7,10 +7,10 @@ PV = $(shell sed '/^[ \t]*\* [Vv]ersion/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' \
 P = $(PN)-$(PV)
 
 DESKTOPFILES = emacs.desktop emacsclient.desktop
-ICONFILES = emacs.png sink.png \
-	emacs_16.png emacs_24.png emacs_32.png emacs_48.png \
-	emacs23_16.png emacs23_24.png emacs23_32.png emacs23_48.png \
-	emacs23_128.png emacs23.svg
+ICONFILES = gnome-emacs.png sink.png \
+	emacs22_16.png emacs22_24.png emacs22_32.png emacs22_48.png \
+	emacs_16.png emacs_24.png emacs_32.png emacs_48.png emacs_128.png \
+	emacs.svg
 DISTFILES = subdirs.el $(DESKTOPFILES) \
 	$(addprefix icons/,COPYRIGHT.icons $(ICONFILES))
 

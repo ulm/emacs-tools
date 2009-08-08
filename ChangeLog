@@ -1,3 +1,11 @@
+2009-08-08  Ulrich Mueller  <ulm@gentoo.org>
+
+	* icons/emacs22_*.png, icons/emacs_*.png, icons/gnone-emacs.png:
+	Renamed from emacs_*.png, emacs23_*.png, and emacs.png,
+	respectively. New default following release of Emacs 23.
+	* icons/COPYRIGHT.icons: Update.
+	* Makefile (ICONFILES): Update.
+
 2009-07-11  Ulrich Mueller  <ulm@gentoo.org>
 
 	* icons/emacs23.svg: Update from Emacs CVS.

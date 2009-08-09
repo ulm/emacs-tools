@@ -34,7 +34,7 @@ EOF
 usage() {
     sed -e 's/^X//' <<-EOF
 	Usage: ${0##*/} [OPTION]...
-	X  -a, --action <arg>[,<arg>]...
+	X  -a, --action ACTION[,ACTION]...
 	X                         specify actions, comma-separated list of:
 	X                         'sitedir': find site-init files not in the
 	X                           new-style location
@@ -47,10 +47,14 @@ usage() {
 	X  -n, --nocolour, --nocolor
 	X                         disable colour in output
 	X  -p, --pretend          don't actually emerge packages
-	X  -P, --package-manager <arg>
-	X                         select a package manager. arg is one out of
+	X  -P, --package-manager PM
+	X                         select a package manager. PM is one out of
 	X                         'portage', 'pkgcore', or 'paludis'
 	X                         (default: automatically determined)
+	X      --package-manager-command CMD
+	X                         call CMD instead of the default package
+	X                         manager command. If CMD includes options
+	X                         the whole command string must be quoted
 	X  -h, --help             display this help and exit
 	EOF
     exit ${1}
@@ -85,7 +89,8 @@ pm_auto() {
 
 # Read in all command-line options and force English output
 OPTIONS=$(LC_ALL=C getopt -o a:ehnpP: \
-    --long action:,exact,help,nocolour,nocolor,pretend,package-manager: \
+    --long action:,exact,help,nocolour,nocolor,pretend \
+    --long package-manager:,package-manager-command: \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
 
@@ -130,7 +135,7 @@ do
 	    esac
 	    shift 2
 	    ;;
-
+	--package-manager-command) PM_COMMAND=${2}; shift 2 ;;
 	--) shift; break ;;
     esac
 done

@@ -28,8 +28,9 @@ closing a session or frame, no contents is lost; you may simply
 reconnect to the Emacs server.
 
 Further customizations can be done through the /etc/conf.d/emacs file,
-which is extensively commented.  Global or per user configuration is
-possible, by naming the configuration file.
+which is extensively commented.  You may also create individual
+/etc/conf.d/emacs.<username> files for "multiplexed" user
+configuration.
 
 Please contact the Gentoo GNU Emacs team directly through
 <http://bugs.gentoo.org/> (preferred) or by e-mail <emacs@gentoo.org>

@@ -22,18 +22,12 @@ EXACT=
 NOCOLOUR=
 PRETEND=
 
-cat <<-EOF
-
-Emacs updater version ${VERSION}
-Written by the Gentoo Emacs team http://www.gentoo.org/proj/en/lisp/emacs/
-Find packages that are installed in the wrong location or rebuild all
-GNU Emacs packages
-
-EOF
-
 usage() {
     sed -e 's/^X//' <<-EOF
 	Usage: ${0##*/} [OPTION]...
+	Rebuild Emacs packages that were compiled by another Emacs version,
+	or that are installed in the wrong location.
+	X
 	X  -a, --action ACTION[,ACTION]...
 	X                         specify actions, comma-separated list of:
 	X                         'sitedir': find site-init files not in the
@@ -56,8 +50,20 @@ usage() {
 	X                         manager command. If CMD includes options
 	X                         the whole command string must be quoted
 	X  -h, --help             display this help and exit
+	X      --version          output version information and exit
 	EOF
     exit ${1}
+}
+
+version() {
+    cat <<-EOF
+	Emacs updater version ${VERSION}
+	Copyright 2007-2009 Gentoo Foundation.
+	Distributed under the terms of the GNU General Public License v2.
+
+	Gentoo Emacs project: <http://www.gentoo.org/proj/en/lisp/emacs/>
+	EOF
+    exit
 }
 
 # Wrapper for package manager commands
@@ -90,7 +96,7 @@ pm_auto() {
 # Read in all command-line options and force English output
 OPTIONS=$(LC_ALL=C getopt -o a:ehnpP: \
     --long action:,exact,help,nocolour,nocolor,pretend \
-    --long package-manager:,package-manager-command: \
+    --long package-manager:,package-manager-command:,version \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
 
@@ -100,6 +106,7 @@ while true
 do
     case "${1}" in
 	-h|--help)      usage 0 ;;
+	--version)      version ;;
 	-e|--exact)     EXACT="true"; shift 1 ;;
 	-p|--pretend)   PRETEND="true"; shift 1 ;;
 	-n|--nocolour|--nocolor) NOCOLOUR="true"; shift 1 ;;

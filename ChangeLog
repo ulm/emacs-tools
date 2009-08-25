@@ -1,3 +1,11 @@
+2009-08-25  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater (OPTIONS): New options --orphans|-o and --version.
+	(ORPHANS): New variable.
+	(version): New function.
+	(usage): Update help text.
+	* emacs-updater.8: Describe new options.
+
 2009-08-09  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater (OPTIONS): New option --package-manager-command.

@@ -20,6 +20,7 @@ PM_COMMAND=pm_auto
 # Other default variable settings
 EXACT=
 NOCOLOUR=
+ORPHANS=
 PRETEND=
 
 usage() {
@@ -40,6 +41,7 @@ usage() {
 	X  -e, --exact            match exact versions when remerging packages
 	X  -n, --nocolour, --nocolor
 	X                         disable colour in output
+	X  -o, --orphans          list orphan files
 	X  -p, --pretend          don't actually emerge packages
 	X  -P, --package-manager PM
 	X                         select a package manager. PM is one out of
@@ -94,8 +96,8 @@ pm_auto() {
 }
 
 # Read in all command-line options and force English output
-OPTIONS=$(LC_ALL=C getopt -o a:ehnpP: \
-    --long action:,exact,help,nocolour,nocolor,pretend \
+OPTIONS=$(LC_ALL=C getopt -o a:ehnopP: \
+    --long action:,exact,help,nocolour,nocolor,orphans,pretend \
     --long package-manager:,package-manager-command:,version \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
@@ -108,6 +110,7 @@ do
 	-h|--help)      usage 0 ;;
 	--version)      version ;;
 	-e|--exact)     EXACT="true"; shift 1 ;;
+	-o|--orphans)   ORPHANS="true"; shift 1 ;;
 	-p|--pretend)   PRETEND="true"; shift 1 ;;
 	-n|--nocolour|--nocolor) NOCOLOUR="true"; shift 1 ;;
 	-a|--action)
@@ -256,7 +259,9 @@ NO_OF_FILES=$(sed -n '$=' "${TMPFILE}")
 [ ${NO_OF_FILES} -eq 1 ] && s= || s=s
 message "Assigning ${NO_OF_FILES} file${s} to packages ..."
 
-if [ "${EXACT}" ]; then
+if [ "${ORPHANS}" ]; then
+    qfile -oCR -f "${TMPFILE}" | sort -u
+elif [ "${EXACT}" ]; then
     qfile -eqCR -f "${TMPFILE}" | sort -u | sed 's/^/=/' > "${PKGFILE}"
 else
     qfile -qCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"

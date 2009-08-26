@@ -19,6 +19,7 @@ PM_COMMAND=pm_auto
 
 # Other default variable settings
 EXACT=
+MAJOR=
 NOCOLOUR=
 ORPHANS=
 PRETEND=
@@ -39,6 +40,8 @@ usage() {
 	X                           byte-compiled Elisp files
 	X                         (default: sitedir,rebuild)
 	X  -e, --exact            match exact versions when remerging packages
+	X  -m, --major            use only the major version when comparing
+	X                         Emacs version numbers
 	X  -n, --nocolour, --nocolor
 	X                         disable colour in output
 	X  -o, --orphans          list orphan files
@@ -96,8 +99,8 @@ pm_auto() {
 }
 
 # Read in all command-line options and force English output
-OPTIONS=$(LC_ALL=C getopt -o a:ehnopP: \
-    --long action:,exact,help,nocolour,nocolor,orphans,pretend \
+OPTIONS=$(LC_ALL=C getopt -o a:ehmnopP: \
+    --long action:,exact,help,major,nocolour,nocolor,orphans,pretend \
     --long package-manager:,package-manager-command:,version \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
@@ -110,6 +113,7 @@ do
 	-h|--help)      usage 0 ;;
 	--version)      version ;;
 	-e|--exact)     EXACT="true"; shift 1 ;;
+	-m|--major)     MAJOR="true"; shift 1 ;;
 	-o|--orphans)   ORPHANS="true"; shift 1 ;;
 	-p|--pretend)   PRETEND="true"; shift 1 ;;
 	-n|--nocolour|--nocolor) NOCOLOUR="true"; shift 1 ;;
@@ -147,6 +151,11 @@ do
 	    ;;
 	--package-manager-command) PM_COMMAND=${2}; shift 2 ;;
 	--) shift; break ;;
+	*)
+	    # this should not happen; getopt should return bad status
+	    echo "Invalid option '${1}' given!"
+	    usage 22
+	    ;;
     esac
 done
 
@@ -223,7 +232,9 @@ action_rebuild() {
 	version=$(bytecomp_version "${elc}")
 	version=${version:-unknown}
 
-	if [ "${version}" != "${active}" ] || [ "${1}" = all ]; then
+	if [ -z "${MAJOR}" -a "${version}" != "${active}" ] \
+	    || [ "${version%%.*}" != "${active%%.*}" ] \
+	    || [ "${1}" = all ]; then
 	    echo "Found ${elc##*/} (compiled by Emacs version ${version})"
 	    echo "${elc}" >> "${TMPFILE}"
 	else

@@ -260,7 +260,7 @@ NO_OF_FILES=$(sed -n '$=' "${TMPFILE}")
 message "Assigning ${NO_OF_FILES} file${s} to packages ..."
 
 if [ "${ORPHANS}" ]; then
-    qfile -oCR -f "${TMPFILE}" | sort -u
+    qfile -oCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
 elif [ "${EXACT}" ]; then
     qfile -eqCR -f "${TMPFILE}" | sort -u | sed 's/^/=/' > "${PKGFILE}"
 else
@@ -276,11 +276,15 @@ fi
 
 NO_OF_PACKAGES=$(sed -n '$=' "${PKGFILE}")
 [ ${NO_OF_PACKAGES} -eq 1 ] && s= || s=s
-message "${NO_OF_PACKAGES} package${s} to remerge:"
+if [ "${ORPHANS}" ]; then
+    message "${NO_OF_PACKAGES} orphan file${s} found:"
+else
+    message "${NO_OF_PACKAGES} package${s} to remerge:"
+fi
 
 cat "${PKGFILE}"
 
-if [ "${PRETEND}" ]; then
+if [ "${PRETEND}" -o "${ORPHANS}" ]; then
     exit 4
 fi
 

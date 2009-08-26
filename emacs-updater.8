@@ -17,33 +17,33 @@ GNU Emacs packages.
 Specify actions, comma-separated list of:
 
 .BR sitedir :
-Find site-init files not in the new-style location
+Find site-init files not in the new-style location.
 
 .BR rebuild :
 Rebuild packages with Elisp files byte-compiled by a different Emacs
-version
+version.
 
 .BR all :
-Rebuild all packages that have byte-compiled Elisp files
+Rebuild all packages that have byte-compiled Elisp files.
 
 (default:
 .BR sitedir ,
 .BR rebuild )
 .TP
 .B -e, --exact
-Match exact versions when remerging packages
+Match exact versions when remerging packages.
 .TP
 .B -m, --major
-Use only the major version when comparing Emacs version numbers
+Use only the major version when comparing Emacs version numbers.
 .TP
 .B -n, --nocolour, --nocolor
-Disable colour in output
+Disable colour in output.
 .TP
 .B -o, --orphans
 List orphan files, i.e. files that are not owned by any package.
 .TP
 .B -p, --pretend
-Don't actually emerge packages
+Don't actually emerge packages.
 .TP
 .BI "-P, --package-manager" " PM"
 Select a package manager.
@@ -67,10 +67,10 @@ may include options in which case the whole command string must be
 passed as a single argument (i.e. included in quotes).
 .TP
 .B -h, --help
-Display help and exit
+Display help and exit.
 .TP
 .B --version
-Output version information and exit
+Output version information and exit.
 .SH ENVIRONMENT
 .TP
 .B PACKAGE_MANAGER

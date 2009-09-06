@@ -1,8 +1,3 @@
-2009-08-29  Ulrich Mueller  <ulm@gentoo.org>
-
-	* emacs-wrapper.sh: Don't redirect stderr, it may be useful
-	diagnostics output.
-
 2009-07-17  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 0.15 released.

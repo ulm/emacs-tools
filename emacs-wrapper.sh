@@ -4,7 +4,7 @@
 # $Id$
 
 # Start Emacs with a login shell wrapper to read the user's profile
-exec -l "${SHELL}" -c "exec \"${EMACS}\" $*" </dev/null >/dev/null &
+exec -l "${SHELL}" -c "exec \"${EMACS}\" $*" </dev/null &>/dev/null &
 pid=$!
 
 # Wait for Emacs daemon to detach

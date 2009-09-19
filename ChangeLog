@@ -1,5 +1,7 @@
 2009-09-19  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 0.16 released.
+
 	* emacs-wrapper.sh: Save Emacs's output in a temporary file.
 	Display it only in case of error.
 

@@ -17,7 +17,7 @@ for (( t=${EMACS_TIMEOUT:-30}; t > 0; t-- )); do
     if ! kill -0 ${pid} 2>/dev/null; then
         wait ${pid}		# get exit status
         status=$?
-        [[ ${status} -ne 0 ]] && cat "${logfile}"
+        [[ ${status} -ne 0 || -n ${EMACS_DEBUG} ]] && cat "${logfile}"
         exit ${status}
     fi
 done

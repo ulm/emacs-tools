@@ -50,7 +50,7 @@ start() {
 
     SHELL=${EMACS_SHELL:-$(awk -F: "\$1 == \"${USER}\" { print \$7 }" \
 	/etc/passwd)}
-    export SHELL EMACS EMACS_TIMEOUT
+    export SHELL EMACS EMACS_TIMEOUT EMACS_DEBUG
 
     ebegin "Starting Emacs daemon for user ${USER}"
     if [ -z "${RC_SVCNAME}" ]; then

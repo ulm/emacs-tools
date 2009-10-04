@@ -1,3 +1,10 @@
+2009-10-05  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-wrapper.sh: Always display the saved output if the
+	EMACS_DEBUG variable is set.
+	* emacs.rc (start): Export EMACS_DEBUG.
+	* emacs.conf (EMACS_DEBUG): Document variable.
+
 2009-09-19  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 0.16 released.

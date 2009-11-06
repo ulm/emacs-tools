@@ -170,8 +170,11 @@ do_show() {
 	else
 		write_kv_list_entry "(unset)" ""
 	fi
-	xemacs_info
-	#vim_info
+
+	#if ! is_output_mode brief; then
+		xemacs_info
+		#vim_info
+	#fi
 }
 
 ### list action ###
@@ -186,20 +189,19 @@ do_list() {
 	local i targets
 	targets=( $(find_targets) )
 
+	for (( i = 0; i < ${#targets[@]}; i++ )); do
+		# Highlight the currently chosen version
+		[[ ${targets[i]} = \
+			$(basename "$(readlink "${ROOT}${bindir}/emacs")") ]] \
+			&& targets[i]=$(highlight_marker "${targets[i]}")
+	done
 	write_list_start "Available Emacs symlink targets:"
-	if [[ ${#targets[@]} -gt 0 ]]; then
-		for (( i = 0; i < ${#targets[@]}; i++ )); do
-			# Display a star to indicate the currently chosen version
-			[[ ${targets[i]} = \
-				$(basename "$(readlink "${ROOT}${bindir}/emacs")") ]] \
-				&& targets[i]="${targets[i]} $(highlight '*')"
-		done
-		write_numbered_list "${targets[@]}"
-	else
-		write_kv_list_entry "(none found)" ""
-	fi
-	xemacs_info
-	#vim_info
+	write_numbered_list -m "(none found)" "${targets[@]}"
+
+	#if ! is_output_mode brief; then
+		xemacs_info
+		#vim_info
+	#fi
 }
 
 ### set action ###

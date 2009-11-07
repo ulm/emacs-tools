@@ -171,10 +171,10 @@ do_show() {
 		write_kv_list_entry "(unset)" ""
 	fi
 
-	#if ! is_output_mode brief; then
+	if ! is_output_mode brief; then
 		xemacs_info
 		#vim_info
-	#fi
+	fi
 }
 
 ### list action ###
@@ -198,10 +198,10 @@ do_list() {
 	write_list_start "Available Emacs symlink targets:"
 	write_numbered_list -m "(none found)" "${targets[@]}"
 
-	#if ! is_output_mode brief; then
+	if ! is_output_mode brief; then
 		xemacs_info
 		#vim_info
-	#fi
+	fi
 }
 
 ### set action ###

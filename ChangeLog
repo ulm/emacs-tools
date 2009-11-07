@@ -1,5 +1,7 @@
 2009-11-07  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 1.11 released.
+
 	* emacs.eselect (do_list, do_show):
 	* ctags.eselect (do_list): Support brief output mode, bug 292100.
 

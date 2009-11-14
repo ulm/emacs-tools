@@ -20,12 +20,7 @@
 # do_update(): Set the target to the highest version available
 #	(optionally: only if not set)
 
-bindir=/usr/bin
-man1dir=/usr/share/man/man1
-infodir=/usr/share/info
-envdir=/etc/env.d
-
-DESCRIPTION="Manage ${bindir}/emacs version"
+DESCRIPTION="Manage /usr/bin/emacs version"
 MAINTAINER="emacs@gentoo.org"
 SVN_DATE='$Date$'
 VERSION=$(svn_date_to_version "${SVN_DATE}")
@@ -37,32 +32,32 @@ MANPAGELIST="emacs emacsclient ebrowse gfdl"
 find_targets() {
 	# Return the list of available Emacs binaries
 	local j
-	for j in "${EROOT}${bindir}"/emacs-[0-9]*; do
+	for j in "${EROOT}"/usr/bin/emacs-[0-9]*; do
 		[[ -f ${j} ]] && basename ${j}
 	done
 }
 
 remove_infopath() {
 	# When cleaning symlinks this takes care of the info documentation settings
-	rm -f "${EROOT}${envdir}/50emacs"
+	rm -f "${EROOT}/etc/env.d/50emacs"
 }
 
 # Define INFOPATH environment variable in env file
 set_infopath() {
-	[[ -d ${EROOT}${infodir}/$1 ]] || return 1
-	echo "INFOPATH=${EPREFIX}${infodir}/$1" >"${EROOT}${envdir}/50emacs"
+	[[ -d ${EROOT}/usr/share/info/$1 ]] || return 1
+	echo "INFOPATH=${EPREFIX}/usr/share/info/$1" >"${EROOT}/etc/env.d/50emacs"
 }
 
 remove_symlinks() {
 	# Remove existing symlinks to binaries, man pages,
 	# and the env file (own function)
 	local f
-	rm -f "${EROOT}${bindir}/emacs"
+	rm -f "${EROOT}/usr/bin/emacs"
 	for f in ${BINARYLIST}; do
-		rm -f "${EROOT}${bindir}/${f}"
+		rm -f "${EROOT}/usr/bin/${f}"
 	done
 	for f in ${MANPAGELIST}; do
-		rm -f "${EROOT}${man1dir}"/${f}.1*
+		rm -f "${EROOT}"/usr/share/man/man1/${f}.1*
 	done
 	remove_infopath
 }
@@ -72,9 +67,9 @@ set_bin_symlinks() {
 	local target=${1} f
 	for f in ${BINARYLIST}; do
 		# set symlink only if target binary actually exists
-		if [[ -f ${EROOT}${bindir}/${f}-${target} ]]; then
-			ln -s "${f}-${target}" "${EROOT}${bindir}/${f}" || die \
-				"Couldn't set ${f}-${target} ${EROOT}${bindir}/${f} symlink"
+		if [[ -f ${EROOT}/usr/bin/${f}-${target} ]]; then
+			ln -s "${f}-${target}" "${EROOT}/usr/bin/${f}" || die \
+				"Couldn't set ${f}-${target} ${EROOT}/usr/bin/${f} symlink"
 		fi
 	done
 }
@@ -83,12 +78,12 @@ set_man_symlinks() {
 	# Set symlinks to man pages
 	local target=${1} extension f i
 	for f in ${MANPAGELIST}; do
-		for i in "${EROOT}${man1dir}"/${f}-${target}.1*; do
+		for i in "${EROOT}"/usr/share/man/man1/${f}-${target}.1*; do
 			if [[ -f ${i} ]]; then
 				# target file exists; determine compress extension
 				extension=${i##*/${f}-${target}.1}
 				ln -s "${f}-${target}.1${extension}" \
-					"${EROOT}${man1dir}/${f}.1${extension}"
+					"${EROOT}/usr/share/man/man1/${f}.1${extension}"
 			fi
 		done
 	done
@@ -107,7 +102,7 @@ set_symlinks() {
 	fi
 
 	# is the target valid, i.e. does an Emacs binary with this name exist?
-	[[ -f ${EROOT}${bindir}/${target} ]] \
+	[[ -f ${EROOT}/usr/bin/${target} ]] \
 		|| die -q "Target \"${1}\" doesn't appear to be valid!"
 
 	echo "Switching emacs to ${target} ..."
@@ -115,8 +110,8 @@ set_symlinks() {
 	# the main /usr/bin/emacs symlink is only set for Emacs binaries
 	# (but not for other providers of auxiliary programs, e.g., XEmacs)
 	if [[ -z ${nomain} ]]; then
-		ln -s "${target}" "${EROOT}${bindir}/emacs" \
-			|| die "Couldn't set ${target} ${EROOT}${bindir}/emacs symlink"
+		ln -s "${target}" "${EROOT}/usr/bin/emacs" \
+			|| die "Couldn't set ${target} ${EROOT}/usr/bin/emacs symlink"
 	fi
 	set_bin_symlinks "${target}"
 	set_man_symlinks "${target}"
@@ -131,7 +126,7 @@ set_symlinks() {
 xemacs_info() {
 	# This is just informational to tell that XEmacs has been found,
 	# a wish from graaff
-	if [[ -e ${EROOT}${bindir}/xemacs ]]; then
+	if [[ -e ${EROOT}/usr/bin/xemacs ]]; then
 		echo
 		write_list_start "XEmacs is also installed"
 	fi
@@ -139,7 +134,7 @@ xemacs_info() {
 
 vim_info() {
 	# Don't take this too serious
-	if [[ -e ${EROOT}${bindir}/vi ]]; then
+	if [[ -e ${EROOT}/usr/bin/vi ]]; then
 		echo
 		write_list_start "Vi found, your system is in real trouble now! ;)"
 	fi
@@ -147,7 +142,7 @@ vim_info() {
 
 test_for_root() {
 	# checks if the user has rights to modify /usr/bin/
-	[[ -w ${EROOT}${bindir} ]] || die -q "You need root privileges!"
+	[[ -w ${EROOT}/usr/bin ]] || die -q "You need root privileges!"
 }
 
 ### show action ###
@@ -160,10 +155,10 @@ do_show() {
 	[[ $# -gt 0 ]] && die -q "Too many parameters"
 
 	write_list_start "Current target of Emacs symlink:"
-	if [[ -L ${EROOT}${bindir}/emacs && -e ${EROOT}${bindir}/emacs ]]; then
+	if [[ -L ${EROOT}/usr/bin/emacs && -e ${EROOT}/usr/bin/emacs ]]; then
 		write_kv_list_entry \
-			"$(basename "$(readlink "${EROOT}${bindir}/emacs")")" ""
-	elif [[ -e ${EROOT}${bindir}/emacs ]]; then
+			"$(basename "$(readlink "${EROOT}/usr/bin/emacs")")" ""
+	elif [[ -e ${EROOT}/usr/bin/emacs ]]; then
 		write_kv_list_entry \
 			"(not a symlink or target of symlink does not exist)" ""
 	else
@@ -191,7 +186,7 @@ do_list() {
 	for (( i = 0; i < ${#targets[@]}; i++ )); do
 		# Highlight the currently chosen version
 		[[ ${targets[i]} = \
-			$(basename "$(readlink "${EROOT}${bindir}/emacs")") ]] \
+			$(basename "$(readlink "${EROOT}/usr/bin/emacs")") ]] \
 			&& targets[i]=$(highlight_marker "${targets[i]}")
 	done
 	write_list_start "Available Emacs symlink targets:"
@@ -222,8 +217,8 @@ do_set() {
 	[[ $# -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
-	if [[ -e ${EROOT}${bindir}/emacs && ! -L ${EROOT}${bindir}/emacs ]]; then
-		die -q "${EROOT}${bindir}/emacs exists but is not a symlink"
+	if [[ -e ${EROOT}/usr/bin/emacs && ! -L ${EROOT}/usr/bin/emacs ]]; then
+		die -q "${EROOT}/usr/bin/emacs exists but is not a symlink"
 	fi
 
 	set_symlinks "${1}" || die -q "Couldn't set a new symlink"
@@ -247,23 +242,23 @@ do_update() {
 	[[ $# -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
-	if [[ -L ${EROOT}${bindir}/emacs ]]; then
-		if [[ $1 == *if*unset && -e ${EROOT}${bindir}/emacs ]]; then
+	if [[ -L ${EROOT}/usr/bin/emacs ]]; then
+		if [[ $1 == *if*unset && -e ${EROOT}/usr/bin/emacs ]]; then
 			do_action ctags update ifunset
 			return
 		fi
 		# this is not redundant: "update" is called in pkg_postrm() of emacs
 		# and should clean up any dead symlinks if no valid target exists
 		remove_symlinks || die -q "Couldn't remove existing symlink"
-	elif [[ -e ${EROOT}${bindir}/emacs ]]; then
-		die -q "${EROOT}${bindir}/emacs exists but is not a symlink"
+	elif [[ -e ${EROOT}/usr/bin/emacs ]]; then
+		die -q "${EROOT}/usr/bin/emacs exists but is not a symlink"
 	fi
 
 	local targets=( $(find_targets) )
 	if [[ ${#targets[@]} -gt 0 ]]; then
 		set_symlinks "${targets[${#targets[@]}-1]}" \
 			|| die -q "Couldn't set a new symlink"
-	elif [[ -f ${EROOT}${bindir}/xemacs ]]; then
+	elif [[ -f ${EROOT}/usr/bin/xemacs ]]; then
 		# no Emacs target found - link to XEmacs versions
 		set_symlinks xemacs nomain
 	fi

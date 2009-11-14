@@ -1,7 +1,9 @@
 2009-11-14  Ulrich Mueller  <ulm@gentoo.org>
 
 	* ctags.eselect:
-	* emacs.eselect: Use EROOT and EPREFIX throughout.
+	* emacs.eselect: Use EROOT and EPREFIX throughout; these variables
+	exist in >=eselect-1.2. Remove now unnecessary global variables
+	for directories. See bug 251847.
 
 2009-11-07  Ulrich Mueller  <ulm@gentoo.org>
 

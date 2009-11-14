@@ -1,3 +1,8 @@
+2009-11-14  Ulrich Mueller  <ulm@gentoo.org>
+
+	* ctags.eselect:
+	* emacs.eselect: Use EROOT and EPREFIX throughout.
+
 2009-11-07  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 1.11 released.

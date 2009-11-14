@@ -39,11 +39,11 @@ find_targets() {
 	# currently active Emacs version (selected by emacs.eselect)
 	# The logic here is the same as in emacs.eselect, don't change it!
 	local emacs
-	if [[ -L ${ROOT}${bindir}/emacs && -e ${ROOT}${bindir}/emacs ]]; then
-		emacs=$(basename "$(readlink "${ROOT}${bindir}/emacs")")
-		[[ -f ${ROOT}${bindir}/${CTAGS}-${emacs} ]] && echo "${CTAGS}-${emacs}"
-	elif [[ -f ${ROOT}${bindir}/xemacs ]]; then
-		[[ -f ${ROOT}${bindir}/${CTAGS}-xemacs ]] && echo "${CTAGS}-xemacs"
+	if [[ -L ${EROOT}${bindir}/emacs && -e ${EROOT}${bindir}/emacs ]]; then
+		emacs=$(basename "$(readlink "${EROOT}${bindir}/emacs")")
+		[[ -f ${EROOT}${bindir}/${CTAGS}-${emacs} ]] && echo "${CTAGS}-${emacs}"
+	elif [[ -f ${EROOT}${bindir}/xemacs ]]; then
+		[[ -f ${EROOT}${bindir}/${CTAGS}-xemacs ]] && echo "${CTAGS}-xemacs"
 	elif [[ ${CTAGS} = etags ]]; then
 		# We are called as etags module, but no (X)Emacs is installed.
 		# Return an empty list in this case, because we don't want
@@ -53,31 +53,31 @@ find_targets() {
 	fi
 
 	# Exuberant ctags
-	[[ -f ${ROOT}${bindir}/exuberant-ctags ]] && echo exuberant-ctags
+	[[ -f ${EROOT}${bindir}/exuberant-ctags ]] && echo exuberant-ctags
 }
 
 remove_symlinks() {
 	# Remove existing symlinks to binary and man page
-	rm -f "${ROOT}${bindir}/${CTAGS}" \
-		"${ROOT}${man1dir}"/${CTAGS}.1*
+	rm -f "${EROOT}${bindir}/${CTAGS}" \
+		"${EROOT}${man1dir}"/${CTAGS}.1*
 }
 
 set_bin_symlinks() {
 	# Set symlink to binary
 	local target=${1}
-	ln -s "${target}" "${ROOT}${bindir}/${CTAGS}" \
-		|| die "Couldn't set ${target} ${ROOT}${bindir}/${CTAGS} symlink"
+	ln -s "${target}" "${EROOT}${bindir}/${CTAGS}" \
+		|| die "Couldn't set ${target} ${EROOT}${bindir}/${CTAGS} symlink"
 }
 
 set_man_symlinks() {
 	# Set symlink to man page
 	local target=${1} extension i
-	for i in "${ROOT}${man1dir}"/${target}.1*; do
+	for i in "${EROOT}${man1dir}"/${target}.1*; do
 		if [[ -f ${i} ]]; then
 			# target file exists; determine compress extension
 			extension=${i##*/${target}.1}
 			ln -s "${target}.1${extension}" \
-				"${ROOT}${man1dir}/${CTAGS}.1${extension}"
+				"${EROOT}${man1dir}/${CTAGS}.1${extension}"
 		fi
 	done
 }
@@ -95,7 +95,7 @@ set_symlinks() {
 	fi
 
 	# is the target valid, i.e. does a ctags binary with this name exist?
-	[[ -f ${ROOT}${bindir}/${target} ]] \
+	[[ -f ${EROOT}${bindir}/${target} ]] \
 		|| die -q "Target \"$1\" doesn't appear to be valid!"
 
 	echo "Switching ${CTAGS} to ${target} ..."
@@ -107,7 +107,7 @@ set_symlinks() {
 
 test_for_root() {
 	# checks if the user has rights to modify /usr/bin/
-	[[ -w ${ROOT}${bindir} ]] || die -q "You need root privileges!"
+	[[ -w ${EROOT}${bindir} ]] || die -q "You need root privileges!"
 }
 
 ### show action ###
@@ -120,11 +120,11 @@ do_show() {
 	[[ $# -gt 0 ]] && die -q "Too many parameters"
 
 	write_list_start "Current target of ${CTAGS} symlink:"
-	if [[ -L ${ROOT}${bindir}/${CTAGS} && -e ${ROOT}${bindir}/${CTAGS} ]]
+	if [[ -L ${EROOT}${bindir}/${CTAGS} && -e ${EROOT}${bindir}/${CTAGS} ]]
 	then
 		write_kv_list_entry \
-			"$(basename "$(readlink "${ROOT}${bindir}/${CTAGS}")")" ""
-	elif [[ -e ${ROOT}${bindir}/${CTAGS} ]]; then
+			"$(basename "$(readlink "${EROOT}${bindir}/${CTAGS}")")" ""
+	elif [[ -e ${EROOT}${bindir}/${CTAGS} ]]; then
 		write_kv_list_entry \
 			"(not a symlink or target of symlink does not exist)" ""
 	else
@@ -147,7 +147,7 @@ do_list() {
 	for (( i = 0; i < ${#targets[@]}; i++ )); do
 		# Highlight the currently chosen version
 		[[ ${targets[i]} = \
-			$(basename "$(readlink "${ROOT}${bindir}/${CTAGS}")") ]] \
+			$(basename "$(readlink "${EROOT}${bindir}/${CTAGS}")") ]] \
 			&& targets[i]=$(highlight_marker "${targets[i]}")
 	done
 	write_list_start "Available ${CTAGS} symlink targets:"
@@ -173,9 +173,9 @@ do_set() {
 	[[ $# -gt 1 ]] && die -q "Too many parameters"
 	test_for_root
 
-	if [[ -e ${ROOT}${bindir}/${CTAGS} && ! -L ${ROOT}${bindir}/${CTAGS} ]]
+	if [[ -e ${EROOT}${bindir}/${CTAGS} && ! -L ${EROOT}${bindir}/${CTAGS} ]]
 	then
-		die -q "${ROOT}${bindir}/${CTAGS} exists but is not a symlink"
+		die -q "${EROOT}${bindir}/${CTAGS} exists but is not a symlink"
 	fi
 
 	set_symlinks "$1" || die -q "Couldn't set a new symlink"
@@ -198,18 +198,18 @@ do_update() {
 	test_for_root
 
 	if ! [[ $1 == *if*unset \
-		&& -L ${ROOT}${bindir}/${CTAGS} && -e ${ROOT}${bindir}/${CTAGS} ]]
+		&& -L ${EROOT}${bindir}/${CTAGS} && -e ${EROOT}${bindir}/${CTAGS} ]]
 	then
 		local current=""
-		if [[ -L ${ROOT}${bindir}/${CTAGS} ]]; then
-			current=$(basename "$(readlink "${ROOT}${bindir}/${CTAGS}")")
-			if [[ ! -e ${ROOT}${bindir}/${CTAGS} ]]; then
+		if [[ -L ${EROOT}${bindir}/${CTAGS} ]]; then
+			current=$(basename "$(readlink "${EROOT}${bindir}/${CTAGS}")")
+			if [[ ! -e ${EROOT}${bindir}/${CTAGS} ]]; then
 				# clean up dead symlinks
 				remove_symlinks || die -q "Couldn't remove existing symlink"
 			fi
-		elif [[ -e ${ROOT}${bindir}/${CTAGS} ]]; then
+		elif [[ -e ${EROOT}${bindir}/${CTAGS} ]]; then
 			if ! [[ ${CTAGS} = ctags && $(uname) = FreeBSD ]]; then
-				die -q "${ROOT}${bindir}/${CTAGS} exists but is not a symlink"
+				die -q "${EROOT}${bindir}/${CTAGS} exists but is not a symlink"
 			fi
 			# On FreeBSD ctags is a real file, installed by freebsd-ubin
 			current=nolink

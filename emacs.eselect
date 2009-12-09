@@ -27,7 +27,8 @@ VERSION=$(svn_date_to_version "${SVN_DATE}")
 
 # ctags and etags are handled in their own module
 BINARYLIST="emacsclient b2m ebrowse rcs-checkin grep-changelog"
-MANPAGELIST="emacs emacsclient ebrowse gfdl"
+MANPAGELIST="emacs emacsclient b2m ebrowse rcs-checkin grep-changelog"
+MANPAGELIST_OLD="gfdl"
 
 find_targets() {
 	# Return the list of available Emacs binaries
@@ -56,7 +57,7 @@ remove_symlinks() {
 	for f in ${BINARYLIST}; do
 		rm -f "${EROOT}/usr/bin/${f}"
 	done
-	for f in ${MANPAGELIST}; do
+	for f in ${MANPAGELIST} ${MANPAGELIST_OLD}; do
 		rm -f "${EROOT}"/usr/share/man/man1/${f}.1*
 	done
 	remove_infopath

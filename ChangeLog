@@ -1,3 +1,11 @@
+2009-12-09  Ulrich Mueller  <ulm@gentoo.org>
+
+	* Version 1.13 released.
+
+	* emacs.eselect (MANPAGELIST): Add manpages installed by Emacs 23.
+	(MANPAGELIST_OLD): New variable, move "gfdl" to it.
+	(remove_symlinks): Remove also files listed in MANPAGELIST_OLD.
+
 2009-11-20  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 1.12 released.

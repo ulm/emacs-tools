@@ -233,7 +233,7 @@
 	same and is actually used
 	Increase version number to 0.2
 	Head information reformatted with normal echo without pretty
-	output, adding author Info
+	output, adding author info
 	Quit message uses warning() instead of message()
 
 2007-11-28  Christian Faulhammer  <opfer@gentoo.org>

@@ -1,3 +1,8 @@
+2010-01-04  Christian Faulhammer  <fauli@gentoo.org>
+
+	* emacs-updater (pm_portage): Add --keep-going option for user
+	convenience
+
 2009-08-27  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 1.6 released.

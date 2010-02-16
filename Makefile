@@ -1,5 +1,6 @@
-# Copyright 2007-2008 Gentoo Foundation
+# Copyright 2007-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 PN = eselect-emacs
 PV = $(shell sed '/^[ \t]*\* .*[Vv]ersion/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' \

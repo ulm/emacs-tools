@@ -1,0 +1,23 @@
+#!/bin/bash
+# Copyright 2008-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2 or later
+# $Id$
+
+EMACS_LISP_EXPR="(kill-emacs)"
+
+su "${USER}" -c "emacsclient --eval \"${EMACS_LISP_EXPR}\"" \
+    </dev/null &>/dev/null &
+pid=$!
+
+# Wait for emacsclient
+for (( t=${EMACS_TIMEOUT:-30}; t > 0; t-- )); do
+    sleep 1
+    kill -0 ${pid} 2>/dev/null || exit 0
+done
+
+echo "${0##*/}: timeout waiting for emacsclient" >&2
+kill ${pid} 2>/dev/null
+
+# exit 0: runscript shall stop the emacs process
+# exit 1: runscript shall exit with an error
+exit 0

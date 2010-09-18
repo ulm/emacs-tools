@@ -71,7 +71,10 @@ start() {
 stop() {
     # Optionally, call a custom script before stopping.
     if [ "${EMACS_STOP}" ] && [ -x "${EMACS_STOP}" ]; then
-	"${EMACS_STOP}" || return
+	export USER PIDFILE EMACS EMACS_TIMEOUT EMACS_DEBUG
+	ebegin "Calling Emacs stop script for ${USER}"
+	"${EMACS_STOP}"
+	eend $? || return
     fi
 
     ebegin "Stopping Emacs daemon for user ${USER}"

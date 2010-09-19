@@ -7,7 +7,7 @@
 # You can add additional commands here, or to kill-emacs-hook.
 EMACS_LISP_EXPR="(kill-emacs)"
 
-su "${USER}" -c "emacsclient --eval \"${EMACS_LISP_EXPR}\"" \
+su "${USER}" -c "${EMACSCLIENT} --eval \"${EMACS_LISP_EXPR}\"" \
     </dev/null &>/dev/null &
 pid=$!
 

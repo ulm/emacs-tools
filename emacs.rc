@@ -4,6 +4,7 @@
 # $Id$
 
 : ${EMACS:=/usr/bin/emacs}
+: ${EMACSCLIENT:=/usr/bin/emacsclient}
 : ${EMACS_OPTS:=--daemon}
 : ${EMACS_SHELL=/bin/bash}
 : ${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}
@@ -71,7 +72,7 @@ start() {
 stop() {
     # Optionally, call a custom script before stopping.
     if [ "${EMACS_STOP}" ] && [ -x "${EMACS_STOP}" ]; then
-	export USER PIDFILE EMACS EMACS_TIMEOUT EMACS_DEBUG
+	export USER PIDFILE EMACS EMACSCLIENT EMACS_TIMEOUT EMACS_DEBUG
 	ebegin "Calling Emacs stop script for ${USER}"
 	"${EMACS_STOP}"
 	eend $? || return

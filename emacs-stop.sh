@@ -3,6 +3,8 @@
 # Distributed under the terms of the GNU General Public License v2 or later
 # $Id$
 
+# Lisp expression to be evaluated when stopping Emacs.
+# You can add additional commands here, or to kill-emacs-hook.
 EMACS_LISP_EXPR="(kill-emacs)"
 
 su "${USER}" -c "emacsclient --eval \"${EMACS_LISP_EXPR}\"" \

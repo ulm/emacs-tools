@@ -4,7 +4,7 @@
 # $Id$
 
 # Lisp expression to be evaluated when stopping Emacs.
-# You can add additional commands here, or to kill-emacs-hook.
+# Any additional commands should preferably be added to kill-emacs-hook.
 EMACS_LISP_EXPR="(kill-emacs)"
 
 su "${USER}" -c "${EMACSCLIENT} --eval \"${EMACS_LISP_EXPR}\"" \
@@ -20,6 +20,6 @@ done
 echo "${0##*/}: timeout waiting for emacsclient" >&2
 kill ${pid} 2>/dev/null
 
-# exit 0: runscript shall stop the emacs process
+# exit 0: runscript shall continue and (forcibly) kill the emacs process
 # exit 1: runscript shall exit with an error
 exit 0

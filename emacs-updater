@@ -115,11 +115,11 @@ do
     case "${1}" in
 	-h|--help)      usage 0 ;;
 	--version)      version ;;
-	-e|--exact)     EXACT="true"; shift 1 ;;
-	-m|--major)     MAJOR="true"; shift 1 ;;
-	-o|--orphans)   ORPHANS="true"; shift 1 ;;
-	-p|--pretend)   PRETEND="true"; shift 1 ;;
-	-n|--nocolour|--nocolor) NOCOLOUR="true"; shift 1 ;;
+	-e|--exact)     EXACT="true"; shift ;;
+	-m|--major)     MAJOR="true"; shift ;;
+	-o|--orphans)   ORPHANS="true"; shift ;;
+	-p|--pretend)   PRETEND="true"; shift ;;
+	-n|--nocolour|--nocolor) NOCOLOUR="true"; shift ;;
 	-a|--action)
 	    ACTIONS=
 	    for action in ${2/,/ }; do

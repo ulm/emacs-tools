@@ -19,6 +19,7 @@ PM_COMMAND=pm_auto
 PM_EXTRAOPTS=( )
 
 # Other default variable settings
+BATCH=
 EXACT=
 MAJOR=
 NOCOLOUR=
@@ -40,6 +41,7 @@ usage() {
 	X                         'all': rebuild all packages that have
 	X                           byte-compiled Elisp files
 	X                         (default: sitedir,rebuild)
+	X  -b, --batch            batch mode, don't ask any questions
 	X  -e, --exact            match exact versions when remerging packages
 	X  -m, --major            use only the major version when comparing
 	X                         Emacs version numbers
@@ -102,8 +104,8 @@ pm_auto() {
 }
 
 # Read in all command-line options and force English output
-OPTIONS=$(LC_ALL=C getopt -o a:ehmnopP: \
-    --long action:,exact,help,major,nocolour,nocolor,orphans,pretend \
+OPTIONS=$(LC_ALL=C getopt -o a:behmnopP: \
+    --long action:,batch,exact,help,major,nocolour,nocolor,orphans,pretend \
     --long package-manager:,package-manager-command:,version \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
@@ -115,6 +117,7 @@ do
     case "${1}" in
 	-h|--help)      usage 0 ;;
 	--version)      version ;;
+	-b|--batch)     BATCH="true"; shift ;;
 	-e|--exact)     EXACT="true"; shift ;;
 	-m|--major)     MAJOR="true"; shift ;;
 	-o|--orphans)   ORPHANS="true"; shift ;;
@@ -303,16 +306,17 @@ if [ "${PRETEND}" -o "${ORPHANS}" ]; then
 fi
 
 echo
-echo -n "${BOLD}Remerge packages?${NORMAL} [${GREEN}Yes${NORMAL}/${RED}No${NORMAL}] "
-read choice
-echo
-case "${choice}" in
-    y*|Y*|"")
-	;;
-    *)
-	warning "Quitting."
-	exit 10 ;;
-esac
+if [ "${BATCH}" ]; then
+    message "Remerging packages ..."
+else
+    echo -n "${BOLD}Remerge packages?${NORMAL} [${GREEN}Yes${NORMAL}/${RED}No${NORMAL}] "
+    read choice
+    echo
+    case "${choice}" in
+	y*|Y*|"") ;;
+	*) warning "Quitting."; exit 10 ;;
+    esac
+fi
 
 ${PM_COMMAND} "${PM_EXTRAOPTS[@]}" $(<"${PKGFILE}")
 

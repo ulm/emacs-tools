@@ -5,8 +5,10 @@
 	(PM_EXTRAOPTS): New variable, saves any additional options after
 	the -- separator, so that they can be passed to the package
 	manager later on.
-	(usage): Update.
-	* emacs-updater.8: Update.
+	(OPTIONS): New option --batch|-b for non-interactive mode.
+	(BATCH): New variable.
+	(usage): Update help text.
+	* emacs-updater.8: Describe new options.
 
 2010-01-04  Christian Faulhammer  <fauli@gentoo.org>
 

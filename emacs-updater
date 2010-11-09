@@ -16,6 +16,7 @@ ACTIONS="sitedir rebuild"
 
 # Default package manager
 PM_COMMAND=pm_auto
+PM_EXTRAOPTS=( )
 
 # Other default variable settings
 EXACT=
@@ -56,6 +57,8 @@ usage() {
 	X                         the whole command string must be quoted
 	X  -h, --help             display this help and exit
 	X      --version          output version information and exit
+	X
+	X  -- OPTIONS             Pass additional OPTIONS to package manager
 	EOF
     exit ${1}
 }
@@ -73,10 +76,10 @@ version() {
 
 # Wrapper for package manager commands
 have_portage() { type -P emerge >/dev/null; }
-pm_portage() { emerge --oneshot --ask --verbose --keep-going "$@"; }
+pm_portage() { emerge --oneshot "$@"; }
 
 have_pkgcore() { type -P pmerge >/dev/null; }
-pm_pkgcore() { pmerge --oneshot --ask "$@"; }
+pm_pkgcore() { pmerge --oneshot "$@"; }
 
 have_paludis() { type -P paludis >/dev/null; }
 pm_paludis() { paludis --install --preserve-world "$@"; }
@@ -150,7 +153,7 @@ do
 	    shift 2
 	    ;;
 	--package-manager-command) PM_COMMAND=${2}; shift 2 ;;
-	--) shift; break ;;
+	--) shift; PM_EXTRAOPTS=( "$@" ); break ;;
 	*)
 	    # this should not happen; getopt should return bad status
 	    echo "Invalid option '${1}' given!"
@@ -311,7 +314,7 @@ case "${choice}" in
 	exit 10 ;;
 esac
 
-${PM_COMMAND} $(<"${PKGFILE}")
+${PM_COMMAND} "${PM_EXTRAOPTS[@]}" $(<"${PKGFILE}")
 
 warning "If a package is being rebuilt over and over again,"
 warning "please report it on http://bugs.gentoo.org/"

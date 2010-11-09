@@ -1,3 +1,13 @@
+2010-11-09  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater (pm_portage, pm_pkgcore): Don't specify options
+	that are not strictly necessary. Fixes bug 344467.
+	(PM_EXTRAOPTS): New variable, saves any additional options after
+	the -- separator, so that they can be passed to the package
+	manager later on.
+	(usage): Update.
+	* emacs-updater.8: Update.
+
 2010-01-04  Christian Faulhammer  <fauli@gentoo.org>
 
 	* emacs-updater (pm_portage): Add --keep-going option for user

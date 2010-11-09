@@ -240,7 +240,8 @@ action_rebuild() {
 
 	if [ -z "${MAJOR}" -a "${version}" != "${active}" ] \
 	    || [ "${version%%.*}" != "${active%%.*}" ] \
-	    || [ "${1}" = all ]; then
+	    || [ "${1}" = all ]
+	then
 	    echo "Found ${elc##*/} (compiled by Emacs version ${version})"
 	    echo "${elc}" >> "${TMPFILE}"
 	else

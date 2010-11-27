@@ -83,8 +83,8 @@ pm_portage() { emerge --oneshot "$@"; }
 have_pkgcore() { type -P pmerge >/dev/null; }
 pm_pkgcore() { pmerge --oneshot "$@"; }
 
-have_paludis() { type -P paludis >/dev/null; }
-pm_paludis() { paludis --install --preserve-world "$@"; }
+have_paludis() { type -P cave >/dev/null; }
+pm_paludis() { cave resolve --execute --preserve-world "$@"; }
 
 pm_auto() {
     local pm

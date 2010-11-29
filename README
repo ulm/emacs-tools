@@ -1,0 +1,4 @@
+This ini file can be used with the checkbump tool described in
+http://rafaelmartins.eng.br/en-us/post/version-bump-checker/.  It
+generates a HTML page which shows packages that need a version bump in
+the Portage tree.

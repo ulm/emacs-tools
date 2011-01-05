@@ -242,10 +242,10 @@ action_rebuild() {
 	    || [ "${version%%.*}" != "${active%%.*}" ] \
 	    || [ "${1}" = all ]
 	then
-	    echo "Found ${elc##*/} (compiled by Emacs version ${version})"
+	    echo "Found ${elc##*/} (compiled by Emacs ${version})"
 	    echo "${elc}" >> "${TMPFILE}"
 	else
-	    echo "Skipping ${elc##*/} (compiled by Emacs version ${version})"
+	    echo "Skipping ${elc##*/} (compiled by Emacs ${version})"
 	fi
     done
     echo

@@ -1,3 +1,9 @@
+2011-01-05  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater: Use wc instead of sed for line counting; the
+	latter did not work for empty files. Postpone message that no
+	packages have been found.
+
 2010-11-27  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater (have_paludis, pm_paludis): Use cave instead of

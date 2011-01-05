@@ -273,8 +273,8 @@ if [ ! -s "${TMPFILE}" ]; then
     exit 3
 fi
 
-NO_OF_FILES=$(sed -n '$=' "${TMPFILE}")
-[ ${NO_OF_FILES} -eq 1 ] && s= || s=s
+NO_OF_FILES=$(wc -l <"${TMPFILE}")
+[ "${NO_OF_FILES}" -eq 1 ] && s= || s=s
 message "Assigning ${NO_OF_FILES} file${s} to packages ..."
 
 if [ "${ORPHANS}" ]; then
@@ -287,13 +287,8 @@ else
     # qfile -eqCR -f "${TMPFILE}" | sort -u | xargs qlist -eqCILS
 fi
 
-if [ ! -s "${PKGFILE}" ]; then
-    warning "No packages to update, quitting."
-    exit 3
-fi
-
-NO_OF_PACKAGES=$(sed -n '$=' "${PKGFILE}")
-[ ${NO_OF_PACKAGES} -eq 1 ] && s= || s=s
+NO_OF_PACKAGES=$(wc -l <"${PKGFILE}")
+[ "${NO_OF_PACKAGES}" -eq 1 ] && s= || s=s
 if [ "${ORPHANS}" ]; then
     message "${NO_OF_PACKAGES} orphan file${s} found:"
 else
@@ -307,6 +302,11 @@ if [ "${PRETEND}" -o "${ORPHANS}" ]; then
 fi
 
 echo
+if [ "${NO_OF_PACKAGES}" -eq 0 ]; then
+    warning "No packages to update, quitting."
+    exit 3
+fi
+
 if [ "${BATCH}" ]; then
     message "Remerging packages ..."
 else

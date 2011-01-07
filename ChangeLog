@@ -1,5 +1,7 @@
 2011-01-05  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 1.8 released.
+
 	* emacs-updater: Use wc instead of sed for line counting; the
 	latter did not work for empty files. Postpone message that no
 	packages have been found.

@@ -47,7 +47,7 @@ usage() {
 	X                         Emacs version numbers
 	X  -n, --nocolour, --nocolor
 	X                         disable colour in output
-	X  -o, --orphans          list orphan files
+	X  -o, --orphans          list orphan files (implies '--action all')
 	X  -p, --pretend          don't actually emerge packages
 	X  -P, --package-manager PM
 	X                         select a package manager. PM is one out of
@@ -120,7 +120,7 @@ do
 	-b|--batch)     BATCH="true"; shift ;;
 	-e|--exact)     EXACT="true"; shift ;;
 	-m|--major)     MAJOR="true"; shift ;;
-	-o|--orphans)   ORPHANS="true"; shift ;;
+	-o|--orphans)   ORPHANS="true"; ACTIONS="all"; shift ;;
 	-p|--pretend)   PRETEND="true"; shift ;;
 	-n|--nocolour|--nocolor) NOCOLOUR="true"; shift ;;
 	-a|--action)

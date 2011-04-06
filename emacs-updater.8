@@ -2,7 +2,7 @@
 .\" Distributed under the terms of the GNU General Public License v2 or later
 .\" $Id$
 .\"
-.TH emacs-updater 8 "November 2010" "Gentoo Linux"
+.TH emacs-updater 8 "April 2011" "Gentoo Linux"
 .SH NAME
 emacs-updater \- rebuild Emacs packages
 .SH SYNOPSIS
@@ -44,6 +44,8 @@ Disable colour in output.
 .TP
 .B -o, --orphans
 List orphan files, i.e. files that are not owned by any package.
+Implies
+.BR "--action all" .
 .TP
 .B -p, --pretend
 Don't actually emerge packages.

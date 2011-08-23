@@ -60,7 +60,7 @@ usage() {
 	X  -h, --help             display this help and exit
 	X      --version          output version information and exit
 	X
-	X  -- OPTIONS             Pass additional OPTIONS to package manager
+	X  -- OPTION...           Pass additional options to package manager
 	EOF
     exit ${1}
 }

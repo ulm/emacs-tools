@@ -1,3 +1,8 @@
+2011-08-24  Ulrich Mueller  <ulm@gentoo.org>
+
+	* emacs-updater (action_rebuild): When comparing Emacs versions,
+	ignore the last component, i.e. the local build number.
+
 2011-04-06  Ulrich Mueller  <ulm@gentoo.org>
 
 	* emacs-updater: With option --orphans, imply --action=all.

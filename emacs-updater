@@ -238,7 +238,7 @@ action_rebuild() {
 	version=$(bytecomp_version "${elc}")
 	version=${version:-unknown}
 
-	if [ -z "${MAJOR}" -a "${version}" != "${active}" ] \
+	if [ -z "${MAJOR}" -a "${version%.*}" != "${active%.*}" ] \
 	    || [ "${version%%.*}" != "${active%%.*}" ] \
 	    || [ "${1}" = all ]
 	then

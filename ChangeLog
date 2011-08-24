@@ -1,5 +1,7 @@
 2011-08-24  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 1.9 released.
+
 	* emacs-updater (action_rebuild): When comparing Emacs versions,
 	ignore the last component, i.e. the local build number.
 

@@ -1,3 +1,8 @@
+2011-12-06  Ulrich Mueller  <ulm@gentoo.org>
+
+	* site-start.el: New file.
+	* Makefile (DISTFILES): Update.
+
 2010-11-17  Ulrich Mueller  <ulm@gentoo.org>
 
 	* icons/emacs.svg: Update from Emacs 23.2.
@@ -125,6 +130,6 @@
 
 	* emacs.desktop, emacs.png: New files.
 
-Copyright 2007-2010 Gentoo Foundation
+Copyright 2007-2011 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2 or later
 $Id$

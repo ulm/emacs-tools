@@ -1,5 +1,7 @@
 2011-12-06  Ulrich Mueller  <ulm@gentoo.org>
 
+	* Version 1.3 released.
+
 	* site-start.el: New file.
 	* Makefile (DISTFILES): Update.
 

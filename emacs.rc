@@ -9,7 +9,7 @@
 : ${EMACS_SHELL=/bin/bash}
 : ${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}
 : ${EMACS_TIMEOUT:=30}
-USER=${SVCNAME#*.}
+USER=${RC_SVCNAME##*.}
 PIDFILE_DIR=/var/run/emacs/${USER}
 PIDFILE=${PIDFILE_DIR}/emacs.pid
 
@@ -21,7 +21,12 @@ depend() {
 }
 
 checkconfig() {
-    if [ "${USER}" = "${SVCNAME}" ]; then
+    if [ "${RC_VERSION:-0}" = "0" ]; then
+        eerror "This script cannot be used for baselayout-1."
+        return 1
+    fi
+
+    if [ "${USER}" = "${RC_SVCNAME}" ]; then
 	eerror "You have to create an init script for each user:"
 	eerror "ln -s emacs /etc/init.d/emacs.<user>"
 	return 1
@@ -54,18 +59,9 @@ start() {
     export SHELL EMACS EMACS_TIMEOUT EMACS_DEBUG
 
     ebegin "Starting Emacs daemon for user ${USER}"
-    if [ -z "${RC_SVCNAME}" ]; then
-	# baselayout-1
-	start-stop-daemon --start \
-	    --user "${USER}" --exec "${EMACS}" --pidfile "${PIDFILE}" \
-	    --chuid "${USER}" --chdir "${home}" --env HOME="${home}" \
-	    --startas "${EMACS_START}" -- ${EMACS_OPTS}
-    else
-	# OpenRC
-	start-stop-daemon --start \
-	    --user "${USER}" --pidfile "${PIDFILE}" --chdir "${home}" \
-	    --exec "${EMACS_START}" -- ${EMACS_OPTS}
-    fi
+    start-stop-daemon --start \
+	--user "${USER}" --pidfile "${PIDFILE}" --chdir "${home}" \
+	--exec "${EMACS_START}" -- ${EMACS_OPTS}
     eend $?
 }
 
@@ -79,7 +75,7 @@ stop() {
     fi
 
     ebegin "Stopping Emacs daemon for user ${USER}"
-    start-stop-daemon --stop --user "${USER}" \
-	--pidfile "${PIDFILE}" --exec "${EMACS}"
+    start-stop-daemon --stop \
+	--user "${USER}" --pidfile "${PIDFILE}" --exec "${EMACS}"
     eend $?
 }

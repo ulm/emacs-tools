@@ -144,7 +144,7 @@ do_list() {
 	for (( i = 0; i < ${#targets[@]}; i++ )); do
 		# Highlight the currently chosen version
 		[[ ${targets[i]} = \
-			$(basename "$(readlink "${EROOT}/usr/bin/${CTAGS}")") ]] \
+			"$(basename "$(readlink "${EROOT}/usr/bin/${CTAGS}")")" ]] \
 			&& targets[i]=$(highlight_marker "${targets[i]}")
 	done
 	write_list_start "Available ${CTAGS} symlink targets:"

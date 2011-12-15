@@ -1,3 +1,8 @@
+2011-12-16  Ulrich Mueller  <ulm@gentoo.org>
+
+	* ctags.eselect (do_list):
+	* emacs.eselect (do_list): Add missing pair of quotes.
+
 2009-12-09  Ulrich Mueller  <ulm@gentoo.org>
 
 	* Version 1.13 released.

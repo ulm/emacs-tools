@@ -1,8 +1,9 @@
+.\" -*- coding: utf-8 -*-
 .\" Copyright 2007-2011 Gentoo Foundation
-.\" Distributed under the terms of the GNU General Public License v2 or later
+.\" Distributed under the terms of the GNU GPL version 2 or later
 .\" $Id$
 .\"
-.TH ctags.eselect 5 "May 2009" "Gentoo Linux" eselect
+.TH ctags.eselect 5 "March 2012" "Gentoo Linux" eselect
 .SH NAME
 ctags.eselect, etags.eselect \- The ctags and etags management module
 for Gentoo's eselect
@@ -40,7 +41,7 @@ List all installed ctags versions.
 .br
 Available ctags symlink targets:
 .br
-  [1]   ctags-emacs-22 *
+  [1]   ctags-emacs-23 *
   [2]   exuberant-ctags
 .SH ACTION: SET
 .B eselect ctags set
@@ -79,7 +80,7 @@ is given, an existing implementation is not overridden.
 .br
 Switching ctags to exuberant-ctags ...
 .br
-Switching etags to etags-emacs-22 ...
+Switching etags to etags-emacs-23 ...
 .SH BUGS
 Under FreeBSD,
 .B eselect ctags
@@ -93,7 +94,7 @@ does work though.)
 does not display any valid targets if there is no Emacs variant
 installed.  This is a feature.
 .SH AUTHOR
-Ulrich Mueller <ulm@gentoo.org>
+Ulrich Müller <ulm@gentoo.org>
 .SH SEE ALSO
 .BR eselect (1),
 .BR emacs.eselect (5)

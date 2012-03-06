@@ -1,8 +1,9 @@
-.\" Copyright 2007-2011 Gentoo Foundation
-.\" Distributed under the terms of the GNU General Public License v2 or later
+.\" -*- coding: utf-8 -*-
+.\" Copyright 2007-2012 Gentoo Foundation
+.\" Distributed under the terms of the GNU GPL version 2 or later
 .\" $Id$
 .\"
-.TH emacs.eselect 5 "April 2009" "Gentoo Linux" eselect
+.TH emacs.eselect 5 "March 2012" "Gentoo Linux" eselect
 .SH NAME
 emacs.eselect \- The Emacs management module for Gentoo's eselect
 .SH SYNOPSIS
@@ -33,8 +34,8 @@ been found on your system.
 Available GNU Emacs symlink targets:
 .br
   [1]   emacs-18
-  [2]   emacs-21 *
-  [3]   emacs-22
+  [2]   emacs-23 *
+  [3]   emacs-24
 .SH ACTION: SET
 .B eselect emacs set
 .I target
@@ -50,11 +51,11 @@ to remerge all needed packages.
 
 # eselect emacs set 3
 .br
-Switching emacs to emacs-22 ...
+Switching emacs to emacs-24 ...
 .br
-Switching ctags to ctags-emacs-22 ...
+Switching ctags to ctags-emacs-24 ...
 .br
-Switching etags to etags-emacs-22 ...
+Switching etags to etags-emacs-24 ...
 .SH ACTION: SHOW
 .B eselect emacs show
 .br
@@ -64,7 +65,7 @@ Print the currently activated Emacs version.
 .br
 Current target of GNU Emacs symlink:
 .br
-  emacs-22
+  emacs-24
 .SH ACTION: UPDATE
 .B eselect emacs update
 .RB [ ifunset ]
@@ -75,15 +76,15 @@ is given, an existing implementation is not overridden.
 
 # eselect emacs update
 .br
-Switching emacs to emacs-22 ...
+Switching emacs to emacs-24 ...
 .br
-Switching ctags to ctags-emacs-22 ...
+Switching ctags to ctags-emacs-24 ...
 .br
-Switching etags to etags-emacs-22 ...
+Switching etags to etags-emacs-24 ...
 .SH AUTHORS
 Christian Faulhammer <fauli@gentoo.org>
 .br
-Ulrich Mueller <ulm@gentoo.org>
+Ulrich Müller <ulm@gentoo.org>
 .SH SEE ALSO
 .BR eselect (1),
 .BR ctags.eselect (5)

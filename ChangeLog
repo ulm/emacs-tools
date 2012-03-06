@@ -1,9 +1,14 @@
-2011-12-16  Ulrich Mueller  <ulm@gentoo.org>
+2012-03-06  Ulrich Müller  <ulm@gentoo.org>
+
+	* ctags.eselect.5:
+	* emacs.eselect.5: Update version numbers in examples.
+
+2011-12-16  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect (do_list):
 	* emacs.eselect (do_list): Add missing pair of quotes.
 
-2009-12-09  Ulrich Mueller  <ulm@gentoo.org>
+2009-12-09  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.13 released.
 
@@ -11,25 +16,25 @@
 	(MANPAGELIST_OLD): New variable, move "gfdl" to it.
 	(remove_symlinks): Remove also files listed in MANPAGELIST_OLD.
 
-2009-11-20  Ulrich Mueller  <ulm@gentoo.org>
+2009-11-20  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.12 released.
 
-2009-11-14  Ulrich Mueller  <ulm@gentoo.org>
+2009-11-14  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect:
 	* emacs.eselect: Use EROOT and EPREFIX throughout; these variables
 	exist in >=eselect-1.2. Remove now unnecessary global variables
 	for directories. See bug 251847.
 
-2009-11-07  Ulrich Mueller  <ulm@gentoo.org>
+2009-11-07  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.11 released.
 
 	* emacs.eselect (do_list, do_show):
 	* ctags.eselect (do_list): Support brief output mode, bug 292100.
 
-2009-05-07  Ulrich Mueller  <ulm@gentoo.org>
+2009-05-07  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.10 released.
 
@@ -43,11 +48,11 @@
 	* emacs.eselect (do_show, do_update): "canonicalise" is not
 	necessary since "test -e" resolves symbolic links.
 
-2009-05-02  Ulrich Mueller  <ulm@gentoo.org>
+2009-05-02  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.9 released.
 
-2009-04-20  Ulrich Mueller  <ulm@gentoo.org>
+2009-04-20  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect (do_update): Enable pattern matching for the
 	ctags-*emacs* versions, as it was intended from the beginning.
@@ -55,7 +60,7 @@
 	* ctags.eselect:
 	* emacs.eselect: Remove unnecessary quotes and other small fixes.
 
-2009-04-18  Ulrich Mueller  <ulm@gentoo.org>
+2009-04-18  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect (do_list): Always output a list header, even if
 	the list of targets is empty.
@@ -66,7 +71,7 @@
 	(do_update): Pass target name instead of number to set_symlinks.
 	(set_symlinks, do_list): Simplify syntax used for array index.
 
-2008-12-21  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-21  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.8 released.
 
@@ -77,14 +82,14 @@
 	root is not needed but root access rights.
 	(vim_info): Add a smiley to make clear that it is a joke.
 
-2008-12-21  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-21  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect (bindir, man1dir):
 	* emacs.eselect (bindir, man1dir, infodir, envdir): New variables
 	for directory names. This will facilitate using this package on
 	Gentoo Prefix, bug 251847.
 
-2008-12-19  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-19  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.7 released.
 
@@ -92,7 +97,7 @@
 	* emacs.eselect.5: Replace all direct font escapes by man macros.
 	Put two spaces after sentence ends. Minor formatting changes.
 
-2008-12-16  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-16  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect (find_targets, do_show, do_list, do_update):
 	* emacs.eselect (do_show, do_list): Use readlink instead of
@@ -103,18 +108,18 @@
 	(do_update): Call set_symlinks with the new option, if no explicit
 	target was found.
 
-2008-12-12  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-12  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.6 released.
 
 	* emacs.eselect (MANPAGELIST): Add ebrowse man page.
 
-2008-09-14  Ulrich Mueller  <ulm@gentoo.org>
+2008-09-14  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (do_set): Be less verbose: emacs-updater is
 	mentioned in the man page, no need to repeat it here.
 
-2008-08-11  Ulrich Mueller  <ulm@gentoo.org>
+2008-08-11  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (do_set): Move the note (from previous change) to
 	the end of the function. Fix a typo and slightly change wording.
@@ -124,20 +129,20 @@
 	* emacs.eselect.5, emacs.eselect: Add a note about emacs-updater's
 	rebuild functionality in connection with the set action.
 
-2008-05-25  Ulrich Mueller  <ulm@gentoo.org>
+2008-05-25  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.5 released.
 
-2008-05-21  Ulrich Mueller  <ulm@gentoo.org>
+2008-05-21  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect (do_update): Call etags from ctags and vice versa.
 	* ctags.eselect.5: Update man page.
 
-2008-05-12  Ulrich Mueller  <ulm@gentoo.org>
+2008-05-12  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.4 released.
 
-2008-05-02  Ulrich Mueller  <ulm@gentoo.org>
+2008-05-02  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect (find_targets): Don't return anything for etags
 	if there is no Emacs variant installed.
@@ -148,23 +153,23 @@
 	* ctags.eselect (do_set): Always die if ctags is not a symlink.
 	(do_update): Remove additional test for real file under FreeBSD.
 
-2008-05-01  Ulrich Mueller  <ulm@gentoo.org>
+2008-05-01  Ulrich Müller  <ulm@gentoo.org>
 
 	* Makefile (etags.eselect, etags.eselect.5): New targets.
 	(DISTFILES): Add Makefile to list.
 
-2008-04-30  Ulrich Mueller  <ulm@gentoo.org>
+2008-04-30  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect: Generalise for both ctags and etags,
 	suggestion by Hans de Graaff.
 	* emacs.eselect (do_set, do_update): Call etags module.
 	* ctags.eselect.5, emacs.eselect.5: Update man pages.
 
-2007-11-20  Ulrich Mueller  <ulm@gentoo.org>
+2007-11-20  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.3 released.
 
-2007-10-08  Ulrich Mueller  <ulm@gentoo.org>
+2007-10-08  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (do_show, do_list): Previous change commented out.
 
@@ -172,12 +177,12 @@
 
 	* emacs.eselect: Warn people that their system is infected by Vi
 
-2007-08-24  Ulrich Mueller  <ulm@gentoo.org>
+2007-08-24  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect.5, ctags.eselect.5: Action "show" has no
 	parameters.
 
-2007-08-22  Ulrich Mueller  <ulm@gentoo.org>
+2007-08-22  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.2 released.
 
@@ -186,7 +191,7 @@
 	* ctags.eselect (do_set, do_update): Handle the FreeBSD case where
 	/usr/bin/ctags is a real file.
 
-2007-08-19  Ulrich Mueller  <ulm@gentoo.org>
+2007-08-19  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect.5: Update man page accordingly.
 
@@ -195,16 +200,16 @@
 	compatibility. (According to the eselect team, hyphens should not
 	be used.)
 
-2007-07-09  Ulrich Mueller  <ulm@gentoo.org>
+2007-07-09  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect.5, ctags.eselect.5: Canonical order, section
 	"SEE ALSO" last.
 
-2007-06-29  Ulrich Mueller  <ulm@gentoo.org>
+2007-06-29  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.1 released.
 
-2007-06-22  Ulrich Mueller  <ulm@gentoo.org>
+2007-06-22  Ulrich Müller  <ulm@gentoo.org>
 
 	* Makefile (DISTFILES): Add ctags.eselect and ctags.eselect.5.
 
@@ -218,7 +223,7 @@
 	* emacs.eselect (do_show, do_list, do_set, do_update): Test for
 	number of parameters. Quote variables correctly.
 
-2007-06-17  Ulrich Mueller  <ulm@gentoo.org>
+2007-06-17  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.0 released.
 
@@ -229,7 +234,7 @@
 
 	* Makefile (DISTFILES): Undo previous change.
 
-2007-06-10  Ulrich Mueller  <ulm@gentoo.org>
+2007-06-10  Ulrich Müller  <ulm@gentoo.org>
 
 	* env-emacs.eselect: New file, taken from env.eselect of
 	eselect-1.0.9, extended to support the --no-ldconfig option.
@@ -262,7 +267,7 @@
 
 	* Makefile: Added a comment.
 
-2007-05-24  Ulrich Mueller  <ulm@gentoo.org>
+2007-05-24  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (xemacs_info): Use write_list_start function.
 	Honour ${ROOT}.
@@ -283,27 +288,27 @@
 
 	* emacs.eselect.5: Added a note about that behaviour in man page.
 
-2007-04-16  Ulrich Mueller  <ulm@gentoo.org>
+2007-04-16  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect.5: Updated e-mail address in man page.
 
-2007-04-04  Ulrich Mueller  <ulm@gentoo.org>
+2007-04-04  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.8 released.
 
-2007-04-01  Ulrich Mueller  <ulm@gentoo.org>
+2007-04-01  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (set_symlinks): Check for range of array and
 	display error message.
 
-2007-03-29  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-29  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect.5: Fixed typo and capitalised "Emacs" where
 	appropriate. Added copyright notice.
 
 	* Version 0.7 released.
 
-2007-03-28  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-28  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect.5: Added man page.
 
@@ -311,7 +316,7 @@
 
 	* Version 0.6 released.
 
-2007-03-27  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-27  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (set_symlinks): env.eselect seems to be buggy; use
 	env-update instead.
@@ -321,11 +326,11 @@
 	* emacs.eselect (set_symlinks): Call env.eselect to update the
 	environment from env.d files.
 
-2007-03-24  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-24  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.5 released.
 
-2007-03-22  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-22  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect: Added some comments.
 
@@ -334,7 +339,7 @@
 	* emacs.eselect (set_man_symlinks): Handling of compression
 	extensions made more robust.
 
-2007-03-21  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-21  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (set_symlinks, set_bin_symlinks)
 	(set_man_symlinks): Make linking to XEmacs auxiliary programs
@@ -344,13 +349,13 @@
 
 	* Version 0.3 released.
 
-2007-03-19  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-19  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (set_infopath): Test if Info directory exists.
 	(find_targets, set_symlinks): Use emacs-${SLOT} instead of
 	emacs-emacs-${SLOT} as symlink target.
 
-2007-03-18  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-18  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (set_bin_symlinks, set_symlinks, do_update):
 	If Emacs was not found, link {c,e}tags to XEmacs versions.
@@ -360,14 +365,14 @@
 
 	* Version 0.2 released.
 
-2007-03-17  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-17  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (do_update): Update to the newest available
 	version.
 	(remove_infopath): New function.
 	(remove_symlinks): Cleanup env.d file in do_update().
 
-2007-03-16  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-16  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (remove_symlinks, set_man_symlinks): Remove man
 	symlinks with all possible compress extensions. Honour ${ROOT} in
@@ -393,6 +398,6 @@
 	Automatically symlink man pages.
 	Automatically set correct INFOPATH.
 
-Copyright 2007-2011 Gentoo Foundation
-Distributed under the terms of the GNU General Public License v2 or later
+Copyright 2007-2012 Gentoo Foundation
+Distributed under the terms of the GNU GPL version 2 or later
 $Id$

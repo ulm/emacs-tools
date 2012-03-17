@@ -1,15 +1,15 @@
-2011-12-06  Ulrich Mueller  <ulm@gentoo.org>
+2011-12-06  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.3 released.
 
 	* site-start.el: New file.
 	* Makefile (DISTFILES): Update.
 
-2010-11-17  Ulrich Mueller  <ulm@gentoo.org>
+2010-11-17  Ulrich Müller  <ulm@gentoo.org>
 
 	* icons/emacs.svg: Update from Emacs 23.2.
 
-2009-08-08  Ulrich Mueller  <ulm@gentoo.org>
+2009-08-08  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.2 released.
 
@@ -19,25 +19,25 @@
 	* icons/COPYRIGHT.icons: Update.
 	* Makefile (ICONFILES): Update.
 
-2009-07-11  Ulrich Mueller  <ulm@gentoo.org>
+2009-07-11  Ulrich Müller  <ulm@gentoo.org>
 
 	* icons/emacs23.svg: Update from Emacs CVS.
 
-2009-04-22  Ulrich Mueller  <ulm@gentoo.org>
+2009-04-22  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.1 released.
 
-2009-04-12  Ulrich Mueller  <ulm@gentoo.org>
+2009-04-12  Ulrich Müller  <ulm@gentoo.org>
 
 	* icons/emacs23.svg: New file, SVG icon from Emacs CVS trunk.
 	* icons/COPYRIGHT.icons: Update.
 	* Makefile (ICONFILES): Update.
 
-2009-04-10  Ulrich Mueller  <ulm@gentoo.org>
+2009-04-10  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.desktop (StartupWMClass): Key added.
 
-2009-04-05  Ulrich Mueller  <ulm@gentoo.org>
+2009-04-05  Ulrich Müller  <ulm@gentoo.org>
 
 	* icons/emacs.png, icons/emacs_16.png, icons/emacs_24.png:
 	* icons/emacs_32.png, icons/emacs_48.png: Moved to subdirectory.
@@ -53,7 +53,7 @@
 	(ICONFILES): New variable.
 	(DISTFILES): Update.
 
-2009-03-07  Ulrich Mueller  <ulm@gentoo.org>
+2009-03-07  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.0 released.
 
@@ -63,7 +63,7 @@
 	* subdirs.el: New file.
 	* Makefile (DISTFILES): Add it.
 
-2007-12-28  Ulrich Mueller  <ulm@gentoo.org>
+2007-12-28  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.3 released.
 
@@ -78,7 +78,7 @@
 	* emacsclient.desktop (Comment): Correct typo in Spanish
 	translation, pointed out by ulm
 
-2007-12-07  Ulrich Mueller  <ulm@gentoo.org>
+2007-12-07  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacsclient.desktop: Remove -a option from Exec since it does
 	not work properly anyway. Remove trailing full stop from comments.
@@ -97,27 +97,27 @@
 	(Icon): Extension removed
 	(Categories): Application removed as it is obsolete
 
-2007-05-24  Ulrich Mueller  <ulm@gentoo.org>
+2007-05-24  Ulrich Müller  <ulm@gentoo.org>
 
 	* Makefile (PV): Extract PV from new ChangeLog format.
 
-2007-04-15  Ulrich Mueller  <ulm@gentoo.org>
+2007-04-15  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.2 released.
 
 	* Makefile: New file.
 
-2007-03-30  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-30  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.1 released.
 
-2007-03-23  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-23  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacsclient.desktop: New file.
 
 	* emacs.desktop (MimeType, TryExec): Add keys.
 
-2007-03-21  Ulrich Mueller  <ulm@gentoo.org>
+2007-03-21  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs_*.png, gnured_48.png: Added two alternative icons (not
 	used yet): emacs_*.png is from etc/images/icons of the Emacs

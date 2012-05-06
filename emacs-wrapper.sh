@@ -1,7 +1,6 @@
 #!/bin/bash
 # Copyright 2008-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2 or later
-# $Id$
 
 # Save output in a temporary file and display in case of error
 logfile=$(mktemp ${TMPDIR:-/tmp}/emacs.log.XXXXXX)

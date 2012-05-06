@@ -1,7 +1,6 @@
 #!/bin/bash
 # Copyright 2008-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2 or later
-# $Id$
 
 # Lisp expression to be evaluated when stopping Emacs.
 # Any additional commands should preferably be added to kill-emacs-hook.

@@ -1,6 +1,5 @@
 # Copyright 2008-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2 or later
-# $Id$
 
 PN = emacs-updater
 PV = $(shell sed '/^VERSION/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' emacs-updater)

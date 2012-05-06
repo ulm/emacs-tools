@@ -1,7 +1,6 @@
 # -*-eselect-*-
 # Copyright 2005-2012 Gentoo Foundation
 # Distributed under the terms of the GNU GPL version 2 or later
-# $Id$
 #
 # DOCUMENTATION
 # Following actions possible
@@ -23,8 +22,7 @@
 
 DESCRIPTION="Manage /usr/bin/emacs version"
 MAINTAINER="emacs@gentoo.org"
-SVN_DATE='$Date$'
-VERSION=$(svn_date_to_version "${SVN_DATE}")
+VERSION="1.13"
 
 # ctags and etags are handled in their own module
 BINARYLIST="emacsclient b2m ebrowse rcs-checkin grep-changelog"

@@ -27,8 +27,7 @@ CTAGS=ctags
 
 DESCRIPTION="Manage /usr/bin/${CTAGS} implementations"
 MAINTAINER="emacs@gentoo.org"
-SVN_DATE='$Date$'
-VERSION=$(svn_date_to_version "${SVN_DATE}")
+VERSION="1.13"
 
 find_targets() {
 	# Return the list of available ctags implementations

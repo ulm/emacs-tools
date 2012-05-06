@@ -1,3 +1,8 @@
+2012-05-06  Ulrich Müller  <ulm@gentoo.org>
+
+	* ctags.eselect (VERSION):
+	* emacs.eselect (VERSION): Change to PV. Remove SVN_DATE.
+
 2012-03-06  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect.5:
@@ -400,4 +405,3 @@
 
 Copyright 2007-2012 Gentoo Foundation
 Distributed under the terms of the GNU GPL version 2 or later
-$Id$

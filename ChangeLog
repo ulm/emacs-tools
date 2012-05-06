@@ -1,37 +1,37 @@
-2011-12-10  Ulrich Mueller  <ulm@gentoo.org>
+2011-12-10  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (checkconfig, start): Drop baselayout-1 compatibility.
 
-2010-09-20  Ulrich Mueller  <ulm@gentoo.org>
+2010-09-20  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.18 released.
 
-2010-09-18  Ulrich Mueller  <ulm@gentoo.org>
+2010-09-18  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (stop): Output ebegin/eend messages. Export some
 	variables before calling the stop script, bug 337829.
 	* emacs-stop.sh: New file, example stop script.
 	* Makefile (DISTFILES): Add emacs-stop.sh.
 
-2009-11-20  Ulrich Mueller  <ulm@gentoo.org>
+2009-11-20  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.17 released.
 
-2009-10-05  Ulrich Mueller  <ulm@gentoo.org>
+2009-10-05  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs-wrapper.sh: Always display the saved output if the
 	EMACS_DEBUG variable is set.
 	* emacs.rc (start): Export EMACS_DEBUG.
 	* emacs.conf (EMACS_DEBUG): Document variable.
 
-2009-09-19  Ulrich Mueller  <ulm@gentoo.org>
+2009-09-19  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.16 released.
 
 	* emacs-wrapper.sh: Save Emacs's output in a temporary file.
 	Display it only in case of error.
 
-2009-07-17  Ulrich Mueller  <ulm@gentoo.org>
+2009-07-17  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.15 released.
 
@@ -40,7 +40,7 @@
 	(start): Test for OpenRC. Compatibility code for start-stop-daemon
 	of baselayout-1.
 
-2009-03-18  Ulrich Mueller  <ulm@gentoo.org>
+2009-03-18  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.14 released.
 
@@ -49,16 +49,16 @@
 	(EMACS_SHELL): Default to bash.
 	* emacs.conf (EMACS_SHELL): Renamed from SHELL.
 
-2009-03-03  Ulrich Mueller  <ulm@gentoo.org>
+2009-03-03  Ulrich Müller  <ulm@gentoo.org>
 
 	* 10emacs-daemon-gentoo.el: Remove backwards compatibility code.
 
-2009-02-25  Ulrich Mueller  <ulm@gentoo.org>
+2009-02-25  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (start): Export the SHELL variable.
 	* emacs-wrapper.sh: Don't assign SHELL.
 
-2009-02-23  Ulrich Mueller  <ulm@gentoo.org>
+2009-02-23  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.13 released.
 
@@ -66,23 +66,23 @@
 	to "process-attributes" following Emacs upstream. Add code for
 	backwards compatibility.
 
-2009-02-01  Ulrich Mueller  <ulm@gentoo.org>
+2009-02-01  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.12 released.
 
-2009-01-28  Ulrich Mueller  <ulm@gentoo.org>
+2009-01-28  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (depend): Add dependencies, in order to start after the
 	D-Bus daemon. Thanks to Tassilo Horn <tassilo@member.fsf.org> for
 	pointing this out. Also depend on localmount and bootmisc.
 
-2009-01-21  Ulrich Mueller  <ulm@gentoo.org>
+2009-01-21  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc: Use different syntax for assignment of default values.
 	(EMACS_OPTS, start): Include --daemon option in variable.
 	* emacs.conf (EMACS_OPTS): Document the above.
 
-2009-01-14  Ulrich Mueller  <ulm@gentoo.org>
+2009-01-14  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.11 released.
 
@@ -90,13 +90,13 @@
 
 	* emacs.rc (start): Make a minor text addition to start message
 
-2009-01-02  Ulrich Mueller  <ulm@gentoo.org>
+2009-01-02  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (stop): Optionally call a custom script defined by
 	EMACS_STOP before stopping the daemon; bug 246462.
 	* emacs.conf (EMACS_STOP): Document as a variable.
 
-2009-01-01  Ulrich Mueller  <ulm@gentoo.org>
+2009-01-01  Ulrich Müller  <ulm@gentoo.org>
 
 	* README: Some additions. List authors.
 
@@ -106,35 +106,35 @@
 
 	* Makefile (DISTFILES): Put it into the tarball
 
-2008-12-27  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-27  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.10 released.
 
-2008-12-24  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-24  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs-wrapper.sh: Use a "for" loop to time out. Remove redundant
 	argument of "exit".
 
 	* emacs.rc (start): Move ebegin message.
 
-2008-12-19  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-19  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.9 released.
 
-2008-12-17  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-17  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs-wrapper.sh: Use "wait" for exit status of child process,
 	and exit with it. Change order of killed processes on timeout.
 
-2008-12-12  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-12  Ulrich Müller  <ulm@gentoo.org>
 
 	* 10emacs-daemon-gentoo.el: Use string-match for the command name.
 
-2008-12-08  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-08  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.8 released.
 
-2008-12-07  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-07  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (start): If unset, determine SHELL from passwd file.
 	* emacs.conf (SHELL): Document variable.
@@ -142,7 +142,7 @@
 
 	* emacs-wrapper.sh: Add copyright header.
 
-2008-12-05  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-05  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs-wrapper.sh: Add a timeout and kill Emacs if the daemon
 	doesn't detach properly.
@@ -150,19 +150,19 @@
 	* emacs.conf (EMACS_START): Update documentation.
 	(EMACS_TIMEOUT): New variable.
 
-2008-12-03  Ulrich Mueller  <ulm@gentoo.org>
+2008-12-03  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (checkconfig): Use numerical user id for root.
 
-2008-11-30  Ulrich Mueller  <ulm@gentoo.org>
+2008-11-30  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.7 released.
 
-2008-11-16  Ulrich Mueller  <ulm@gentoo.org>
+2008-11-16  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (checkconfig): Use "checkpath" builtin function.
 
-2008-11-13  Ulrich Mueller  <ulm@gentoo.org>
+2008-11-13  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.6 released.
 
@@ -174,7 +174,7 @@
 
 	* emacs.conf: Add a comment about multiplexed configuration files.
 
-2008-11-10  Ulrich Mueller  <ulm@gentoo.org>
+2008-11-10  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.5 released.
 
@@ -182,18 +182,18 @@
 	* emacs.rc (EMACS): Allow to override from config file.
 	* Makefile (DISTFILES): Add emacs.conf.
 
-2008-11-04  Ulrich Mueller  <ulm@gentoo.org>
+2008-11-04  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (description): Add description.
 
 	* 10emacs-daemon-gentoo.el (special-event-map): Restart the server
 	on reception of SIGUSR1. Output a message before terminating.
 
-2008-11-03  Ulrich Mueller  <ulm@gentoo.org>
+2008-11-03  Ulrich Müller  <ulm@gentoo.org>
 
 	* 10emacs-daemon-gentoo.el: Check if a daemon is already running.
 
-2008-11-02  Ulrich Mueller  <ulm@gentoo.org>
+2008-11-02  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.4 released.
 

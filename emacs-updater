@@ -5,7 +5,7 @@
 
 # Authors:
 # Christian Faulhammer <fauli@gentoo.org>
-# Ulrich Mueller <ulm@gentoo.org>
+# Ulrich Müller <ulm@gentoo.org>
 
 VERSION=1.9
 EMACS=/usr/bin/emacs

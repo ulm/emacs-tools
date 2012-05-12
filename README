@@ -1,0 +1,7 @@
+This is the emacs-tools git repository, containing Gentoo specific
+software related to Emacs.
+
+Note: There is no software in the "master" branch, but packages are
+kept in separate branches. To get a list of available branches, do:
+
+   git branch --remotes

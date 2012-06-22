@@ -1,3 +1,7 @@
+2012-06-22  Ulrich Müller  <ulm@gentoo.org>
+
+	* Makefile (PV): Extract version number from emacs.eselect.
+
 2012-05-06  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect (VERSION):

@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU GPL version 2 or later
 
 PN = eselect-emacs
-PV = $(shell sed '/^[ \t]*\* .*[Vv]ersion/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' \
-	ChangeLog)
+PV = $(shell sed '/^[ \t]*VERSION=/!d;s/.*="\?\([^ \t"]*\).*/\1/;q' \
+	emacs.eselect)
 P = $(PN)-$(PV)
 
 MODULES = emacs.eselect ctags.eselect etags.eselect

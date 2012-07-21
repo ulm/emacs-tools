@@ -1,3 +1,7 @@
+2012-07-21  Ulrich Müller  <ulm@gentoo.org>
+
+	* Version 0.19 released.
+
 2011-12-10  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (checkconfig, start): Drop baselayout-1 compatibility.

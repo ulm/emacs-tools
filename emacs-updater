@@ -281,9 +281,8 @@ if [ "${ORPHANS}" ]; then
 elif [ "${EXACT}" ]; then
     qfile -eqCR -f "${TMPFILE}" | sort -u | sed 's/^/=/' > "${PKGFILE}"
 else
-    qfile -qCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
-    # Get package and slot number
-    # qfile -eqCR -f "${TMPFILE}" | sort -u | xargs qlist -eqCILS
+    # Get package and slot number, requires >=portage-utils-0.3
+    qfile -SqCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
 fi
 
 NO_OF_PACKAGES=$(wc -l <"${PKGFILE}")

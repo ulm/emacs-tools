@@ -1,3 +1,7 @@
+2012-10-11  Ulrich Müller  <ulm@gentoo.org>
+
+	* Makefile (dist): Use xz for compression.
+
 2012-10-08  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs-updater: Honour slots of installed packages, bug 436350.

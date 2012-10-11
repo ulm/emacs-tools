@@ -1,5 +1,7 @@
 2012-10-11  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.10 released.
+
 	* Makefile (dist): Use xz for compression.
 
 2012-10-08  Ulrich Müller  <ulm@gentoo.org>

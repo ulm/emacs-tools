@@ -2,7 +2,7 @@
 .\" Copyright 2008-2013 Gentoo Foundation
 .\" Distributed under the terms of the GNU General Public License v2 or later
 .\"
-.TH emacs-updater 8 "October 2012" "Gentoo Linux"
+.TH emacs-updater 8 "January 2013" "Gentoo Linux"
 .SH NAME
 emacs-updater \- rebuild Emacs packages
 .SH SYNOPSIS
@@ -33,14 +33,24 @@ Rebuild all packages that have byte-compiled Elisp files.
 .B -b, --batch
 Batch mode, don't ask the user any questions.
 .TP
+.BI \-\-color= "mode, " \-\-colour= mode
+Enable or disable colour output.
+.I mode
+can be
+.BR yes ,
+.BR no ,
+or
+.BR auto .
+The default is
+.BR auto ,
+for which colour output is enabled only if standard output is
+connected to a terminal.
+.TP
 .B -e, --exact
 Match exact versions when remerging packages.
 .TP
 .B -m, --major
 Use only the major version when comparing Emacs version numbers.
-.TP
-.B -n, --nocolour, --nocolor
-Disable colour in output.
 .TP
 .B -o, --orphans
 List orphan files, i.e. files that are not owned by any package.

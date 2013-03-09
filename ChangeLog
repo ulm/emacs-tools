@@ -1,5 +1,12 @@
 2013-03-09  Ulrich Müller  <ulm@gentoo.org>
 
+	* emacs-updater (OPTIONS): New long option --colour=<yes|no|auto>,
+	compatible with the same option in eselect. Spelling --color is
+	recognised too.
+	(COLOUR): Variable renamed from NOCOLOUR.
+	(usage): Update help text.
+	* emacs-updater.8: Describe --colour option, drop --nocolour.
+
 	* emacs-updater: Remove unneccesary quoting.
 
 2012-10-11  Ulrich Müller  <ulm@gentoo.org>

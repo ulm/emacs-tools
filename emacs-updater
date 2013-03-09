@@ -19,9 +19,9 @@ PM_EXTRAOPTS=( )
 
 # Other default variable settings
 BATCH=
+COLOUR=
 EXACT=
 MAJOR=
-NOCOLOUR=
 ORPHANS=
 PRETEND=
 
@@ -41,11 +41,14 @@ usage() {
 	X                           byte-compiled Elisp files
 	X                         (default: sitedir,rebuild)
 	X  -b, --batch            batch mode, don't ask any questions
+	X  --color MODE, --colour=MODE
+	X                         control colour output. MODE is 'yes', 'no',
+	X                         or 'auto'. For 'auto', colour is enabled
+	X                         if standard output is to a terminal
+	X                         (default: auto)
 	X  -e, --exact            match exact versions when remerging packages
 	X  -m, --major            use only the major version when comparing
 	X                         Emacs version numbers
-	X  -n, --nocolour, --nocolor
-	X                         disable colour in output
 	X  -o, --orphans          list orphan files (implies '--action all')
 	X  -p, --pretend          don't actually emerge packages
 	X  -P, --package-manager PM
@@ -104,8 +107,8 @@ pm_auto() {
 
 # Read in all command-line options and force English output
 OPTIONS=$(LC_ALL=C getopt -o a:behmnopP: \
-    --long action:,batch,exact,help,major,nocolour,nocolor,orphans,pretend \
-    --long package-manager:,package-manager-command:,version \
+    --long action:,batch,color:,colour:,nocolor,nocolour,exact,help,major \
+    --long orphans,pretend,package-manager:,package-manager-command:,version \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
 
@@ -121,7 +124,19 @@ do
 	-m|--major)     MAJOR="true"; shift ;;
 	-o|--orphans)   ORPHANS="true"; ACTIONS="all"; shift ;;
 	-p|--pretend)   PRETEND="true"; shift ;;
-	-n|--nocolour|--nocolor) NOCOLOUR="true"; shift ;;
+	--color|--colour)
+	    case $2 in
+		yes|y|always|force) COLOUR="yes" ;;
+		no|n|never|none) COLOUR="no" ;;
+		auto|tty|if-tty) COLOUR="" ;;
+		*)
+		    echo "Invalid argument for '$1' option"
+		    usage 20
+		    ;;
+	    esac
+	    shift 2
+	    ;;
+	-n|--nocolor|--nocolour) COLOUR="no"; shift ;; # legacy option
 	-a|--action)
 	    ACTIONS=
 	    for action in ${2/,/ }; do
@@ -164,9 +179,8 @@ do
     esac
 done
 
-# Only set colours if output is not redirected or the --nocolour
-# option is not set
-if [ -t 1 ] && [ -z "${NOCOLOUR}" ] ; then
+# Set colours based on the --colour option and output redirection status
+if [ -z "${COLOUR}" -a -t 1 -o "${COLOUR}" = "yes" ]; then
     BOLD=$(tput bold)
     NORMAL=$(tput sgr0)
     RED=$(tput setaf 1)${BOLD}

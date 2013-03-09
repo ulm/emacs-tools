@@ -61,7 +61,7 @@ usage() {
 	X
 	X  -- OPTION...           Pass additional options to package manager
 	EOF
-    exit ${1}
+    exit $1
 }
 
 version() {
@@ -113,7 +113,7 @@ eval set -- "${OPTIONS}"
 
 while true
 do
-    case "${1}" in
+    case $1 in
 	-h|--help)      usage 0 ;;
 	--version)      version ;;
 	-b|--batch)     BATCH="true"; shift ;;
@@ -125,7 +125,7 @@ do
 	-a|--action)
 	    ACTIONS=
 	    for action in ${2/,/ }; do
-		case "${action}" in
+		case ${action} in
 		    sitedir|rebuild|all)
 			ACTIONS="${ACTIONS}${ACTIONS:+ }${action}"
 			;;
@@ -138,27 +138,27 @@ do
 	    shift 2
 	    ;;
 	-P|--package-manager)
-	    case "${2}" in
+	    case $2 in
 		auto|automatic) PM_COMMAND=pm_auto ;;
 		portage|pkgcore|paludis)
-		    if ! have_${2}; then
-			echo "Package manager '${2}' not found!"
+		    if ! have_$2; then
+			echo "Package manager '$2' not found!"
 			exit 22
 		    fi
-		    PM_COMMAND=pm_${2}
+		    PM_COMMAND=pm_$2
 		    ;;
 		*)
-		    echo "Package manager '${2}' not known!"
+		    echo "Package manager '$2' not known!"
 		    usage 21
 		    ;;
 	    esac
 	    shift 2
 	    ;;
-	--package-manager-command) PM_COMMAND=${2}; shift 2 ;;
+	--package-manager-command) PM_COMMAND=$2; shift 2 ;;
 	--) shift; PM_EXTRAOPTS=( "$@" ); break ;;
 	*)
 	    # this should not happen; getopt should return bad status
-	    echo "Invalid option '${1}' given!"
+	    echo "Invalid option '$1' given!"
 	    usage 22
 	    ;;
     esac
@@ -202,7 +202,7 @@ emacs_version() {
 
 # Get Emacs version from byte-compiled file
 bytecomp_version() {
-    sed -n '/^[^;]/q;s/\.$//;s/.*[Ee]macs version \([0-9].*\)/\1/p' "${1}"
+    sed -n '/^[^;]/q;s/\.$//;s/.*[Ee]macs version \([0-9].*\)/\1/p' "$1"
 }
 
 action_sitedir() {
@@ -239,7 +239,7 @@ action_rebuild() {
 
 	if [ -z "${MAJOR}" -a "${version%.*}" != "${active%.*}" ] \
 	    || [ "${version%%.*}" != "${active%%.*}" ] \
-	    || [ "${1}" = all ]
+	    || [ "$1" = all ]
 	then
 	    echo "Found ${elc##*/} (compiled by Emacs ${version})"
 	    echo "${elc}" >> "${TMPFILE}"
@@ -311,7 +311,7 @@ else
     echo -n "${BOLD}Remerge packages?${NORMAL} [${GREEN}Yes${NORMAL}/${RED}No${NORMAL}] "
     read choice
     echo
-    case "${choice}" in
+    case ${choice} in
 	y*|Y*|"") ;;
 	*) warning "Quitting."; exit 10 ;;
     esac

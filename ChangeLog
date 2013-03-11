@@ -1,5 +1,7 @@
 2013-03-11  Ulrich Müller  <ulm@gentoo.org>
 
+	* emacs-updater: Add sanity check for package manager options.
+
 	* emacs-updater (OPTIONS): Make argument of the --colour option
 	optional, for compatibility with ls.
 	(usage): Update help text.

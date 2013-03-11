@@ -6,7 +6,7 @@
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
 
-VERSION=1.10
+VERSION=1.11
 EMACS=/usr/bin/emacs
 SITELISP=/usr/share/emacs/site-lisp
 

@@ -1,3 +1,7 @@
+2013-03-11  Ulrich Müller  <ulm@gentoo.org>
+
+	* Version 1.11 released.
+
 2013-03-09  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs-updater (OPTIONS): New long option --colour=<yes|no|auto>,

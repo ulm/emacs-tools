@@ -41,7 +41,7 @@ usage() {
 	X                           byte-compiled Elisp files
 	X                         (default: sitedir,rebuild)
 	X  -b, --batch            batch mode, don't ask any questions
-	X      --color=MODE, --colour=MODE
+	X      --color[=MODE], --colour[=MODE]
 	X                         control colour output. MODE is 'yes', 'no',
 	X                         or 'auto'. For 'auto', colour is enabled
 	X                         if standard output is to a terminal

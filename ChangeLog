@@ -1,5 +1,10 @@
 2013-03-11  Ulrich Müller  <ulm@gentoo.org>
 
+	* emacs-updater (OPTIONS): Make argument of the --colour option
+	optional, for compatibility with ls.
+	(usage): Update help text.
+	* emacs-updater.8: Update.
+
 	* Version 1.11 released.
 
 2013-03-09  Ulrich Müller  <ulm@gentoo.org>

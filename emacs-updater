@@ -31,7 +31,7 @@ usage() {
 	Rebuild Emacs packages that were compiled by another Emacs version,
 	or that are installed in the wrong location.
 	X
-	X  -a, --action ACTION[,ACTION]...
+	X  -a, --action=ACTION[,ACTION]...
 	X                         specify actions, comma-separated list of:
 	X                         'sitedir': find site-init files not in the
 	X                           new-style location
@@ -41,7 +41,7 @@ usage() {
 	X                           byte-compiled Elisp files
 	X                         (default: sitedir,rebuild)
 	X  -b, --batch            batch mode, don't ask any questions
-	X  --color MODE, --colour=MODE
+	X      --color=MODE, --colour=MODE
 	X                         control colour output. MODE is 'yes', 'no',
 	X                         or 'auto'. For 'auto', colour is enabled
 	X                         if standard output is to a terminal
@@ -51,11 +51,11 @@ usage() {
 	X                         Emacs version numbers
 	X  -o, --orphans          list orphan files (implies '--action all')
 	X  -p, --pretend          don't actually emerge packages
-	X  -P, --package-manager PM
+	X  -P, --package-manager=PM
 	X                         select a package manager. PM is one out of
 	X                         'portage', 'pkgcore', or 'paludis'
 	X                         (default: automatically determined)
-	X      --package-manager-command CMD
+	X      --package-manager-command=CMD
 	X                         call CMD instead of the default package
 	X                         manager command. If CMD includes options
 	X                         the whole command string must be quoted
@@ -107,7 +107,7 @@ pm_auto() {
 
 # Read in all command-line options and force English output
 OPTIONS=$(LC_ALL=C getopt -o a:behmnopP: \
-    --long action:,batch,color:,colour:,nocolor,nocolour,exact,help,major \
+    --long action:,batch,color::,colour::,nocolor,nocolour,exact,help,major \
     --long orphans,pretend,package-manager:,package-manager-command:,version \
     -n 'emacs-updater' -- "$@")
 [ $? -eq 0 ] || usage 1
@@ -126,7 +126,7 @@ do
 	-p|--pretend)   PRETEND="true"; shift ;;
 	--color|--colour)
 	    case $2 in
-		yes|y|always|force) COLOUR="yes" ;;
+		yes|y|always|force|"") COLOUR="yes" ;;
 		no|n|never|none) COLOUR="no" ;;
 		auto|tty|if-tty) COLOUR="" ;;
 		*)

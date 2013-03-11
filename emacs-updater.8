@@ -2,7 +2,7 @@
 .\" Copyright 2008-2013 Gentoo Foundation
 .\" Distributed under the terms of the GNU General Public License v2 or later
 .\"
-.TH emacs-updater 8 "January 2013" "Gentoo Linux"
+.TH emacs-updater 8 "March 2013" "Gentoo Linux"
 .SH NAME
 emacs-updater \- rebuild Emacs packages
 .SH SYNOPSIS
@@ -13,7 +13,7 @@ Find packages that are installed in the wrong location or rebuild all
 GNU Emacs packages.
 .SH OPTIONS
 .TP
-.BI "-a, --action" " ACTION[,ACTION]..."
+.BI "-a, --action=" ACTION[,ACTION]...
 Specify actions, comma-separated list of:
 
 .BR sitedir :
@@ -33,9 +33,9 @@ Rebuild all packages that have byte-compiled Elisp files.
 .B -b, --batch
 Batch mode, don't ask the user any questions.
 .TP
-.BI \-\-color= "mode, " \-\-colour= mode
+.BI \-\-color "[=MODE], " \-\-colour [=MODE]
 Enable or disable colour output.
-.I mode
+.I MODE
 can be
 .BR yes ,
 .BR no ,
@@ -55,12 +55,12 @@ Use only the major version when comparing Emacs version numbers.
 .B -o, --orphans
 List orphan files, i.e. files that are not owned by any package.
 Implies
-.BR "--action all" .
+.BR --action=all .
 .TP
 .B -p, --pretend
 Don't actually emerge packages.
 .TP
-.BI "-P, --package-manager" " PM"
+.BI "-P, --package-manager=" PM
 Select a package manager.
 .I PM
 is one out of
@@ -73,7 +73,7 @@ If the argument
 is given, then the package manager is automatically determined.
 This is the default.
 .TP
-.BI --package-manager-command " CMD"
+.BI --package-manager-command= CMD
 Call
 .I CMD
 instead of the default package manager command.

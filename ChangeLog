@@ -1,5 +1,7 @@
 2013-03-11  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.12 released.
+
 	* emacs-updater: Add sanity check for package manager options.
 
 	* emacs-updater (OPTIONS): Make argument of the --colour option

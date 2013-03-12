@@ -109,8 +109,8 @@ pm_auto() {
 OPTIONS=$(LC_ALL=C getopt -o a:behmnopP: \
     --long action:,batch,color::,colour::,nocolor,nocolour,exact,help,major \
     --long orphans,pretend,package-manager:,package-manager-command:,version \
-    -n 'emacs-updater' -- "$@")
-[ $? -eq 0 ] || usage 1
+    -n 'emacs-updater' -- "$@") \
+    || usage $?
 
 eval set -- "${OPTIONS}"
 
@@ -131,7 +131,7 @@ do
 		auto|tty|if-tty) COLOUR="" ;;
 		*)
 		    echo "Invalid argument for '$1' option"
-		    usage 20
+		    usage 1
 		    ;;
 	    esac
 	    shift 2
@@ -146,7 +146,7 @@ do
 			;;
 		    *)
 			echo "Invalid action '$action' given!"
-			usage 20
+			usage 1
 			;;
 		esac
 	    done
@@ -158,13 +158,13 @@ do
 		portage|pkgcore|paludis)
 		    if ! have_$2; then
 			echo "Package manager '$2' not found!"
-			exit 22
+			exit 1
 		    fi
 		    PM_COMMAND=pm_$2
 		    ;;
 		*)
 		    echo "Package manager '$2' not known!"
-		    usage 21
+		    usage 1
 		    ;;
 	    esac
 	    shift 2
@@ -175,7 +175,7 @@ do
 	    if [[ $# -gt 0 && ${1#-} = $1 ]]; then
 		# first parameter after -- should be an option
 		echo "Non-option parameter '$1' for package manager specified!"
-		usage 22
+		usage 1
 	    fi
 	    PM_EXTRAOPTS=( "$@" )
 	    break
@@ -183,7 +183,7 @@ do
 	*)
 	    # this should not happen; getopt should return bad status
 	    echo "Invalid option '$1' given!"
-	    usage 22
+	    usage 1
 	    ;;
     esac
 done
@@ -219,8 +219,7 @@ failure() {
 }
 
 emacs_version() {
-    "${EMACS}" -batch -q --no-site-file --eval "(princ emacs-version)" \
-	|| { failure "Cannot run Emacs"; exit 5; }
+    "${EMACS}" -batch -q --no-site-file --eval "(princ emacs-version)"
 }
 
 # Get Emacs version from byte-compiled file
@@ -248,16 +247,20 @@ action_sitedir() {
 }
 
 action_rebuild() {
-    local active version elc
+    local active version elc ret
 
     message "Searching for byte-compiled elisp files ..."
     active=$(emacs_version)
-    [ -n "${active}" ] || { failure "Cannot determine Emacs version"; exit 6; }
+    ret=$?
+    [[ ${ret} -eq 0 ]] || { failure "Error running Emacs"; exit ${ret}; }
+    [ -n "${active}" ] || { failure "Cannot determine Emacs version"; exit 1; }
     message "Currently selected GNU Emacs version: ${active}"
 
     for elc in $(find "${ROOT}${SITELISP}" -name "*.elc")
     do
 	version=$(bytecomp_version "${elc}")
+	ret=$?
+	[[ ${ret} -eq 0 ]] || { failure "Error running sed"; exit ${ret}; }
 	version=${version:-unknown}
 
 	if [ -z "${MAJOR}" -a "${version%.*}" != "${active%.*}" ] \
@@ -292,7 +295,7 @@ done
 
 if [ ! -s "${TMPFILE}" ]; then
     warning "No files to update, quitting."
-    exit 3
+    exit 0
 fi
 
 NO_OF_FILES=$(wc -l <"${TMPFILE}")
@@ -319,13 +322,13 @@ fi
 cat "${PKGFILE}"
 
 if [ "${PRETEND}" -o "${ORPHANS}" ]; then
-    exit 4
+    exit 0
 fi
 
 echo
 if [ "${NO_OF_PACKAGES}" -eq 0 ]; then
     warning "No packages to update, quitting."
-    exit 3
+    exit 0
 fi
 
 if [ "${BATCH}" ]; then
@@ -336,11 +339,14 @@ else
     echo
     case ${choice} in
 	y*|Y*|"") ;;
-	*) warning "Quitting."; exit 10 ;;
+	*) warning "Quitting."; exit 0 ;;
     esac
 fi
 
 ${PM_COMMAND} "${PM_EXTRAOPTS[@]}" $(<"${PKGFILE}")
+ret=$?
 
 warning "If a package is being rebuilt over and over again,"
 warning "please report it on http://bugs.gentoo.org/"
+
+exit ${ret}

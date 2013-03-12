@@ -172,7 +172,7 @@ do
 	--package-manager-command) PM_COMMAND=$2; shift 2 ;;
 	--)
 	    shift
-	    if [[ $# -gt 0 && ${1#-} = $1 ]]; then
+	    if [[ $# -gt 0 && ${1#-} = "$1" ]]; then
 		# first parameter after -- should be an option
 		echo "Non-option parameter '$1' for package manager specified!"
 		usage 1
@@ -189,7 +189,7 @@ do
 done
 
 # Set colours based on the --colour option and output redirection status
-if [ -z "${COLOUR}" -a -t 1 -o "${COLOUR}" = "yes" ]; then
+if [[ -z ${COLOUR} && -t 1 ]] || [[ ${COLOUR} = yes ]]; then
     BOLD=$(tput bold)
     NORMAL=$(tput sgr0)
     RED=$(tput setaf 1)${BOLD}
@@ -253,7 +253,7 @@ action_rebuild() {
     active=$(emacs_version)
     ret=$?
     [[ ${ret} -eq 0 ]] || { failure "Error running Emacs"; exit ${ret}; }
-    [ -n "${active}" ] || { failure "Cannot determine Emacs version"; exit 1; }
+    [[ ${active} ]] || { failure "Cannot determine Emacs version"; exit 1; }
     message "Currently selected GNU Emacs version: ${active}"
 
     for elc in $(find "${ROOT}${SITELISP}" -name "*.elc")
@@ -263,9 +263,9 @@ action_rebuild() {
 	[[ ${ret} -eq 0 ]] || { failure "Error running sed"; exit ${ret}; }
 	version=${version:-unknown}
 
-	if [ -z "${MAJOR}" -a "${version%.*}" != "${active%.*}" ] \
-	    || [ "${version%%.*}" != "${active%%.*}" ] \
-	    || [ "$1" = all ]
+	if [[ -z ${MAJOR} && ${version%.*} != "${active%.*}" ]] \
+	    || [[ ${version%%.*} != "${active%%.*}" ]] \
+	    || [[ $1 = all ]]
 	then
 	    echo "Found ${elc##*/} (compiled by Emacs ${version})"
 	    echo "${elc}" >> "${TMPFILE}"
@@ -293,18 +293,18 @@ for action in ${ACTIONS}; do
     action_${action}
 done
 
-if [ ! -s "${TMPFILE}" ]; then
+if [[ ! -s ${TMPFILE} ]]; then
     warning "No files to update, quitting."
     exit 0
 fi
 
 NO_OF_FILES=$(wc -l <"${TMPFILE}")
-[ "${NO_OF_FILES}" -eq 1 ] && s= || s=s
+[[ ${NO_OF_FILES} -eq 1 ]] && s= || s=s
 message "Assigning ${NO_OF_FILES} file${s} to packages ..."
 
-if [ "${ORPHANS}" ]; then
+if [[ ${ORPHANS} ]]; then
     qfile -oCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
-elif [ "${EXACT}" ]; then
+elif [[ ${EXACT} ]]; then
     qfile -eqCR -f "${TMPFILE}" | sort -u | sed 's/^/=/' > "${PKGFILE}"
 else
     # Get package and slot number, requires >=portage-utils-0.3
@@ -312,8 +312,8 @@ else
 fi
 
 NO_OF_PACKAGES=$(wc -l <"${PKGFILE}")
-[ "${NO_OF_PACKAGES}" -eq 1 ] && s= || s=s
-if [ "${ORPHANS}" ]; then
+[[ ${NO_OF_PACKAGES} -eq 1 ]] && s= || s=s
+if [[ ${ORPHANS} ]]; then
     message "${NO_OF_PACKAGES} orphan file${s} found:"
 else
     message "${NO_OF_PACKAGES} package${s} to remerge:"
@@ -321,17 +321,17 @@ fi
 
 cat "${PKGFILE}"
 
-if [ "${PRETEND}" -o "${ORPHANS}" ]; then
+if [[ ${PRETEND} || ${ORPHANS} ]]; then
     exit 0
 fi
 
 echo
-if [ "${NO_OF_PACKAGES}" -eq 0 ]; then
+if [[ ${NO_OF_PACKAGES} -eq 0 ]]; then
     warning "No packages to update, quitting."
     exit 0
 fi
 
-if [ "${BATCH}" ]; then
+if [[ ${BATCH} ]]; then
     message "Remerging packages ..."
 else
     echo -n "${BOLD}Remerge packages?${NORMAL} [${GREEN}Yes${NORMAL}/${RED}No${NORMAL}] "

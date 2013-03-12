@@ -1,7 +1,7 @@
 2013-03-12  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs-updater: Exit with status 0 on success, 1 (or status of
-	last command) on failure.
+	last command) on failure. Use bash syntax for tests throughout.
 
 2013-03-11  Ulrich Müller  <ulm@gentoo.org>
 

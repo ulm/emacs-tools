@@ -1,3 +1,7 @@
+2013-03-20  Ulrich Müller  <ulm@gentoo.org>
+
+	* Version 1.13 released.
+
 2013-03-12  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs-updater: Exit with status 0 on success, 1 (or status of

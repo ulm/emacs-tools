@@ -74,7 +74,7 @@ stop() {
     fi
 
     ebegin "Stopping Emacs daemon for user ${USER}"
-    start-stop-daemon --stop \
+    start-stop-daemon --stop --retry "TERM/${EMACS_TIMEOUT}/KILL/5" \
 	--user "${USER}" --pidfile "${PIDFILE}" --exec "${EMACS}"
     eend $?
 }

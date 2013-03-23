@@ -1,5 +1,8 @@
 2013-03-23  Ulrich Müller  <ulm@gentoo.org>
 
+	* Makefile (dist): Use xz for compression.
+	(clean): Remove *.xz.
+
 	* emacs.rc (stop): Specify retry schedule for start-stop-daemon:
 	Send SIGTERM, wait for EMACS_TIMEOUT, then send SIGKILL.
 

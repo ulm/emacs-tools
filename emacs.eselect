@@ -64,7 +64,7 @@ remove_symlinks() {
 
 set_bin_symlinks() {
 	# Set symlinks to binaries in /usr/bin/
-	local target=${1} f
+	local target=$1 f
 	for f in ${BINARYLIST}; do
 		# set symlink only if target binary actually exists
 		if [[ -f ${EROOT}/usr/bin/${f}-${target} ]]; then
@@ -76,7 +76,7 @@ set_bin_symlinks() {
 
 set_man_symlinks() {
 	# Set symlinks to man pages
-	local target=${1} extension f i
+	local target=$1 extension f i
 	for f in ${MANPAGELIST}; do
 		for i in "${EROOT}"/usr/share/man/man1/${f}-${target}.1*; do
 			if [[ -f ${i} ]]; then
@@ -97,13 +97,13 @@ set_symlinks() {
 		# numeric index, find the target's name
 		targets=( $(find_targets) )
 		[[ ${target} -ge 1 && ${target} -le ${#targets[@]} ]] \
-			|| die -q "Number out of range: ${1}"
+			|| die -q "Number out of range: $1"
 		target=${targets[target-1]}
 	fi
 
 	# is the target valid, i.e. does an Emacs binary with this name exist?
 	[[ -f ${EROOT}/usr/bin/${target} ]] \
-		|| die -q "Target \"${1}\" doesn't appear to be valid!"
+		|| die -q "Target \"$1\" doesn't appear to be valid!"
 
 	echo "Switching emacs to ${target} ..."
 	remove_symlinks || die -q "Couldn't remove existing symlink"
@@ -221,7 +221,7 @@ do_set() {
 		die -q "${EROOT}/usr/bin/emacs exists but is not a symlink"
 	fi
 
-	set_symlinks "${1}" || die -q "Couldn't set a new symlink"
+	set_symlinks "$1" || die -q "Couldn't set a new symlink"
 
 	# ctags symlinks are handled in an own module now
 	do_action ctags update

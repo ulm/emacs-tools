@@ -1,3 +1,10 @@
+2013-08-06  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs-stop.sh: New variable EMACSCLIENT_OPTS, allows to specify
+	additional options for emacsclient.
+	* emacs.rc (stop): Export EMACSCLIENT_OPTS to environment.
+	* emacs.conf: Add explanation for new variable.
+
 2013-03-23  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.20 released.

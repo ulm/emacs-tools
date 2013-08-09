@@ -1,3 +1,7 @@
+2013-08-09  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs-updater (version): Update URI of Emacs project page.
+
 2013-03-20  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.13 released.

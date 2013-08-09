@@ -73,7 +73,7 @@ version() {
 	Copyright 2007-2013 Gentoo Foundation.
 	Distributed under the terms of the GNU GPL version 2 or later.
 
-	Gentoo Emacs project: <http://www.gentoo.org/proj/en/lisp/emacs/>
+	Gentoo Emacs project: <http://wiki.gentoo.org/wiki/Project:Emacs>
 	EOF
     exit
 }

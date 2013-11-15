@@ -1,5 +1,10 @@
 2013-11-15  Ulrich Müller  <ulm@gentoo.org>
 
+	* icons/gnome-emacs.png: File removed. The ebuild does not install
+	this icon since a long time.
+	* icons/COPYRIGHT.icons: Update.
+	* Makefile (ICONFILES): Update.
+
 	* site-gentoo.el: New file. Gentoo site startup, initially empty.
 	* Makefile (DISTFILES): Update.
 

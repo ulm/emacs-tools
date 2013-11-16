@@ -20,11 +20,11 @@ DISTFILES = site-start.el site-gentoo.el subdirs.el $(DESKTOPFILES) \
 all:
 
 dist: $(DISTFILES)
-	tar -czf $(P).tar.gz --transform='s%^%$(P)/%' $^
-	tar -tzvf $(P).tar.gz
+	tar -cJf $(P).tar.xz --transform='s%^%$(P)/%' $^
+	tar -tJvf $(P).tar.xz
 
 $(DESKTOPFILES):
 	desktop-file-validate $@
 
 clean:
-	-rm -f *~ *.tmp *.gz *.bz2
+	-rm -f *~ *.tmp *.xz

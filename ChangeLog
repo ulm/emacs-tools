@@ -1,3 +1,8 @@
+2013-11-16  Ulrich Müller  <ulm@gentoo.org>
+
+	* Makefile (dist): Use xz for compression.
+	(clean): Remove *.xz.
+
 2013-11-15  Ulrich Müller  <ulm@gentoo.org>
 
 	* icons/gnome-emacs.png: File removed. The ebuild does not install

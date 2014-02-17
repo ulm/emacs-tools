@@ -1,3 +1,8 @@
+2014-02-17  Ulrich Müller  <ulm@gentoo.org>
+
+	* Makefile (dist): Use xz for compression.
+	(clean): Remove *.xz.
+
 2012-06-22  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.14 released.

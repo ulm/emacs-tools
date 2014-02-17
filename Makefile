@@ -23,8 +23,8 @@ etags.eselect.5: ctags.eselect.5
 	cp $< $@
 
 dist: $(DISTFILES)
-	tar -cjf $(P).tar.bz2 --transform='s%^%$(P)/%' $^
-	tar -tjvf $(P).tar.bz2
+	tar -cJf $(P).tar.xz --transform='s%^%$(P)/%' $^
+	tar -tJvf $(P).tar.xz
 
 clean:
-	-rm -f *~ *.tmp *.gz *.bz2
+	-rm -f *~ *.tmp *.gz *.bz2 *.xz

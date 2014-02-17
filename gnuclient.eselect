@@ -21,7 +21,7 @@
 
 DESCRIPTION="Manage /usr/bin/gnuclient implementations"
 MAINTAINER="emacs@gentoo.org"
-VERSION="1.14"
+VERSION="1.15"
 
 BINARYLIST="gnuclient gnudoit gnuattach"
 MANPAGELIST="gnuclient gnudoit gnuattach gnuserv"

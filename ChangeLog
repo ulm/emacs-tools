@@ -1,5 +1,7 @@
 2014-02-17  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.15 released.
+
 	* gnuclient.eselect: New file, eselect module for
 	gnuserv/gnuclient, bug 177936.
 	* gnuclient.eselect.5: New file, man page.

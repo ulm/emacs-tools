@@ -1,0 +1,80 @@
+.\" -*- coding: utf-8 -*-
+.\" Copyright 2007-2014 Gentoo Foundation
+.\" Distributed under the terms of the GNU GPL version 2 or later
+.\"
+.TH gnuclient.eselect 5 "February 2014" "Gentoo Linux" eselect
+.SH NAME
+gnuclient.eselect \- The gnuserv/gnuclient module for Gentoo's eselect
+.SH SYNOPSIS
+.B eselect gnuclient
+.RB [ help | usage | version ]
+.br
+.B eselect gnuclient list
+.br
+.B eselect gnuclient set
+.I target
+.br
+.B eselect gnuclient show
+.br
+.B eselect gnuclient update
+.RB [ ifunset ]
+.SH DESCRIPTION
+.B eselect
+is Gentoo's configuration and management tool.  It features modules
+that care for the individual administrative tasks.
+
+.B gnuserv
+and
+.B gnuclient
+are a server and client that allow the user to request a running
+(X)Emacs process to edit the named files or evaluate lisp forms.
+.SH ACTION: LIST
+.B eselect gnuclient list
+.br
+List all installed gnuclient versions.
+
+# eselect gnuclient list
+.br
+Available gnuclient symlink targets:
+.br
+  [1]   gnuclient-emacs
+  [2]   gnuclient-xemacs *
+.SH ACTION: SET
+.B eselect gnuclient set
+.I target
+.br
+Activate the selected gnuclient version.
+.I target
+can be either an identification number given by
+.B eselect gnuclient list
+or the name of one installed version.
+
+# eselect gnuclient set 1
+.br
+Switching gnuclient to gnuclient-emacs ...
+.SH ACTION: SHOW
+.B eselect gnuclient show
+.br
+Print the currently activated gnuclient version.
+
+# eselect gnuclient show
+.br
+Current target of symlink:
+.br
+  gnuclient-emacs
+.SH ACTION: UPDATE
+.B eselect gnuclient update
+.RB [ ifunset ]
+.br
+Update the gnuclient symlink.  If option
+.B ifunset
+is given, an existing implementation is not overridden.
+
+# eselect gnuclient update
+.br
+Switching gnuclient to gnuclient-emacs ...
+.SH AUTHOR
+Ulrich Müller <ulm@gentoo.org>
+.SH SEE ALSO
+.BR eselect (1),
+.BR gnuserv (1)

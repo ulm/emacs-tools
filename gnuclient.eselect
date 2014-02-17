@@ -1,0 +1,202 @@
+# -*-eselect-*-
+# Copyright 2005-2014 Gentoo Foundation
+# Distributed under the terms of the GNU GPL version 2 or later
+#
+# DOCUMENTATION
+# Following actions possible
+# * show		do_show()
+# * list		do_list()
+# * set			do_set()
+# * update		do_update()
+#
+# Behaviour:
+# do_show():
+#	Checks if /usr/bin/gnuclient is a link and if the target exists,
+#	if yes, it outputs the currently linked gnuclient implementation.
+#	If it is no symlink, the user is told so, the same if there is
+#	no /usr/bin/gnuclient or the target does not exist.
+# do_list(): List all available gnuclient implementations.
+# do_set(): Set a version to be target of the symlink.
+# do_update(): Set the target to the "best" available version.
+
+DESCRIPTION="Manage /usr/bin/gnuclient implementations"
+MAINTAINER="emacs@gentoo.org"
+VERSION="1.14"
+
+BINARYLIST="gnuclient gnudoit gnuattach"
+MANPAGELIST="gnuclient gnudoit gnuattach gnuserv"
+
+find_targets() {
+	# Return the list of available gnuclient implementations
+	local j
+	for j in gnuclient-{emacs,xemacs}; do
+		[[ -f ${EROOT}/usr/bin/${j} ]] && echo ${j}
+	done
+}
+
+remove_symlinks() {
+	# Remove existing symlinks to binaries and man pages
+	local f
+	for f in ${BINARYLIST}; do
+		rm -f "${EROOT}/usr/bin/${f}"
+	done
+	for f in ${MANPAGELIST}; do
+		rm -f "${EROOT}"/usr/share/man/man1/${f}.1*
+	done
+}
+
+set_bin_symlinks() {
+	# Set symlinks to binaries
+	local target=${1#gnuclient-} f
+	for f in ${BINARYLIST}; do
+		# set symlink only if target binary actually exists
+		if [[ -f ${EROOT}/usr/bin/${f}-${target} ]]; then
+			ln -s "${f}-${target}" "${EROOT}/usr/bin/${f}" || die \
+				"Couldn't set ${f}-${target} ${EROOT}/usr/bin/${f} symlink"
+		fi
+	done
+}
+
+set_man_symlinks() {
+	# Set symlinks to man pages
+	local target=${1#gnuclient-} extension f i
+	for f in ${MANPAGELIST}; do
+		for i in "${EROOT}"/usr/share/man/man1/${f}-${target}.1*; do
+			if [[ -f ${i} ]]; then
+				# target file exists; determine compress extension
+				extension=${i##*/${f}-${target}.1}
+				ln -s "${f}-${target}.1${extension}" \
+					"${EROOT}/usr/share/man/man1/${f}.1${extension}"
+			fi
+		done
+	done
+}
+
+set_symlinks() {
+	# Set symlinks to binaries and man pages
+	local target=$1 targets
+	# target may be specified by its name or its index
+	if is_number "${target}"; then
+		# numeric index, find the target's name
+		targets=( $(find_targets) )
+		[[ ${target} -ge 1 && ${target} -le ${#targets[@]} ]] \
+			|| die -q "Number out of range: $1"
+		target=${targets[target-1]}
+	fi
+
+	# is the target valid, i.e. does a gnuclient binary with this name exist?
+	[[ -f ${EROOT}/usr/bin/${target} ]] \
+		|| die -q "Target \"$1\" doesn't appear to be valid!"
+
+	echo "Switching gnuclient to ${target} ..."
+	remove_symlinks || die -q "Couldn't remove existing symlink"
+	set_bin_symlinks "${target}"
+	set_man_symlinks "${target}"
+	return 0
+}
+
+test_for_root() {
+	# checks if the user has rights to modify /usr/bin/
+	[[ -w ${EROOT}/usr/bin ]] || die -q "You need root privileges!"
+}
+
+### show action ###
+
+describe_show() {
+	echo "Show the current target of the gnuclient symlink"
+}
+
+do_show() {
+	[[ $# -gt 0 ]] && die -q "Too many parameters"
+
+	write_list_start "Current target of gnuclient symlink:"
+	if [[ -L ${EROOT}/usr/bin/gnuclient && -e ${EROOT}/usr/bin/gnuclient ]]
+	then
+		write_kv_list_entry \
+			"$(basename "$(readlink "${EROOT}/usr/bin/gnuclient")")" ""
+	elif [[ -e ${EROOT}/usr/bin/gnuclient ]]; then
+		write_kv_list_entry \
+			"(not a symlink or target of symlink does not exist)" ""
+	else
+		write_kv_list_entry "(unset)" ""
+	fi
+}
+
+### list action ###
+
+describe_list() {
+	echo "List available gnuclient symlink targets"
+}
+
+do_list() {
+	[[ $# -gt 0 ]] && die -q "Too many parameters"
+
+	local i targets
+	targets=( $(find_targets) )
+
+	for (( i = 0; i < ${#targets[@]}; i++ )); do
+		# Highlight the currently chosen version
+		[[ ${targets[i]} = \
+			"$(basename "$(readlink "${EROOT}/usr/bin/gnuclient")")" ]] \
+			&& targets[i]=$(highlight_marker "${targets[i]}")
+	done
+	write_list_start "Available gnuclient symlink targets:"
+	write_numbered_list -m "(none found)" "${targets[@]}"
+}
+
+### set action ###
+
+describe_set() {
+	echo "Set a new gnuclient symlink"
+}
+
+describe_set_options() {
+	echo "target : Target name or number (from 'list' action)"
+}
+
+describe_set_parameters() {
+	echo "<target>"
+}
+
+do_set() {
+	[[ -z $1 ]] && die -q "You didn't tell me what to set the symlink to"
+	[[ $# -gt 1 ]] && die -q "Too many parameters"
+	test_for_root
+
+	if [[ -e ${EROOT}/usr/bin/gnuclient && ! -L ${EROOT}/usr/bin/gnuclient ]]
+	then
+		die -q "${EROOT}/usr/bin/gnuclient exists but is not a symlink"
+	fi
+
+	set_symlinks "$1" || die -q "Couldn't set a new symlink"
+}
+
+### update action ###
+
+describe_update() {
+	echo "Automatically update the gnuclient symlink"
+}
+
+describe_update_options() {
+	echo "ifunset : Do not override currently set version"
+}
+
+do_update() {
+	[[ -z $1 || $1 = ifunset || $1 = --if-unset ]] || die -q "Usage error"
+	[[ $# -gt 1 ]] && die -q "Too many parameters"
+	test_for_root
+
+	if [[ -L ${EROOT}/usr/bin/gnuclient ]]; then
+		if [[ $1 == *if*unset && -e ${EROOT}/usr/bin/gnuclient ]]; then
+			return 0
+		fi
+		remove_symlinks || die -q "Couldn't remove existing symlink"
+	elif [[ -e ${EROOT}/usr/bin/gnuclient ]]; then
+		die -q "${EROOT}/usr/bin/gnuclient exists but is not a symlink"
+	fi
+
+	local targets=( $(find_targets) )
+	if [[ ${#targets[@]} -gt 0 ]]; then
+		set_symlinks "${targets[0]}" || die -q "Couldn't set a new symlink"
+	fi
+}

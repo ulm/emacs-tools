@@ -6,10 +6,11 @@ PV = $(shell sed '/^[ \t]*VERSION=/!d;s/.*="\?\([^ \t"]*\).*/\1/;q' \
 	emacs.eselect)
 P = $(PN)-$(PV)
 
-MODULES = emacs.eselect ctags.eselect etags.eselect
-MANPAGES = emacs.eselect.5 ctags.eselect.5 etags.eselect.5
+MODULES = emacs.eselect ctags.eselect etags.eselect gnuclient.eselect
+MANPAGES = emacs.eselect.5 ctags.eselect.5 etags.eselect.5 gnuclient.eselect.5
 
-DISTFILES = emacs.eselect ctags.eselect emacs.eselect.5 ctags.eselect.5 \
+DISTFILES = emacs.eselect ctags.eselect gnuclient.eselect \
+	emacs.eselect.5 ctags.eselect.5 gnuclient.eselect.5 \
 	ChangeLog Makefile
 
 .PHONY: all dist clean

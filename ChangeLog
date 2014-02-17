@@ -1,5 +1,10 @@
 2014-02-17  Ulrich Müller  <ulm@gentoo.org>
 
+	* gnuclient.eselect: New file, eselect module for
+	gnuserv/gnuclient, bug 177936.
+	* gnuclient.eselect.5: New file, man page.
+	* Makefile (MODULES, MANPAGES, DISTFILES): Update.
+
 	* Makefile (dist): Use xz for compression.
 	(clean): Remove *.xz.
 

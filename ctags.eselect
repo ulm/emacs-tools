@@ -66,13 +66,13 @@ set_bin_symlinks() {
 
 set_man_symlinks() {
 	# Set symlink to man page
-	local target=$1 extension i
-	for i in "${EROOT}"/usr/share/man/man1/${target}.1*; do
+	local target=$1 suffix i
+	for i in "${EROOT}/usr/share/man/man1/${target}.1"*; do
 		if [[ -f ${i} ]]; then
-			# target file exists; determine compress extension
-			extension=${i##*/${target}.1}
-			ln -s "${target}.1${extension}" \
-				"${EROOT}/usr/share/man/man1/${CTAGS}.1${extension}"
+			# target file exists; determine compression suffix
+			suffix=${i##*/"${target}.1"}
+			ln -s "${target}.1${suffix}" \
+				"${EROOT}/usr/share/man/man1/${CTAGS}.1${suffix}"
 		fi
 	done
 }

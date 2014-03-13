@@ -59,14 +59,14 @@ set_bin_symlinks() {
 
 set_man_symlinks() {
 	# Set symlinks to man pages
-	local target=${1#gnuclient-} extension f i
+	local target=${1#gnuclient-} suffix f i
 	for f in ${MANPAGELIST}; do
-		for i in "${EROOT}"/usr/share/man/man1/${f}-${target}.1*; do
+		for i in "${EROOT}/usr/share/man/man1/${f}-${target}.1"*; do
 			if [[ -f ${i} ]]; then
-				# target file exists; determine compress extension
-				extension=${i##*/${f}-${target}.1}
-				ln -s "${f}-${target}.1${extension}" \
-					"${EROOT}/usr/share/man/man1/${f}.1${extension}"
+				# target file exists; determine compression suffix
+				suffix=${i##*/"${f}-${target}.1"}
+				ln -s "${f}-${target}.1${suffix}" \
+					"${EROOT}/usr/share/man/man1/${f}.1${suffix}"
 			fi
 		done
 	done

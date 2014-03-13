@@ -1,5 +1,7 @@
 2014-03-13  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.16 released.
+
 	* emacs.eselect (MANPAGELIST): Now equal to BINARYLIST.
 	(remove_symlinks): Explicitly include "emacs" in for-loops.
 	(set_symlinks): Also recognise man pages named like the main

@@ -26,7 +26,7 @@ VERSION="1.15"
 
 # ctags and etags are handled in their own module
 BINARYLIST="emacsclient b2m ebrowse rcs-checkin grep-changelog"
-MANPAGELIST="emacs emacsclient b2m ebrowse rcs-checkin grep-changelog"
+MANPAGELIST="${BINARYLIST}"
 MANPAGELIST_OLD="gfdl"
 
 find_targets() {
@@ -52,12 +52,11 @@ remove_symlinks() {
 	# Remove existing symlinks to binaries, man pages,
 	# and the env file (own function)
 	local f
-	rm -f "${EROOT}/usr/bin/emacs"
-	for f in ${BINARYLIST}; do
+	for f in emacs ${BINARYLIST}; do
 		rm -f "${EROOT}/usr/bin/${f}"
 	done
-	for f in ${MANPAGELIST} ${MANPAGELIST_OLD}; do
-		rm -f "${EROOT}"/usr/share/man/man1/${f}.1*
+	for f in emacs ${MANPAGELIST} ${MANPAGELIST_OLD}; do
+		rm -f "${EROOT}/usr/share/man/man1/${f}.1"*
 	done
 	remove_infopath
 }
@@ -77,7 +76,7 @@ set_bin_symlinks() {
 set_man_symlinks() {
 	# Set symlinks to man pages
 	local target=$1 suffix f i
-	for f in ${MANPAGELIST}; do
+	for f in emacs ${MANPAGELIST}; do
 		for i in "${EROOT}/usr/share/man/man1/${f}-${target}.1"*; do
 			if [[ -f ${i} ]]; then
 				# target file exists; determine compression suffix
@@ -91,7 +90,7 @@ set_man_symlinks() {
 
 set_symlinks() {
 	# Set symlinks to binaries and man pages, update info path
-	local target=$1 nomain=$2 targets
+	local target=$1 nomain=$2 targets suffix i
 	# target may be specified by its name or its index
 	if is_number "${target}"; then
 		# numeric index, find the target's name
@@ -112,6 +111,13 @@ set_symlinks() {
 	if [[ -z ${nomain} ]]; then
 		ln -s "${target}" "${EROOT}/usr/bin/emacs" \
 			|| die "Couldn't set ${target} ${EROOT}/usr/bin/emacs symlink"
+		for i in "${EROOT}/usr/share/man/man1/${target}.1"*; do
+			if [[ -f ${i} ]]; then
+				suffix=${i##*/"${target}.1"}
+				ln -s "${target}.1${suffix}" \
+					"${EROOT}/usr/share/man/man1/emacs.1${suffix}"
+			fi
+		done
 	fi
 	set_bin_symlinks "${target}"
 	set_man_symlinks "${target}"

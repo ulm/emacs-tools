@@ -1,3 +1,9 @@
+2014-03-18  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs.eselect (MANPAGELIST_OLD): Remove variable, the gfdl.1
+	man page is no longer installed since 2009.
+	(remove_symlinks): Remove MANPAGELIST_OLD.
+
 2014-03-13  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.16 released.

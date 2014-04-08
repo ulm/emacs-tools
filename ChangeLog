@@ -1,3 +1,9 @@
+2014-04-08  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs.eselect (set_man_symlinks): Omit emacs-${target}.1 from
+	the list; the symlink for the emacs.1 man page is handled by
+	set_symlinks() already.
+
 2014-03-18  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (MANPAGELIST_OLD): Remove variable, the gfdl.1

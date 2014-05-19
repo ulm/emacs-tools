@@ -11,7 +11,7 @@ EMACS=/usr/bin/emacs
 SITELISP=/usr/share/emacs/site-lisp
 
 # Default actions
-ACTIONS="sitedir rebuild"
+ACTIONS="rebuild"
 
 # Default package manager
 PM_COMMAND=pm_auto
@@ -33,13 +33,11 @@ usage() {
 	X
 	X  -a, --action=ACTION[,ACTION]...
 	X                        specify actions, comma-separated list of:
-	X                        sitedir: find site-init files not in the
-	X                          new-style location
 	X                        rebuild: rebuild packages with elisp files
 	X                          byte-compiled by a different Emacs version
 	X                        all: rebuild all packages that have
 	X                          byte-compiled elisp files
-	X                        (default: sitedir,rebuild)
+	X                        (default: rebuild)
 	X  -b, --batch           batch mode, don't ask any questions
 	X      --color[=MODE], --colour[=MODE]
 	X                        control colour output. MODE is yes, no,
@@ -141,8 +139,11 @@ do
 	    ACTIONS=
 	    for action in ${2/,/ }; do
 		case ${action} in
-		    sitedir|rebuild|all)
+		    rebuild|all)
 			ACTIONS="${ACTIONS}${ACTIONS:+ }${action}"
+			;;
+		    sitedir)
+			echo "Obsolete action '$action' ignored."
 			;;
 		    *)
 			echo "Invalid action '$action' given!"
@@ -225,25 +226,6 @@ emacs_version() {
 # Get Emacs version from byte-compiled file
 bytecomp_version() {
     sed -n '/^[^;]/q;s/\.$//;s/.*[Ee]macs version \([0-9].*\)/\1/p' "$1"
-}
-
-action_sitedir() {
-    local sf
-
-    message "Searching for site-init files in obsolete location ..."
-
-    # Set nullglob option since there may be no matching files
-    local old_shopts=$(shopt -p nullglob)
-    shopt -s nullglob
-
-    for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el
-    do
-	echo "Found ${sf##*/}"
-	echo "${sf}" >> "${TMPFILE}"
-    done
-
-    eval "${old_shopts}"
-    echo
 }
 
 action_rebuild() {

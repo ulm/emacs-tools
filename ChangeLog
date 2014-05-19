@@ -1,3 +1,11 @@
+2014-05-19  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs-updater: Remove the sitedir action; site-init files are
+	installed in the new location since 2007.
+	(action_sitedir): Function removed.
+	(usage): Update help text accordingly.
+	* emacs-updater.8: Update.
+
 2013-08-09  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs-updater (version): Update URI of Emacs project page.

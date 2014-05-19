@@ -16,9 +16,6 @@ GNU Emacs packages.
 .BI "-a, --action=" ACTION[,ACTION]...
 Specify actions, comma-separated list of:
 
-.BR sitedir :
-Find site-init files not in the new-style location.
-
 .BR rebuild :
 Rebuild packages with Elisp files byte-compiled by a different Emacs
 version.
@@ -27,7 +24,6 @@ version.
 Rebuild all packages that have byte-compiled Elisp files.
 
 (default:
-.BR sitedir ,
 .BR rebuild )
 .TP
 .B -b, --batch

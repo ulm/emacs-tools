@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2007-2013 Gentoo Foundation
+# Copyright 2007-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2 or later
 
 # Authors:
@@ -70,7 +70,7 @@ usage() {
 version() {
     cat <<-EOF
 	Emacs updater version ${VERSION}
-	Copyright 2007-2013 Gentoo Foundation.
+	Copyright 2007-2014 Gentoo Foundation.
 	Distributed under the terms of the GNU GPL version 2 or later.
 
 	Gentoo Emacs project: <http://wiki.gentoo.org/wiki/Project:Emacs>

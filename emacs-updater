@@ -28,8 +28,8 @@ PRETEND=
 usage() {
     sed -e 's/^X//' <<-EOF
 	Usage: ${0##*/} [OPTION]...
-	Rebuild Emacs packages that were compiled by another Emacs version,
-	or that are installed in the wrong location.
+	Rebuild Emacs packages that were compiled by a different GNU Emacs
+	version, or all Emacs packages.
 	X
 	X  -a, --action=ACTION[,ACTION]...
 	X                        specify actions, comma-separated list of:

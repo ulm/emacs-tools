@@ -1,5 +1,7 @@
 2014-06-05  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.14 released.
+
 	* emacs-updater (GETOPT): New variable, path of getopt executable.
 
 2014-05-19  Ulrich Müller  <ulm@gentoo.org>

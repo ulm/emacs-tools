@@ -8,6 +8,7 @@
 
 VERSION=1.13
 EMACS=/usr/bin/emacs
+GETOPT=/usr/bin/getopt
 SITELISP=/usr/share/emacs/site-lisp
 
 # Default actions
@@ -104,7 +105,7 @@ pm_auto() {
 }
 
 # Read in all command-line options and force English output
-OPTIONS=$(LC_ALL=C getopt -o a:behmnopP: \
+OPTIONS=$(LC_ALL=C "${GETOPT}" -o a:behmnopP: \
     --long action:,batch,color::,colour::,nocolor,nocolour,exact,help,major \
     --long orphans,pretend,package-manager:,package-manager-command:,version \
     -n 'emacs-updater' -- "$@") \

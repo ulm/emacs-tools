@@ -1,3 +1,7 @@
+2014-10-28  Ulrich Müller  <ulm@gentoo.org>
+
+	* Version 1.17 released.
+
 2014-04-08  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (set_man_symlinks): Omit emacs-${target}.1 from

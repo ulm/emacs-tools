@@ -10,7 +10,7 @@ MODULES = emacs.eselect ctags.eselect etags.eselect gnuclient.eselect
 MANPAGES = emacs.eselect.5 ctags.eselect.5 etags.eselect.5 gnuclient.eselect.5
 
 DISTFILES = emacs.eselect ctags.eselect gnuclient.eselect \
-	emacs.eselect.5 ctags.eselect.5 gnuclient.eselect.5 \
+	emacs.eselect.5 ctags.eselect.5 etags.eselect.5 gnuclient.eselect.5 \
 	ChangeLog Makefile
 
 .PHONY: all dist clean
@@ -19,9 +19,6 @@ all: $(MODULES) $(MANPAGES)
 
 etags.eselect: ctags.eselect
 	sed -e "/^CTAGS=/s/ctags/etags/" $< >$@
-
-etags.eselect.5: ctags.eselect.5
-	cp $< $@
 
 dist: $(DISTFILES)
 	tar -cJf $(P).tar.xz --transform='s%^%$(P)/%' $^

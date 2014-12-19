@@ -40,12 +40,6 @@ find_targets() {
 		[[ -f ${EROOT}/usr/bin/${CTAGS}-${emacs} ]] && echo "${CTAGS}-${emacs}"
 	elif [[ -f ${EROOT}/usr/bin/xemacs ]]; then
 		[[ -f ${EROOT}/usr/bin/${CTAGS}-xemacs ]] && echo "${CTAGS}-xemacs"
-	elif [[ ${CTAGS} = etags ]]; then
-		# We are called as etags module, but no (X)Emacs is installed.
-		# Return an empty list in this case, because we don't want
-		# exuberant-ctags as default for etags (for ctags it's fine).
-		# Also, vi purists wouldn't want an etags symlink.
-		return
 	fi
 
 	# Exuberant ctags
@@ -215,7 +209,12 @@ do_update() {
 		# offers several concurrent versions.
 
 		local i target targets=( $(find_targets) )
-		if [[ ${#targets[@]} -gt 0 && ${current} != nolink ]]; then
+		# We don't want exuberant-ctags as default for etags. Also, vi
+		# purists wouldn't want an etags symlink. Therefore, don't update
+		# the etags symlink unless there is an (X)Emacs provider.
+		if [[ ${#targets[@]} -gt 0 && ${current} != nolink ]] \
+			&& ! [[ ${CTAGS} = etags && ${targets[0]} != ${CTAGS}-*emacs* ]]
+		then
 			target=${targets[0]}
 			[[ ${current} = ${CTAGS}-*emacs* ]] && current=${CTAGS}-*emacs*
 			for i in ${targets[@]}; do

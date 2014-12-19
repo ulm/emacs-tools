@@ -1,3 +1,10 @@
+2014-12-19  Ulrich Müller  <ulm@gentoo.org>
+
+	* ctags.eselect (find_targets, do_update): Have a special case for
+	etags only in the update action. Otherwise, display all targets
+	for it, even if no Emacs variant is installed.
+	* ctags.eselect.5: Update.
+
 2014-10-28  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.17 released.

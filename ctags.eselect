@@ -197,7 +197,7 @@ do_update() {
 				remove_symlinks || die -q "Couldn't remove existing symlink"
 			fi
 		elif [[ -e ${EROOT}/usr/bin/${CTAGS} ]]; then
-			if ! [[ ${CTAGS} = ctags && $(uname) = FreeBSD ]]; then
+			if ! [[ ${CTAGS} = ctags && ${OSTYPE} = freebsd* ]]; then
 				die -q "${EROOT}/usr/bin/${CTAGS} exists but is not a symlink"
 			fi
 			# On FreeBSD ctags is a real file, installed by freebsd-ubin

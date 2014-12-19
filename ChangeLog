@@ -1,5 +1,7 @@
 2014-12-19  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.18 released.
+
 	* ctags.eselect (do_update): Use OSTYPE bash variable instead of
 	uname to determine the system type, in order to be consistent with
 	eselect proper.

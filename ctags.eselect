@@ -26,7 +26,7 @@ CTAGS=ctags
 
 DESCRIPTION="Manage /usr/bin/${CTAGS} implementations"
 MAINTAINER="emacs@gentoo.org"
-VERSION="1.17"
+VERSION="1.18"
 
 find_targets() {
 	# Return the list of available ctags implementations

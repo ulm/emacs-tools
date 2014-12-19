@@ -248,7 +248,7 @@ do_update() {
 	test_for_root
 
 	if [[ -L ${EROOT}/usr/bin/emacs ]]; then
-		if [[ $1 == *if*unset && -e ${EROOT}/usr/bin/emacs ]]; then
+		if [[ $1 = *if*unset && -e ${EROOT}/usr/bin/emacs ]]; then
 			do_action ctags update ifunset
 			return
 		fi

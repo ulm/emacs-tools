@@ -1,3 +1,8 @@
+2014-12-23  Ulrich Müller  <ulm@gentoo.org>
+
+	* Makefile (all): Explicitly depend on etags.eselect.
+	(MODULES, MANPAGES): Remove variables.
+
 2014-12-19  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.18 released.

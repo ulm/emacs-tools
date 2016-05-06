@@ -1,5 +1,7 @@
 2016-05-06  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 0.22 released.
+
 	* emacs.rc: Update shebang line to /sbin/openrc-run which is used
 	by new OpenRC versions.
 

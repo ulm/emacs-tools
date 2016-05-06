@@ -20,6 +20,6 @@ done
 echo "${0##*/}: timeout waiting for emacsclient" >&2
 kill ${pid} 2>/dev/null
 
-# exit 0: runscript shall continue and (forcibly) kill the emacs process
-# exit 1: runscript shall exit with an error
+# exit 0: openrc-run shall continue and (forcibly) kill the emacs process
+# exit 1: openrc-run shall exit with an error
 exit 0

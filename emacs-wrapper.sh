@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2008-2014 Gentoo Foundation
+# Copyright 2008-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2 or later
 
 # Save output in a temporary file and display in case of error

@@ -1,5 +1,7 @@
 2016-06-07  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.15 released.
+
 	* emacs-updater: Run qfile under xargs since portage-utils-0.61
 	has lost the -f option. Fixes bug 584984. Enable the pipefail
 	option in bash, in order to check qfile's exit status.

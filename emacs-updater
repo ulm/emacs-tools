@@ -296,7 +296,7 @@ else
 fi
 
 ret=$?
-[[ ${ret} -eq 0 ]] || { failure "Error running qfile"; exit ${ret}; }
+[[ ${ret} -eq 0 ]] || { failure "Error running qfile pipeline"; exit ${ret}; }
 
 NO_OF_PACKAGES=$(wc -l <"${PKGFILE}")
 [[ ${NO_OF_PACKAGES} -eq 1 ]] && s= || s=s

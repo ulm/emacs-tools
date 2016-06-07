@@ -268,6 +268,7 @@ cleanup() {
 }
 
 trap cleanup EXIT
+set -o pipefail
 
 TMPFILE="$(mktemp ${TMPDIR:-/tmp}/emacs-updater.files.XXXXXX)"
 PKGFILE="$(mktemp ${TMPDIR:-/tmp}/emacs-updater.pkgs.XXXXXX)"
@@ -286,13 +287,16 @@ NO_OF_FILES=$(wc -l <"${TMPFILE}")
 message "Assigning ${NO_OF_FILES} file${s} to packages ..."
 
 if [[ ${ORPHANS} ]]; then
-    qfile -oCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
+    xargs qfile -oCR <"${TMPFILE}" | sort -u >"${PKGFILE}"
 elif [[ ${EXACT} ]]; then
-    qfile -eqCR -f "${TMPFILE}" | sort -u | sed 's/^/=/' > "${PKGFILE}"
+    xargs qfile -eqCR <"${TMPFILE}" | sort -u | sed 's/^/=/' >"${PKGFILE}"
 else
     # Get package and slot number, requires >=portage-utils-0.3
-    qfile -SqCR -f "${TMPFILE}" | sort -u > "${PKGFILE}"
+    xargs qfile -SqCR <"${TMPFILE}" | sort -u >"${PKGFILE}"
 fi
+
+ret=$?
+[[ ${ret} -eq 0 ]] || { failure "Error running qfile"; exit ${ret}; }
 
 NO_OF_PACKAGES=$(wc -l <"${PKGFILE}")
 [[ ${NO_OF_PACKAGES} -eq 1 ]] && s= || s=s

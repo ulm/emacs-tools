@@ -32,8 +32,8 @@ which is extensively commented.  You may also create individual
 /etc/conf.d/emacs.<username> files for "multiplexed" user
 configuration.
 
-Please contact the Gentoo GNU Emacs team directly through
-<http://bugs.gentoo.org/> (preferred) or by e-mail <emacs@gentoo.org>
+Please contact the Gentoo GNU Emacs team directly through Bugzilla
+https://bugs.gentoo.org/ (preferred) or by e-mail gnu-emacs@gentoo.org
 if you have problems, feature requests or bug reports.
 
 

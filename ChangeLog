@@ -1,3 +1,7 @@
+2016-06-08  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs-updater: Update URLs to use https.
+
 2016-06-07  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.15 released.

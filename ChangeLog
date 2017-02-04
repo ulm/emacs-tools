@@ -1,5 +1,9 @@
 2017-02-04  Ulrich Müller  <ulm@gentoo.org>
 
+	* icons/emacs25_*.png, icons/emacs25.svg: New files, from Emacs 25.1.
+	* icons/COPYRIGHT.icons: Update.
+	* Makefile (ICONFILES): Update.
+
 	* icons/emacs23_*.png, icons/emacs23.svg: Renamed from emacs_*.png
 	and emacs.svg, respectively.
 	* icons/COPYRIGHT.icons: Update.

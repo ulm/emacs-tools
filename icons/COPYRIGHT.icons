@@ -24,3 +24,9 @@ File: emacs23.svg
            Chong Yidong <cyd@stupidchicken.com>
   Copyright (C) 2008, 2009, 2010  Free Software Foundation, Inc.
   License: GNU General Public License version 3 or later
+
+Files: emacs25_*.png emacs25.svg
+  Taken from Emacs 25.1 (PNG files run through OptiPNG)
+  Author: Nicolas Petton <nicolas@petton.fr>
+  Copyright (C) 2015-2016 Free Software Foundation, Inc.
+  License: GNU General Public License version 3 or later

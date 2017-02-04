@@ -10,7 +10,9 @@ DESKTOPFILES = emacs.desktop emacsclient.desktop
 ICONFILES = sink.png \
 	emacs22_16.png emacs22_24.png emacs22_32.png emacs22_48.png \
 	emacs23_16.png emacs23_24.png emacs23_32.png emacs23_48.png \
-	emacs23_128.png emacs23.svg
+	emacs23_128.png emacs23.svg \
+	emacs25_16.png emacs25_24.png emacs25_32.png emacs25_48.png \
+	emacs25_128.png emacs25.svg
 DISTFILES = site-start.el site-gentoo.el subdirs.el $(DESKTOPFILES) \
 	$(addprefix icons/,COPYRIGHT.icons $(ICONFILES))
 

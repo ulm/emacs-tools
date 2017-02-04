@@ -1,5 +1,7 @@
 2017-02-04  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.6 released.
+
 	* icons/emacs25_*.png, icons/emacs25.svg: New files, from Emacs 25.1.
 	* icons/COPYRIGHT.icons: Update.
 	* Makefile (ICONFILES): Update.

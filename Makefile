@@ -9,8 +9,8 @@ P = $(PN)-$(PV)
 DESKTOPFILES = emacs.desktop emacsclient.desktop
 ICONFILES = sink.png \
 	emacs22_16.png emacs22_24.png emacs22_32.png emacs22_48.png \
-	emacs_16.png emacs_24.png emacs_32.png emacs_48.png emacs_128.png \
-	emacs.svg
+	emacs23_16.png emacs23_24.png emacs23_32.png emacs23_48.png \
+	emacs23_128.png emacs23.svg
 DISTFILES = site-start.el site-gentoo.el subdirs.el $(DESKTOPFILES) \
 	$(addprefix icons/,COPYRIGHT.icons $(ICONFILES))
 

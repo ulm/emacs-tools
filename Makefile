@@ -1,4 +1,4 @@
-# Copyright 2008-2016 Gentoo Foundation
+# Copyright 2008-2016 Christian Faulhammer and Ulrich Müller
 # Distributed under the terms of the GNU General Public License v2 or later
 
 PN = emacs-updater

@@ -1,4 +1,4 @@
-# Copyright 2007-2014 Gentoo Foundation
+# Copyright 2007-2014 Gentoo Authors
 # Distributed under the terms of the GNU GPL version 2 or later
 
 PN = eselect-emacs

@@ -1,0 +1,17 @@
+certificate version 0.1
+pusher 5188335088415E2E! 1544395042 +0100
+pushee git+ssh://git.gentoo.org/proj/emacs-tools.git
+nonce 1544395042-f896a32837811c15ea3380215ca5e9954ea0da8e
+
+4dd4b3fc65f8d90d4785d0007959edf35213b812 5e8752b3f7f694668bdd9f1ce53ae7d122e7d956 refs/heads/emacs-updater
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEtDnZ1O9xIP68rzDbUYgzUIhBXi4FAlwNmSIACgkQUYgzUIhB
+Xi6VLggAhsleIaUxa2WKsFjZ3NyR3zNjSzVtCmE4e4whQDclP0dHWk+Fdaw+rcsd
+oy34IdTRjHRwqjdIF7sQLxDCWK2Mn6sYb3fGHmtNLcmEtsp75HmiTUEnMym/PnO3
+wU7vvJRgrDwlOs3U+jgCZT4/nBXkFIqg0xwj2xm7cEeeLwY8YVKHh4nt10SNVMFD
+px8gS8gF6yaf48Noa2Zv0ltuHNSwGFY8rFg16YnuX0WKigkKtutNro3LvSomRxiQ
+jmE2E9aCaGvwse/CTcZufm0mF42J5+eTnghTAQlWzaIDcVUyT/oxSmfLhAYaoeai
+FlF5coh+VPICv5vVNNdXphltJFZCTw==
+=Zapc
+-----END PGP SIGNATURE-----

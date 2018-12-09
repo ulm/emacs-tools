@@ -1,6 +1,6 @@
 ;;; emacs-daemon site-lisp configuration
 
-;; Copyright 2008-2016 Ulrich Müller
+;; Copyright 2008-2016 Gentoo Authors
 ;; Distributed under the terms of the GNU General Public License v2 or later
 
 (and

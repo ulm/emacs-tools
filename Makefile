@@ -1,4 +1,4 @@
-# Copyright 2008-2016 Ulrich Müller and Christian Faulhammer
+# Copyright 2008-2016 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
 PN = emacs-daemon

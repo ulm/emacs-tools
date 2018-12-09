@@ -1,4 +1,4 @@
-# Copyright 2007-2017 Ulrich Müller
+# Copyright 2007-2017 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
 PN = emacs-common-gentoo

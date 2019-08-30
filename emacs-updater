@@ -237,6 +237,8 @@ action_rebuild() {
     ret=$?
     [[ ${ret} -eq 0 ]] || { failure "Error running Emacs"; exit ${ret}; }
     [[ ${active} ]] || { failure "Cannot determine Emacs version"; exit 1; }
+    # Drop last component (build number) from versions below 26
+    [[ ${active%%.*} -lt 26 ]] && active=${active%.*}
     message "Currently selected GNU Emacs version: ${active}"
 
     for elc in $(find "${ROOT}${SITELISP}" -name "*.elc")
@@ -245,8 +247,9 @@ action_rebuild() {
 	ret=$?
 	[[ ${ret} -eq 0 ]] || { failure "Error running sed"; exit ${ret}; }
 	version=${version:-unknown}
+	[[ ${version%%.*} -lt 26 ]] && version=${version%.*}
 
-	if [[ -z ${MAJOR} && ${version%.*} != "${active%.*}" ]] \
+	if [[ -z ${MAJOR} && ${version} != "${active}" ]] \
 	    || [[ ${version%%.*} != "${active%%.*}" ]] \
 	    || [[ $1 = all ]]
 	then

@@ -1,12 +1,12 @@
 #!/bin/bash
-# Copyright 2007-2016 Gentoo Authors
+# Copyright 2007-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
 # Authors:
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
 
-VERSION=1.15
+VERSION=1.16
 EMACS=/usr/bin/emacs
 GETOPT=/usr/bin/getopt
 SITELISP=/usr/share/emacs/site-lisp
@@ -69,7 +69,7 @@ usage() {
 version() {
     cat <<-EOF
 	Emacs updater version ${VERSION}
-	Copyright 2007-2016 Gentoo Authors
+	Copyright 2007-2019 Gentoo Authors
 	Distributed under the terms of the GNU GPL version 2 or later.
 
 	Gentoo Emacs project: <https://wiki.gentoo.org/wiki/Project:Emacs>

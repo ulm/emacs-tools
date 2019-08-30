@@ -1,5 +1,7 @@
 2019-08-30  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.16 released.
+
 	* emacs-updater (action_rebuild): Drop the last component,
 	i.e., the build number, from Emacs versions below 26 only.
 	Fixes bug 693140.

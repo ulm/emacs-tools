@@ -1,4 +1,4 @@
-# Copyright 2007-2017 Gentoo Authors
+# Copyright 2007-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
 PN = emacs-common-gentoo
@@ -13,7 +13,7 @@ ICONFILES = sink.png \
 	emacs23_128.png emacs23.svg \
 	emacs25_16.png emacs25_24.png emacs25_32.png emacs25_48.png \
 	emacs25_128.png emacs25.svg
-DISTFILES = site-start.el site-gentoo.el subdirs.el $(DESKTOPFILES) \
+DISTFILES = site-start.el site-gentoo.el subdirs.el.in $(DESKTOPFILES) \
 	$(addprefix icons/,COPYRIGHT.icons $(ICONFILES))
 
 

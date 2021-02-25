@@ -1,0 +1,8 @@
+;; -*- no-byte-compile: t -*-
+(when (fboundp 'normal-top-level-add-subdirs-to-load-path)
+  (normal-top-level-add-subdirs-to-load-path)
+  ;; We install dynamic modules in a more FHS compliant location,
+  ;; so add its subdirectories to the load-path, too
+  (let ((default-directory "/usr/@libdir@/emacs/modules/"))
+    (if (file-directory-p default-directory)
+	(normal-top-level-add-subdirs-to-load-path))))

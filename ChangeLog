@@ -1,5 +1,7 @@
 2021-02-25  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.7 released.
+
 	* subdirs.el.in: Renamed from subdirs.el. Check for subdirectories
 	of the modules directory too.
 	* Makefile (DISTFILES): Update.

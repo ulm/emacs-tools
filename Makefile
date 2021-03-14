@@ -1,7 +1,7 @@
 # Copyright 2007-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
-PN = emacs-common-gentoo
+PN = emacs-common
 PV = $(shell sed '/^[ \t]*\* [Vv]ersion/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' \
 	ChangeLog)
 P = $(PN)-$(PV)

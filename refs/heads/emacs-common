@@ -1,0 +1,17 @@
+certificate version 0.1
+pusher 5188335088415E2E! 1615765386 +0100
+pushee git+ssh://git.gentoo.org/proj/emacs-tools.git
+nonce 1615765386-5c42d98880eee9806a910f43e4e1b0d0340c4c5c
+
+0000000000000000000000000000000000000000 0914410bcdd60df0220ec1e018017476149b4dd6 refs/heads/emacs-common
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEtDnZ1O9xIP68rzDbUYgzUIhBXi4FAmBOn4oACgkQUYgzUIhB
+Xi5u0Af8CUR/Y6HyCMemgrW1tqfpvFuYRl6XwtjUTo5xAFd/jqr9uLy7TQrqiBVI
+uzPJUdzNQJ8oXR9+P6yH09i6BtkzBusy99NNalsSYJGwctUtytAhJtv3dSAZAF9d
++qchOCvsRwiknwbd3Ycw/ik89V62yngJr+1NlU2Tl+G6cbXAEg7xECxGO9IpZNCU
+SHbo4aaxs+oB0XzkR4Skd+BlrlWF1hguoO4FdB+6/Yvrnm+68/wFKdyzq+LeB0ZU
+vUOWwb1hxGdYhi7m6eLizlAOVr//1TmI0q2Ks8EAPnnkeMvgH/Be1ORgWZep7wOT
+N+p2c3Z1AQK2360kvn+XRGLr95bVYQ==
+=BYH2
+-----END PGP SIGNATURE-----

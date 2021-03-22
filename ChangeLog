@@ -1,3 +1,8 @@
+2021-03-22  Ulrich Müller  <ulm@gentoo.org>
+
+	* Version 1.8 released. This is identical to 1.7 except for the
+	name change.
+
 2021-03-14  Ulrich Müller  <ulm@gentoo.org>
 
 	* Makefile (PN): Package renamed to emacs-common.

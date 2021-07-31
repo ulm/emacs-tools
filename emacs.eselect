@@ -27,6 +27,7 @@ VERSION="1.18"
 # ctags and etags are handled in their own module
 BINARYLIST="emacsclient b2m ebrowse rcs-checkin grep-changelog"
 MANPAGELIST="${BINARYLIST}"
+HEADERLIST="emacs-module.h"
 
 find_targets() {
 	# Return the list of available Emacs binaries
@@ -57,6 +58,9 @@ remove_symlinks() {
 	for f in emacs ${MANPAGELIST}; do
 		rm -f "${EROOT}/usr/share/man/man1/${f}.1"*
 	done
+	for f in ${HEADERLIST}; do
+		rm -f "${EROOT}/usr/include/${f}"
+	done
 	remove_infopath
 }
 
@@ -84,6 +88,17 @@ set_man_symlinks() {
 					"${EROOT}/usr/share/man/man1/${f}.1${suffix}"
 			fi
 		done
+	done
+}
+
+set_header_symlinks() {
+	# Set symlinks to header files in /usr/include/
+	local target=$1 f
+	for f in ${HEADERLIST}; do
+		if [[ -f ${EROOT}/usr/include/${target}/${f} ]]; then
+			ln -s "${target}/${f}" "${EROOT}/usr/include/${f}" \
+				|| die "Couldn't set ${EROOT}/usr/include/${f} symlink"
+		fi
 	done
 }
 
@@ -120,6 +135,7 @@ set_symlinks() {
 	fi
 	set_bin_symlinks "${target}"
 	set_man_symlinks "${target}"
+	set_header_symlinks "${target}"
 	set_infopath "${target}"
 
 	# update /etc/profile.env from /etc/env.d files

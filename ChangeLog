@@ -1,3 +1,11 @@
+2021-07-31  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs.eselect (set_header_symlinks): New function, set symbolic
+	links to C header files. Bug 805491.
+	(set_symlinks): Call it.
+	(remove_symlinks): Remove symlinks to header files.
+	(HEADERLIST): New variable.
+
 2014-12-23  Ulrich Müller  <ulm@gentoo.org>
 
 	* Makefile (all): Explicitly depend on etags.eselect.

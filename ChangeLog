@@ -1,3 +1,7 @@
+2021-08-02  Ulrich Müller  <ulm@gentoo.org>
+
+	* Version 1.19 released.
+
 2021-07-31  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.eselect (set_header_symlinks): New function, set symbolic

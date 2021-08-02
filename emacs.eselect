@@ -1,5 +1,5 @@
 # -*-eselect-*-
-# Copyright 2005-2014 Gentoo Authors
+# Copyright 2005-2021 Gentoo Authors
 # Distributed under the terms of the GNU GPL version 2 or later
 #
 # DOCUMENTATION
@@ -22,7 +22,7 @@
 
 DESCRIPTION="Manage /usr/bin/emacs version"
 MAINTAINER="emacs@gentoo.org"
-VERSION="1.18"
+VERSION="1.19"
 
 # ctags and etags are handled in their own module
 BINARYLIST="emacsclient b2m ebrowse rcs-checkin grep-changelog"

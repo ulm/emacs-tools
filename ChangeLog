@@ -1,5 +1,7 @@
 2023-07-24  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.9 released.
+
 	* org.gnu.emacs.defaults.gschema.xml: New file, from upstream
 	Git repository. Bug 911117.
 	* Makefile (GSCHEMAFILES, DISTFILES): Add it.

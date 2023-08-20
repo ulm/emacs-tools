@@ -1,3 +1,9 @@
+2023-08-20  Ulrich Müller  <ulm@gentoo.org>
+
+	* ctags.eselect (do_show, do_list, do_set, do_update):
+	* emacs.eselect (do_show, do_list, do_set, do_update):
+	Use positive condition for argument checks.
+
 2021-08-02  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.19 released.

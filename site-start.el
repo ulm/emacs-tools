@@ -1,4 +1,4 @@
-;;; site-start.el			-*- no-byte-compile: t -*-
+;;; site-start.el  -*- lexical-binding: t; no-byte-compile: t; -*-
 
 ;;; Commentary:
 ;; This is the site startup file for GNU Emacs. It is loaded before

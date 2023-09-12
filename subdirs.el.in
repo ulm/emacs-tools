@@ -1,4 +1,4 @@
-;; -*- no-byte-compile: t -*-
+;; -*- lexical-binding: t; no-byte-compile: t; -*-
 (when (fboundp 'normal-top-level-add-subdirs-to-load-path)
   (normal-top-level-add-subdirs-to-load-path)
   ;; We install dynamic modules in a more FHS compliant location,

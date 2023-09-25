@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2007-2019 Gentoo Authors
+# Copyright 2007-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
 # Authors:
@@ -292,7 +292,7 @@ message "Assigning ${NO_OF_FILES} file${s} to packages ..."
 if [[ ${ORPHANS} ]]; then
     xargs qfile -oCR <"${TMPFILE}" | sort -u >"${PKGFILE}"
 elif [[ ${EXACT} ]]; then
-    xargs qfile -eqCR <"${TMPFILE}" | sort -u | sed 's/^/=/' >"${PKGFILE}"
+    xargs qfile -vqCR <"${TMPFILE}" | sort -u | sed 's/^/=/' >"${PKGFILE}"
 else
     # Get package and slot number, requires >=portage-utils-0.3
     xargs qfile -SqCR <"${TMPFILE}" | sort -u >"${PKGFILE}"

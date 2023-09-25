@@ -1,5 +1,7 @@
 2023-09-25  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.17 released.
+
 	* emacs-updater: The -e,--exact option of qfile no longer works in
 	portage-utils-0.80 or later. The "exact package" functionality is
 	now available with the -v,--verbose option (--verbose --quiet

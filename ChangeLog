@@ -1,3 +1,8 @@
+2024-05-01  Arsen Arsenović  <arsen@gentoo.org>
+
+	* emacs-updater (pm_portage): Pass --usepkg=n to Portage.
+	Fixes bug 931064.
+
 2023-09-25  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.17 released.

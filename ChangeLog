@@ -1,5 +1,7 @@
 2024-05-02  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.18 released.
+
 	* emacs-updater (OPTIONS): Drop the -n, --nocolor, --nocolour
 	option, which is deprecated since version 1.11 released in 2013.
 

@@ -1,3 +1,8 @@
+2024-05-02  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs-updater (COLOUR): Respect the NO_COLOR environment
+	variable.
+
 2024-05-01  Arsen Arsenović  <arsen@gentoo.org>
 
 	* emacs-updater (pm_portage): Pass --usepkg=n to Portage.

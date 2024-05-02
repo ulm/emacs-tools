@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2007-2023 Gentoo Authors
+# Copyright 2007-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
 # Authors:
@@ -20,11 +20,13 @@ PM_EXTRAOPTS=( )
 
 # Other default variable settings
 BATCH=
-COLOUR=
 EXACT=
 MAJOR=
 ORPHANS=
 PRETEND=
+
+# Check for NO_COLOR environment variable: https://no-color.org/
+COLOUR=${NO_COLOR:+no}
 
 usage() {
     sed -e 's/^X//' <<-EOF

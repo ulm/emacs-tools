@@ -107,9 +107,9 @@ pm_auto() {
 }
 
 # Read in all command-line options and force English output
-OPTIONS=$(LC_ALL=C "${GETOPT}" -o a:behmnopP: \
-    --long action:,batch,color::,colour::,nocolor,nocolour,exact,help,major \
-    --long orphans,pretend,package-manager:,package-manager-command:,version \
+OPTIONS=$(LC_ALL=C "${GETOPT}" -o a:behmopP: \
+    --long action:,batch,color::,colour::,exact,help,major,orphans \
+    --long pretend,package-manager:,package-manager-command:,version \
     -n 'emacs-updater' -- "$@") \
     || usage $?
 
@@ -137,7 +137,6 @@ do
 	    esac
 	    shift 2
 	    ;;
-	-n|--nocolor|--nocolour) COLOUR="no"; shift ;; # legacy option
 	-a|--action)
 	    ACTIONS=
 	    for action in ${2/,/ }; do

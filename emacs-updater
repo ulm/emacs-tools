@@ -205,7 +205,7 @@ else
     BOLD=; NORMAL=; RED=; GREEN=; YELLOW=; BLUE=; MAGENTA=; CYAN=
 fi
 
-# Some type of output can be prettified and capsulated in functions
+# Some functions for output
 message() {
     local OUTPUT="$@"
     echo "${GREEN}*${NORMAL}${BOLD} ${OUTPUT}${NORMAL}"

@@ -144,9 +144,6 @@ do
 		    rebuild|all)
 			ACTIONS="${ACTIONS}${ACTIONS:+ }${action}"
 			;;
-		    sitedir)
-			echo "Obsolete action '$action' ignored."
-			;;
 		    *)
 			echo "Invalid action '$action' given!"
 			usage 1

@@ -1,5 +1,8 @@
 2024-12-07  Ulrich Müller  <ulm@gentoo.org>
 
+	* emacs-updater (OPTIONS): The "sitedir" action is now invalid;
+	it was a no-op since version 1.14 released in 2014.
+
 	* emacs-updater (pm_portage): Pass --getbinpkg=n to Portage.
 	Fixes bug 945381.
 

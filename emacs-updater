@@ -81,7 +81,7 @@ version() {
 
 # Wrapper for package manager commands
 have_portage() { type -P emerge >/dev/null; }
-pm_portage() { emerge --usepkg=n --oneshot "$@"; }
+pm_portage() { emerge --usepkg=n --getbinpkg=n --oneshot "$@"; }
 
 have_pkgcore() { type -P pmerge >/dev/null; }
 pm_pkgcore() { pmerge --oneshot "$@"; }

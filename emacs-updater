@@ -6,7 +6,7 @@
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
 
-VERSION=1.18
+VERSION=1.19
 EMACS=/usr/bin/emacs
 GETOPT=/usr/bin/getopt
 SITELISP=/usr/share/emacs/site-lisp
@@ -72,7 +72,7 @@ version() {
     cat <<-EOF
 	Emacs updater version ${VERSION}
 	Copyright 2007-2024 Gentoo Authors
-	Distributed under the terms of the GNU GPL version 2 or later.
+	Distributed under the terms of the GNU GPL version 2 or later
 
 	Gentoo Emacs project: <https://wiki.gentoo.org/wiki/Project:Emacs>
 	EOF

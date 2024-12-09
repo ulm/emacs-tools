@@ -1,17 +1,17 @@
 certificate version 0.1
-pusher 5188335088415E2E! 1733737534 +0100
+pusher 5188335088415E2E! 1733769402 +0100
 pushee git+ssh://git.gentoo.org/proj/emacs-tools.git
-nonce 1733737534-af5a388db7fae1e3030c7cf5e3fdd5541c6202ea
+nonce 1733769402-a33de103dfcf10a7eb1364bc2aa3d499c388a10f
 
-63e5e0fc544b5fdae32a2634996c868a1fe791a1 7195b9cf07a3eb7cac415a54e38db3bf0f43506e refs/heads/emacs-updater
+7195b9cf07a3eb7cac415a54e38db3bf0f43506e f1dbcc5cf4086750c32e293e3ad95b60cb831b4e refs/heads/emacs-updater
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEtDnZ1O9xIP68rzDbUYgzUIhBXi4FAmdWvD4ACgkQUYgzUIhB
-Xi6CiQf9FitQT2CmUWMJQnBryP2vzn9qExOv5PpQVBLiUkNZn3DmRfhhZRCFPevw
-4/cmviPop62dpnKQkK//eFnfF0gi00GchGcCud+qDff1ce1X1LjiUifO0qoENoCJ
-gobvpK0VoFs7P5qwcqeZ0fch3GHIt8u0nLgf4+Devo+6d08mpsTG1o8HibCRZGlt
-2uQJlf0Ojet27HRubFec7CtwFBzzN7I7q4bqu8iSMTz00r6v4UMyqRxev97EcTO8
-F0TCEU9uaKn+bexDGEKrDh2U3rd2ii8IV+7ToYvzkavMFwsRXned34Hio/eTjEFT
-KsDjnsyfod1X1nWumDkqgkHIh6PX4A==
-=N4pk
+iQEzBAABCAAdFiEEtDnZ1O9xIP68rzDbUYgzUIhBXi4FAmdXOLoACgkQUYgzUIhB
+Xi6pfwgA2HG4YE6HGTrB92WBWPEwCaZ893mtrzAUlkOC6IwAWkfr+ZtufSB7s1eo
+mUz1S8vX9izKdV+Tj71cPvfc/C/X33wnzcI8jLULadWrSPLE+SHoAlQjesJMI3iJ
+kyhcutlE6EuKkOjpJhZb3FlbIwcwYWVYUv4Cdlj2vJBq8xiSTelz95TYNHxBwUsg
+9YRw3j0DsnL9MaY4uA6kTMgtHcmaQRK2boXV48R64mp6ALjGtp1PVsOpc2o5Ruif
+7l5vo3yxUR9enluJfnPUr2iZSmFNLDBDS0KsWxzAjLE040rLS0duhLS/ajajI86B
+9c2LfNDrW/KlYo/7S1uxKX29CHWPiA==
+=Ht3m
 -----END PGP SIGNATURE-----

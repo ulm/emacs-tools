@@ -1,5 +1,5 @@
 # -*-eselect-*-
-# Copyright 2005-2021 Gentoo Authors
+# Copyright 2005-2025 Gentoo Authors
 # Distributed under the terms of the GNU GPL version 2 or later
 #
 # DOCUMENTATION
@@ -163,7 +163,7 @@ vim_info() {
 
 test_for_root() {
 	# checks if the user has rights to modify /usr/bin/
-	[[ -w ${EROOT}/usr/bin ]] || die -q "You need root privileges!"
+	[[ -w ${EROOT}/usr/bin ]] || die -q "You need superuser privileges!"
 }
 
 ### show action ###

@@ -1,10 +1,9 @@
 ;;; emacs-daemon site-lisp configuration
 
-;; Copyright 2008-2016 Gentoo Authors
+;; Copyright 2008-2025 Gentoo Authors
 ;; Distributed under the terms of the GNU General Public License v2 or later
 
 (and
- (fboundp 'daemonp)
  (daemonp)
  (null after-init-time)
  (let* ((file (concat "/var/run/emacs/" (user-login-name) "/emacs.pid"))
@@ -32,4 +31,4 @@
      (add-hook 'kill-emacs-hook
 	       `(lambda () (ignore-errors (delete-file ,file))))))
    ;; Restart the server if signal SIGUSR1 is received.
-   (define-key special-event-map [sigusr1] 'server-start)))
+   (define-key special-event-map [sigusr1] #'server-start)))

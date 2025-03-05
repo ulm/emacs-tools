@@ -1,3 +1,11 @@
+2025-03-05  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs.rc (checkconfig): Remove obsolete test for baselayout-1.
+	* emacs-stop.sh: Remove example script.
+	* 10emacs-daemon-gentoo.el: Sharp-quote function name.
+	Remove redundant check for daemonp being bound.
+	* Makefile (DISTFILES): Drop emacs-stop.sh.
+
 2016-06-08  Ulrich Müller  <ulm@gentoo.org>
 
 	* README: Update URL and e-mail address of project.

@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2008-2016 Gentoo Authors
+# Copyright 2008-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
 : ${EMACS:=/usr/bin/emacs}
@@ -20,11 +20,6 @@ depend() {
 }
 
 checkconfig() {
-    if [ "${RC_VERSION:-0}" = "0" ]; then
-        eerror "This script cannot be used for baselayout-1."
-        return 1
-    fi
-
     if [ "${USER}" = "${RC_SVCNAME}" ]; then
 	eerror "You have to create an init script for each user:"
 	eerror "ln -s emacs /etc/init.d/emacs.<user>"

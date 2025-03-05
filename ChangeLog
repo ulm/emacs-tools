@@ -1,5 +1,17 @@
 2025-03-05  Ulrich Müller  <ulm@gentoo.org>
 
+	* emacs.rc (EMACS_OPTS): Use --fg-daemon instead of --daemon.
+	(EMACSCLIENT): Remove.
+	(start, stop): Don't export EMACS_DEBUG, EMACSCLIENT and
+	EMACSCLIENT_OPTS.
+	(start): Call start-stop-daemon with options --background and
+	--make-pidfile. Unset XDG_RUNTIME_DIR because it points to the
+	directory of the superuser and is not writable for us.
+	* emacs.conf: Update accordingly.
+	* emacs-wrapper.sh: Simplify; keep only the login shell wrapper.
+	* 10emacs-daemon-gentoo.el: Don't write the pid file, as this is
+	now handled by OpenRC's start-stop-daemon command.
+
 	* emacs.rc (checkconfig): Remove obsolete test for baselayout-1.
 	* emacs-stop.sh: Remove example script.
 	* 10emacs-daemon-gentoo.el: Sharp-quote function name.

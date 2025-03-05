@@ -14,21 +14,13 @@
 		    (insert-file-contents-literally file nil 0 100)
 		    (and (looking-at "[0-9]+")
 			 (string-to-number (match-string 0))))))))
-   (cond
-    ((and (integerp pid)
-	  (string-match
-	   "emacs" (or (cdr (assq 'comm (process-attributes pid))) ""))
-	  (/= pid (emacs-pid)))
+   (when (and (integerp pid)
+	      (string-match
+	       "emacs" (or (cdr (assq 'comm (process-attributes pid))) ""))
+	      (/= pid (emacs-pid)))
      ;; If another Emacs daemon is already running for this user,
      ;; then we would steal its server socket. So we better die.
      (message "Another Emacs daemon is already running at process id %d" pid)
      (kill-emacs))
-    ((file-writable-p file)
-     ;; Write process id to file
-     (with-temp-file file
-       (insert (number-to-string (emacs-pid)) "\n"))
-     ;; Remove file on exit
-     (add-hook 'kill-emacs-hook
-	       `(lambda () (ignore-errors (delete-file ,file))))))
    ;; Restart the server if signal SIGUSR1 is received.
    (define-key special-event-map [sigusr1] #'server-start)))

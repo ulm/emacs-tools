@@ -3,8 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2 or later
 
 : ${EMACS:=/usr/bin/emacs}
-: ${EMACSCLIENT:=/usr/bin/emacsclient}
-: ${EMACS_OPTS:=--daemon}
+: ${EMACS_OPTS:=--fg-daemon}
 : ${EMACS_SHELL=/bin/bash}
 : ${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}
 : ${EMACS_TIMEOUT:=30}
@@ -50,10 +49,14 @@ start() {
 
     SHELL=${EMACS_SHELL:-$(awk -F: "\$1 == \"${USER}\" { print \$7 }" \
 	/etc/passwd)}
-    export SHELL EMACS EMACS_TIMEOUT EMACS_DEBUG
+    export SHELL EMACS
+
+    # XDG_RUNTIME_DIR points to /run/user/0 which is not writable for us
+    # Unset it, otherwise Emacs would try to create its server socket there
+    unset XDG_RUNTIME_DIR
 
     ebegin "Starting Emacs daemon for user ${USER}"
-    start-stop-daemon --start \
+    start-stop-daemon --start --background --make-pidfile \
 	--user "${USER}" --pidfile "${PIDFILE}" --chdir "${home}" \
 	--exec "${EMACS_START}" -- ${EMACS_OPTS}
     eend $?
@@ -62,8 +65,7 @@ start() {
 stop() {
     # Optionally, call a custom script before stopping.
     if [ "${EMACS_STOP}" ] && [ -x "${EMACS_STOP}" ]; then
-	export USER PIDFILE EMACS EMACS_TIMEOUT EMACS_DEBUG
-	export EMACSCLIENT EMACSCLIENT_OPTS
+	export USER PIDFILE EMACS EMACS_TIMEOUT
 	ebegin "Calling Emacs stop script for ${USER}"
 	"${EMACS_STOP}"
 	eend $? || return

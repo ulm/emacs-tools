@@ -1,5 +1,7 @@
 2025-03-05  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 0.23 released.
+
 	* emacs.rc (EMACS_OPTS): Use --fg-daemon instead of --daemon.
 	(EMACSCLIENT): Remove.
 	(start, stop): Don't export EMACS_DEBUG, EMACSCLIENT and

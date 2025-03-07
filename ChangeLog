@@ -1,3 +1,8 @@
+2025-03-07  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacsclient.desktop (MimeType): Add org-protocol, from Emacs 30.
+	Bug 950674.
+
 2024-05-05  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.10 released.

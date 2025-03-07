@@ -1,5 +1,9 @@
 2025-03-07  Ulrich Müller  <ulm@gentoo.org>
 
+	* README.gentoo.in: New file, from DOC_CONTENTS of the ebuild.
+	* README.daemon: New file, copied from emacs-daemon and updated.
+	* Makefile (DISTFILES): Add them.
+
 	* emacs.initd: New file. Merged version of the user initd file
 	attached to bug 950671 and emacs.rc from the emacs-daemon package.
 	Thanks to Anna (navi) Figueiredo Gomes.

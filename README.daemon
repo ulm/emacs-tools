@@ -1,0 +1,87 @@
+User guide for the Emacs daemon init script
+===========================================
+
+GNU Emacs version 23 or later supports running as a daemon, to which
+a user can connect through the emacsclient program. This can be done
+either in the current terminal with ``emacsclient -t``, or by creating
+a new graphical client frame (i.e. opening a new X window) with
+``emacsclient -c``.
+
+Every user who wants to connect to an Emacs server must have an own
+instance of the daemonized GNU Emacs.
+
+OpenRC version 0.60 or later supports this via *user services* and
+user init scripts in the ``/etc/user/init.d/`` directory. In order to
+automatically start Emacs as a daemon in your user session, login as
+normal user and execute the command::
+
+   $ rc-update --user add emacs default
+
+This will add the ``/etc/user/init.d/emacs`` init script to the
+default runlevel in ``~/.config/rc/runlevels/``.
+
+To get all benefits of the daemon setup, you should set the ``EDITOR``
+environment variable to ``emacsclient``, so that programs calling an
+external editor will use the existing Emacs process. Also file
+associations in your desktop system should call emacsclient.
+When closing a session or frame, no contents is lost; you may simply
+reconnect to the Emacs server.
+
+Further customization can be done by placing an ``emacs``
+configuration file into ``/etc/user/conf.d/``, or users can add
+individual configuration files in their ``~/.config/rc/conf.d/``
+directory. The following variables can the configured:
+
+``EMACS``
+   Absolute path to the emacs binary; ``/usr/bin/emacs`` by default.
+
+``EMACS_OPTS``
+   Options to pass to Emacs (in addition to ``--fg-daemon`` which is
+   always passed); empty by default.
+
+Launching the Emacs daemon at system startup
+--------------------------------------------
+
+If you want to launch your user's Emacs daemon at system startup and
+have it persist between login sessions, you must multiplex OpenRC's
+user system service: As the superuser, create a symbolic link (do not
+copy the script, or you will miss eventual updates!) in the
+``/etc/init.d/`` directory::
+
+   # ln -s user /etc/init.d/user.<username>
+
+where *<username>* is your user's login name. The service can then be
+started manually using::
+
+   # rc-service user.<username> start
+
+or it may be added to the boot sequence (and will run with the user's
+privileges)::
+
+   # rc-update add user.<username> default
+
+See the `OpenRC user guide`__ for a more complete guide how to
+configure user services at the OpenRC side.
+
+__ https://github.com/OpenRC/openrc/blob/master/user-guide.md
+
+Note: Running of an Emacs daemon process for a user was previously
+supported by the app-emacs/emacs-daemon package which launched it as
+a regular OpenRC service (as user services did not yet exist).
+This method still works but may be discontinued in the future.
+
+Authors
+-------
+
+| Ulrich Müller <ulm@gentoo.org>
+| Christian Faulhammer <fauli@gentoo.org>
+
+| Copyright 2008-2025 Gentoo Authors
+| Distributed under the terms of the GNU General Public License v2 or later
+
+
+.. Local Variables:
+.. mode: rst
+.. fill-column: 70
+.. indent-tabs-mode: nil
+.. End:

@@ -30,8 +30,12 @@ checkconfig() {
 	return 1
     fi
 
-    local has_daemon=$(${EMACS} -batch -q --no-site-file \
-	--eval "(princ (fboundp 'daemonp))")
+    # EMACS could be a microemacs variant that ignores the -batch option
+    # and would therefore hang, waiting for user interaction.
+    # Redirecting stdin and unsetting TERM and DISPLAY will cause most
+    # of them to exit with an error.
+    local has_daemon=$(unset TERM DISPLAY; ${EMACS} -batch -q --no-site-file \
+	--eval "(princ (fboundp 'daemonp))" </dev/null)
     if [ "${has_daemon}" != t ]; then
 	eerror "${EMACS} does not support running as a daemon"
 	return 1

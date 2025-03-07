@@ -1,3 +1,8 @@
+2025-03-07  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs.rc (checkconfig): Make running Emacs more robust.
+	Taken from elisp-common.eclass.
+
 2025-03-05  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.23 released.

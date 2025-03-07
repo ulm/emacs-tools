@@ -1,5 +1,10 @@
 2025-03-07  Ulrich Müller  <ulm@gentoo.org>
 
+	* emacs.initd: New file. Merged version of the user initd file
+	attached to bug 950671 and emacs.rc from the emacs-daemon package.
+	Thanks to Anna (navi) Figueiredo Gomes.
+	* Makefile (DISTFILES): Add it.
+
 	* emacsclient.desktop (MimeType): Add org-protocol, from Emacs 30.
 	Bug 950674.
 

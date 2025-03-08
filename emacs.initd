@@ -2,7 +2,7 @@
 # Copyright 2008-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
-: ${EMACS:=/usr/bin/emacs}
+: "${EMACS:=/usr/bin/emacs}"
 
 description="Start an Emacs server running in the background"
 

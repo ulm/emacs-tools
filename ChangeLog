@@ -1,5 +1,7 @@
 2025-03-09  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 0.24 released.
+
 	* emacs-wrapper.sh:
 	* 10emacs-daemon-gentoo.el: Files removed. These have been moved
 	to the emacs-common package.

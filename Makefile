@@ -16,7 +16,7 @@ ICONFILES = sink.png \
 GSCHEMAFILES = org.gnu.emacs.defaults.gschema.xml
 DISTFILES = README.gentoo.in README.daemon \
 	site-start.el site-gentoo.el subdirs.el.in 10emacs-common-gentoo.el \
-	emacs.initd emacs-wrapper.sh \
+	emacs.initd emacs-wrapper.sh emacs.service \
 	$(DESKTOPFILES) $(addprefix icons/,COPYRIGHT.icons $(ICONFILES)) \
 	$(GSCHEMAFILES)
 

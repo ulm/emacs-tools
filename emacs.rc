@@ -2,11 +2,11 @@
 # Copyright 2008-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
-: ${EMACS:=/usr/bin/emacs}
-: ${EMACS_OPTS:=--fg-daemon}
-: ${EMACS_SHELL=/bin/bash}
-: ${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}
-: ${EMACS_TIMEOUT:=30}
+: "${EMACS:=/usr/bin/emacs}"
+: "${EMACS_OPTS:=--fg-daemon}"
+: "${EMACS_SHELL=/bin/bash}"
+: "${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}"
+: "${EMACS_TIMEOUT:=30}"
 USER=${RC_SVCNAME##*.}
 PIDFILE_DIR=/var/run/emacs/${USER}
 PIDFILE=${PIDFILE_DIR}/emacs.pid
@@ -20,14 +20,14 @@ depend() {
 
 checkconfig() {
     if [ "${USER}" = "${RC_SVCNAME}" ]; then
-	eerror "You have to create an init script for each user:"
-	eerror "ln -s emacs /etc/init.d/emacs.<user>"
-	return 1
+        eerror "You have to create an init script for each user:"
+        eerror "ln -s emacs /etc/init.d/emacs.<user>"
+        return 1
     fi
 
     if ! id -u "${USER}" >/dev/null; then
-	eerror "${USER}: No such user"
-	return 1
+        eerror "${USER}: No such user"
+        return 1
     fi
 
     # EMACS could be a microemacs variant that ignores the -batch option
@@ -35,10 +35,10 @@ checkconfig() {
     # Redirecting stdin and unsetting TERM and DISPLAY will cause most
     # of them to exit with an error.
     local has_daemon=$(unset TERM DISPLAY; ${EMACS} -batch -q --no-site-file \
-	--eval "(princ (fboundp 'daemonp))" </dev/null)
+        --eval "(princ (fboundp 'daemonp))" </dev/null)
     if [ "${has_daemon}" != t ]; then
-	eerror "${EMACS} does not support running as a daemon"
-	return 1
+        eerror "${EMACS} does not support running as a daemon"
+        return 1
     fi
 
     checkpath -d --owner 0 --mode 0755 "${PIDFILE_DIR%/*}"
@@ -52,7 +52,7 @@ start() {
     eval home="~${USER}"
 
     SHELL=${EMACS_SHELL:-$(awk -F: "\$1 == \"${USER}\" { print \$7 }" \
-	/etc/passwd)}
+        /etc/passwd)}
     export SHELL EMACS
 
     # XDG_RUNTIME_DIR points to /run/user/0 which is not writable for us
@@ -61,22 +61,22 @@ start() {
 
     ebegin "Starting Emacs daemon for user ${USER}"
     start-stop-daemon --start --background --make-pidfile \
-	--user "${USER}" --pidfile "${PIDFILE}" --chdir "${home}" \
-	--exec "${EMACS_START}" -- ${EMACS_OPTS}
+        --user "${USER}" --pidfile "${PIDFILE}" --chdir "${home}" \
+        --exec "${EMACS_START}" -- ${EMACS_OPTS}
     eend $?
 }
 
 stop() {
     # Optionally, call a custom script before stopping.
     if [ "${EMACS_STOP}" ] && [ -x "${EMACS_STOP}" ]; then
-	export USER PIDFILE EMACS EMACS_TIMEOUT
-	ebegin "Calling Emacs stop script for ${USER}"
-	"${EMACS_STOP}"
-	eend $? || return
+        export USER PIDFILE EMACS EMACS_TIMEOUT
+        ebegin "Calling Emacs stop script for ${USER}"
+        "${EMACS_STOP}"
+        eend $? || return
     fi
 
     ebegin "Stopping Emacs daemon for user ${USER}"
     start-stop-daemon --stop --retry "TERM/${EMACS_TIMEOUT}/KILL/5" \
-	--user "${USER}" --pidfile "${PIDFILE}" --exec "${EMACS}"
+        --user "${USER}" --pidfile "${PIDFILE}" --exec "${EMACS}"
     eend $?
 }

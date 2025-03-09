@@ -1,3 +1,10 @@
+2025-03-09  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs-wrapper.sh:
+	* 10emacs-daemon-gentoo.el: Files removed. These have been moved
+	to the emacs-common package.
+	* Makefile (DISTFILES): Updated.
+
 2025-03-07  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (checkconfig): Make running Emacs more robust.

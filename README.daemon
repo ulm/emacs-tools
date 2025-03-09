@@ -39,6 +39,15 @@ directory. The following variables can the configured:
    Options to pass to Emacs (in addition to ``--fg-daemon`` which is
    always passed); empty by default.
 
+``EMACS_START``
+   Wrapper script for starting Emacs. This executes a login shell,
+   in order to read the user's profile (bug #246460);
+   ``/usr/libexec/emacs/emacs-wrapper.sh`` by default.
+
+``EMACS_SIGNAL_TIMEOUT``
+   Retry specification for stopping the daemon; ``TERM/30/KILL/5``
+   by default. See start-stop-daemon(8) for documentation.
+
 Launching the Emacs daemon at system startup
 --------------------------------------------
 

@@ -1,3 +1,11 @@
+2025-03-09  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs-wrapper.sh: New file, moved here from emacs-daemon.
+	* 10emacs-common-gentoo.el: Ditto. Simplified.
+	* Makefile (DISTFILES): Add them.
+	* emacs.initd (EMACS_START, EMACS_SIGNAL_TIMEOUT): New variables.
+	* README.daemon: Document them.
+
 2025-03-07  Ulrich Müller  <ulm@gentoo.org>
 
 	* README.gentoo.in: New file, from DOC_CONTENTS of the ebuild.

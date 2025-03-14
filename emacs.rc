@@ -18,7 +18,7 @@ depend() {
     after bootmisc dbus
 }
 
-checkconfig() {
+start_pre() {
     if [ "${USER}" = "${RC_SVCNAME}" ]; then
         eerror "You have to create an init script for each user:"
         eerror "ln -s emacs /etc/init.d/emacs.<user>"
@@ -42,13 +42,11 @@ checkconfig() {
     fi
 
     checkpath -d --owner 0 --mode 0755 "${PIDFILE_DIR%/*}"
-    checkpath -d --owner "${USER}" --mode 0755 "${PIDFILE_DIR}"
+    checkpath -d --owner 0 --mode 0755 "${PIDFILE_DIR}"
 }
 
 start() {
     local home
-    checkconfig || return 1
-
     eval home="~${USER}"
 
     SHELL=${EMACS_SHELL:-$(awk -F: "\$1 == \"${USER}\" { print \$7 }" \

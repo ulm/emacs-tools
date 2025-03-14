@@ -1,5 +1,7 @@
 2025-03-14  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 0.25 released.
+
 	* emacs.rc (start_pre): New function, replaces checkconfig.
 	Fix checkpath call; the directory should belong to the superuser.
 	(start): Remove call to checkconfig.

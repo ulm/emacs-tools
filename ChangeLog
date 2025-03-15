@@ -1,3 +1,7 @@
+2025-03-15  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs-wrapper.sh: Default to bash when SHELL is unset.
+
 2025-03-09  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.11 released.

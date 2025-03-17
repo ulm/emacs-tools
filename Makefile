@@ -14,7 +14,7 @@ ICONFILES = sink.png \
 	emacs25_16.png emacs25_24.png emacs25_32.png emacs25_48.png \
 	emacs25_128.png emacs25.svg
 GSCHEMAFILES = org.gnu.emacs.defaults.gschema.xml
-DISTFILES = README.gentoo.in README.daemon \
+DISTFILES = README.gentoo.in README.daemon ChangeLog \
 	site-start.el site-gentoo.el subdirs.el.in 10emacs-common-gentoo.el \
 	emacs.initd emacs-wrapper.sh emacs.service \
 	$(DESKTOPFILES) $(addprefix icons/,COPYRIGHT.icons $(ICONFILES)) \

@@ -1,3 +1,7 @@
+2025-03-17  Ulrich Müller  <ulm@gentoo.org>
+
+	* Makefile (DISTFILES): Add ChangeLog.
+
 2025-03-09  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.11 released.

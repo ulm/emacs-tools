@@ -48,6 +48,13 @@ directory. The following variables can the configured:
    Retry specification for stopping the daemon; ``TERM/30/KILL/5``
    by default. See start-stop-daemon(8) for documentation.
 
+Other variables
+   The configuration file can also be used to set and export other
+   environment variables that may be useful in Emacs. Common examples
+   include ``DBUS_SESSION_BUS_ADDRESS`` and ``SSH_AUTH_SOCK``.
+   Alternatively, you can define these variables in your login shell's
+   startup files.
+
 Launching the Emacs daemon at system startup
 --------------------------------------------
 

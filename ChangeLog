@@ -1,5 +1,7 @@
 2025-06-28  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.12 released.
+
 	* emacs.initd (start_pre): POSIX shell does not support "local".
 
 2025-03-17  Ulrich Müller  <ulm@gentoo.org>

@@ -1,3 +1,7 @@
+2025-06-28  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs.initd (start_pre): POSIX shell does not support "local".
+
 2025-03-17  Ulrich Müller  <ulm@gentoo.org>
 
 	* Makefile (DISTFILES): Add ChangeLog.

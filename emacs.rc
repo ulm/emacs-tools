@@ -34,9 +34,8 @@ start_pre() {
     # and would therefore hang, waiting for user interaction.
     # Redirecting stdin and unsetting TERM and DISPLAY will cause most
     # of them to exit with an error.
-    local has_daemon=$(unset TERM DISPLAY; ${EMACS} -batch -q --no-site-file \
-        --eval "(princ (fboundp 'daemonp))" </dev/null)
-    if [ "${has_daemon}" != t ]; then
+    if [ "$(unset TERM DISPLAY; ${EMACS} -batch -q --no-site-file \
+            --eval "(princ (fboundp 'daemonp))" </dev/null)" != t ]; then
         eerror "${EMACS} does not support running as a daemon"
         return 1
     fi
@@ -46,9 +45,6 @@ start_pre() {
 }
 
 start() {
-    local home
-    eval home="~${USER}"
-
     SHELL=${EMACS_SHELL:-$(awk -F: "\$1 == \"${USER}\" { print \$7 }" \
         /etc/passwd)}
     export SHELL EMACS
@@ -59,7 +55,7 @@ start() {
 
     ebegin "Starting Emacs daemon for user ${USER}"
     start-stop-daemon --start --background --make-pidfile \
-        --user "${USER}" --pidfile "${PIDFILE}" --chdir "${home}" \
+        --user "${USER}" --pidfile "${PIDFILE}" --chdir "~${USER}" \
         --exec "${EMACS_START}" -- ${EMACS_OPTS}
     eend $?
 }

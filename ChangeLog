@@ -1,3 +1,9 @@
+2025-06-28  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs.rc (start_pre): POSIX shell does not support "local".
+	(start): Ditto. Drop the intermediate variable because s-s-d
+	itself can expand the tilde.
+
 2025-03-14  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 0.25 released.

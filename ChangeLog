@@ -1,5 +1,7 @@
 2025-07-02  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 0.26 released.
+
 	* emacs.rc (depend): Drop localmount and bootmisc, as they are
 	boot services.
 

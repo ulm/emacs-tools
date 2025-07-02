@@ -1,5 +1,8 @@
 2025-07-02  Ulrich Müller  <ulm@gentoo.org>
 
+	* emacs.rc (depend): Drop localmount and bootmisc, as they are
+	boot services.
+
 	* emacs.rc (start, stop): Removed; use start-stop-daemon's default
 	functions instead.
 	(command, command_args, command_background, command_user)

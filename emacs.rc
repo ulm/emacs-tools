@@ -19,8 +19,7 @@ pidfile=/var/run/${RC_SVCNAME}.pid
 retry=TERM/${EMACS_TIMEOUT}/KILL/5
 
 depend() {
-    need localmount
-    after bootmisc dbus
+    after dbus
 }
 
 start_pre() {

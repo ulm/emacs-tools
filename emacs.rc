@@ -7,11 +7,16 @@
 : "${EMACS_SHELL=/bin/bash}"
 : "${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}"
 : "${EMACS_TIMEOUT:=30}"
-USER=${RC_SVCNAME##*.}
-PIDFILE_DIR=/var/run/emacs/${USER}
-PIDFILE=${PIDFILE_DIR}/emacs.pid
 
 description="Start an Emacs server running in the background"
+
+command=${EMACS_START}
+command_args=${EMACS_OPTS}
+command_background=true
+command_user=${RC_SVCNAME##*.}
+directory="~${command_user}"
+pidfile=/var/run/${RC_SVCNAME}.pid
+retry=TERM/${EMACS_TIMEOUT}/KILL/5
 
 depend() {
     need localmount
@@ -19,14 +24,14 @@ depend() {
 }
 
 start_pre() {
-    if [ "${USER}" = "${RC_SVCNAME}" ]; then
+    if [ "${command_user}" = "${RC_SVCNAME}" ]; then
         eerror "You have to create an init script for each user:"
         eerror "ln -s emacs /etc/init.d/emacs.<user>"
         return 1
     fi
 
-    if ! id -u "${USER}" >/dev/null; then
-        eerror "${USER}: No such user"
+    if ! id -u "${command_user}" >/dev/null; then
+        eerror "${command_user}: No such user"
         return 1
     fi
 
@@ -40,37 +45,11 @@ start_pre() {
         return 1
     fi
 
-    checkpath -d --owner 0 --mode 0755 "${PIDFILE_DIR%/*}"
-    checkpath -d --owner 0 --mode 0755 "${PIDFILE_DIR}"
-}
-
-start() {
-    SHELL=${EMACS_SHELL:-$(awk -F: "\$1 == \"${USER}\" { print \$7 }" \
-        /etc/passwd)}
+    SHELL=${EMACS_SHELL:-$(awk -F: \
+        "\$1 == \"${command_user}\" { print \$7 }" /etc/passwd)}
     export SHELL EMACS
 
     # XDG_RUNTIME_DIR points to /run/user/0 which is not writable for us
     # Unset it, otherwise Emacs would try to create its server socket there
     unset XDG_RUNTIME_DIR
-
-    ebegin "Starting Emacs daemon for user ${USER}"
-    start-stop-daemon --start --background --make-pidfile \
-        --user "${USER}" --pidfile "${PIDFILE}" --chdir "~${USER}" \
-        --exec "${EMACS_START}" -- ${EMACS_OPTS}
-    eend $?
-}
-
-stop() {
-    # Optionally, call a custom script before stopping.
-    if [ "${EMACS_STOP}" ] && [ -x "${EMACS_STOP}" ]; then
-        export USER PIDFILE EMACS EMACS_TIMEOUT
-        ebegin "Calling Emacs stop script for ${USER}"
-        "${EMACS_STOP}"
-        eend $? || return
-    fi
-
-    ebegin "Stopping Emacs daemon for user ${USER}"
-    start-stop-daemon --stop --retry "TERM/${EMACS_TIMEOUT}/KILL/5" \
-        --user "${USER}" --pidfile "${PIDFILE}" --exec "${EMACS}"
-    eend $?
 }

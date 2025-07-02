@@ -1,3 +1,12 @@
+2025-07-02  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacs.rc (start, stop): Removed; use start-stop-daemon's default
+	functions instead.
+	(command, command_args, command_background, command_user)
+	(directory, pidfile, retry): Define variables expected by them.
+	(pidfile): Use the standard location. Now that the pid file is
+	owned by root, we no longer need a user-writable subdirectory.
+
 2025-06-28  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacs.rc (start_pre): POSIX shell does not support "local".

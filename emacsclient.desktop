@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Emacsclient
+Name=emacsclient
 Comment=Tell a running Emacs to visit a file
 Comment[de]=In einer laufenden Emacs-Instanz eine Datei öffnen
-Comment[es]=Abrir un archivo en un Emacs corriente
+Comment[es]=Abrir un archivo en un Emacs en ejecución
 Comment[fr]=Ouvre un fichier dans une instance d'Emacs qui est déjà lancée
 Icon=emacs
 TryExec=/usr/bin/emacsclient

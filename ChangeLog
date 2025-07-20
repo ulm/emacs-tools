@@ -1,3 +1,9 @@
+2025-07-20  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacsclient.desktop (NoDisplay): Remove; the menu entry is
+	useful when Emacs is run as a daemon.
+	(Categories, StartupWMClass): New keys, copied from emacs.desktop.
+
 2025-06-28  Ulrich Müller  <ulm@gentoo.org>
 
 	* Version 1.12 released.

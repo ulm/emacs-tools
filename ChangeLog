@@ -1,5 +1,8 @@
 2025-07-20  Ulrich Müller  <ulm@gentoo.org>
 
+	* emacsclient.desktop (Exec): Add a shell wrapper, in order to
+	pass the "-c" option when called with an empty list of files.
+
 	* emacs.desktop (Comment):
 	* emacsclient.desktop (Name, Comment): Update.
 

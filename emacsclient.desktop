@@ -10,6 +10,6 @@ Icon=emacs
 TryExec=/usr/bin/emacsclient
 Exec=/bin/sh -c "exec /usr/bin/emacsclient \\"\\${@:--c}\\"" sh %F
 Terminal=false
-MimeType=text/css;text/english;text/html;text/plain;text/x-c;text/x-chdr;text/x-csrc;text/x-c++;text/x-c++hdr;text/x-c++src;text/x-java;text/x-makefile;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;x-scheme-handler/org-protocol;
+MimeType=text/css;text/english;text/html;text/plain;text/x-c;text/x-chdr;text/x-csrc;text/x-c++;text/x-c++hdr;text/x-c++src;text/x-java;text/x-makefile;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;
 Categories=Development;TextEditor;
 StartupWMClass=Emacs

@@ -1,3 +1,9 @@
+2025-07-21  Ulrich Müller  <ulm@gentoo.org>
+
+	* emacsclient.desktop (MimeType): Drop org-protocol because
+	non-file MIME types cannot be used with the %F field code.
+	This reverts the change of 2025-03-07. Bug 950674.
+
 2025-07-20  Ulrich Müller  <ulm@gentoo.org>
 
 	* emacsclient.desktop (Exec): Add a shell wrapper, in order to

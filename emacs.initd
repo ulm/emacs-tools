@@ -3,16 +3,14 @@
 # Distributed under the terms of the GNU General Public License v2 or later
 
 : "${EMACS:=/usr/bin/emacs}"
-: "${EMACS_START:=/usr/libexec/emacs/emacs-wrapper.sh}"
-: "${EMACS_SIGNAL_TIMEOUT:=TERM/30/KILL/5}"
 
 description="Start an Emacs server running in the background"
 
 supervisor=supervise-daemon
-command="${EMACS_START}"
+command="${EMACS_START:-/usr/libexec/emacs/emacs-wrapper.sh}"
 command_args="${EMACS_OPTS}"
 command_args_foreground="--fg-daemon"
-retry="${EMACS_SIGNAL_TIMEOUT}"
+retry="${EMACS_SIGNAL_TIMEOUT:-TERM/30/KILL/5}"
 
 depend() {
     after dbus

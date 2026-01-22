@@ -1,5 +1,7 @@
 2026-01-22  Ulrich Müller  <ulm@gentoo.org>
 
+	* Version 1.14 released.
+
 	* emacsclient-mail.desktop (Exec): Update from Emacs 30, which
 	supports the server-eval-args-left variable.
 

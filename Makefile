@@ -1,4 +1,4 @@
-# Copyright 2007-2025 Gentoo Authors
+# Copyright 2007-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2 or later
 
 PN = emacs-common
@@ -6,7 +6,8 @@ PV = $(shell sed '/^[ \t]*\* [Vv]ersion/!d;s/[^0-9.]*\([^ \t]*\).*/\1/;q' \
 	ChangeLog)
 P = $(PN)-$(PV)
 
-DESKTOPFILES = emacs.desktop emacsclient.desktop
+DESKTOPFILES = emacs.desktop emacsclient.desktop \
+	emacs-mail.desktop emacsclient-mail.desktop
 ICONFILES = sink.png \
 	emacs22_16.png emacs22_24.png emacs22_32.png emacs22_48.png \
 	emacs23_16.png emacs23_24.png emacs23_32.png emacs23_48.png \

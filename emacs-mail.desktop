@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=GNU Emacs (mail)
+NoDisplay=true
+Exec=/usr/bin/emacs -f message-mailto %u
+Terminal=false
+MimeType=x-scheme-handler/mailto;

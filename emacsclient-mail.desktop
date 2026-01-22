@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Emacsclient (mail)
+NoDisplay=true
+Exec=/bin/bash -c "u=\\${1//\\\\\\\\/\\\\\\\\\\\\\\\\}; u=\\${u//\\\\\\"/\\\\\\\\\\\\\\"}; exec /usr/bin/emacsclient --eval \\"(message-mailto \\\\\\"\\$u\\\\\\")\\"" bash %u
+Terminal=false
+MimeType=x-scheme-handler/mailto;

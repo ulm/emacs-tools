@@ -1,5 +1,8 @@
 2026-01-22  Ulrich Müller  <ulm@gentoo.org>
 
+	* emacsclient-mail.desktop (Exec): Update from Emacs 30, which
+	supports the server-eval-args-left variable.
+
 	* emacs-mail.desktop:
 	* emacsclient-mail.desktop: New desktop files for mailto URIs.
 	Copied from x11-misc/emacs-desktop-mail-1.2.

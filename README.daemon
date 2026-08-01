@@ -7,13 +7,13 @@ either in the current terminal with ``emacsclient -t``, or by creating
 a new graphical client frame (i.e. opening a new X window) with
 ``emacsclient -c``.
 
-Every user who wants to connect to an Emacs server must have an own
+Every user who wants to connect to an Emacs server must have their own
 instance of the daemonized GNU Emacs.
 
 OpenRC version 0.60 or later supports this via *user services* and
 user init scripts in the ``/etc/user/init.d/`` directory. In order to
-automatically start Emacs as a daemon in your user session, login as
-normal user and execute the command::
+automatically start Emacs as a daemon in your user session, log in as
+a normal user and execute the command::
 
    $ rc-update --user add emacs default
 
@@ -24,7 +24,7 @@ To get all benefits of the daemon setup, you should set the ``EDITOR``
 environment variable to ``emacsclient``, so that programs calling an
 external editor will use the existing Emacs process. Also file
 associations in your desktop system should call emacsclient.
-When closing a session or frame, no contents is lost; you may simply
+When closing a session or frame, no content is lost; you may simply
 reconnect to the Emacs server.
 
 Further customization can be done by placing an ``emacs``
@@ -59,7 +59,7 @@ Launching the Emacs daemon at system startup
 --------------------------------------------
 
 If you want to launch your user's Emacs daemon at system startup and
-have it persist between login sessions, you must multiplex OpenRC's
+have it persist across login sessions, you must multiplex OpenRC's
 user system service: As the superuser, create a symbolic link (do not
 copy the script, or you will miss eventual updates!) in the
 ``/etc/init.d/`` directory::
@@ -76,8 +76,8 @@ privileges)::
 
    # rc-update add user.<username> default
 
-See the `OpenRC user guide`__ for a more complete guide how to
-configure user services at the OpenRC side.
+See the `OpenRC user guide`__ for a more complete guide on how to
+configure user services on the OpenRC side.
 
 __ https://github.com/OpenRC/openrc/blob/master/user-guide.md
 

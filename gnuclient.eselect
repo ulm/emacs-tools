@@ -1,5 +1,5 @@
 # -*-eselect-*-
-# Copyright 2005-2025 Gentoo Authors
+# Copyright 2005-2026 Gentoo Authors
 # Distributed under the terms of the GNU GPL version 2 or later
 #
 # DOCUMENTATION
@@ -21,7 +21,7 @@
 
 DESCRIPTION="Manage /usr/bin/gnuclient implementations"
 MAINTAINER="emacs@gentoo.org"
-VERSION="1.19"
+VERSION="1.20"
 
 BINARYLIST="gnuclient gnudoit gnuattach"
 MANPAGELIST="gnuclient gnudoit gnuattach gnuserv"

@@ -1,3 +1,7 @@
+2026-09-16  Ulrich Müller  <ulm@gentoo.org>
+
+	* Version 1.20 released.
+
 2025-01-05  Ulrich Müller  <ulm@gentoo.org>
 
 	* ctags.eselect (test_for_root):
